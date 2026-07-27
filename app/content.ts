@@ -49,29 +49,26 @@ export const experiences = [
 ];
 
 export const interests = [
-  { name: "咖啡", mark: "COFFEE", description: "从一杯手作咖啡开始一天", photo: "/photos/coffee.jpg" },
-  { name: "阅读", mark: "READ", description: "在书页之间校准认知", photo: "/photos/reading.jpg" },
-  { name: "吉他", mark: "GUITAR", description: "让节奏留住松弛的时刻", photo: "/photos/guitar.jpg" },
-  { name: "健身", mark: "FITNESS", description: "用长期训练理解身体", photo: "/photos/fitness.jpg" },
-  { name: "篮球", mark: "BASKETBALL", description: "在球场上保持专注与配合", photo: "/photos/basketball.jpg" },
-  { name: "抖舞", mark: "DANCE", description: "在律动中打开新的表达", photo: "/photos/dance.jpg" },
-  { name: "滑雪", mark: "SNOWBOARD", description: "在雪线上学习平衡与勇气", photo: "/photos/snowboard.jpg" },
-  { name: "冲浪", mark: "SURF", description: "顺着海浪感受自由与敬畏", photo: "/photos/surf.jpg" },
+  { name: "咖啡", mark: "COFFEE", category: "生活类", photo: "/photos/coffee.jpg" },
+  { name: "阅读", mark: "READ", category: "生活类", photo: "/photos/reading.jpg" },
+  { name: "吉他", mark: "GUITAR", category: "生活类", photo: "/photos/guitar.jpg" },
+  { name: "健身", mark: "FITNESS", category: "运动类", photo: "/photos/fitness.jpg" },
+  { name: "篮球", mark: "BASKETBALL", category: "运动类", photo: "/photos/basketball.jpg" },
+  { name: "抖舞", mark: "DANCE", category: "运动类", photo: "/photos/dance.jpg" },
+  { name: "滑雪", mark: "SNOWBOARD", category: "运动类", photo: "/photos/snowboard.jpg" },
+  { name: "冲浪", mark: "SURF", category: "运动类", photo: "/photos/surf.jpg" },
 ];
 
-export const completedMilestones = [
+export const milestones = [
   "得到 900 分高分学员",
   "国家中级健身教练认证",
   "大疆无人机航拍认证",
   "原雅思（IELTS）杨帅口语班班长",
-  "自由冲浪、尾波冲浪入门",
-  "单板滑雪入门",
-];
-
-export const ongoingExplorations = [
   "备考雅思考试",
   "备考国际健身认证（NSCA、ACE、NASM、ACSM）",
   "备考健康管理师",
+  "自由冲浪、尾波冲浪入门",
+  "单板滑雪入门",
 ];
 
 export const topics = [

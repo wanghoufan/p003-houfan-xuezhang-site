@@ -37,12 +37,16 @@ test("server-renders the complete personal homepage", async () => {
   assert.match(html, /2021\.09–2025\.12/);
   assert.match(html, /2026\.01–至今/);
   assert.match(html, /AI 项目作品/);
+  assert.match(html, /Tak is cheap\. Show me the product\./);
+  assert.match(html, /生活类/);
+  assert.match(html, /运动类/);
   assert.match(html, /联系方式将在确认后开放/);
   assert.match(html, /\/photos\/profile\.jpg/);
   assert.match(html, /\/photos\/coffee\.jpg/);
   assert.match(html, /\/photos\/surf\.jpg/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/);
   assert.doesNotMatch(html, /mailto:|中\s*\/\s*EN/);
+  assert.doesNotMatch(html, /正在备考与探索|ongoing-column/);
 });
 
 test("unknown project routes return the designed 404 response", async () => {

@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { PhotoSlot } from "./PhotoSlot";
 import {
-  completedMilestones,
   experiences,
   interests,
-  ongoingExplorations,
+  milestones,
   profile,
   projects,
   topics,
@@ -34,6 +33,18 @@ export default function Home() {
   const publishedProjects = projects.filter(
     (project) => project.status === "published",
   );
+  const interestGroups = [
+    {
+      title: "生活类",
+      label: "LIFESTYLE",
+      items: interests.filter((interest) => interest.category === "生活类"),
+    },
+    {
+      title: "运动类",
+      label: "SPORTS",
+      items: interests.filter((interest) => interest.category === "运动类"),
+    },
+  ];
 
   return (
     <>
@@ -149,7 +160,7 @@ export default function Home() {
                 <p className="kicker">WORK IN PROGRESS</p>
                 <h3>项目档案，正在形成。</h3>
                 <p>
-                  这里将持续收录 AI 应用与编程实践。每个项目都会记录问题、过程、方法与结果，而不只是展示一张完成截图。
+                  Tak is cheap. Show me the product.
                 </p>
               </div>
               <div className="project-slots" aria-label="三个待发布的项目位置">
@@ -168,49 +179,48 @@ export default function Home() {
         <section className="interests-section reveal" aria-labelledby="interests-title">
           <SectionHeading number="03" title="兴趣切片" id="interests" />
           <p className="section-lead">
-            工作之外，我也在咖啡、书页、琴弦和运动中认识世界。每一项兴趣，都为一张真实生活照片预留了位置。
+            工作之外，也在生活与运动中认识世界。
           </p>
-          <div className="interest-grid">
-            {interests.map((interest, index) => (
-              <article className={`interest-card interest-${index + 1}`} key={interest.name}>
-                <PhotoSlot
-                  className="interest-photo"
-                  src={interest.photo}
-                  alt={`后翻学长的${interest.name}生活照片`}
+          <div className="interest-groups">
+            {interestGroups.map((group) => (
+              <div className="interest-group" key={group.title}>
+                <header>
+                  <h3>{group.title}</h3>
+                  <span>{group.label}</span>
+                </header>
+                <div
+                  className="interest-row"
+                  style={{ "--interest-count": group.items.length } as React.CSSProperties}
                 >
-                  <span>{interest.mark}</span>
-                  <small>照片待更新</small>
-                </PhotoSlot>
-                <div>
-                  <p>0{index + 1}</p>
-                  <h3>{interest.name}</h3>
-                  <span>{interest.description}</span>
+                  {group.items.map((interest) => (
+                    <article className="interest-card" key={interest.name}>
+                      <PhotoSlot
+                        className="interest-photo"
+                        src={interest.photo}
+                        alt={`后翻学长的${interest.name}生活照片`}
+                      >
+                        <span>{interest.mark}</span>
+                        <small>照片待更新</small>
+                      </PhotoSlot>
+                      <h4>{interest.name}</h4>
+                    </article>
+                  ))}
                 </div>
-              </article>
+              </div>
             ))}
           </div>
         </section>
 
         <section className="milestones-section reveal" aria-labelledby="milestones-title">
           <SectionHeading number="04" title="经历与认证" id="milestones-title" />
-          <div className="milestone-columns">
-            <div>
-              <p className="column-label">已完成 · COMPLETED</p>
-              <ul>
-                {completedMilestones.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="ongoing-column">
-              <p className="column-label">正在备考与探索 · IN PROGRESS</p>
-              <ul>
-                {ongoingExplorations.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <ul className="milestone-list">
+            {milestones.map((item, index) => (
+              <li key={item}>
+                <span>0{index + 1}</span>
+                <p>{item}</p>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section className="topics-section reveal" aria-labelledby="topics-title">
