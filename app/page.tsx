@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PhotoSlot } from "./PhotoSlot";
 import {
   completedMilestones,
   experiences,
@@ -77,12 +78,16 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="portrait-frame" aria-label="个人照片待更新">
-            <div className="portrait-placeholder">
+          <div className="portrait-frame">
+            <PhotoSlot
+              className="portrait-placeholder"
+              src="/photos/profile.jpg"
+              alt="后翻学长个人照片"
+            >
               <span>PORTRAIT</span>
               <strong>个人照片</strong>
               <small>待更新 · 建议竖版 4:5</small>
-            </div>
+            </PhotoSlot>
             <p>海南海口，持续学习与创造。</p>
           </div>
 
@@ -168,10 +173,14 @@ export default function Home() {
           <div className="interest-grid">
             {interests.map((interest, index) => (
               <article className={`interest-card interest-${index + 1}`} key={interest.name}>
-                <div className="interest-photo" aria-label={`${interest.name}照片待更新`}>
+                <PhotoSlot
+                  className="interest-photo"
+                  src={interest.photo}
+                  alt={`后翻学长的${interest.name}生活照片`}
+                >
                   <span>{interest.mark}</span>
                   <small>照片待更新</small>
-                </div>
+                </PhotoSlot>
                 <div>
                   <p>0{index + 1}</p>
                   <h3>{interest.name}</h3>

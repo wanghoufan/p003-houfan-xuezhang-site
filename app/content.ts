@@ -49,14 +49,14 @@ export const experiences = [
 ];
 
 export const interests = [
-  { name: "咖啡", mark: "COFFEE", description: "从一杯手作咖啡开始一天" },
-  { name: "阅读", mark: "READ", description: "在书页之间校准认知" },
-  { name: "吉他", mark: "GUITAR", description: "让节奏留住松弛的时刻" },
-  { name: "健身", mark: "FITNESS", description: "用长期训练理解身体" },
-  { name: "篮球", mark: "BASKETBALL", description: "在球场上保持专注与配合" },
-  { name: "抖舞", mark: "DANCE", description: "在律动中打开新的表达" },
-  { name: "滑雪", mark: "SNOWBOARD", description: "在雪线上学习平衡与勇气" },
-  { name: "冲浪", mark: "SURF", description: "顺着海浪感受自由与敬畏" },
+  { name: "咖啡", mark: "COFFEE", description: "从一杯手作咖啡开始一天", photo: "/photos/coffee.jpg" },
+  { name: "阅读", mark: "READ", description: "在书页之间校准认知", photo: "/photos/reading.jpg" },
+  { name: "吉他", mark: "GUITAR", description: "让节奏留住松弛的时刻", photo: "/photos/guitar.jpg" },
+  { name: "健身", mark: "FITNESS", description: "用长期训练理解身体", photo: "/photos/fitness.jpg" },
+  { name: "篮球", mark: "BASKETBALL", description: "在球场上保持专注与配合", photo: "/photos/basketball.jpg" },
+  { name: "抖舞", mark: "DANCE", description: "在律动中打开新的表达", photo: "/photos/dance.jpg" },
+  { name: "滑雪", mark: "SNOWBOARD", description: "在雪线上学习平衡与勇气", photo: "/photos/snowboard.jpg" },
+  { name: "冲浪", mark: "SURF", description: "顺着海浪感受自由与敬畏", photo: "/photos/surf.jpg" },
 ];
 
 export const completedMilestones = [

@@ -38,6 +38,9 @@ test("server-renders the complete personal homepage", async () => {
   assert.match(html, /2026\.01–至今/);
   assert.match(html, /AI 项目作品/);
   assert.match(html, /联系方式将在确认后开放/);
+  assert.match(html, /\/photos\/profile\.jpg/);
+  assert.match(html, /\/photos\/coffee\.jpg/);
+  assert.match(html, /\/photos\/surf\.jpg/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/);
   assert.doesNotMatch(html, /mailto:|中\s*\/\s*EN/);
 });
