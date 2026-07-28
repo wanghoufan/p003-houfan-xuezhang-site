@@ -79,4 +79,32 @@ export const topics = [
 ];
 
 // 后续新增项目时，按 Project 类型填写完整资料，并将 status 设为 "published"。
-export const projects: Project[] = [];
+export const projects: Project[] = [
+  {
+    slug: "cny-us-rate-board",
+    title: "人民币兑美元汇率看板",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    summary:
+      "一个聚焦人民币兑美元汇率的轻量看板，用直观卡片展示当前购汇价格、官方中间价和历史区间位置。",
+    cover: "/projects/cny-us-rate-board.png",
+    tags: ["汇率数据", "信息可视化", "Web 应用"],
+    role: "独立设计与开发",
+    background:
+      "在购汇和观察汇率时，单一数字很难说明当前价格处于什么位置。这个项目希望把即时价格与长期区间放在同一视图里，降低判断成本。",
+    challenge:
+      "需要在有限空间内同时呈现当前汇率、官方中间价，以及近 1 年、2 年、3 年和 5 年的相对位置，并保持信息层级清晰。",
+    solution:
+      "以单张信息卡为核心，将当前汇率作为视觉主角，辅以官方中间价和历史区间提示，让用户快速完成扫读与比较。",
+    outcome:
+      "完成可用的人民币兑美元汇率看板，并将项目代码公开在 GitHub，作为 AI 应用与编程实践的第一项作品记录。",
+    gallery: [],
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/cny-us-rate-board",
+      },
+    ],
+  },
+];

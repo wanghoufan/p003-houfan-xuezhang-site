@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ContactPanel } from "./ContactPanel";
 import { PhotoSlot } from "./PhotoSlot";
 import {
   experiences,
@@ -124,6 +125,15 @@ export default function Home() {
             <div className="project-grid">
               {publishedProjects.map((project, index) => (
                 <article className={index === 0 ? "project-card featured" : "project-card"} key={project.slug}>
+                  {project.cover && (
+                    <Link
+                      className="project-card-cover"
+                      href={`/projects/${project.slug}`}
+                      aria-label={`查看${project.title}项目详情`}
+                    >
+                      <img src={project.cover} alt={`${project.title}项目封面`} />
+                    </Link>
+                  )}
                   <p className="project-meta">
                     {project.year} · {project.statusLabel}
                   </p>
@@ -221,12 +231,14 @@ export default function Home() {
         </section>
 
         <section className="contact-section reveal" id="contact" aria-labelledby="contact-title">
-          <p className="kicker">保持联系</p>
-          <h2 id="contact-title">因为好奇而相遇，<br />因为实践而同行。</h2>
-          <p>
-            如果你也在探索 AI、学习方法、健康生活或任何有趣的问题，欢迎以后来这里看看新的项目与记录。
-          </p>
-          <span className="contact-status">联系方式将在确认后开放</span>
+          <div className="contact-intro">
+            <p className="kicker">保持联系</p>
+            <h2 id="contact-title">因为好奇而相遇，<br />因为实践而同行。</h2>
+            <p>
+              如果你也在探索 AI、学习方法、健康生活或任何有趣的问题，欢迎与我联系。
+            </p>
+          </div>
+          <ContactPanel />
         </section>
       </main>
 

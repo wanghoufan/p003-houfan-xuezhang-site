@@ -37,16 +37,36 @@ test("server-renders the complete personal homepage", async () => {
   assert.match(html, /2021\.09–2025\.12/);
   assert.match(html, /2026\.01–至今/);
   assert.match(html, /AI 项目作品/);
-  assert.match(html, /Tak is cheap\. Show me the product\./);
+  assert.match(html, /人民币兑美元汇率看板/);
+  assert.match(html, /\/projects\/cny-us-rate-board\.png/);
   assert.match(html, /生活类/);
   assert.match(html, /运动类/);
-  assert.match(html, /联系方式将在确认后开放/);
+  assert.match(html, /微信/);
+  assert.match(html, /GitHub/);
+  assert.match(html, /YouTube/);
   assert.match(html, /\/photos\/profile\.jpg/);
   assert.match(html, /\/photos\/coffee\.jpg/);
   assert.match(html, /\/photos\/surf\.jpg/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/);
   assert.doesNotMatch(html, /mailto:|中\s*\/\s*EN/);
   assert.doesNotMatch(html, /正在备考与探索|ongoing-column/);
+});
+
+test("published project route renders its story and GitHub link", async () => {
+  const worker = await createWorker();
+  const response = await worker.fetch(
+    new Request("http://localhost/projects/cny-us-rate-board", {
+      headers: { accept: "text/html" },
+    }),
+    environment(),
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /人民币兑美元汇率看板/);
+  assert.match(html, /查看 GitHub 项目/);
+  assert.match(html, /wanghoufan\/cny-us-rate-board/);
 });
 
 test("unknown project routes return the designed 404 response", async () => {
