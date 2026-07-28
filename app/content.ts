@@ -49,14 +49,14 @@ export const experiences = [
 ];
 
 export const interests = [
-  { name: "咖啡", mark: "COFFEE", category: "生活类", photo: "/photos/coffee.jpg" },
-  { name: "阅读", mark: "READ", category: "生活类", photo: "/photos/reading.jpg" },
-  { name: "吉他", mark: "GUITAR", category: "生活类", photo: "/photos/guitar.jpg" },
-  { name: "健身", mark: "FITNESS", category: "运动类", photo: "/photos/fitness.jpg" },
-  { name: "篮球", mark: "BASKETBALL", category: "运动类", photo: "/photos/basketball.png" },
-  { name: "抖舞", mark: "DANCE", category: "运动类", photo: "/photos/dance.png" },
-  { name: "滑雪", mark: "SNOWBOARD", category: "运动类", photo: "/photos/snowboard.png" },
-  { name: "冲浪", mark: "SURF", category: "运动类", photo: "/photos/surf.png" },
+  { name: "咖啡", mark: "COFFEE", category: "生活类", photo: "/photos/coffee.webp" },
+  { name: "阅读", mark: "READ", category: "生活类", photo: "/photos/reading.webp" },
+  { name: "吉他", mark: "GUITAR", category: "生活类", photo: "/photos/guitar.webp" },
+  { name: "健身", mark: "FITNESS", category: "运动类", photo: "/photos/fitness.webp" },
+  { name: "篮球", mark: "BASKETBALL", category: "运动类", photo: "/photos/basketball.webp" },
+  { name: "抖舞", mark: "DANCE", category: "运动类", photo: "/photos/dance.webp" },
+  { name: "滑雪", mark: "SNOWBOARD", category: "运动类", photo: "/photos/snowboard.webp" },
+  { name: "冲浪", mark: "SURF", category: "运动类", photo: "/photos/surf.webp" },
 ];
 
 export const milestones = [

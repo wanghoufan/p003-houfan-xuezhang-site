@@ -7,6 +7,7 @@ type PhotoSlotProps = {
   alt: string;
   className: string;
   children: React.ReactNode;
+  priority?: boolean;
 };
 
 export function PhotoSlot({
@@ -14,6 +15,7 @@ export function PhotoSlot({
   alt,
   className,
   children,
+  priority = false,
 }: PhotoSlotProps) {
   const [loaded, setLoaded] = useState(false);
 
@@ -26,6 +28,9 @@ export function PhotoSlot({
         className="slot-image"
         src={src}
         alt={alt}
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+        fetchPriority={priority ? "high" : "auto"}
         onLoad={() => setLoaded(true)}
         onError={() => setLoaded(false)}
       />

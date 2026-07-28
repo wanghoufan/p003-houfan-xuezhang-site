@@ -97,7 +97,11 @@ export function ContactPanel() {
             <h2 id="wechat-dialog-title">微信联系</h2>
             <div className="wechat-qr">
               {wechatQr ? (
-                <img src={wechatQr} alt="后翻学长的微信二维码" />
+                <img
+                  src={wechatQr}
+                  alt="后翻学长的微信二维码"
+                  decoding="async"
+                />
               ) : (
                 <>
                   <strong>二维码待补充</strong>

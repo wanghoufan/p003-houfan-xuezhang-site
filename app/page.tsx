@@ -84,8 +84,9 @@ export default function Home() {
           <div className="portrait-frame">
             <PhotoSlot
               className="portrait-placeholder"
-              src="/photos/profile.jpg"
+              src="/photos/profile.webp"
               alt="后翻学长个人照片"
+              priority
             >
               <span>PORTRAIT</span>
               <strong>个人照片</strong>
@@ -131,7 +132,12 @@ export default function Home() {
                       href={`/projects/${project.slug}`}
                       aria-label={`查看${project.title}项目详情`}
                     >
-                      <img src={project.cover} alt={`${project.title}项目封面`} />
+                      <img
+                        src={project.cover}
+                        alt={`${project.title}项目封面`}
+                        loading="lazy"
+                        decoding="async"
+                      />
                     </Link>
                   )}
                   <p className="project-meta">

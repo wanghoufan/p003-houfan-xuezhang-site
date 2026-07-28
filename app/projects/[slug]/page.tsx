@@ -68,7 +68,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       <div className="project-cover" aria-label={project.cover ? "项目封面" : "项目封面待更新"}>
         {project.cover ? (
-          <img src={project.cover} alt={`${project.title}项目封面`} />
+          <img
+            src={project.cover}
+            alt={`${project.title}项目封面`}
+            decoding="async"
+          />
         ) : (
           <span>PROJECT IMAGE · 待更新</span>
         )}
@@ -109,7 +113,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <section className="project-gallery" aria-labelledby="gallery-title">
           <h2 id="gallery-title">项目图片</h2>
           {project.gallery.map((image, index) => (
-            <img key={image} src={image} alt={`${project.title}项目图片 ${index + 1}`} />
+            <img
+              key={image}
+              src={image}
+              alt={`${project.title}项目图片 ${index + 1}`}
+              loading="lazy"
+              decoding="async"
+            />
           ))}
         </section>
       )}
