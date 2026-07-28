@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type PhotoSlotProps = {
   src: string;
@@ -18,6 +18,15 @@ export function PhotoSlot({
   priority = false,
 }: PhotoSlotProps) {
   const [loaded, setLoaded] = useState(false);
+  const imageRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    const image = imageRef.current;
+
+    if (image?.complete) {
+      setLoaded(image.naturalWidth > 0);
+    }
+  }, [src]);
 
   return (
     <div
@@ -25,6 +34,7 @@ export function PhotoSlot({
       data-photo-src={src}
     >
       <img
+        ref={imageRef}
         className="slot-image"
         src={src}
         alt={alt}
