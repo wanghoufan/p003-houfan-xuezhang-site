@@ -36,12 +36,10 @@ export default function Home() {
   const interestGroups = [
     {
       title: "生活类",
-      label: "LIFESTYLE",
       items: interests.filter((interest) => interest.category === "生活类"),
     },
     {
       title: "运动类",
-      label: "SPORTS",
       items: interests.filter((interest) => interest.category === "运动类"),
     },
   ];
@@ -67,16 +65,9 @@ export default function Home() {
 
       <main id="main-content">
         <section className="hero" id="about" aria-labelledby="hero-title">
-          <div className="hero-issue" aria-hidden="true">
-            <span>PERSONAL</span>
-            <strong>01</strong>
-            <span>2026 · HAIKOU</span>
-          </div>
-
           <div className="hero-copy">
-            <p className="eyebrow">终身学习者 · 读书爱好者 · 自由探索者</p>
+            <p className="eyebrow">海南海口 · 自由探索中</p>
             <h1 id="hero-title">{profile.nickname}</h1>
-            <p className="location">海南 · 海口</p>
             <div className="tag-row" aria-label="个人标签">
               {profile.tags.map((tag) => (
                 <span key={tag}>{tag}</span>
@@ -99,20 +90,13 @@ export default function Home() {
               <strong>个人照片</strong>
               <small>待更新 · 建议竖版 4:5</small>
             </PhotoSlot>
-            <p>海南海口，持续学习与创造。</p>
+            <p>把真实生活留在这里，让每一次探索都有迹可循。</p>
           </div>
-
-          <aside className="hero-note">
-            <span className="quote-mark" aria-hidden="true">
-              “
-            </span>
-            <p>世界很大，保持好奇；把学到的东西，变成可以被看见的实践。</p>
-          </aside>
         </section>
 
         <section className="current-focus reveal" aria-labelledby="focus-title">
           <div>
-            <p className="kicker">NOW EXPLORING</p>
+            <p className="kicker">当下</p>
             <h2 id="focus-title">目前探索方向</h2>
           </div>
           <p>AI 应用与编程</p>
@@ -157,7 +141,7 @@ export default function Home() {
           ) : (
             <div className="project-empty">
               <div className="project-empty-copy">
-                <p className="kicker">WORK IN PROGRESS</p>
+                <p className="kicker">作品持续更新</p>
                 <h3>项目档案，正在形成。</h3>
                 <p>
                   Tak is cheap. Show me the product.
@@ -168,7 +152,7 @@ export default function Home() {
                   <div key={item}>
                     <span>0{item}</span>
                     <strong>即将发布</strong>
-                    <small>PROJECT ARCHIVE</small>
+                    <small>项目档案</small>
                   </div>
                 ))}
               </div>
@@ -186,7 +170,7 @@ export default function Home() {
               <div className="interest-group" key={group.title}>
                 <header>
                   <h3>{group.title}</h3>
-                  <span>{group.label}</span>
+                  <span>{group.items.length} 项兴趣</span>
                 </header>
                 <div
                   className="interest-row"
@@ -229,7 +213,6 @@ export default function Home() {
             {topics.map((topic, index) => (
               <article key={topic.title}>
                 <span>0{index + 1}</span>
-                <p>{topic.category}</p>
                 <h3>{topic.title}</h3>
                 <div aria-hidden="true" className="topic-mark" />
               </article>
@@ -238,7 +221,7 @@ export default function Home() {
         </section>
 
         <section className="contact-section reveal" id="contact" aria-labelledby="contact-title">
-          <p className="kicker">KEEP IN TOUCH</p>
+          <p className="kicker">保持联系</p>
           <h2 id="contact-title">因为好奇而相遇，<br />因为实践而同行。</h2>
           <p>
             如果你也在探索 AI、学习方法、健康生活或任何有趣的问题，欢迎以后来这里看看新的项目与记录。
