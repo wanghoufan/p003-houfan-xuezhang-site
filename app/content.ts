@@ -53,10 +53,10 @@ export const interests = [
   { name: "阅读", mark: "READ", category: "生活类", photo: "/photos/reading.jpg" },
   { name: "吉他", mark: "GUITAR", category: "生活类", photo: "/photos/guitar.jpg" },
   { name: "健身", mark: "FITNESS", category: "运动类", photo: "/photos/fitness.jpg" },
-  { name: "篮球", mark: "BASKETBALL", category: "运动类", photo: "/photos/basketball.jpg" },
-  { name: "抖舞", mark: "DANCE", category: "运动类", photo: "/photos/dance.jpg" },
-  { name: "滑雪", mark: "SNOWBOARD", category: "运动类", photo: "/photos/snowboard.jpg" },
-  { name: "冲浪", mark: "SURF", category: "运动类", photo: "/photos/surf.jpg" },
+  { name: "篮球", mark: "BASKETBALL", category: "运动类", photo: "/photos/basketball.png" },
+  { name: "抖舞", mark: "DANCE", category: "运动类", photo: "/photos/dance.png" },
+  { name: "滑雪", mark: "SNOWBOARD", category: "运动类", photo: "/photos/snowboard.png" },
+  { name: "冲浪", mark: "SURF", category: "运动类", photo: "/photos/surf.png" },
 ];
 
 export const milestones = [

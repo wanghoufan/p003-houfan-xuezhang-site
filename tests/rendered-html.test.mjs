@@ -46,7 +46,10 @@ test("server-renders the complete personal homepage", async () => {
   assert.match(html, /YouTube/);
   assert.match(html, /\/photos\/profile\.jpg/);
   assert.match(html, /\/photos\/coffee\.jpg/);
-  assert.match(html, /\/photos\/surf\.jpg/);
+  assert.match(html, /\/photos\/basketball\.png/);
+  assert.match(html, /\/photos\/dance\.png/);
+  assert.match(html, /\/photos\/snowboard\.png/);
+  assert.match(html, /\/photos\/surf\.png/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/);
   assert.doesNotMatch(html, /mailto:|中\s*\/\s*EN/);
   assert.doesNotMatch(html, /正在备考与探索|ongoing-column/);

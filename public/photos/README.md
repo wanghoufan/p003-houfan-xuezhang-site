@@ -7,9 +7,9 @@
 - `reading.jpg`：阅读
 - `guitar.jpg`：吉他
 - `fitness.jpg`：健身
-- `basketball.jpg`：篮球
-- `dance.jpg`：抖舞
-- `snowboard.jpg`：滑雪
-- `surf.jpg`：冲浪
+- `basketball.png`：篮球
+- `dance.png`：抖舞
+- `snowboard.png`：滑雪
+- `surf.png`：冲浪
 
-建议使用 JPG 图片。替换文件后重新发布网站即可，页面会自动裁切到对应照片框。
+已有真人照片使用 JPG，四张 AI 场景图使用 PNG。替换文件后重新发布网站即可，页面会自动裁切到对应照片框。
