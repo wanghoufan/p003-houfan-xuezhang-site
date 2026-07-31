@@ -1,98 +1,73 @@
-# vinext-starter
+# 后翻学长个人网站
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+一个非求职导向的个人展示网站，用杂志叙事的方式呈现个人经历、AI 应用与编程项目、兴趣生活、专题研究和联系方式。
 
-## Prerequisites
+- 线上地址：https://houfan-xuezhang.mortimerstephanie14.chatgpt.site
+- 公开项目：`/projects/cny-us-rate-board`
+- 当前语言：中文
+- 当前发布平台：OpenAI Sites
 
-- Node.js `>=22.13.0`
+## 本地运行
 
-## Quick Start
+需要 Node.js `>=22.13.0`。
 
 ```bash
 npm install
 npm run dev
-npm run build
 ```
 
-This starter does not use `wrangler.jsonc`.
+提交或发布前运行：
 
-## Included Shape
-
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
-
-## Workspace Auth Headers
-
-OpenAI workspace sites can read the current user's email from
-`oai-authenticated-user-email`.
-
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```bash
+npm test
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+该命令会完成正式构建，并检查首页、项目详情页、图片加载策略和关键链接。
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+## 常用修改位置
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+| 要修改的内容 | 文件或目录 |
+| --- | --- |
+| 个人资料、经历、兴趣、专题、项目资料 | `app/content.ts` |
+| 联系方式与微信二维码交互 | `app/ContactPanel.tsx` |
+| 首页结构 | `app/page.tsx` |
+| 项目详情页 | `app/projects/[slug]/page.tsx` |
+| 全站视觉样式 | `app/globals.css` |
+| 头像与兴趣照片 | `public/photos/` |
+| 高清照片备份（不参与网站发布） | `assets/photo-originals/` |
+| 项目封面 | `public/projects/` |
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
+照片文件名、比例和替换步骤见 [照片替换说明.md](./照片替换说明.md)。网页实际加载 `public/photos/` 中的 WebP 图片；JPG、PNG 高清原图存放在 `assets/photo-originals/`，不会被复制进公开网站。替换后请保留清晰的替代文字，并继续使用现有的首屏优先加载与非首屏懒加载策略。
 
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
+## 内容约定
 
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
+- 本站是个人数字名片，不使用求职、简历或虚构项目表达。
+- 项目只有标记为已发布时才公开显示；项目资料以 `app/content.ts` 为准。
+- “备考”或“入门”经历应按原意表述，不能改写为已获得认证或精通。
+- 联系方式只展示真实有效的入口。
+- 当前没有数据库、登录、留言、统计或后台管理功能。
 
-## Useful Commands
+## 发布
 
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
+站点已在 `.openai/hosting.json` 关联现有 Sites 项目。更新时必须沿用该项目，不能重复创建新站点。
 
-## Learn More
+发布流程：
 
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+1. 修改本地内容或图片。
+2. 运行 `npm test`。
+3. 将准确的当前源码推送到该 Sites 项目的源码仓库。
+4. 保存新版本并部署该版本。
+5. 检查线上页面和部署状态。
+
+构建目录、依赖目录和临时目录均已写入 `.gitignore`，不应提交。
+
+## 技术说明
+
+- React 19
+- TypeScript
+- Next.js 兼容路由
+- vinext / Vite
+- Cloudflare Workers 运行时
+- OpenAI Sites 托管
+
+仓库中保留了 Sites/vinext 的基础设施文件和可选 D1 示例；当前网站本身未启用数据库或身份验证。

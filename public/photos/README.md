@@ -12,4 +12,4 @@
 - `snowboard.webp`：滑雪
 - `surf.webp`：冲浪
 
-JPG、PNG 高清原图继续保留作为备份。以后更换照片时，应先生成对应的 WebP 文件，再重新发布网站。
+JPG、PNG 高清原图保存在项目的 `assets/photo-originals/` 文件夹，不参与网站发布。以后更换照片时，应先从原图生成对应的 WebP 文件，再重新发布网站。

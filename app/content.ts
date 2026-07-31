@@ -107,4 +107,36 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "deepseek-balance-widget",
+    title: "DeepSeek 余额悬浮小工具",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    summary:
+      "一个面向 Windows 11 的 DeepSeek API 余额监控工具，集中展示余额变化、充值与赠送明细，并在余额异常时及时提醒。",
+    cover:
+      "https://raw.githubusercontent.com/wanghoufan/DeepSeekBalanceWidget/master/artifacts/ui-audit/02-after.png",
+    tags: ["Windows 11", ".NET 8", "WPF", "API 监控"],
+    role: "独立设计与开发",
+    background:
+      "API 服务的余额变化往往分散在控制台和通知里，难以在日常使用中持续关注。这个项目把 DeepSeek 账户状态收进桌面边角，让余额成为随时可见的信息。",
+    challenge:
+      "需要在不打断工作流的前提下，同时呈现余额、变化趋势、充值与赠送明细，并兼顾完整卡片、迷你胶囊和系统托盘等不同使用场景。",
+    solution:
+      "以 Windows 桌面悬浮窗为核心，提供完整卡片与迷你胶囊模式，支持定时轮询、低余额及异常下降提醒、拖动定位、置顶、托盘和开机自启。API Key 使用 Windows DPAPI CurrentUser 加密保存在本地。",
+    outcome:
+      "完成一个可独立运行的 Windows x64 自包含单文件工具，并通过 GitHub Actions 持续检查构建与测试；发布包无需目标电脑预装 .NET Runtime。",
+    gallery: [],
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/DeepSeekBalanceWidget",
+      },
+      {
+        label: "下载最新版本",
+        href: "https://github.com/wanghoufan/DeepSeekBalanceWidget/releases/latest",
+      },
+    ],
+  },
 ];
