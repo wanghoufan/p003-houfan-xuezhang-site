@@ -179,7 +179,7 @@ export const projects: Project[] = [
     year: "2026",
     summary:
       "面向短视频编剧、导演和内容创作者的智能创作工具，把短剧主题、剧本和风格偏好转化为可执行的图文分镜方案。",
-    cover: null,
+    cover: "/projects/ai-storyboard-studio.png",
     tags: ["AI 创作", "图文分镜", "短视频", "图像生成"],
     role: "独立产品设计与开发",
     background:
