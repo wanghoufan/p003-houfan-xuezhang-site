@@ -171,4 +171,31 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "ai-storyboard-studio",
+    title: "AI 图文短剧分镜生成器",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    summary:
+      "面向短视频编剧、导演和内容创作者的智能创作工具，把短剧主题、剧本和风格偏好转化为可执行的图文分镜方案。",
+    cover: null,
+    tags: ["AI 创作", "图文分镜", "短视频", "图像生成"],
+    role: "独立产品设计与开发",
+    background:
+      "短剧从文字剧本走向拍摄执行时，创作者需要反复拆解场景、镜头和画面气氛。这个项目尝试把剧本理解与视觉预演连接起来，缩短从文字到画面的距离。",
+    challenge:
+      "需要同时处理主题、剧本内容和风格偏好，并让自动生成的文字分镜与对应画面保持一致，最终输出清晰、直观、方便继续创作的镜头方案。",
+    solution:
+      "用户输入短剧主题、剧本和风格后，系统自动完成文字分镜拆解，并为每个镜头生成电影感画面，形成按镜头组织的图文创作工作区。",
+    outcome:
+      "完成一款面向短视频创作流程的 AI 分镜工具，帮助创作者快速把剧本转化为可理解、可讨论、可执行的视觉方案。",
+    gallery: [],
+    links: [
+      {
+        label: "打开在线体验",
+        href: "https://ai-storyboard-studio-2026.mortimerstephanie14.chatgpt.site/",
+      },
+    ],
+  },
 ];
