@@ -139,4 +139,36 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "nomad-seasons",
+    title: "候鸟 / Nomad Seasons",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    summary:
+      "面向中国数字游民的城市旅居决策工具，根据月份、气候偏好、预算、网络和交通条件筛选与排名国内外城市。",
+    cover:
+      "https://raw.githubusercontent.com/wanghoufan/nomad-seasons/main/public/readme-preview.png",
+    tags: ["React", "Vite", "数据决策", "数字游民"],
+    role: "独立产品设计与开发",
+    background:
+      "当旅居目的地同时受到季节、体感气候、预算、网络和交通影响时，单纯浏览城市介绍很难快速做出选择。这个项目希望把旅行灵感整理成一条可解释的决策路径。",
+    challenge:
+      "需要在同一个响应式界面中处理 12 个月切换、气候门槛、预算与网络筛选、国内外城市榜单，以及 2—3 座城市的混合对比，同时保持旅行杂志般的阅读体验。",
+    solution:
+      "以月份选择器和偏好面板为入口，实时刷新国内榜单，并通过“包含海外城市”开关显示独立海外榜；城市卡片保留推荐理由、证据标签和数据快照，让排序结果可理解、可比较。",
+    outcome:
+      "完成一个中文响应式城市旅居筛选与对比工具，覆盖国内 12 城和海外 12 城，支持完整的 12 个月数据、无障碍交互和 Vercel 在线体验。",
+    gallery: [],
+    links: [
+      {
+        label: "打开在线体验",
+        href: "https://nomad-seasons.vercel.app/#method",
+      },
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/nomad-seasons",
+      },
+    ],
+  },
 ];
