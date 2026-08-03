@@ -512,6 +512,64 @@ section:not(.hero, .current-focus) {
   font-weight: 600;
 }
 
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.service-card {
+  grid-column: span 1;
+  overflow: hidden;
+  border-top: 1px solid var(--ink);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.service-card > a {
+  display: block;
+  color: inherit;
+}
+
+.service-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform 280ms ease;
+}
+
+.service-card-footer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 24px 24px;
+}
+
+.service-card h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.2vw, 32px);
+  font-weight: 600;
+}
+
+.service-card-footer span {
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.service-card > a:hover img,
+.service-card > a:focus-visible img {
+  transform: scale(1.025);
+}
+
+.service-card > a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
 .section-lead {
   width: min(100%, 540px);
   margin: -38px 0 52px auto;
@@ -1153,6 +1211,14 @@ footer p {
 
   .project-grid {
     grid-template-columns: 1fr;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card-footer {
+    padding: 18px;
   }
 
   .section-lead {
