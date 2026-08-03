@@ -185,7 +185,6 @@ export default function Home() {
               <article
                 className="service-card"
                 key={service.href}
-                style={{ "--service-cover-ratio": service.coverRatio } as React.CSSProperties}
               >
                 <a
                   href={service.href}

@@ -533,7 +533,7 @@ section:not(.hero, .current-focus) {
 .service-card img {
   display: block;
   width: 100%;
-  aspect-ratio: var(--service-cover-ratio);
+  aspect-ratio: 1064 / 1153;
   object-fit: cover;
   transition: transform 280ms ease;
 }

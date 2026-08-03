@@ -26,7 +26,6 @@ export type Project = {
 export type Service = {
   title: string;
   cover: string;
-  coverRatio: string;
   href: string;
 };
 
@@ -71,13 +70,11 @@ export const services: Service[] = [
   {
     title: "GPT 代充值",
     cover: "/services/gpt-recharge.png",
-    coverRatio: "1064 / 1153",
     href: "https://tiancexai.com/?aff=HOUFAN",
   },
   {
     title: "Claude Code 中转服务",
     cover: "/services/claude-code-relay.png",
-    coverRatio: "1540 / 1166",
     href: "https://shop.xuedingtoken.com/?dist=6SGDPWS6",
   },
 ];
