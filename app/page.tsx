@@ -182,7 +182,11 @@ export default function Home() {
           <SectionHeading number="03" title="我能帮你" id="services" />
           <div className="service-grid">
             {services.map((service) => (
-              <article className="service-card" key={service.href}>
+              <article
+                className="service-card"
+                key={service.href}
+                style={{ "--service-cover-ratio": service.coverRatio } as React.CSSProperties}
+              >
                 <a
                   href={service.href}
                   target="_blank"

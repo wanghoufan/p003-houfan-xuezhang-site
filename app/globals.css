@@ -514,7 +514,7 @@ section:not(.hero, .current-focus) {
 
 .service-grid {
   display: grid;
-  grid-template-columns: minmax(0, 480px);
+  grid-template-columns: repeat(2, minmax(0, 480px));
   gap: 20px;
 }
 
@@ -533,7 +533,7 @@ section:not(.hero, .current-focus) {
 .service-card img {
   display: block;
   width: 100%;
-  aspect-ratio: 1064 / 1153;
+  aspect-ratio: var(--service-cover-ratio);
   object-fit: cover;
   transition: transform 280ms ease;
 }
