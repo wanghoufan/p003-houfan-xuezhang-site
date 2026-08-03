@@ -514,7 +514,7 @@ section:not(.hero, .current-focus) {
 
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 480px);
   gap: 20px;
 }
 
@@ -533,7 +533,7 @@ section:not(.hero, .current-focus) {
 .service-card img {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1064 / 1153;
   object-fit: cover;
   transition: transform 280ms ease;
 }
@@ -543,7 +543,7 @@ section:not(.hero, .current-focus) {
   align-items: baseline;
   justify-content: space-between;
   gap: 20px;
-  padding: 22px 24px 24px;
+  padding: 16px 20px 18px;
 }
 
 .service-card h3 {
@@ -1218,7 +1218,7 @@ footer p {
   }
 
   .service-card-footer {
-    padding: 18px;
+    padding: 14px 16px 16px;
   }
 
   .section-lead {

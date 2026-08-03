@@ -183,7 +183,12 @@ export default function Home() {
           <div className="service-grid">
             {services.map((service) => (
               <article className="service-card" key={service.href}>
-                <a href={service.href} aria-label={`查看服务：${service.title}`}>
+                <a
+                  href={service.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`在新窗口查看服务：${service.title}`}
+                >
                   <img
                     src={service.cover}
                     alt={`${service.title}服务封面`}
