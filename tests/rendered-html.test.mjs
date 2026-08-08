@@ -38,6 +38,8 @@ test("server-renders the complete personal homepage", async () => {
   assert.match(html, /2026\.01–至今/);
   assert.match(html, /AI 项目作品/);
   assert.match(html, /人民币兑美元汇率看板/);
+  assert.match(html, /海口值得去的 50 家咖啡店/);
+  assert.match(html, /A股十一大指数十年估值分位报告/);
   assert.match(html, /\/projects\/cny-us-rate-board\.png/);
   assert.match(html, /生活类/);
   assert.match(html, /运动类/);
@@ -72,6 +74,29 @@ test("published project route renders its story and GitHub link", async () => {
   assert.match(html, /人民币兑美元汇率看板/);
   assert.match(html, /查看 GitHub 项目/);
   assert.match(html, /wanghoufan\/cny-us-rate-board/);
+});
+
+test("new published project routes render their details and links", async () => {
+  const worker = await createWorker();
+  const projectRoutes = [
+    ["50-haikou-cafes", /海口值得去的 50 家咖啡店/, /10-haikou-cafes\.vercel\.app/],
+    ["a-share-index-valuation-report", /A股十一大指数十年估值分位报告/, /a-share-index-valuation-report\.vercel\.app/],
+  ];
+
+  for (const [slug, title, previewUrl] of projectRoutes) {
+    const response = await worker.fetch(
+      new Request(`http://localhost/projects/${slug}`, {
+        headers: { accept: "text/html" },
+      }),
+      environment(),
+      { waitUntil() {}, passThroughOnException() {} },
+    );
+
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.match(html, title);
+    assert.match(html, previewUrl);
+  }
 });
 
 test("unknown project routes return the designed 404 response", async () => {

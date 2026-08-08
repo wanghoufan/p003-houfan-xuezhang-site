@@ -218,4 +218,68 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "50-haikou-cafes",
+    title: "海口值得去的 50 家咖啡店",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    summary:
+      "一份给愿意为一家咖啡店走一条巷子的人的城市指南，收录海口 50 家真实咖啡店。",
+    cover:
+      "https://raw.githubusercontent.com/wanghoufan/50-haikou-cafes/master/assets/preview/desktop-home.png",
+    tags: ["海口", "城市指南", "地图", "静态站点"],
+    role: "独立设计与开发",
+    background:
+      "想把分散在街巷与不同区域的咖啡店，整理成一份适合探索城市、也适合反复使用的指南。",
+    challenge:
+      "需要让 50 家店的地点、营业时间、评价与图片便于查找，同时兼顾地图浏览和移动端使用。",
+    solution:
+      "用结构化店铺数据驱动静态站点，提供区域与距离筛选、打卡和收藏、随机推荐、店铺详情以及全量地图总览。",
+    outcome:
+      "完成覆盖海口多个区域的 50 家咖啡店城市指南，并提供响应式在线体验。",
+    gallery: [],
+    links: [
+      {
+        label: "打开在线体验",
+        href: "https://10-haikou-cafes.vercel.app",
+      },
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/50-haikou-cafes",
+      },
+    ],
+  },
+  {
+    slug: "a-share-index-valuation-report",
+    title: "A股十一大指数十年估值分位报告",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    summary:
+      "一份汇总 11 只 A 股核心指数十年估值分位的单页响应式报告，用统一标记展示当前估值水位。",
+    cover:
+      "https://raw.githubusercontent.com/wanghoufan/a-share-index-valuation-report/master/screenshots/preview-hero.png",
+    tags: ["A股", "估值分析", "数据可视化", "HTML"],
+    role: "独立设计与开发",
+    background:
+      "不同指数的估值信息分散且口径不一，难以快速横向比较当前所处的估值位置。",
+    challenge:
+      "需要在一个页面中清晰呈现宽基与红利指数的多项估值分位、价格位置和数据时效，同时说明数据边界。",
+    solution:
+      "以 JSON 驱动展示，将估值分位、当前收盘价、历史回撤、雷达图与迷你走势整合进响应式页面。",
+    outcome:
+      "完成涵盖宽基与红利指数的估值汇总报告，提供在线查看、横向比较与数据时效提示；数据不构成投资建议。",
+    gallery: [],
+    links: [
+      {
+        label: "打开在线体验",
+        href: "https://a-share-index-valuation-report.vercel.app",
+      },
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/a-share-index-valuation-report",
+      },
+    ],
+  },
 ];
