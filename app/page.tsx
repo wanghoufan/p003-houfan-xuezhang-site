@@ -181,7 +181,7 @@ export default function Home() {
         <section className="services-section reveal" aria-labelledby="services-title">
           <SectionHeading number="03" title="我能帮你" id="services" />
           <div className="service-grid">
-            {services.map((service) => (
+            {services.map((service, index) => (
               <article
                 className="service-card"
                 key={service.href}
@@ -195,7 +195,8 @@ export default function Home() {
                   <img
                     src={service.cover}
                     alt={`${service.title}服务封面`}
-                    loading="lazy"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    fetchPriority={index === 0 ? "high" : "auto"}
                     decoding="async"
                   />
                   <div className="service-card-footer">
