@@ -195,7 +195,7 @@ export default function Home() {
                   <img
                     src={service.cover}
                     alt={`${service.title}服务封面`}
-                    loading={index === 0 ? "eager" : "lazy"}
+                    loading="eager"
                     fetchPriority={index === 0 ? "high" : "auto"}
                     decoding="async"
                   />
