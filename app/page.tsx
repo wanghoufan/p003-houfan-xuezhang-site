@@ -193,11 +193,13 @@ export default function Home() {
                   aria-label={`在新窗口查看服务：${service.title}`}
                 >
                   <img
-                    src={service.cover}
+                    src={`${service.cover}?v=${service.coverVersion}`}
                     alt={`${service.title}服务封面`}
+                    width={service.coverWidth}
+                    height={service.coverHeight}
                     loading="eager"
                     fetchPriority={index === 0 ? "high" : "auto"}
-                    decoding="async"
+                    decoding="sync"
                   />
                   <div className="service-card-footer">
                     <h3>{service.title}</h3>

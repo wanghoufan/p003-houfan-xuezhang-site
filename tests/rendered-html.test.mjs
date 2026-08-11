@@ -40,6 +40,11 @@ test("server-renders the complete personal homepage", async () => {
   assert.match(html, /人民币兑美元汇率看板/);
   assert.match(html, /海口值得去的 50 家咖啡店/);
   assert.match(html, /A股十一大指数十年估值分位报告/);
+  assert.match(html, /GPT 代充值/);
+  assert.match(html, /\/services\/gpt-recharge\.png\?v=20260811/);
+  assert.match(html, /Claude Code 中转服务/);
+  assert.match(html, /\/services\/claude-code-relay\.png\?v=20260811/);
+  assert.match(html, /decoding="sync"/);
   assert.match(html, /\/projects\/cny-us-rate-board\.png/);
   assert.match(html, /生活类/);
   assert.match(html, /运动类/);
