@@ -525,9 +525,15 @@ section:not(.hero, .current-focus) {
   background: rgba(255, 255, 255, 0.2);
 }
 
-.service-card > a {
+.service-card-link {
   display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 
 .service-card img {
@@ -560,8 +566,8 @@ section:not(.hero, .current-focus) {
   font-weight: 600;
 }
 
-.service-card > a:hover img,
-.service-card > a:focus-visible img {
+.service-card-link:hover img,
+.service-card-link:focus-visible img {
   transform: scale(1.025);
 }
 

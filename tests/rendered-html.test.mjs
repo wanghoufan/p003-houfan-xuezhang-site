@@ -45,6 +45,8 @@ test("server-renders the complete personal homepage", async () => {
   assert.match(html, /Claude Code 中转服务/);
   assert.match(html, /\/services\/claude-code-relay\.png\?v=20260811/);
   assert.match(html, /decoding="sync"/);
+  assert.match(html, /class="service-card-link"/);
+  assert.doesNotMatch(html, /href="https:\/\/tiancexai\.com/);
   assert.match(html, /\/projects\/cny-us-rate-board\.png/);
   assert.match(html, /生活类/);
   assert.match(html, /运动类/);

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ContactPanel } from "./ContactPanel";
+import { ServiceCard } from "./ServiceCard";
 import { PhotoSlot } from "./PhotoSlot";
 import {
   experiences,
@@ -182,31 +183,11 @@ export default function Home() {
           <SectionHeading number="03" title="我能帮你" id="services" />
           <div className="service-grid">
             {services.map((service, index) => (
-              <article
-                className="service-card"
+              <ServiceCard
                 key={service.href}
-              >
-                <a
-                  href={service.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`在新窗口查看服务：${service.title}`}
-                >
-                  <img
-                    src={`${service.cover}?v=${service.coverVersion}`}
-                    alt={`${service.title}服务封面`}
-                    width={service.coverWidth}
-                    height={service.coverHeight}
-                    loading="eager"
-                    fetchPriority={index === 0 ? "high" : "auto"}
-                    decoding="sync"
-                  />
-                  <div className="service-card-footer">
-                    <h3>{service.title}</h3>
-                    <span aria-hidden="true">查看服务 →</span>
-                  </div>
-                </a>
-              </article>
+                service={service}
+                priority={index === 0}
+              />
             ))}
           </div>
         </section>
