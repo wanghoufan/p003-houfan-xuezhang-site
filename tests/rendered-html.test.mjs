@@ -40,6 +40,8 @@ test("server-renders the complete personal homepage", async () => {
   assert.match(html, /人民币兑美元汇率看板/);
   assert.match(html, /海口值得去的 50 家咖啡店/);
   assert.match(html, /A股十一大指数十年估值分位报告/);
+  assert.match(html, /AI 简历岗位匹配助手/);
+  assert.match(html, /\/projects\/ai-resume-job-matcher\.png/);
   assert.match(html, /GPT 代充值/);
   assert.match(html, /\/services\/gpt-recharge\.png\?v=20260811/);
   assert.match(html, /Claude Code 中转服务/);
@@ -88,6 +90,7 @@ test("new published project routes render their details and links", async () => 
   const projectRoutes = [
     ["50-haikou-cafes", /海口值得去的 50 家咖啡店/, /10-haikou-cafes\.vercel\.app/],
     ["a-share-index-valuation-report", /A股十一大指数十年估值分位报告/, /a-share-index-valuation-report\.vercel\.app/],
+    ["ai-resume-job-matcher", /AI 简历岗位匹配助手/, /ai-resume-job-matcher-houfan\.vercel\.app/],
   ];
 
   for (const [slug, title, previewUrl] of projectRoutes) {

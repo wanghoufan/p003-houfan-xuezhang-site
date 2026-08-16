@@ -291,4 +291,31 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "ai-resume-job-matcher",
+    title: "AI 简历岗位匹配助手",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    summary:
+      "一个面向求职准备的 AI 工具，上传简历和目标岗位后，帮助梳理经历、能力与岗位要求之间的匹配关系。",
+    cover: "/projects/ai-resume-job-matcher.png",
+    tags: ["AI 应用", "简历分析", "求职工具", "Web 应用"],
+    role: "独立设计与开发",
+    background:
+      "简历经历、目标岗位和下一步准备往往分散在不同材料中，求职者很难快速判断哪些能力最值得补强。",
+    challenge:
+      "需要让用户用一份简历和一个目标岗位描述，快速得到清晰、可执行的匹配分析。",
+    solution:
+      "通过简历 PDF 与目标岗位描述输入，结合用户选择的模型和自带 API Key，对经历、能力与机会进行重新连线，并给出下一步准备建议。",
+    outcome:
+      "完成一个可在线体验的 AI 简历岗位匹配助手，让求职准备从泛泛修改简历转向围绕目标岗位校准。",
+    gallery: [],
+    links: [
+      {
+        label: "打开在线体验",
+        href: "https://ai-resume-job-matcher-houfan.vercel.app/",
+      },
+    ],
+  },
 ];
