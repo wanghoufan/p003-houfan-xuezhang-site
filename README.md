@@ -3,7 +3,8 @@
 一个非求职导向的个人展示网站，用杂志叙事的方式呈现个人经历、AI 应用与编程项目、兴趣生活、专题研究和联系方式。
 
 - 线上地址：https://houfan-xuezhang.mortimerstephanie14.chatgpt.site
-- 公开项目：`/projects/cny-us-rate-board`
+- 已发布项目（以 `app/content.ts` 为准，共 7 个）：`cny-us-rate-board`、`deepseek-balance-widget`、`nomad-seasons`、`ai-storyboard-studio`、`50-haikou-cafes`、`a-share-index-valuation-report`、`ai-resume-job-matcher`
+- 服务卡片（2 个）：GPT 代充值、Claude Code 中转服务
 - 当前语言：中文
 - 当前发布平台：OpenAI Sites
 
