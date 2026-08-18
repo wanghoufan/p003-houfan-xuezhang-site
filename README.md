@@ -1,5 +1,7 @@
 # 后翻学长个人网站
 
+![后翻学长个人网站示意图](public/og.png)
+
 一个非求职导向的个人展示网站，用杂志叙事的方式呈现个人经历、AI 应用与编程项目、兴趣生活、专题研究和联系方式。
 
 - 线上地址：https://houfan-xuezhang.mortimerstephanie14.chatgpt.site
