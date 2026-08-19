@@ -318,4 +318,35 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "life-species-coze",
+    title: "生活物种 · 测测你是什么生活物种",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    summary:
+      "一个面向中文用户的动物卡通人格测试，24 道题带你发现自己的生活物种，附带 2 个隐藏副人格与可分享的永久结果页。",
+    cover: "/projects/life-species-coze.png",
+    tags: ["Coze", "AI Bot", "人格测试", "互动产品"],
+    role: "独立产品设计与开发",
+    background:
+      "想做一款轻松、可分享的人格测试。市面上大多数测试偏文艺或玄学，希望借动物卡通的梗把测试结果变成可以发给朋友聊两句的谈资。",
+    challenge:
+      "需要在 Coze 平台上把 24 道题、24 个生活物种和 2 个隐藏副人格组织成一条稳定可复现的测试流程，同时让结果既能收藏也能二次传播。",
+    solution:
+      "搭建生活物种动物卡通人格宇宙，在扣子 Coze 上编写测试流程与提示词，设计 24 道生活场景化题库与物种结果映射，加入隐藏副人格触发机制；结果侧配套 Supabase 后端规范与 24 张物种素材，并提供长期可访问的永久结果页与物种分布图鉴。",
+    outcome:
+      "完成一个 3–5 分钟即可完成的中文人格测试 Bot，发布在扣子 Coze 平台并提供在线体验与可分享结果页；交付包含 Coze 提示词、Supabase 后端规范与 24 张物种素材，代码已开源在 GitHub。",
+    gallery: [],
+    links: [
+      {
+        label: "打开在线体验",
+        href: "https://5dnqscfrmp.coze.site/",
+      },
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/life-species-coze-v1.3",
+      },
+    ],
+  },
 ];

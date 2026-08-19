@@ -43,7 +43,7 @@
 - 提交 / 推送需用户明确授权，默认**不自动 commit/push**。
 
 ## 当前状态
-- 公开首页已上线；已发布项目共 7 个（`app/content.ts` 为唯一真值，以下 `status:"published"`）：
+- 公开首页已上线；已发布项目共 8 个（`app/content.ts` 为唯一真值，以下 `status:"published"`）：
   1. `cny-us-rate-board` 人民币兑美元汇率看板
   2. `deepseek-balance-widget` DeepSeek 余额悬浮小工具
   3. `nomad-seasons` 候鸟 / Nomad Seasons
@@ -51,10 +51,11 @@
   5. `50-haikou-cafes` 海口值得去的 50 家咖啡店
   6. `a-share-index-valuation-report` A股十一大指数十年估值分位报告
   7. `ai-resume-job-matcher` AI 简历岗位匹配助手
+  8. `life-species-coze` 生活物种 · 测测你是什么生活物种
 - 服务卡片 2 个：GPT 代充值、Claude Code 中转服务（`app/content.ts` `services`）。
 - 联系方式：微信二维码（`public/contact/wechat-qr.png`）、GitHub、YouTube 均已实现（`app/ContactPanel.tsx`）。
 - 下一发版：沿用同一公开 URL，必须通过 `npm test`；新增/调整项目内容改 `app/content.ts`，联系方式改 `app/ContactPanel.tsx`。
-- 已知测试覆盖缺口：`tests/rendered-html.test.mjs` 已覆盖首页 + `cny-us-rate-board` + `50-haikou-cafes` / `a-share-index-valuation-report` / `ai-resume-job-matcher` 路由，但尚未为 `deepseek-balance-widget` / `nomad-seasons` / `ai-storyboard-studio` 增加独立路由回归（见 `docs/qa/QA_CHECKLIST.md`）。
+- 已知测试覆盖缺口：`tests/rendered-html.test.mjs` 已覆盖首页 + `cny-us-rate-board` + `50-haikou-cafes` / `a-share-index-valuation-report` / `ai-resume-job-matcher` 路由，但尚未为 `deepseek-balance-widget` / `nomad-seasons` / `ai-storyboard-studio` / `life-species-coze` 增加独立路由回归（见 `docs/qa/QA_CHECKLIST.md`）。
 
 ## 角色体系与文档路由
 常驻 4 角色 + 复杂任务规划 + 修复模式 + 收尾模式。长规则独立放在 `docs/roles/`，Agent 只读取当前任务所需。
