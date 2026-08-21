@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 const githubUrl: string | null = "https://github.com/wanghoufan";
 const youtubeUrl: string | null =
-  "https://www.youtube.com/@%E5%B8%81%E5%9C%88%E5%AD%A6%E9%95%BF";
+  "https://www.youtube.com/@%E5%B8%81%E5%9C%88%E5%AD%A6%E9%95%BF/featured";
 const wechatQr: string | null = "/contact/wechat-qr.png";
 
 export function ContactPanel() {
