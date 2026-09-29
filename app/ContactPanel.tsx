@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { asset } from "./asset";
 
 const githubUrl: string | null = "https://github.com/wanghoufan";
 const youtubeUrl: string | null =
   "https://www.youtube.com/@%E5%B8%81%E5%9C%88%E5%AD%A6%E9%95%BF/featured";
-const wechatQr: string | null = "/contact/wechat-qr.png";
+const wechatQr: string | null = asset("/contact/wechat-qr.png");
 
 export function ContactPanel() {
   const [wechatOpen, setWechatOpen] = useState(false);

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "../../content";
+import { asset } from "../../asset";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -72,7 +73,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <div className="project-cover" aria-label={project.cover ? "项目封面" : "项目封面待更新"}>
         {project.cover ? (
           <img
-            src={project.cover}
+            src={asset(project.cover)}
             alt={`${project.title}项目封面`}
             decoding="async"
           />
@@ -118,7 +119,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           {project.gallery.map((image, index) => (
             <img
               key={image}
-              src={image}
+              src={asset(image)}
               alt={`${project.title}项目图片 ${index + 1}`}
               loading="lazy"
               decoding="async"

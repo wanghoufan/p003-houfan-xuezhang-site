@@ -1,6 +1,7 @@
 "use client";
 
 import type { Service } from "./content";
+import { asset } from "./asset";
 
 type ServiceCardProps = {
   service: Service;
@@ -21,7 +22,7 @@ export function ServiceCard({ service, priority = false }: ServiceCardProps) {
         aria-label={`在新窗口查看服务：${service.title}`}
       >
         <img
-          src={`${service.cover}?v=${service.coverVersion}`}
+          src={`${asset(service.cover)}?v=${service.coverVersion}`}
           alt={`${service.title}服务封面`}
           width={service.coverWidth}
           height={service.coverHeight}

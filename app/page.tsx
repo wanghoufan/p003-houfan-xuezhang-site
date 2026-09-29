@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ContactPanel } from "./ContactPanel";
 import { ServiceCard } from "./ServiceCard";
 import { PhotoSlot } from "./PhotoSlot";
+import { asset } from "./asset";
 import {
   experiences,
   interests,
@@ -87,7 +88,7 @@ export default function Home() {
           <div className="portrait-frame">
             <PhotoSlot
               className="portrait-placeholder"
-              src="/photos/profile.webp"
+              src={asset("/photos/profile.webp")}
               alt="后翻学长个人照片"
               priority
             >
@@ -136,7 +137,7 @@ export default function Home() {
                       aria-label={`查看${project.title}项目详情`}
                     >
                       <img
-                        src={project.cover}
+                        src={asset(project.cover)}
                         alt={`${project.title}项目封面`}
                         loading="lazy"
                         decoding="async"
@@ -212,7 +213,7 @@ export default function Home() {
                     <article className="interest-card" key={interest.name}>
                       <PhotoSlot
                         className="interest-photo"
-                        src={interest.photo}
+                        src={asset(interest.photo)}
                         alt={`后翻学长的${interest.name}生活照片`}
                       >
                         <span>{interest.mark}</span>
