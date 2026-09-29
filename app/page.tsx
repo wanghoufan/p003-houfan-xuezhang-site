@@ -86,16 +86,18 @@ export default function Home() {
           </div>
 
           <div className="portrait-frame">
-            <PhotoSlot
-              className="portrait-placeholder"
-              src={asset("/photos/profile.webp")}
-              alt="后翻学长个人照片"
-              priority
-            >
-              <span>PORTRAIT</span>
-              <strong>个人照片</strong>
-              <small>待更新 · 建议竖版 4:5</small>
-            </PhotoSlot>
+            <div className="portrait-ring">
+              <PhotoSlot
+                className="portrait-placeholder"
+                src={asset("/photos/profile.webp")}
+                alt="后翻学长个人照片"
+                priority
+              >
+                <span>PORTRAIT</span>
+                <strong>个人照片</strong>
+                <small>待更新 · 建议竖版 4:5</small>
+              </PhotoSlot>
+            </div>
             <p>把真实生活留在这里，让每一次探索都有迹可循。</p>
           </div>
         </section>

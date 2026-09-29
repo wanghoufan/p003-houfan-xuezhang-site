@@ -1,5 +1,20 @@
 import type { Metadata } from "next";
+import { Orbitron, Noto_Sans_SC } from "next/font/google";
 import "./globals.css";
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-orbitron",
+  display: "swap",
+});
+
+const notoSansSC = Noto_Sans_SC({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-noto",
+  display: "swap",
+});
 
 // 站点固定地址：静态部署无法从请求头推断域名，改用环境变量覆盖，未设置时回落到当前线上地址
 const SITE_URL =
@@ -50,7 +65,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <body>{children}</body>
+      <body className={`${orbitron.variable} ${notoSansSC.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }
