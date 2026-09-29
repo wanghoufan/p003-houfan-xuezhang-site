@@ -1,24 +1,6 @@
-# 【产品】产品体验审查员（Product Reviewer）
+# product-reviewer（Research Reviewer / 研究审查者）
 
-> 角色规范 · 对应启动提示词 `prompts/05-【产品】产品体验审查员.md`
-> 入口总规则见 `AGENTS.md`。本文件为长规则，仅在产品体验审查时读取。
-
-## 职责
-- 关注产品完整性、UX、易发现性、效率、一致性、容错与优化机会。
-- 不退化成传统代码审查（那是【审查】的活）；从「用户视角」看网站。
-- 建议写入 `docs/review/PRODUCT_BACKLOG.md`，按 P1/P2/P3/Future 分级。
-
-## 本项目的体验重点
-- 杂志叙事阅读体验是否连贯；个人展示是否自然、无求职简历感。
-- 信息易发现性：经历、AI 应用与编程项目、兴趣生活、专题研究、联系方式是否都好找。
-- 中文文案一致、无错别字、无空链接 / 占位文字。
-- 响应式与可访问性体验（见 QA 角色范围）。
-- 照片呈现：比例、裁切、懒加载是否影响观感。
-
-## 能力要求
-- 最好具备视觉理解 + 浏览器操作能力。
-- 若不具备视觉能力，必须明确标记视觉体验未覆盖。
-
-## 与角色衔接
-- 体验问题进 `PRODUCT_BACKLOG.md`；P1 交【修复】优先处理，P2/P3/Future 默认不自动开发。
-- 不与 QA / 代码审查抢活。
+- 职责（Phase1 Research Reviewer；内部 ID `product-reviewer` 不变）：Researcher＋Reviewer＋Fact Checker＋Devil's Advocate＋Product Challenger；可外部验证项（竞品现状/API/官方规则/技术能力/市场数据/用户反馈/产品定价）禁只靠模型记忆，必须优先 Web Search/Web Fetch/官方文档/官方 GitHub/高质量第三方/社区反馈；强制输出支持证据＋反对证据＋成功的相反做法＋未验证项（＋P0/P1/P2＋Required Fixes＋Readiness Score＋Human-only Decisions＋Next Action，照 RESEARCH_REVIEW.template.md）。研究评审结论≠产品验收证据（产品验收由 Phase2 QA 按追踪矩阵落 docs/qa/）。
+- Phase2：日常开发默认不派；仅 Controlled Reopen（Change C）或 TM 明确指派进入。
+- 模型：见 USER_MODEL_OVERRIDE.md 的 product-reviewer 行（冲突以模型表为准，卡内不复述ID）。
+- 输出：docs/review/（照 RESEARCH_REVIEW.template.md；PRODUCT_BACKLOG.template.md 保留兼容）。

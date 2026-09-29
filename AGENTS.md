@@ -1,22 +1,42 @@
 # AGENTS.md — 项目总入口 · 公共规则 · 文档路由
 
+<!-- ORCA-RULES-BLOCK:BEGIN -->
+<!-- 本区块由治理母版 scripts/sync-old-projects.sh 于 2026-09-29 注入；只增不删，可重复运行原地更新。 -->
+<!-- 本项目 AGENTS.md 的其余内容（项目专属规矩）保持原样，冲突时以本区块为准。 -->
+## ORCA 规则增量（母版 2026-09-29-产品验收）
+
+> 本区块只写**对外通用**的机制增量；派工细节见 `docs/roles/`，账本口径见下方条目。
+
+- **产品验收（2026-09-28 定）**：开发完成的判断来自**用户可见要求的覆盖证据**，不只看单测／构建／代码审查／工具调用成功。
+  - 验收标准写在计划里：Phase1 给每条用户可见要求编一条可观察可测的**验收条目（AC）**，并标出**关键 AC**（对应 P0／blocking P1／核心用户路径／必要视觉交互呈现）；**关键 AC 集合不得为空**。
+  - 证据落 `docs/qa/` 的**产品验收追踪矩阵**（照 `docs/qa/BUGS.template.md` 同名节）。
+  - **不可放行三情形**（命中任一不得判 `PASS`）：①关键产品 DoD／AC 未测；②关键任务涉及的**每个**可见操作控件未实际点击并观察到页面／锚点／状态变化（只验 `href` 存在不算）；③验收证据缺失。
+  - 视觉验收最小覆盖：关键用户任务逐条走通、按项目要求检查桌面与窄屏、用边界样本（奇偶条目数／长标题长正文／空状态）检验对齐·换行·裁切·溢出·可读性、留真实浏览器截图。
+  - **用户签收**：发布类型为**首次发布**的，用户签收通过才算完成（签收前状态记未完成）；迭代更新与局部修复不强制签收。签收属 **Human Gate 范畴（用户参与）**，**不是新增 QA Gate**。
+- **体系更新三件套（2026-09-29 定）**：①本项目规则文件改动后与母版对齐（用 `bash scripts/sync-old-projects.sh` 或按《迁移整理提示词》取包，**备份不覆盖**）；②账本内容**不重写**（实绩历史），只做 schema 校验 `node scripts/model/check-ledger.mjs docs/model`（须 `LEDGER-OK`）；③**HANDOFF 记一行**。**老项目无两包概念，故母版的「同步两包＋更新对外概览」不适用。**
+- **派工跨目录禁令（2026-09-29 定）**：派 opencode 通道角色（supervisor／neat-freak／experience-recorder）时，任务里读写本仓以外目录（如 `/tmp`、`1.Active/` 等）会被 `external_directory` 权限自动拒、步骤静默失败，可能让角色误报已做也易反复盲试烧额度（禁盲试）；派单前处置二选一——①临时文件改到仓内已 gitignore 的 `temp/`，②先取得用户授权；codebuddy／codex 通道无此限制。
+- **红线（2026-09-29 增补）**：产品验收未落盘或关键 AC 未测、不得报完工/收工；首次发布未取得用户签收、不得报完工/收工。
+- **本项目迁移状态**：`docs/model/GOVERNANCE-STATE.json`（`rules_version`／`synced_at`／`project_phase_field`／`task_ledger_rows`／`agents_needs_manual_merge`／`product_acceptance_ac_added`）。
+- **存量项目待办（不自动做，需项目 TM 判断）**：本项目实绩 Plan 需补「视觉与交互验收标准（AC 编号）＋关键 AC 集合＋发布类型」，否则新规则下收尾会被判**计划缺项**；完成后把 `product_acceptance_ac_added` 置 `true`。
+<!-- ORCA-RULES-BLOCK:END -->
+
+
 > 本文件是 AI 多 Agent 协作的总入口。任何 Agent 开始工作前必须先读取本文件，再按需读取 `docs/roles/` 下的角色规范与 `docs/` 下的项目文档。
 > 协作规范基线：`AI编程项目模板-v2.2`（交接上下文 V1.0，2026-08-17 对齐）。
 
 ## 项目档案
 - **项目名称**：后翻学长个人网站（houfan-xuezhang-personal-site）
 - **定位**：非求职导向的个人展示站，以杂志叙事呈现个人经历、AI 应用与编程项目、兴趣生活、专题研究与联系方式。
-- **线上地址**：https://houfan-xuezhang.mortimerstephanie14.chatgpt.site
-- **发布平台**：OpenAI Sites（已关联 `.openai/hosting.json` 的 `project_id`）
+- **线上地址**：https://houfan-xuezhang-site-pt5p7az6f-houfan.vercel.app（Vercel 主部署，2026-08-21）；原 OpenAI Sites：https://houfan-xuezhang.mortimerstephanie14.chatgpt.site（需手动 Redeploy 才更新）
+- **发布平台**：Vercel（主，2026-08-21 迁移部署 `houfan-xuezhang-site`）；OpenAI Sites（原，待 Redeploy）
 - **当前语言**：中文
 - **维护原则**：保留事实措辞，不臆造项目、资质、联系方式或个人照片。
 
 ## 技术栈
 - React 19 + TypeScript
-- vinext / Vite（Next.js 兼容路由）
-- Cloudflare Workers 运行时
+- Next.js 16.2.6（App Router）+ Turbopack（构建层已由 vinext + Cloudflare Workers 迁移至纯 Next.js，2026-08-21）
 - Tailwind v4（`app/globals.css`）
-- 托管：OpenAI Sites；基础设施文件沿用 Sites/vinext，保留可选 D1 示例（当前网站未启用数据库或鉴权）
+- 托管：Vercel（主部署，2026-08-21 迁移后）；OpenAI Sites 为原平台（需手动 Redeploy 才更新）；保留可选 D1 示例（当前未启用数据库或鉴权）
 
 ## 常用命令
 - 安装依赖：`npm install`

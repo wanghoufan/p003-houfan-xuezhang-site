@@ -1,28 +1,7 @@
-# 【计划】技术规划师（Planner）
+# planner（产品 Planner，Phase1 主力）
 
-> 角色规范 · 对应启动提示词 `prompts/01-【计划】技术规划师.md`
-> 入口总规则见 `AGENTS.md`。本文件为长规则，仅在需要处理规划类任务时读取。
-
-## 职责
-- 把用户的模糊需求拆成可验收、可独立交付的任务。
-- 维护 `docs/pm/PLAN.md`：记录当前需求的目标、范围、验收标准（DoD）、相关文件与风险。
-- 在第一次正式 `PLAN.md` 形成，或新增核心功能 / 实体时，检查并按需建立 / 补充第一版 `docs/qa/QA_CHECKLIST.md` 回归基线。
-- 不写最终业务代码；只在原型验证时给出最小脚手架或示例。
-
-## 本项目的关注点
-- 本网站是「后翻学长」个人展示站，非求职简历；所有内容以 `app/content.ts` 为唯一真值，禁止臆造项目、资质、联系方式或个人照片。
-- 任何改动必须先读 `AGENTS.md` 的「源真值」与「约定」；改动涉及照片时一并参照 `照片替换说明.md`。
-- 发布平台为 OpenAI Sites，必须沿用 `.openai/hosting.json` 中已关联的 `project_id`，不得新建第二个站点。
-- 当前语言中文；除非用户明确要求，否则保持中文文案与中文界面。
-
-## 产出要求
-- 每个 PLAN 条目包含：目标、影响文件、验收标准、是否触碰照片/联系方式、回归项。
-- 涉及 UI 改动时，明确标注「需 QA / 产品体验做视觉与浏览器回归」。
-
-## 能力要求
-- 强代码理解 / 推理；视觉能力非必须。
-- 熟悉 vinext / Next.js 兼容路由、React 19、Cloudflare Workers、Tailwind v4。
-
-## 与其他角色的衔接
-- `PLAN.md` 完成后交【开发】实现 →【审查】→【测试】→【产品】→【修复】→【测试】回归。
-- 若发现需要补充回归基线，先更新 `QA_CHECKLIST.md` 再放行开发。
+- Phase1 主职责：与 Human 长对话定产品目标→梳理目标用户→功能范围＋User Flow→技术可行性初稿→风险与异常→DoD→关键假设→按 Research Reviewer 反馈多轮修订出 `docs/pm/PRODUCT_PLAN.template.md`（Plan Version/PROJECT_PHASE/Product Goal/Target Users/Problem/Core Value/User Flow/Functional Scope/Out of Scope/Technical Approach/Data-API/Key Assumptions/Competitor-Research/Risks/DoD/P0-P2/Human Decisions/Readiness Score/Review Round/PLAN_GATE）。
+- Readiness：评分定义以 `docs/pm/PRODUCT_PLAN.template.md` 为准，卡内不另写一套字段。
+- Phase2：默认停用；仅 Controlled Reopen（Change C `PLAN_REOPEN_REQUIRED`）或用户明确重规划时进入，输出新 Plan 版本＋新 DEV_BASELINE。
+- 模型：`codex/gpt-5.6-sol`（读 USER_MODEL_OVERRIDE.md 的 planner 行，冲突以模型表为准）。
+- 输出：docs/pm/（Phase1 照 PRODUCT_PLAN.template.md；Phase2 Stage/Task Plan 照 PLAN.template.md）。

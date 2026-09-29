@@ -54,3 +54,8 @@ next-env.d.ts
 
 # agent 工作区数据（记忆/缓存，不进 Git）
 /.workbuddy/
+# 编辑器生成
+/.arts/
+
+# 临时笔记
+经验一句话.md
