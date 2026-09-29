@@ -7,6 +7,9 @@ type ProjectPageProps = {
   params: Promise<{ slug: string }>;
 };
 
+// 静态导出只生成 generateStaticParams 列出的路径，未列出的路径直接落到 404 页面
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return projects
     .filter((project) => project.status === "published")

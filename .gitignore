@@ -46,5 +46,11 @@ next-env.d.ts
 # scratch (临时脚本/实验副本/中间文件，不进 Git)
 /scratch/
 
+# temp (交付/临时材料，不进 Git)
+/temp/
+
+# 二维码交付文件夹（含图片、字体、生成脚本，不进 Git）
+/二维码/
+
 # agent 工作区数据（记忆/缓存，不进 Git）
 /.workbuddy/

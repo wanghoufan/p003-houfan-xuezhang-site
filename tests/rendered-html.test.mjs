@@ -1,45 +1,70 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { spawn } from "node:child_process";
+import http from "node:http";
+import { readFile, readdir } from "node:fs/promises";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const PROJECT = fileURLToPath(new URL("..", import.meta.url));
+const OUT = path.join(PROJECT, "out");
 const PORT = 3123;
 const BASE = `http://127.0.0.1:${PORT}`;
-const NEXT = `${PROJECT}node_modules/.bin/next`;
+
+const MIME = {
+  ".html": "text/html; charset=utf-8",
+  ".css": "text/css; charset=utf-8",
+  ".js": "text/javascript; charset=utf-8",
+  ".json": "application/json; charset=utf-8",
+  ".svg": "image/svg+xml",
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".webp": "image/webp",
+  ".avif": "image/avif",
+  ".ico": "image/x-icon",
+  ".txt": "text/plain; charset=utf-8",
+  ".woff2": "font/woff2",
+  ".xml": "application/xml; charset=utf-8",
+};
 
 let server;
 
-async function waitReady() {
-  for (let i = 0; i < 80; i++) {
-    try {
-      const r = await fetch(BASE + "/");
-      if (r.status) return;
-    } catch {
-      // not up yet
-    }
-    await new Promise((resolve) => setTimeout(resolve, 500));
-  }
-  throw new Error("next start did not become ready in time");
+// 用静态文件目录提供服务，模拟国内静态托管平台（EdgeOne Pages / CNB Pages / CloudBase）的真实行为
+async function sendFile(res, filePath, status = 200) {
+  const body = await readFile(filePath);
+  res.writeHead(status, {
+    "content-type": MIME[path.extname(filePath)] ?? "application/octet-stream",
+  });
+  res.end(body);
 }
 
 test.before(async () => {
-  server = spawn(NEXT, ["start", "-p", String(PORT)], {
-    cwd: PROJECT,
-    stdio: "ignore",
+  server = http.createServer(async (req, res) => {
+    const urlPath = decodeURIComponent(new URL(req.url, BASE).pathname);
+    const target = path.join(OUT, urlPath);
+    try {
+      await sendFile(res, target);                              // 精确命中文件
+    } catch {
+      try {
+        await sendFile(res, path.join(target, "index.html"));    // 目录式路由
+      } catch {
+        try {
+          await sendFile(res, `${target}.html`);                 // 无斜杠路由
+        } catch {
+          await sendFile(res, path.join(OUT, "404.html"), 404);  // 静态托管的 404 页面
+        }
+      }
+    }
   });
-  server.on("error", (err) => {
-    throw err;
-  });
-  await waitReady();
+  await new Promise((resolve) => server.listen(PORT, "127.0.0.1", resolve));
 });
 
 test.after(() => {
-  if (server) server.kill("SIGTERM");
+  if (server) server.close();
 });
 
-async function get(path) {
-  const res = await fetch(BASE + path, { headers: { accept: "text/html" } });
+async function get(pathname) {
+  const res = await fetch(BASE + pathname, { headers: { accept: "text/html" } });
   return { res, text: await res.text() };
 }
 
@@ -68,7 +93,7 @@ test("server-renders the complete personal homepage", async () => {
 });
 
 test("published project route renders its story and GitHub link", async () => {
-  const { res, text } = await get("/projects/cny-us-rate-board");
+  const { res, text } = await get("/projects/cny-us-rate-board/");
   assert.equal(res.status, 200);
   assert.match(text, /人民币兑美元汇率看板/);
   assert.match(text, /查看 GitHub 项目/);
@@ -83,15 +108,45 @@ test("new published project routes render their details", async () => {
     ["life-species-coze", /生活物种/],
   ];
   for (const [slug, title] of routes) {
-    const { res, text } = await get(`/projects/${slug}`);
+    const { res, text } = await get(`/projects/${slug}/`);
     assert.equal(res.status, 200);
     assert.match(text, title);
   }
 });
 
 test("unknown project routes return the designed 404 response", async () => {
-  const { res, text } = await get("/projects/not-a-real-project");
+  const { res, text } = await get("/projects/not-a-real-project/");
   assert.equal(res.status, 404);
   assert.match(text, /这一页还没有写进故事里。/);
   assert.match(text, /返回首页/);
+});
+
+test("static export ships every published project as its own folder", async () => {
+  const expected = [
+    "cny-us-rate-board",
+    "deepseek-balance-widget",
+    "nomad-seasons",
+    "ai-storyboard-studio",
+    "50-haikou-cafes",
+    "a-share-index-valuation-report",
+    "ai-resume-job-matcher",
+    "life-species-coze",
+  ];
+  const dirs = (await readdir(path.join(OUT, "projects"), { withFileTypes: true }))
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name);
+
+  for (const slug of expected) {
+    assert.ok(dirs.includes(slug), `已发布项目 ${slug} 应有独立静态目录`);
+    const html = await readFile(path.join(OUT, "projects", slug, "index.html"), "utf8");
+    assert.match(html, /<html lang="zh-CN">/);
+    assert.match(html, /后翻学长/);
+  }
+
+  const home = await readFile(path.join(OUT, "index.html"), "utf8");
+  assert.match(home, /后翻学长/);
+  assert.match(home, /AI 项目作品/);
+
+  const notFoundHtml = await readFile(path.join(OUT, "404.html"), "utf8");
+  assert.match(notFoundHtml, /这一页还没有写进故事里。/);
 });
