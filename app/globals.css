@@ -277,13 +277,8 @@ footer {
 .portrait-ring {
   position: relative;
   padding: 3px;
-  background: conic-gradient(from 0deg, var(--primary), var(--purple), var(--pink), var(--primary));
-  animation: spin-slow 6s linear infinite;
-  box-shadow: 0 0 30px var(--primary-glow);
-}
-
-.portrait-ring > * {
-  animation: spin-slow-reverse 6s linear infinite;
+  border: 1px solid var(--primary-glow);
+  box-shadow: 0 0 20px var(--primary-glow);
 }
 
 .portrait-placeholder {
