@@ -3,6 +3,7 @@ import { ContactPanel } from "./ContactPanel";
 import { ServiceCard } from "./ServiceCard";
 import { PhotoSlot } from "./PhotoSlot";
 import { asset } from "./asset";
+import { profileSrc } from "./profile-inline";
 import {
   experiences,
   interests,
@@ -89,7 +90,7 @@ export default function Home() {
             <div className="portrait-ring">
               <PhotoSlot
                 className="portrait-placeholder"
-                src={asset("/photos/profile.webp")}
+                src={profileSrc}
                 alt="后翻学长个人照片"
                 priority
               >
