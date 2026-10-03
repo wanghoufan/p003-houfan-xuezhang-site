@@ -1,5 +1,15 @@
 export type ProjectStatus = "draft" | "published";
 
+// 作品形态分类：网页应用 / 桌面工具 / AI 应用 / 数据报告
+export type ProjectCategory = "web" | "desktop" | "ai" | "report";
+
+export const projectCategoryLabels: Record<ProjectCategory, string> = {
+  web: "网页应用",
+  desktop: "桌面工具",
+  ai: "AI 应用",
+  report: "数据报告",
+};
+
 export type ProjectLink = {
   label: string;
   href: string;
@@ -11,6 +21,7 @@ export type Project = {
   status: ProjectStatus;
   statusLabel: string;
   year: string;
+  category: ProjectCategory;
   summary: string;
   cover: string | null;
   tags: string[];
@@ -115,6 +126,7 @@ export const projects: Project[] = [
     status: "published",
     statusLabel: "已发布",
     year: "2026",
+    category: "web",
     summary:
       "一个聚焦人民币兑美元汇率的轻量看板，用直观卡片展示当前购汇价格、官方中间价和历史区间位置。",
     cover: "/projects/cny-us-rate-board.png",
@@ -142,6 +154,7 @@ export const projects: Project[] = [
     status: "published",
     statusLabel: "已发布",
     year: "2026",
+    category: "desktop",
     summary:
       "一个面向 Windows 11 的 DeepSeek API 余额监控工具，集中展示余额变化、充值与赠送明细，并在余额异常时及时提醒。",
     cover:
@@ -174,6 +187,7 @@ export const projects: Project[] = [
     status: "published",
     statusLabel: "已发布",
     year: "2026",
+    category: "web",
     summary:
       "面向中国数字游民的城市旅居决策工具，根据月份、气候偏好、预算、网络和交通条件筛选与排名国内外城市。",
     cover:
@@ -206,6 +220,7 @@ export const projects: Project[] = [
     status: "published",
     statusLabel: "已发布",
     year: "2026",
+    category: "ai",
     summary:
       "面向短视频编剧、导演和内容创作者的智能创作工具，把短剧主题、剧本和风格偏好转化为可执行的图文分镜方案。",
     cover: "/projects/ai-storyboard-studio.png",
@@ -233,6 +248,7 @@ export const projects: Project[] = [
     status: "published",
     statusLabel: "已发布",
     year: "2026",
+    category: "web",
     summary:
       "一份给愿意为一家咖啡店走一条巷子的人的城市指南，收录海口 50 家真实咖啡店。",
     cover:
@@ -265,6 +281,7 @@ export const projects: Project[] = [
     status: "published",
     statusLabel: "已发布",
     year: "2026",
+    category: "web",
     summary:
       "一份汇总 11 只 A 股核心指数十年估值分位的单页响应式报告，用统一标记展示当前估值水位。",
     cover:
@@ -297,6 +314,7 @@ export const projects: Project[] = [
     status: "published",
     statusLabel: "已发布",
     year: "2026",
+    category: "ai",
     summary:
       "一个面向求职准备的 AI 工具，上传简历和目标岗位后，帮助梳理经历、能力与岗位要求之间的匹配关系。",
     cover: "/projects/ai-resume-job-matcher.png",
@@ -324,6 +342,7 @@ export const projects: Project[] = [
     status: "published",
     statusLabel: "已发布",
     year: "2026",
+    category: "web",
     summary:
       "一个面向中文用户的动物卡通人格测试，24 道题带你发现自己的生活物种，附带 2 个隐藏副人格与可分享的永久结果页。",
     cover: "/projects/life-species-coze.png",

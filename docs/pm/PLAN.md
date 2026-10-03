@@ -3,17 +3,19 @@
 > 由【计划】技术规划师维护。本文件只记录「当前进行中」的需求；长期回归基线见 `../qa/QA_CHECKLIST.md`。
 > 入口总规则见 `../../AGENTS.md`。
 
-## 当前状态（neat-freak 核对于 2026-08-17，以代码事实为准）
-- 公开首页已上线；已发布项目 **7 个**（`app/content.ts` `status:"published"`，唯一真值）：
-  `cny-us-rate-board`、`deepseek-balance-widget`、`nomad-seasons`、`ai-storyboard-studio`、`50-haikou-cafes`、`a-share-index-valuation-report`、`ai-resume-job-matcher`。
+## 当前状态（neat-freak 核对于 2026-10-03，以代码事实为准）
+- 公开首页已上线，**双线部署**：Vercel（主）`https://houfan-xuezhang-site.vercel.app` + GitHub Pages `https://wanghoufan.github.io/p003-houfan-xuezhang-site/`；同一次 `main` push 自动同步。
+- 已发布项目 **8 个**（`app/content.ts` `status:"published"`，唯一真值）：
+  `cny-us-rate-board`、`deepseek-balance-widget`、`nomad-seasons`、`ai-storyboard-studio`、`50-haikou-cafes`、`a-share-index-valuation-report`、`ai-resume-job-matcher`、`life-species-coze`。
 - 服务卡片 **2 个**：GPT 代充值、Claude Code 中转服务（`app/content.ts` `services`）。
 - 联系方式：微信二维码 / GitHub / YouTube 均已实现（`app/ContactPanel.tsx`，微信二维码 `public/contact/wechat-qr.png`）。
-- 运行验证：构建编译通过（138 模块，~435ms）；`node --test tests/rendered-html.test.mjs` 4/4 通过（详见 `QA_CHECKLIST.md` 运行状态）。
-- 当前无进行中的功能开发需求；本期为协作框架对齐 + 文档与代码事实对齐的收尾。
+- 运行验证（2026-10-03 实测）：`npm test` 通过，5/5 用例（见 `QA_CHECKLIST.md`）。
+- 当前无进行中的功能开发需求。
 
 ## 下一发版（Release）验收标准（DoD）
-- [ ] 沿用同一公开 URL（`.openai/hosting.json` 的 `project_id`），不新建站点。
-- [ ] 构建编译通过；运行回归 4/4 通过（注：在开发机执行 `npm test`；本沙箱因 `sites` 插件的 safe-delete 调 WorkBuddy trash 超时导致 `npm test` 整体退出非 0，非代码缺陷，见 `QA_CHECKLIST.md` 运行说明）。
+- [ ] 沿用现有双线地址（Vercel + GitHub Pages），不新建站点或部署平台。
+- [ ] `npm test` 通过（= `next build` + `node --test tests/rendered-html.test.mjs`），5/5。
+- [ ] Pages 构建注入 `BASE_PATH=/p003-houfan-xuezhang-site`，Vercel 构建不注入；两条线资源路径均无 404。
 - [ ] 内容改动仅发生在 `app/content.ts`；联系方式改动仅发生在 `app/ContactPanel.tsx`；不臆造项目 / 资质 / 联系方式。
 - [ ] 照片：新增/替换走 `照片替换说明.md`，WebP 落 `public/photos/`，高清原图备份 `assets/photo-originals/`，不进公开站。
 - [ ] 中文文案一致、无空 / 伪造链接。

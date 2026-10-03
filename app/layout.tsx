@@ -58,6 +58,10 @@ export const metadata: Metadata = {
   },
 };
 
+// 首屏防闪烁：渲染前从 localStorage 读取主题，默认深色（雷达指挥舱）
+// 白名单 dark/light/glass/paper：light 为历史浅色主题，保留兼容已存储用户
+const themeInitScript = `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light"||t==="glass"||t==="paper"){document.documentElement.dataset.theme=t;}}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -65,6 +69,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className={`${orbitron.variable} ${notoSansSC.variable}`}>
         {children}
       </body>

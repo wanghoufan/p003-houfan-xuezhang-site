@@ -180,6 +180,47 @@ a:focus-visible {
   transform: scaleX(1);
 }
 
+.header-right {
+  display: flex;
+  gap: clamp(18px, 2.4vw, 36px);
+  align-items: center;
+}
+
+/* 三主题分段切换器：指挥舱 / 极光 / 剪报 */
+.theme-switch {
+  display: inline-flex;
+  flex: 0 0 auto;
+  padding: 3px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.theme-option {
+  padding: 6px 12px;
+  border: 0;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  background: transparent;
+  cursor: pointer;
+  transition: color 200ms ease, background 200ms ease, box-shadow 200ms ease;
+}
+
+.theme-option:hover,
+.theme-option:focus-visible {
+  color: var(--primary-bright);
+}
+
+.theme-option.is-active {
+  color: var(--bg);
+  background: var(--primary);
+  box-shadow: var(--shadow-glow);
+}
+
 main,
 footer {
   position: relative;
@@ -565,6 +606,72 @@ section:not(.hero, .current-focus) {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+}
+
+.project-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 34px;
+  padding: 16px 22px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.filter-label {
+  margin-right: 6px;
+  color: var(--text-muted);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+}
+
+.filter-chip {
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 14px;
+  background: transparent;
+  cursor: pointer;
+  transition: color 200ms ease, border-color 200ms ease, box-shadow 200ms ease,
+    background 200ms ease;
+}
+
+.filter-chip:hover,
+.filter-chip:focus-visible {
+  color: var(--primary-bright);
+  border-color: var(--line-strong);
+}
+
+.filter-chip.is-active {
+  color: var(--bg);
+  background: var(--primary);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-glow);
+}
+
+.filter-count {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.filter-count strong {
+  margin: 0 2px;
+  color: var(--primary-bright);
+  font-family: var(--font-display);
+  font-size: 16px;
 }
 
 .project-card {
@@ -1421,6 +1528,25 @@ footer p {
     line-height: 1.3;
   }
 
+  .header-right {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .theme-switch {
+    padding: 2px;
+  }
+
+  .theme-option {
+    padding: 6px 9px;
+    font-size: 11px;
+  }
+
+  .project-filter {
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
   main,
   footer {
     width: calc(100% - 36px);
@@ -1613,4 +1739,697 @@ footer p {
     transform: none;
     animation: none;
   }
+}
+
+/* ===== 浅色主题（html[data-theme="light"]）=====
+   深色为默认；切换按钮把 data-theme 写到 <html> 上并持久化到 localStorage。 */
+html[data-theme="light"] {
+  --bg: #f3f7f8;
+  --bg-deep: #e4ecef;
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-strong: rgba(255, 255, 255, 0.92);
+  --primary: #007986;
+  --primary-bright: #0093a3;
+  --primary-glow: rgba(0, 121, 134, 0.22);
+  --pink: #d94f7e;
+  --purple: #8b5cf6;
+  --text: #1b2a32;
+  --text-muted: #55666f;
+  --text-dim: #7b8b93;
+  --line: rgba(0, 121, 134, 0.3);
+  --line-strong: rgba(0, 121, 134, 0.55);
+  --line-soft: rgba(27, 42, 50, 0.1);
+  --shadow-glow: 0 0 18px var(--primary-glow);
+}
+
+html[data-theme="light"] body {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 121, 134, 0.09), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(139, 92, 246, 0.06), transparent 60%),
+    linear-gradient(180deg, #f8fbfc 0%, var(--bg-deep) 100%);
+}
+
+html[data-theme="light"] body::before {
+  background-image:
+    linear-gradient(rgba(0, 121, 134, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 121, 134, 0.05) 1px, transparent 1px);
+}
+
+html[data-theme="light"] body::after {
+  opacity: 0.25;
+}
+
+html[data-theme="light"] .site-header {
+  background: rgba(248, 251, 252, 0.82);
+}
+
+html[data-theme="light"] .wordmark {
+  text-shadow: none;
+}
+
+html[data-theme="light"] .hero h1 {
+  text-shadow: none;
+}
+
+html[data-theme="light"] .section-heading h2 {
+  text-shadow: none;
+}
+
+html[data-theme="light"] .current-focus > p {
+  text-shadow: none;
+}
+
+html[data-theme="light"] .contact-intro h2 {
+  text-shadow: none;
+}
+
+html[data-theme="light"] .portrait-placeholder {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(0, 121, 134, 0.1), transparent 28%),
+    linear-gradient(145deg, #ffffff, #dfe9ed);
+}
+
+html[data-theme="light"] section:not(.hero, .current-focus) {
+  box-shadow: 0 0 40px rgba(15, 40, 50, 0.08), inset 0 0 60px rgba(0, 121, 134, 0.02);
+}
+
+html[data-theme="light"] .project-card:hover {
+  box-shadow: 0 0 30px var(--primary-glow), inset 0 0 30px rgba(0, 121, 134, 0.03);
+}
+
+html[data-theme="light"] .project-card-cover {
+  background: linear-gradient(135deg, #e9eff2, #dde7eb);
+}
+
+html[data-theme="light"] .interest-photo {
+  background: linear-gradient(135deg, #e9eff2, #dde7eb);
+}
+
+html[data-theme="light"] .interest-card:nth-child(even) .interest-photo {
+  background: linear-gradient(135deg, #ece7f2, #dfe8ec);
+}
+
+html[data-theme="light"] .interest-group:first-child .interest-card:last-child .interest-photo,
+html[data-theme="light"] .interest-group:last-child .interest-card:nth-child(3) .interest-photo {
+  background: linear-gradient(135deg, #e6eef1, #f2e6ed);
+}
+
+html[data-theme="light"] .topic-mark {
+  border-color: rgba(0, 121, 134, 0.16);
+  box-shadow: 0 0 30px rgba(0, 121, 134, 0.1);
+}
+
+html[data-theme="light"] .contact-section {
+  background: linear-gradient(135deg, rgba(0, 121, 134, 0.07), rgba(139, 92, 246, 0.05)), var(--surface);
+  box-shadow: 0 0 50px var(--primary-glow), inset 0 0 60px rgba(0, 121, 134, 0.03);
+}
+
+html[data-theme="light"] .wechat-modal {
+  background: rgba(228, 236, 239, 0.85);
+}
+
+html[data-theme="light"] .wechat-dialog {
+  background: linear-gradient(135deg, #ffffff, #edf3f5);
+  box-shadow: 0 0 60px var(--primary-glow), 0 30px 90px rgba(15, 40, 50, 0.25);
+}
+
+html[data-theme="light"] .project-cover {
+  background: linear-gradient(135deg, #e9eff2, #dde7eb);
+}
+
+html[data-theme="light"] .glass-panel {
+  box-shadow: 0 0 30px rgba(15, 40, 50, 0.08), inset 0 0 40px rgba(0, 121, 134, 0.02);
+}
+
+/* ===== 主题 B：极光玻璃（html[data-theme="glass"]）=====
+   移植自 radar-web/design-concepts/concept-b-aurora-glass.html：
+   浅底 #eef1fa + 极光色团 + 白毛玻璃卡片 + 靛青→青渐变 + 大圆角胶囊 chip。 */
+html[data-theme="glass"] {
+  --bg: #eef1fa;
+  --bg-deep: #e2e7f6;
+  --surface: rgba(255, 255, 255, 0.58);
+  --surface-strong: rgba(255, 255, 255, 0.75);
+  --primary: #6366f1;
+  --primary-bright: #06b6d4;
+  --primary-glow: rgba(99, 102, 241, 0.28);
+  --pink: #ec4899;
+  --purple: #a855f7;
+  --text: #1d2340;
+  --text-muted: #6b7398;
+  --text-dim: #a3abc7;
+  --line: rgba(99, 102, 241, 0.16);
+  --line-strong: rgba(99, 102, 241, 0.38);
+  --line-soft: rgba(29, 35, 64, 0.08);
+  --shadow-glow: 0 6px 20px -6px rgba(99, 102, 241, 0.35);
+  --aurora-gradient: linear-gradient(120deg, #6366f1, #06b6d4);
+  --radius-card: 20px;
+  --radius-chip: 999px;
+}
+
+html[data-theme="glass"] body {
+  background:
+    radial-gradient(circle 520px at 88% -6%, rgba(165, 180, 252, 0.75), transparent 65%),
+    radial-gradient(circle 480px at 24% 28%, rgba(165, 243, 252, 0.7), transparent 65%),
+    radial-gradient(circle 520px at 82% 92%, rgba(240, 171, 252, 0.45), transparent 65%),
+    radial-gradient(circle 400px at 2% 88%, rgba(186, 230, 253, 0.7), transparent 65%),
+    linear-gradient(180deg, #f4f6fd 0%, var(--bg-deep) 100%);
+}
+
+html[data-theme="glass"] body::before {
+  background-image: none;
+}
+
+html[data-theme="glass"] body::after {
+  background: linear-gradient(90deg, transparent, #6366f1, #06b6d4, transparent);
+  box-shadow: none;
+  opacity: 0.4;
+  animation: none;
+}
+
+html[data-theme="glass"] .site-header {
+  background: rgba(246, 248, 253, 0.65);
+  border-bottom-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 6px 24px -14px rgba(80, 90, 160, 0.35);
+}
+
+html[data-theme="glass"] .wordmark {
+  text-shadow: none;
+}
+
+html[data-theme="glass"] .wordmark-stamp {
+  border: 0;
+  border-radius: 10px;
+  color: #ffffff;
+  background: var(--aurora-gradient);
+  box-shadow: 0 6px 16px -6px rgba(99, 102, 241, 0.55);
+}
+
+html[data-theme="glass"] .theme-switch {
+  border-radius: var(--radius-chip);
+  background: var(--surface-strong);
+  border-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 2px 10px -4px rgba(80, 90, 160, 0.28);
+}
+
+html[data-theme="glass"] .theme-option {
+  border-radius: var(--radius-chip);
+}
+
+html[data-theme="glass"] .theme-option.is-active {
+  color: #ffffff;
+  background: var(--aurora-gradient);
+  box-shadow: 0 6px 16px -6px rgba(99, 102, 241, 0.6);
+}
+
+html[data-theme="glass"] .hero h1,
+html[data-theme="glass"] .section-heading h2,
+html[data-theme="glass"] .current-focus > p,
+html[data-theme="glass"] .contact-intro h2,
+html[data-theme="glass"] .eyebrow,
+html[data-theme="glass"] .kicker,
+html[data-theme="glass"] .section-number,
+html[data-theme="glass"] .interest-photo span,
+html[data-theme="glass"] .project-card > a,
+html[data-theme="glass"] .footer-name,
+html[data-theme="glass"] .project-hero h1,
+html[data-theme="glass"] .not-found h1,
+html[data-theme="glass"] .not-found > p,
+html[data-theme="glass"] .not-found a,
+html[data-theme="glass"] .project-links a {
+  text-shadow: none;
+}
+
+html[data-theme="glass"] .hero blockquote {
+  box-shadow: none;
+}
+
+html[data-theme="glass"] .portrait-ring {
+  border: 0;
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: 0 10px 30px -12px rgba(90, 100, 180, 0.35);
+  animation: none;
+}
+
+html[data-theme="glass"] .portrait-placeholder {
+  border: 0;
+  border-radius: calc(var(--radius-card) - 3px);
+  color: var(--text-muted);
+  background:
+    radial-gradient(circle at 50% 42%, rgba(99, 102, 241, 0.12), transparent 30%),
+    linear-gradient(145deg, #ffffff, #e7ecfa);
+}
+
+html[data-theme="glass"] section:not(.hero, .current-focus) {
+  border-radius: var(--radius-card);
+  border-color: rgba(255, 255, 255, 0.85);
+  background: var(--surface);
+  box-shadow: 0 8px 26px -14px rgba(90, 100, 180, 0.3);
+}
+
+html[data-theme="glass"] .section-rule {
+  background: var(--aurora-gradient);
+  box-shadow: none;
+  opacity: 0.55;
+}
+
+html[data-theme="glass"] .project-filter {
+  border-radius: var(--radius-chip);
+  border-color: rgba(255, 255, 255, 0.85);
+  background: var(--surface-strong);
+  box-shadow: 0 6px 20px -10px rgba(90, 100, 180, 0.3);
+}
+
+html[data-theme="glass"] .filter-chip {
+  border-radius: var(--radius-chip);
+  border-color: rgba(255, 255, 255, 0.8);
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+html[data-theme="glass"] .filter-chip:hover,
+html[data-theme="glass"] .filter-chip:focus-visible {
+  color: var(--primary);
+  background: #ffffff;
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+html[data-theme="glass"] .filter-chip.is-active {
+  color: #ffffff;
+  background: var(--aurora-gradient);
+  border-color: transparent;
+  box-shadow: 0 6px 16px -5px rgba(99, 102, 241, 0.55);
+}
+
+html[data-theme="glass"] .project-card,
+html[data-theme="glass"] .service-card,
+html[data-theme="glass"] .topic-grid article,
+html[data-theme="glass"] .project-slots > div {
+  border-radius: var(--radius-card);
+  border-color: rgba(255, 255, 255, 0.85);
+  background: var(--surface);
+  box-shadow: 0 6px 22px -12px rgba(90, 100, 180, 0.3);
+}
+
+html[data-theme="glass"] .project-card:hover,
+html[data-theme="glass"] .service-card:hover,
+html[data-theme="glass"] .topic-grid article:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 16px 32px -14px rgba(90, 100, 180, 0.42);
+}
+
+html[data-theme="glass"] .project-card-cover {
+  border-radius: calc(var(--radius-card) - 1px) calc(var(--radius-card) - 1px) 0 0;
+  border-bottom: 0;
+  background: linear-gradient(135deg, #f7f8ff, #e4e9fb);
+}
+
+html[data-theme="glass"] .project-tags span {
+  border-radius: var(--radius-chip);
+  border-color: rgba(99, 102, 241, 0.18);
+  color: var(--primary);
+  background: rgba(99, 102, 241, 0.08);
+}
+
+html[data-theme="glass"] .interest-photo {
+  border-radius: 16px;
+  border-color: rgba(255, 255, 255, 0.85);
+  background: linear-gradient(135deg, #eef1fd, #e2e8fb);
+}
+
+html[data-theme="glass"] .interest-card:nth-child(even) .interest-photo {
+  background: linear-gradient(135deg, #f0f3ff, #e6e2f8);
+}
+
+html[data-theme="glass"] .interest-group:first-child .interest-card:last-child .interest-photo,
+html[data-theme="glass"] .interest-group:last-child .interest-card:nth-child(3) .interest-photo {
+  background: linear-gradient(135deg, #eaf6fb, #eef0fd);
+}
+
+html[data-theme="glass"] .topic-mark {
+  border-color: rgba(99, 102, 241, 0.14);
+  box-shadow: none;
+}
+
+html[data-theme="glass"] .contact-section {
+  border-radius: var(--radius-card);
+  border-color: rgba(255, 255, 255, 0.85) !important;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.08)), var(--surface);
+  box-shadow: 0 10px 30px -14px rgba(90, 100, 180, 0.35);
+}
+
+html[data-theme="glass"] .contact-channels > button,
+html[data-theme="glass"] .contact-channels > a,
+html[data-theme="glass"] .contact-channel-pending {
+  border-top-color: rgba(99, 102, 241, 0.14);
+}
+
+html[data-theme="glass"] .wechat-modal {
+  background: rgba(238, 241, 250, 0.78);
+}
+
+html[data-theme="glass"] .wechat-dialog {
+  border-radius: var(--radius-card);
+  border-color: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(135deg, #ffffff, #eef1fb);
+  box-shadow: 0 20px 60px -20px rgba(60, 70, 140, 0.4);
+}
+
+html[data-theme="glass"] .wechat-qr {
+  border-radius: 16px;
+  border-color: rgba(99, 102, 241, 0.16);
+  background: #ffffff;
+}
+
+html[data-theme="glass"] .project-cover {
+  border-radius: var(--radius-card);
+  border-color: rgba(255, 255, 255, 0.85);
+  background: linear-gradient(135deg, #f2f4fd, #e3e8fa);
+}
+
+html[data-theme="glass"] .glass-panel {
+  border-radius: var(--radius-card);
+  border-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 26px -14px rgba(90, 100, 180, 0.32);
+}
+
+html[data-theme="glass"] .project-story section,
+html[data-theme="glass"] .milestone-list li,
+html[data-theme="glass"] .project-hero-summary dl div {
+  border-color: rgba(99, 102, 241, 0.14);
+}
+
+html[data-theme="glass"] .timeline li,
+html[data-theme="glass"] .interest-group > header {
+  border-top-color: rgba(99, 102, 241, 0.3);
+}
+
+/* ===== 主题 C：情报剪报（html[data-theme="paper"]）=====
+   移植自 radar-web/design-concepts/concept-c-editorial.html：
+   米色纸底 + 墨色 + 报纸红/墨绿，衬线标题，双线/细分隔线，无发光无玻璃。 */
+html[data-theme="paper"] {
+  --bg: #f7f2e9;
+  --bg-deep: #f1eadd;
+  --surface: #fdfaf4;
+  --surface-strong: #ffffff;
+  --primary: #b3372e;
+  --primary-bright: #0f6b5f;
+  --primary-glow: transparent;
+  --pink: #b3372e;
+  --purple: #0f6b5f;
+  --text: #1e1b16;
+  --text-muted: #6b6152;
+  --text-dim: #a89d8b;
+  --line: #d9cfbc;
+  --line-strong: #1e1b16;
+  --line-soft: #e5dcc9;
+  --shadow-glow: none;
+  --font-display: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC",
+    "SimSun", Georgia, serif;
+}
+
+html[data-theme="paper"] body {
+  background: linear-gradient(180deg, #faf6ee 0%, var(--bg-deep) 100%);
+}
+
+/* 关闭网格与扫描线 */
+html[data-theme="paper"] body::before,
+html[data-theme="paper"] body::after {
+  display: none;
+}
+
+html[data-theme="paper"] .site-header {
+  background: rgba(247, 242, 233, 0.94);
+  border-bottom: 3px double var(--text);
+  box-shadow: none;
+}
+
+html[data-theme="paper"] .wordmark,
+html[data-theme="paper"] .hero h1,
+html[data-theme="paper"] .section-heading h2,
+html[data-theme="paper"] .current-focus > p,
+html[data-theme="paper"] .contact-intro h2,
+html[data-theme="paper"] .eyebrow,
+html[data-theme="paper"] .kicker,
+html[data-theme="paper"] .section-number,
+html[data-theme="paper"] .interest-photo span,
+html[data-theme="paper"] .project-card > a,
+html[data-theme="paper"] .footer-name,
+html[data-theme="paper"] .project-hero h1,
+html[data-theme="paper"] .not-found h1,
+html[data-theme="paper"] .not-found > p,
+html[data-theme="paper"] .not-found a,
+html[data-theme="paper"] .project-links a,
+html[data-theme="paper"] .project-slots span,
+html[data-theme="paper"] .interest-group > header h3,
+html[data-theme="paper"] .project-story h2,
+html[data-theme="paper"] .project-gallery h2,
+html[data-theme="paper"] .wechat-dialog h2,
+html[data-theme="paper"] .project-empty-copy h3,
+html[data-theme="paper"] .site-header nav,
+html[data-theme="paper"] .section-lead,
+html[data-theme="paper"] .project-nav {
+  text-shadow: none;
+  letter-spacing: 0.02em;
+}
+
+html[data-theme="paper"] .site-header nav a:hover,
+html[data-theme="paper"] .site-header nav a:focus-visible,
+html[data-theme="paper"] .project-card > a:hover,
+html[data-theme="paper"] .contact-channels > button:hover,
+html[data-theme="paper"] .contact-channels > a:hover {
+  text-shadow: none;
+}
+
+html[data-theme="paper"] .site-header nav a {
+  letter-spacing: 0.08em;
+}
+
+html[data-theme="paper"] .site-header nav a::after {
+  height: 2px;
+  background: var(--primary);
+  box-shadow: none;
+}
+
+html[data-theme="paper"] .wordmark-stamp {
+  border-radius: 0;
+  color: var(--surface-strong);
+  background: var(--primary);
+  box-shadow: none;
+}
+
+html[data-theme="paper"] .theme-switch {
+  border-radius: 0;
+  background: var(--surface-strong);
+  box-shadow: none;
+}
+
+html[data-theme="paper"] .theme-option {
+  letter-spacing: 0.04em;
+}
+
+html[data-theme="paper"] .theme-option.is-active {
+  color: var(--surface-strong);
+  background: var(--primary);
+  box-shadow: none;
+}
+
+html[data-theme="paper"] .hero h1 {
+  font-weight: 900;
+  line-height: 1.06;
+}
+
+html[data-theme="paper"] .hero blockquote {
+  border-left: 3px double var(--primary);
+  box-shadow: none;
+  font-style: italic;
+}
+
+html[data-theme="paper"] .portrait-ring {
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  animation: none;
+}
+
+html[data-theme="paper"] .portrait-placeholder {
+  border-radius: 0;
+  color: var(--text-muted);
+  background: linear-gradient(145deg, #fffdf8, #efe7d7);
+}
+
+html[data-theme="paper"] .portrait-placeholder::after {
+  border-style: dashed;
+  border-color: var(--line);
+}
+
+html[data-theme="paper"] section:not(.hero, .current-focus) {
+  border-radius: 0;
+  background: var(--surface);
+  box-shadow: none;
+}
+
+html[data-theme="paper"] .section-rule {
+  height: 3px;
+  background: linear-gradient(90deg, var(--text), transparent);
+  box-shadow: none;
+  opacity: 0.75;
+}
+
+html[data-theme="paper"] .current-focus {
+  border-top: 3px double var(--text);
+  border-bottom: 1px solid var(--line);
+}
+
+html[data-theme="paper"] .timeline li {
+  border-top: 1px solid var(--text);
+}
+
+html[data-theme="paper"] .project-filter {
+  border-radius: 0;
+  border-style: solid;
+  border-color: var(--text);
+  background: var(--surface);
+  box-shadow: none;
+}
+
+html[data-theme="paper"] .filter-chip {
+  border-radius: 0;
+  border-color: var(--line);
+  background: transparent;
+}
+
+html[data-theme="paper"] .filter-chip:hover,
+html[data-theme="paper"] .filter-chip:focus-visible {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+html[data-theme="paper"] .filter-chip.is-active {
+  color: var(--surface-strong);
+  background: var(--primary);
+  border-color: var(--primary);
+  box-shadow: none;
+}
+
+html[data-theme="paper"] .project-card,
+html[data-theme="paper"] .service-card,
+html[data-theme="paper"] .topic-grid article,
+html[data-theme="paper"] .project-slots > div {
+  border-radius: 0;
+  border-color: var(--line);
+  background: var(--surface);
+  box-shadow: none;
+}
+
+html[data-theme="paper"] .project-card:hover,
+html[data-theme="paper"] .service-card:hover,
+html[data-theme="paper"] .topic-grid article:hover {
+  border-color: var(--text);
+  box-shadow: none;
+  transform: none;
+}
+
+html[data-theme="paper"] .project-card-cover {
+  border-radius: 0;
+  background: linear-gradient(135deg, #efe8da, #e3dac8);
+}
+
+html[data-theme="paper"] .project-tags span {
+  border-radius: 0;
+  border-color: var(--line);
+  color: var(--text-muted);
+  background: transparent;
+}
+
+html[data-theme="paper"] .interest-photo {
+  border-radius: 0;
+  background: linear-gradient(135deg, #f2ebdd, #e6dcc8);
+}
+
+html[data-theme="paper"] .interest-card:nth-child(even) .interest-photo {
+  background: linear-gradient(135deg, #f0ead9, #e2dcc9);
+}
+
+html[data-theme="paper"] .interest-group:first-child .interest-card:last-child .interest-photo,
+html[data-theme="paper"] .interest-group:last-child .interest-card:nth-child(3) .interest-photo {
+  background: linear-gradient(135deg, #f4ecdc, #e8dfcb);
+}
+
+html[data-theme="paper"] .interest-photo span {
+  color: var(--primary-bright);
+}
+
+html[data-theme="paper"] .topic-mark {
+  border-color: rgba(179, 55, 46, 0.16);
+  box-shadow: none;
+}
+
+html[data-theme="paper"] .contact-section {
+  border-radius: 0;
+  border-color: var(--text) !important;
+  background: var(--surface);
+  box-shadow: none;
+}
+
+html[data-theme="paper"] .contact-section .kicker,
+html[data-theme="paper"] .filter-count strong {
+  color: var(--primary-bright);
+}
+
+html[data-theme="paper"] .wechat-modal {
+  background: rgba(241, 234, 221, 0.86);
+}
+
+html[data-theme="paper"] .wechat-dialog {
+  border-radius: 0;
+  border-color: var(--text);
+  background: var(--surface-strong);
+  box-shadow: 0 18px 50px -24px rgba(60, 50, 30, 0.45);
+}
+
+html[data-theme="paper"] .wechat-qr {
+  border-radius: 0;
+  border-color: var(--line);
+  background: #ffffff;
+}
+
+html[data-theme="paper"] .wechat-close:hover {
+  color: var(--primary);
+}
+
+html[data-theme="paper"] .project-cover {
+  border-radius: 0;
+  border-color: var(--line);
+  background: linear-gradient(135deg, #f2ebdd, #e4dac6);
+}
+
+html[data-theme="paper"] .glass-panel {
+  border-radius: 0;
+  border-color: var(--line);
+  box-shadow: none;
+}
+
+html[data-theme="paper"] .project-story section,
+html[data-theme="paper"] .milestone-list li,
+html[data-theme="paper"] .project-hero-summary dl div,
+html[data-theme="paper"] .contact-channels > button,
+html[data-theme="paper"] .contact-channels > a,
+html[data-theme="paper"] .contact-channel-pending,
+html[data-theme="paper"] .project-nav,
+html[data-theme="paper"] footer {
+  border-color: var(--line);
+}
+
+html[data-theme="paper"] .project-story section:first-child {
+  border-top: 3px double var(--text);
+}
+
+html[data-theme="paper"] .skip-link {
+  box-shadow: none;
+}
+
+html[data-theme="paper"] .skip-link:focus {
+  outline: 2px solid var(--primary);
 }

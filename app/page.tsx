@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ContactPanel } from "./ContactPanel";
 import { ServiceCard } from "./ServiceCard";
 import { PhotoSlot } from "./PhotoSlot";
+import { ThemeToggle } from "./ThemeToggle";
+import { ProjectGallery } from "./ProjectGallery";
 import { asset } from "./asset";
 import { profileSrc } from "./profile-inline";
 import {
@@ -37,8 +39,7 @@ function SectionHeading({
 export default function Home() {
   const publishedProjects = projects.filter(
     (project) => project.status === "published",
-  );
-  const interestGroups = [
+  );  const interestGroups = [
     {
       title: "生活类",
       items: interests.filter((interest) => interest.category === "生活类"),
@@ -59,14 +60,17 @@ export default function Home() {
         <Link className="wordmark" href="/" aria-label="后翻学长首页">
           后翻学长<span className="wordmark-stamp">记</span>
         </Link>
-        <nav aria-label="主要导航">
-          <a href="#about">关于我</a>
-          <a href="#projects">项目</a>
-          <a href="#services">服务</a>
-          <a href="#interests">兴趣</a>
-          <a href="#topics">专题</a>
-          <a href="#contact">联系</a>
-        </nav>
+        <div className="header-right">
+          <nav aria-label="主要导航">
+            <a href="#about">关于我</a>
+            <a href="#projects">项目</a>
+            <a href="#services">服务</a>
+            <a href="#interests">兴趣</a>
+            <a href="#topics">专题</a>
+            <a href="#contact">联系</a>
+          </nav>
+          <ThemeToggle />
+        </div>
       </header>
 
       <main id="main-content">
@@ -130,37 +134,7 @@ export default function Home() {
         <section className="projects-section reveal" aria-labelledby="projects-title">
           <SectionHeading number="02" title="AI 项目作品" id="projects" />
           {publishedProjects.length > 0 ? (
-            <div className="project-grid">
-              {publishedProjects.map((project, index) => (
-                <article className={index === 0 ? "project-card featured" : "project-card"} key={project.slug}>
-                  {project.cover && (
-                    <Link
-                      className="project-card-cover"
-                      href={`/projects/${project.slug}`}
-                      aria-label={`查看${project.title}项目详情`}
-                    >
-                      <img
-                        src={asset(project.cover)}
-                        alt={`${project.title}项目封面`}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </Link>
-                  )}
-                  <p className="project-meta">
-                    {project.year} · {project.statusLabel}
-                  </p>
-                  <h3>{project.title}</h3>
-                  <p>{project.summary}</p>
-                  <div className="project-tags">
-                    {project.tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
-                  </div>
-                  <Link href={`/projects/${project.slug}`}>阅读项目档案 →</Link>
-                </article>
-              ))}
-            </div>
+            <ProjectGallery projects={publishedProjects} />
           ) : (
             <div className="project-empty">
               <div className="project-empty-copy">
