@@ -11,7 +11,9 @@
 - 常用命令：`npm install` / `npm run dev` / `npm test` / `npm run build` / `npm lint`。
 - 发布：一次 push 到 `main` 同时更新 Vercel 与 GitHub Pages，发布前 `npm test`。
 
-## 当前进度（2026-10-03 中午更新：三主题已本地完成，待用户签收）
+## 当前进度（2026-10-03 13:18 已推送 main）
+
+**本轮已 commit + push 到 `main`，双线部署由 push 自动触发。** 本地预览 http://localhost:3000 仍在线。
 
 1. **三主题切换（原「浅色主题」已升级为三主题）**：
    - `app/ThemeToggle.tsx`：单按钮改为 `role="group"` 三选项分段控件（指挥舱 `dark` / 极光 `glass` / 剪报 `paper`），`useSyncExternalStore` 实现，写 `<html data-theme>` + `localStorage.theme`。历史 `light` 值仍被白名单接受，但 UI 无入口。
@@ -88,3 +90,32 @@
 7. **下架「Claude Code 中转服务」**（用户要求删链接 + 相关内容）：`content.ts` 的 `services` 删除该条目；`public/services/claude-code-relay.png`（545KB）已 trash；无残留引用。`.service-grid` 由固定 `repeat(2, 480px)` 改为 `repeat(auto-fit, minmax(min(100%,420px), 520px))`（单卡时不占半边空位，加回第二张会自动并排）。新增测试 `retired service stays removed from the page` 钉住下架状态。服务卡现只剩 `GPT 代充值` 1 张。
 8. **测试 7/7**：原用例 2 断言的正是那个死链，已更新为新仓库名；新增用例 `every project repoUrl points at a real renamed repository` 钉住 8 个真实仓库名，防再次静默变死链。`npm run lint` 0 error。
 - 三主题参考：`~/Developer/coding/1.Active/017-ing-RSS聚合-个人信息雷达/apps/radar-web/design-concepts/concept-{a-dark-ops,b-aurora-glass,c-editorial}.html`（+ 同名 .png 截图）
+
+## 2026-10-03 收尾：洁癖清理 + push（已完成）
+
+**已推送 commit：**
+- `43751d3feat: 作品分类修正、卡片极简化与下架中转服务`
+- `fe3a201 fix: 封面图外链统一用改后的仓库名`
+
+**清理清单（自主判定）：**
+| 项 | 处理 | 理由 |
+| --- | --- | --- |
+| `docs/qa/theme-shots/` 12 张截图（5.4MB） | 从索引移除 + 删工作区 | 误入库；`temp/theme-shots/` 已有 37 张副本且已 gitignore |
+| `.glass-panel` 死代码（1 主规则 + 3 主题覆盖） | 删除 | 全项目 0 处引用 |
+| Cloudflare 时代残留 9 文件（`worker/ db/ build/ drizzle/ examples/ vite.config.ts drizzle.config.ts`） | `git rm --cached` + `.gitignore` | 只互相引用、对构建零参与（`tsconfig.json` 已 exclude）；**文件保留在工作区**，彻底删除前需用户确认。`.openai/hosting.json` 保留入库（记录原 Sites project_id） |
+| 临时验证脚本 `temp/verify-*.cjs` | trash | 一次性产物；`temp/theme-shots/` 保留作证据 |
+| 文档表述不一致（服务卡 2 个） | 同步 4 处 | `AGENTS.md` / `README.md` / `docs/pm/PLAN.md` / `docs/qa/QA_CHECKLIST.md` |
+
+**核查后决定保留**：4 个封面图外链原用改名前的仓库名，靠 GitHub 重定向仍 200；已顺手统一为真实仓库名（`p023-a-share-index-valuation` / `DeepSeekBalanceWidget-Windows`），新路径 curl 验证 200。
+
+**最终状态**：`npm test` **7/7**、`npm run lint` 0 error（6 条历史 `<img>` warning）。GitHub Pages 构建 `success`，线上抽查：中转服务 0 残留、旧仓库名 0 残留、三主题齐全、8 个新仓库名全部上线。
+
+## 仍待用户处理
+1. **失效的成品站点**（用户 2026-10-03 12:31 提到「有一些项目现在打不开了，我会再整理一下」）：
+   - `ai-resume-job-matcher-houfan.vercel.app`（AI 简历岗位匹配助手）
+   - `ai-storyboard-studio-2026.mortimerstephanie14.chatgpt.site`（AI 分镜生成器，ChatGPT 临时域名，长期易失效，建议换自有域名）
+   - `5dnqscfrmp.coze.site`（生活物种，Coze 分享链接，平台改动即失效）
+   本机 curl 测 `*.vercel.app` 全部返回 000（已知网络限制），线上实际是否活着本机无法确认。
+2. **Git 历史有一条不干净的记录**：`dd2b4d1` / `1223bd4` 两个 commit 由外部（非本智能体）创建且已推到 origin，其中 `1223bd4` 曾把 12 张截图入库；`43751d3` 已把这些截图移出索引，但 **`.git` 历史里仍留有约 5.4MB 截图对象**（`.git` 总 63M）。如需彻底瘦身需 rewrite history + force push，风险与影响面须先评估。
+3. `docs/model/GOVERNANCE-STATE.json` 的 `product_acceptance_ac_added` 仍为 `false`；账本 `docs/model/*.jsonl` 的 `_example` 行未删。
+4. `deepseek-balance-widget` / `nomad-seasons` / `ai-storyboard-studio` 三条路由仍未纳入 `tests/rendered-html.test.mjs` 独立用例。
