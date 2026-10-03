@@ -10,12 +10,12 @@
 ## 运行状态（2026-10-03 实测）
 - 构建层：纯 Next.js 16.2.6 + Turbopack，`next.config.ts` 设 `output: "export"`，产物 `out/`。
 - 部署：双线。Vercel `https://houfan-xuezhang-site.vercel.app`（根路径）+ GitHub Pages `https://wanghoufan.github.io/p003-houfan-xuezhang-site/`（`BASE_PATH` 注入子路径）。两者由 `.github/workflows/deploy.yml` 在 `main` push 时各自构建。
-- `npm test`（= `next build` + `node --test tests/rendered-html.test.mjs`，测试以 `next start` 起服务后HTTP fetch 校验）→ **5/5 通过**。
-- 当前 5 个用例：① 首页完整内容（含教育时间线、分类、联系方式、无 `tiancexai` 外链、图片加载策略）② `/projects/cny-us-rate-board` 路由（含 GitHub 链接）③ 新发布项目路由（`50-haikou-cafes` / `a-share-index-valuation-report` / `ai-resume-job-matcher` / `life-species-coze`）④ 未知项目 → 404 ⑤ 静态导出含全部 8 个已发布项目的独立目录。
+- `npm test`（= `next build` + `node --test tests/rendered-html.test.mjs`，测试以 `next start` 起服务后 HTTP fetch 校验）→ **7/7 通过**。
+- 当前 7 个用例：① 首页完整内容（含教育时间线、分类、联系方式、无 `tiancexai` 外链、图片加载策略）② `/projects/cny-us-rate-board` 路由（含 GitHub 链接，2026-10-03 随仓库改名更新为 `p036-cny-us-rate-board`）③ 新发布项目路由（`50-haikou-cafes` / `a-share-index-valuation-report` / `ai-resume-job-matcher` / `life-species-coze`）④ 未知项目 → 404 ⑤ 静态导出含全部 8 个已发布项目的独立目录 ⑥ `every project repoUrl points at a real renamed repository`（钉住 8 个真实仓库名，防仓库改名后静默变死链）⑦ `retired service stays removed from the page`（钉住「Claude Code 中转服务」已下架）。
 - 历史约束（已解除）：2026-08-17 时 `npm test` 因 `sites` vite 插件的 `genie-trash` 二进制超时（ETIMEDOUT）退出非 0；迁移为纯 Next.js 后不再出现。
 
 ## 核心回归基线（P0/P1）
-- [ ] `npm test` 通过（5/5：首页 + 路由 + 404 + 静态导出）。
+- [ ] `npm test` 通过（7/7：首页 + 路由 + 404 + 静态导出 + 仓库名 + 已下架服务）。
 - [ ] 双线可用：Vercel `houfan-xuezhang-site.vercel.app` 与 Pages `wanghoufan.github.io/p003-houfan-xuezhang-site/` 均返回 200，首页标题一致。
 - [ ] Pages 线资源路径带 `/p003-houfan-xuezhang-site` 前缀且无 404；Vercel 线走根路径无前缀。
 - [ ] 首页桌面 / 平板 / 手机竖屏均无横向滚动条，排版不破。
@@ -52,7 +52,7 @@
 - [x] `paper`：`--font-display` 走衬线栈（Songti SC / Noto Serif CJK SC / SimSun），
       全部 `text-shadow` / 发光 `box-shadow` 去除，`body::before` 网格与 `body::after` 扫描线 `display: none`。
 - [x] 子页 `/projects/ai-storyboard-studio` 在 `glass` / `paper` 下样式一致（衬线标题、方角分隔线）。
-- [x] `npm test` 5/5 通过；`npm run lint` 0 error（余 6 条历史 `<img>` warning）。
+- [x] `npm test` 7/7 通过；`npm run lint` 0 error（余 6 条历史 `<img>` warning）。
 - [ ] **待用户签收**：三主题视觉与交互需用户本人在http://localhost:3000 确认后才算收尾。
 
 > 截图证据在 `temp/theme-shots/`（18 张，含 `-filter` 局部图与子页图），`temp/` 已 gitignore，不入库。

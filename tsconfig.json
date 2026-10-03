@@ -35,6 +35,7 @@
     ".next",
     "dist",
     "scratch",
+    "temp",
     "worker",
     "db",
     "examples",
