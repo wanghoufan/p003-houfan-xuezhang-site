@@ -41,6 +41,9 @@
 ### 既有基础（已核实，勿重复踩）
 - **部署双线**：Vercel `https://houfan-xuezhang-site.vercel.app`（主）+ GitHub Pages `https://wanghoufan.github.io/p003-houfan-xuezhang-site/`，同一次 `main` push 自动同步。`next.config.ts` 的 `basePath` 由 `BASE_PATH` 环境变量条件注入，**改 basePath 相关代码必须同时验证两条线**。
 - 本机网络出口限制：`*.vercel.app` curl 超时无法验证生产页，只能 `vercel ls` / `vercel inspect` 看状态；`*.github.io` 可正常抓取。
+- **双线同步已实测确认（2026-10-03 15:15）**：`vercel ls --format json` 显示 Vercel 最新 6 个 production 部署的 `meta.githubCommitSha` 依次是 `4830555` `5ff07de` `82dc1c5` `fe3a201` `43751d3` `1223bd4`，`githubCommitRef` 全部为 `main`、`githubRepo` 全部为 `p003-houfan-xuezhang-site` —— 与本地当天 push 的 commit **一一对应且状态 READY**，证明 Vercel 的 Git 集成在线、push 后自动部署，无需手动操作。
+  - 核查命令：`vercel ls --format json | python3 -c "import json,sys; ..."` 读 `meta.githubCommitSha` 比对 `git log --oneline`。
+  - `vercel ls` 的 `Age` 列显示相对时间；`--format json` 里的 `created` 字段解析成本地时区会错位（显示 01-01 08:00），**判断是否同步要看 commit SHA，不要看时间**。
 - **新增主题的固定流程**：在 `app/globals.css` 末尾照 `html[data-theme="light"]` 块的选择器清单复制一份改值 → 在 `app/layout.tsx` 的 `themeInitScript` 白名单加 ID → 在 `app/ThemeToggle.tsx` 的 `THEMES` 数组加一项。漏白名单会导致首屏闪烁回默认深色。
 
 ## 下一步任务（按优先级）
