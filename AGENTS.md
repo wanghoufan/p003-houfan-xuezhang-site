@@ -27,16 +27,19 @@
 ## 项目档案
 - **项目名称**：后翻学长个人网站（houfan-xuezhang-personal-site）
 - **定位**：非求职导向的个人展示站，以杂志叙事呈现个人经历、AI 应用与编程项目、兴趣生活、专题研究与联系方式。
-- **线上地址**：https://houfan-xuezhang-site-pt5p7az6f-houfan.vercel.app（Vercel 主部署，2026-08-21）；原 OpenAI Sites：https://houfan-xuezhang.mortimerstephanie14.chatgpt.site（需手动 Redeploy 才更新）
-- **发布平台**：Vercel（主，2026-08-21 迁移部署 `houfan-xuezhang-site`）；OpenAI Sites（原，待 Redeploy）
+- **线上地址**（双线，同一次 `main` push 自动同步，内容一致）：
+  - Vercel（主）：https://houfan-xuezhang-site.vercel.app
+  - GitHub Pages：https://wanghoufan.github.io/p003-houfan-xuezhang-site/
+- **发布平台**：Vercel（主，项目 `houfan-xuezhang-site`）+ GitHub Pages（构建产物 `out/`，`.github/workflows/deploy.yml`）；OpenAI Sites 为历史平台，已停止更新
 - **当前语言**：中文
 - **维护原则**：保留事实措辞，不臆造项目、资质、联系方式或个人照片。
 
 ## 技术栈
 - React 19 + TypeScript
-- Next.js 16.2.6（App Router）+ Turbopack（构建层已由 vinext + Cloudflare Workers 迁移至纯 Next.js，2026-08-21）
+- Next.js 16.2.6（App Router）+ Turbopack，构建层已由 vinext + Cloudflare Workers迁移至纯 Next.js（2026-08-21）
+- `next.config.ts` 用 `output: "export"` 输出纯静态站点到 `out/`，以同时支持 Vercel 与 GitHub Pages
+- `basePath` 由环境变量 `BASE_PATH` 注入：GitHub Pages 构建注入 `/p003-houfan-xuezhang-site`（仓库是项目页，带子路径），Vercel 不注入（走根路径）
 - Tailwind v4（`app/globals.css`）
-- 托管：Vercel（主部署，2026-08-21 迁移后）；OpenAI Sites 为原平台（需手动 Redeploy 才更新）；保留可选 D1 示例（当前未启用数据库或鉴权）
 
 ## 常用命令
 - 安装依赖：`npm install`
@@ -54,7 +57,7 @@
 - 网站用 `public/photos/*.webp`（WebP）；JPG/PNG 高清原图备份在 `assets/photo-originals/`，不进公开站。
 
 ## 约定
-- 沿用现有 Sites `project_id`，不新建第二个站点。
+- 一次 `git push`到 `main` 同时更新 Vercel 和 GitHub Pages 两条线，不新建站点、不新增部署平台。
 - 保持中文文案与界面，除非用户明确要求改变。
 - 保留语义标题、键盘可达、焦点态、alt 文本、reduced motion、响应式。
 - 首屏头像 eager/high-priority 加载；非首屏兴趣图 lazy 加载。
@@ -74,8 +77,8 @@
   8. `life-species-coze` 生活物种 · 测测你是什么生活物种
 - 服务卡片 2 个：GPT 代充值、Claude Code 中转服务（`app/content.ts` `services`）。
 - 联系方式：微信二维码（`public/contact/wechat-qr.png`）、GitHub、YouTube 均已实现（`app/ContactPanel.tsx`）。
-- 下一发版：沿用同一公开 URL，必须通过 `npm test`；新增/调整项目内容改 `app/content.ts`，联系方式改 `app/ContactPanel.tsx`。
-- 已知测试覆盖缺口：`tests/rendered-html.test.mjs` 已覆盖首页 + `cny-us-rate-board` + `50-haikou-cafes` / `a-share-index-valuation-report` / `ai-resume-job-matcher` 路由，但尚未为 `deepseek-balance-widget` / `nomad-seasons` / `ai-storyboard-studio` / `life-species-coze` 增加独立路由回归（见 `docs/qa/QA_CHECKLIST.md`）。
+- 下一发版：沿用现有双线地址，必须通过 `npm test`；新增/调整项目内容改 `app/content.ts`，联系方式改 `app/ContactPanel.tsx`。
+- 已知测试覆盖缺口：`tests/rendered-html.test.mjs` 已覆盖首页 + `cny-us-rate-board` + `50-haikou-cafes` / `a-share-index-valuation-report` / `ai-resume-job-matcher` / `life-species-coze` 路由，但尚未为 `deepseek-balance-widget` / `nomad-seasons` / `ai-storyboard-studio` 增加独立路由回归（见 `docs/qa/QA_CHECKLIST.md`）。
 
 ## 角色体系与文档路由
 常驻 4 角色 + 复杂任务规划 + 修复模式 + 收尾模式。长规则独立放在 `docs/roles/`，Agent 只读取当前任务所需。
@@ -107,29 +110,35 @@ houfan-xuezhang-personal-site/
 ├── README.md            # 项目说明
 ├── 照片替换说明.md       # 照片替换指引
 ├── .gitignore
-├── .openai/             # OpenAI Sites 托管配置（hosting.json）
-├── app/                 # 源码（vinext 约定：页面/组件/内容真值）
+├── .github/workflows/deploy.yml  # push main → 构建 → 部署 GitHub Pages
+├── .vercel/             # Vercel 项目关联（project.json，不进 Git）
+├── next.config.ts       # output:"export" + 可选 basePath
+├── app/                 # 源码（Next.js App Router：页面/组件/内容真值）
 │   ├── content.ts       # 内容唯一真值
 │   ├── ContactPanel.tsx # 联系方式
 │   ├── globals.css      # 全站样式（Tailwind v4）
 │   ├── page.tsx         # 首页
 │   └── projects/[slug]/page.tsx
-├── worker/              # Cloudflare Workers 入口
-├── build/               # Sites vite 插件等构建辅助
-├── db/ drizzle/         # 可选 D1 示例 / drizzle 配置
-├── examples/ tests/     # 示例 / 测试（tests/rendered-html.test.mjs）
-├── public/              # 静态资源（photos/*.webp、projects/）
+├── tests/               # 回归测试（rendered-html.test.mjs）
+├── public/              # 静态资源（photos/*.webp、projects/、og.png）
 ├── assets/              # 高清原图备份（photo-originals/，不进公开站）
-├── docs/                # 协作文档（本规范对齐新增）
-│   ├── roles/           # 5 个角色规范
+├── docs/                # 协作文档
+│   ├── roles/           # 角色规范
+│   ├── model/           # 治理状态与账本
 │   ├── pm/PLAN.md
 │   ├── qa/QA_CHECKLIST.md、BUGS.md
 │   ├── review/CODE_REVIEW.md、PRODUCT_BACKLOG.md
+│   ├── sop/             # 基础设施 SOP（docker/sqlite/supabase/webqa 等）
 │   └── handoff/HANDOFF.md
 ├── prompts/             # 8 个启动提示词
+├── out/                 # 静态导出产物（构建生成，不进 Git）
 └── scratch/             # 临时/实验文件（不进 Git）
 ```
-> 注：源码按 vinext 约定置于 `app/`（非规范模板默认的 `src/`），以兼容 `vite.config.ts`、`npm test` 与 OpenAI Sites 托管，故未做迁移。
+
+> 历史残留（Cloudflare Workers / OpenAI Sites 时代，已不参与构建，`tsconfig.json` 已 exclude）：
+> `worker/`、`build/`、`db/`、`drizzle/`、`examples/`、`vite.config.ts`、`drizzle.config.ts`、`.openai/`。
+> 保留原因：`.openai/hosting.json` 记录原 Sites `project_id`；其余为回滚备用。清理前需用户确认。
+> 注：源码置于 `app/`（非规范模板默认的 `src/`），以兼容现有 `next.config.ts`、`npm test` 与双线托管，故未做迁移。
 
 ## 约束
 - Agent 工作前必须先读 `AGENTS.md`。
