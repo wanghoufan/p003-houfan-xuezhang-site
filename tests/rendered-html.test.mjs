@@ -92,17 +92,52 @@ test("server-renders the complete personal homepage", async () => {
   assert.doesNotMatch(text, /正在备考与探索|ongoing-column/);
 });
 
+// 2026-10-03：用户要求下架「Claude Code 中转服务」，链接与封面图一并移除。
+// 断言钉住，避免后续误加回来。
+test("retired service stays removed from the page", async () => {
+  const { res, text } = await get("/");
+  assert.equal(res.status, 200);
+  assert.doesNotMatch(text, /Claude Code 中转服务/);
+  assert.doesNotMatch(text, /xuedingtoken\.com/);
+  assert.doesNotMatch(text, /claude-code-relay/);
+  // 保留下来的服务卡仍在
+  assert.match(text, /GPT 代充值/);
+});
+
 test("published project route renders its story and GitHub link", async () => {
   const { res, text } = await get("/projects/cny-us-rate-board/");
   assert.equal(res.status, 200);
   assert.match(text, /人民币兑美元汇率看板/);
   assert.match(text, /查看 GitHub 项目/);
-  assert.match(text, /wanghoufan\/cny-us-rate-board/);
+  // 仓库名已由 cny-us-rate-board 改为 p036-cny-us-rate-board（2026-10-03 核实）
+  assert.match(text, /wanghoufan\/p036-cny-us-rate-board/);
+});
+
+// 仓库改过名，旧的 repoUrl 会静默变成死链；这里钉住当前真实仓库名。
+test("every project repoUrl points at a real renamed repository", async () => {
+  const expected = {
+    "cny-us-rate-board": "p036-cny-us-rate-board",
+    "deepseek-balance-widget": "DeepSeekBalanceWidget-Windows",
+    "nomad-seasons": "nomad-seasons",
+    "ai-storyboard-studio": "ai-storyboard-generator",
+    "50-haikou-cafes": "50-haikou-cafes",
+    "a-share-index-valuation-report": "p023-a-share-index-valuation",
+    "ai-resume-job-matcher": "ai-resume-job-matcher",
+    "life-species-coze": "p002-life-species-test",
+  };
+  for (const [slug, repo] of Object.entries(expected)) {
+    const { res, text } = await get(`/projects/${slug}/`);
+    assert.equal(res.status, 200, `${slug} 路由应可访问`);
+    assert.match(
+      text,
+      new RegExp(`wanghoufan/${repo}`),
+      `${slug} 应链接到 github.com/wanghoufan/${repo}`,
+    );
+  }
 });
 
 test("new published project routes render their details", async () => {
-  const routes = [
-    ["50-haikou-cafes", /海口值得去的 50 家咖啡店/],
+  const routes = [    ["50-haikou-cafes", /海口值得去的 50 家咖啡店/],
     ["a-share-index-valuation-report", /A股十一大指数十年估值分位报告/],
     ["ai-resume-job-matcher", /AI 简历岗位匹配助手/],
     ["life-species-coze", /生活物种/],

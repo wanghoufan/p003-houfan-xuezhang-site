@@ -7,7 +7,7 @@
 - 公开首页已上线，**双线部署**：Vercel（主）`https://houfan-xuezhang-site.vercel.app` + GitHub Pages `https://wanghoufan.github.io/p003-houfan-xuezhang-site/`；同一次 `main` push 自动同步。
 - 已发布项目 **8 个**（`app/content.ts` `status:"published"`，唯一真值）：
   `cny-us-rate-board`、`deepseek-balance-widget`、`nomad-seasons`、`ai-storyboard-studio`、`50-haikou-cafes`、`a-share-index-valuation-report`、`ai-resume-job-matcher`、`life-species-coze`。
-- 服务卡片 **2 个**：GPT 代充值、Claude Code 中转服务（`app/content.ts` `services`）。
+- 服务卡片 **1 个**：GPT 代充值（`app/content.ts` `services`）。原「Claude Code 中转服务」已于 2026-10-03 按用户要求下架。
 - 联系方式：微信二维码 / GitHub / YouTube 均已实现（`app/ContactPanel.tsx`，微信二维码 `public/contact/wechat-qr.png`）。
 - 运行验证（2026-10-03 实测）：`npm test` 通过，5/5 用例（见 `QA_CHECKLIST.md`）。
 - 当前无进行中的功能开发需求。

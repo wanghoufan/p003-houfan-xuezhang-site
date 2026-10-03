@@ -32,6 +32,16 @@ export type Project = {
   outcome: string;
   gallery: string[];
   links: ProjectLink[];
+  /**
+   * 卡片上的两个成果入口（不指向站内档案页）：
+   * - `siteUrl`：已上线的网站地址；桌面应用没有网站，改用 `releaseUrl`。
+   * - `releaseUrl`：GitHub Release 下载页（桌面工具用它代替网站）。
+   * - `repoUrl`：GitHub 仓库。
+   * 三者都是可选，卡片按实际有无渲染，不为了凑齐两个而编造链接。
+   */
+  siteUrl?: string;
+  releaseUrl?: string;
+  repoUrl?: string;
 };
 
 export type Service = {
@@ -89,14 +99,6 @@ export const services: Service[] = [
     coverVersion: "20260811",
     href: "https://tiancexai.com/?aff=HOUFAN",
   },
-  {
-    title: "Claude Code 中转服务",
-    cover: "/services/claude-code-relay.png",
-    coverWidth: 1539,
-    coverHeight: 1168,
-    coverVersion: "20260811",
-    href: "https://shop.xuedingtoken.com/?dist=6SGDPWS6",
-  },
 ];
 
 export const milestones = [
@@ -141,10 +143,13 @@ export const projects: Project[] = [
     outcome:
       "完成可用的人民币兑美元汇率看板，并将项目代码公开在 GitHub，作为 AI 应用与编程实践的第一项作品记录。",
     gallery: [],
+    releaseUrl:
+      "https://github.com/wanghoufan/p036-cny-us-rate-board/releases/latest",
+    repoUrl: "https://github.com/wanghoufan/p036-cny-us-rate-board",
     links: [
       {
         label: "查看 GitHub 项目",
-        href: "https://github.com/wanghoufan/cny-us-rate-board",
+        href: "https://github.com/wanghoufan/p036-cny-us-rate-board",
       },
     ],
   },
@@ -170,14 +175,17 @@ export const projects: Project[] = [
     outcome:
       "完成一个可独立运行的 Windows x64 自包含单文件工具，并通过 GitHub Actions 持续检查构建与测试；发布包无需目标电脑预装 .NET Runtime。",
     gallery: [],
+    releaseUrl:
+      "https://github.com/wanghoufan/DeepSeekBalanceWidget-Windows/releases/latest",
+    repoUrl: "https://github.com/wanghoufan/DeepSeekBalanceWidget-Windows",
     links: [
       {
         label: "查看 GitHub 项目",
-        href: "https://github.com/wanghoufan/DeepSeekBalanceWidget",
+        href: "https://github.com/wanghoufan/DeepSeekBalanceWidget-Windows",
       },
       {
         label: "下载最新版本",
-        href: "https://github.com/wanghoufan/DeepSeekBalanceWidget/releases/latest",
+        href: "https://github.com/wanghoufan/DeepSeekBalanceWidget-Windows/releases/latest",
       },
     ],
   },
@@ -203,6 +211,8 @@ export const projects: Project[] = [
     outcome:
       "完成一个中文响应式城市旅居筛选与对比工具，覆盖国内 12 城和海外 12 城，支持完整的 12 个月数据、无障碍交互和 Vercel 在线体验。",
     gallery: [],
+    siteUrl: "https://nomad-seasons.vercel.app",
+    repoUrl: "https://github.com/wanghoufan/nomad-seasons",
     links: [
       {
         label: "打开在线体验",
@@ -220,7 +230,7 @@ export const projects: Project[] = [
     status: "published",
     statusLabel: "已发布",
     year: "2026",
-    category: "ai",
+    category: "web",
     summary:
       "面向短视频编剧、导演和内容创作者的智能创作工具，把短剧主题、剧本和风格偏好转化为可执行的图文分镜方案。",
     cover: "/projects/ai-storyboard-studio.png",
@@ -235,10 +245,16 @@ export const projects: Project[] = [
     outcome:
       "完成一款面向短视频创作流程的 AI 分镜工具，帮助创作者快速把剧本转化为可理解、可讨论、可执行的视觉方案。",
     gallery: [],
+    siteUrl: "https://ai-storyboard-studio-2026.mortimerstephanie14.chatgpt.site/",
+    repoUrl: "https://github.com/wanghoufan/ai-storyboard-generator",
     links: [
       {
         label: "打开在线体验",
         href: "https://ai-storyboard-studio-2026.mortimerstephanie14.chatgpt.site/",
+      },
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/ai-storyboard-generator",
       },
     ],
   },
@@ -264,6 +280,8 @@ export const projects: Project[] = [
     outcome:
       "完成覆盖海口多个区域的 50 家咖啡店城市指南，并提供响应式在线体验。",
     gallery: [],
+    siteUrl: "https://10-haikou-cafes.vercel.app",
+    repoUrl: "https://github.com/wanghoufan/50-haikou-cafes",
     links: [
       {
         label: "打开在线体验",
@@ -297,6 +315,8 @@ export const projects: Project[] = [
     outcome:
       "完成涵盖宽基与红利指数的估值汇总报告，提供在线查看、横向比较与数据时效提示；数据不构成投资建议。",
     gallery: [],
+    siteUrl: "https://a-share-index-valuation-report.vercel.app",
+    repoUrl: "https://github.com/wanghoufan/p023-a-share-index-valuation",
     links: [
       {
         label: "打开在线体验",
@@ -304,7 +324,7 @@ export const projects: Project[] = [
       },
       {
         label: "查看 GitHub 项目",
-        href: "https://github.com/wanghoufan/a-share-index-valuation-report",
+        href: "https://github.com/wanghoufan/p023-a-share-index-valuation",
       },
     ],
   },
@@ -314,7 +334,7 @@ export const projects: Project[] = [
     status: "published",
     statusLabel: "已发布",
     year: "2026",
-    category: "ai",
+    category: "web",
     summary:
       "一个面向求职准备的 AI 工具，上传简历和目标岗位后，帮助梳理经历、能力与岗位要求之间的匹配关系。",
     cover: "/projects/ai-resume-job-matcher.png",
@@ -329,10 +349,16 @@ export const projects: Project[] = [
     outcome:
       "完成一个可在线体验的 AI 简历岗位匹配助手，让求职准备从泛泛修改简历转向围绕目标岗位校准。",
     gallery: [],
+    siteUrl: "https://ai-resume-job-matcher-houfan.vercel.app/",
+    repoUrl: "https://github.com/wanghoufan/ai-resume-job-matcher",
     links: [
       {
         label: "打开在线体验",
         href: "https://ai-resume-job-matcher-houfan.vercel.app/",
+      },
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/ai-resume-job-matcher",
       },
     ],
   },
@@ -357,6 +383,8 @@ export const projects: Project[] = [
     outcome:
       "完成一个 3–5 分钟即可完成的中文人格测试 Bot，发布在扣子 Coze 平台并提供在线体验与可分享结果页；交付包含 Coze 提示词、Supabase 后端规范与 24 张物种素材，代码已开源在 GitHub。",
     gallery: [],
+    siteUrl: "https://5dnqscfrmp.coze.site/",
+    repoUrl: "https://github.com/wanghoufan/p002-life-species-test",
     links: [
       {
         label: "打开在线体验",
@@ -364,7 +392,7 @@ export const projects: Project[] = [
       },
       {
         label: "查看 GitHub 项目",
-        href: "https://github.com/wanghoufan/life-species-coze-v1.3",
+        href: "https://github.com/wanghoufan/p002-life-species-test",
       },
     ],
   },

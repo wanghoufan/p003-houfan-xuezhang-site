@@ -604,8 +604,8 @@ section:not(.hero, .current-focus) {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .project-filter {
@@ -676,8 +676,9 @@ section:not(.hero, .current-focus) {
 
 .project-card {
   position: relative;
-  min-height: 350px;
-  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
   border: 1px solid var(--line);
   background: var(--surface);
   backdrop-filter: blur(10px);
@@ -693,8 +694,8 @@ section:not(.hero, .current-focus) {
 
 .project-card-cover {
   display: grid;
-  aspect-ratio: 16 / 10;
-  margin: -28px -28px 28px;
+  aspect-ratio: 16 / 9;
+  margin: -20px -20px 18px;
   overflow: hidden;
   place-items: center;
   background: linear-gradient(135deg, #14141c, #0a0a0f);
@@ -709,13 +710,21 @@ section:not(.hero, .current-focus) {
 
 .project-card h3 {
   font-family: var(--font-body);
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 600;
+  line-height: 1.35;
   color: var(--text);
 }
 
-.project-card > p:not(.project-meta) {
+.project-summary {
+  display: -webkit-box;
+  margin: 10px 0 0;
+  overflow: hidden;
   color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.65;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .project-meta {
@@ -725,39 +734,51 @@ section:not(.hero, .current-focus) {
   letter-spacing: 0.1em;
 }
 
-.project-tags {
+/* 卡片底部动作区：查看网站 / GitHub 页面 / 项目档案 */
+.project-card-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 28px 0;
+  margin-top: auto;
+  padding-top: 18px;
 }
 
-.project-tags span {
-  padding: 4px 10px;
+.project-action {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
   border: 1px solid var(--line);
   color: var(--text-muted);
-  font-size: 11px;
-  border-radius: 2px;
-  background: var(--surface);
-}
-
-.project-card > a {
-  color: var(--primary-bright);
-  font-weight: 600;
   font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.08em;
-  text-shadow: 0 0 8px var(--primary-glow);
-  transition: text-shadow 200ms ease;
+  white-space: nowrap;
+  background: transparent;
+  transition: color 200ms ease, border-color 200ms ease, background 200ms ease;
 }
 
-.project-card > a:hover {
-  text-shadow: 0 0 16px var(--primary);
+.project-action:hover,
+.project-action:focus-visible {
+  color: var(--primary-bright);
+  border-color: var(--line-strong);
 }
 
+.project-action.is-primary {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.project-action.is-primary:hover,
+.project-action.is-primary:focus-visible {
+  color: var(--bg);
+  background: var(--primary);
+}
+
+
+/* 服务卡数量会变（当前 1 张），用自适应列而不是固定 2 列 */
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 480px));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 520px));
   gap: 20px;
 }
 
@@ -1396,15 +1417,6 @@ footer p {
   text-shadow: 0 0 8px var(--primary-glow);
 }
 
-.glass-panel {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), inset 0 0 40px rgba(0, 168, 179, 0.02);
-}
-
 .reveal {
   opacity: 1;
   transform: none;
@@ -1481,7 +1493,17 @@ footer p {
   }
 }
 
+@media (max-width: 1180px) {
+  .project-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 1040px) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .hero {
     grid-template-columns: 1fr 0.82fr;
     gap: 50px;
@@ -1857,10 +1879,6 @@ html[data-theme="light"] .project-cover {
   background: linear-gradient(135deg, #e9eff2, #dde7eb);
 }
 
-html[data-theme="light"] .glass-panel {
-  box-shadow: 0 0 30px rgba(15, 40, 50, 0.08), inset 0 0 40px rgba(0, 121, 134, 0.02);
-}
-
 /* ===== 主题 B：极光玻璃（html[data-theme="glass"]）=====
    移植自 radar-web/design-concepts/concept-b-aurora-glass.html：
    浅底 #eef1fa + 极光色团 + 白毛玻璃卡片 + 靛青→青渐变 + 大圆角胶囊 chip。 */
@@ -1949,7 +1967,6 @@ html[data-theme="glass"] .eyebrow,
 html[data-theme="glass"] .kicker,
 html[data-theme="glass"] .section-number,
 html[data-theme="glass"] .interest-photo span,
-html[data-theme="glass"] .project-card > a,
 html[data-theme="glass"] .footer-name,
 html[data-theme="glass"] .project-hero h1,
 html[data-theme="glass"] .not-found h1,
@@ -2044,11 +2061,31 @@ html[data-theme="glass"] .project-card-cover {
   background: linear-gradient(135deg, #f7f8ff, #e4e9fb);
 }
 
-html[data-theme="glass"] .project-tags span {
+html[data-theme="glass"] .project-action {
   border-radius: var(--radius-chip);
-  border-color: rgba(99, 102, 241, 0.18);
+  border-color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+html[data-theme="glass"] .project-action:hover,
+html[data-theme="glass"] .project-action:focus-visible {
   color: var(--primary);
-  background: rgba(99, 102, 241, 0.08);
+  background: #ffffff;
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+html[data-theme="glass"] .project-action.is-primary {
+  color: #ffffff;
+  background: var(--aurora-gradient);
+  border-color: transparent;
+  box-shadow: 0 6px 16px -6px rgba(99, 102, 241, 0.5);
+}
+
+html[data-theme="glass"] .project-action.is-primary:hover,
+html[data-theme="glass"] .project-action.is-primary:focus-visible {
+  color: #ffffff;
+  background: var(--aurora-gradient);
+  filter: brightness(1.06);
 }
 
 html[data-theme="glass"] .interest-photo {
@@ -2105,12 +2142,6 @@ html[data-theme="glass"] .project-cover {
   border-radius: var(--radius-card);
   border-color: rgba(255, 255, 255, 0.85);
   background: linear-gradient(135deg, #f2f4fd, #e3e8fa);
-}
-
-html[data-theme="glass"] .glass-panel {
-  border-radius: var(--radius-card);
-  border-color: rgba(255, 255, 255, 0.85);
-  box-shadow: 0 8px 26px -14px rgba(90, 100, 180, 0.32);
 }
 
 html[data-theme="glass"] .project-story section,
@@ -2173,7 +2204,6 @@ html[data-theme="paper"] .eyebrow,
 html[data-theme="paper"] .kicker,
 html[data-theme="paper"] .section-number,
 html[data-theme="paper"] .interest-photo span,
-html[data-theme="paper"] .project-card > a,
 html[data-theme="paper"] .footer-name,
 html[data-theme="paper"] .project-hero h1,
 html[data-theme="paper"] .not-found h1,
@@ -2195,7 +2225,6 @@ html[data-theme="paper"] .project-nav {
 
 html[data-theme="paper"] .site-header nav a:hover,
 html[data-theme="paper"] .site-header nav a:focus-visible,
-html[data-theme="paper"] .project-card > a:hover,
 html[data-theme="paper"] .contact-channels > button:hover,
 html[data-theme="paper"] .contact-channels > a:hover {
   text-shadow: none;
@@ -2336,11 +2365,21 @@ html[data-theme="paper"] .project-card-cover {
   background: linear-gradient(135deg, #efe8da, #e3dac8);
 }
 
-html[data-theme="paper"] .project-tags span {
+html[data-theme="paper"] .project-action {
   border-radius: 0;
-  border-color: var(--line);
-  color: var(--text-muted);
-  background: transparent;
+}
+
+html[data-theme="paper"] .project-action:hover,
+html[data-theme="paper"] .project-action:focus-visible {
+  color: var(--surface-strong);
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+html[data-theme="paper"] .project-action.is-primary {
+  color: var(--surface-strong);
+  background: var(--primary);
+  border-color: var(--primary);
 }
 
 html[data-theme="paper"] .interest-photo {
@@ -2403,12 +2442,6 @@ html[data-theme="paper"] .project-cover {
   border-radius: 0;
   border-color: var(--line);
   background: linear-gradient(135deg, #f2ebdd, #e4dac6);
-}
-
-html[data-theme="paper"] .glass-panel {
-  border-radius: 0;
-  border-color: var(--line);
-  box-shadow: none;
 }
 
 html[data-theme="paper"] .project-story section,

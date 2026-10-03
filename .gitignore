@@ -62,3 +62,14 @@ next-env.d.ts
 
 # ORCA 迁移备份（回滚用，勿入库）
 *.旧版-2026-09-29
+
+# Cloudflare Workers / OpenAI Sites 时代历史残留（已不参与构建，tsconfig 已 exclude）。
+# 保留在工作区作回滚备用，但不再入库；如需彻底清理先取得用户确认。
+# 唯一例外：.openai/hosting.json 记录原 Sites project_id，仍入库。
+/worker/
+/db/
+/build/
+/drizzle/
+/examples/
+/vite.config.ts
+/drizzle.config.ts

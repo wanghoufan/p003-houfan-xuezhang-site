@@ -75,7 +75,7 @@
   6. `a-share-index-valuation-report` A股十一大指数十年估值分位报告
   7. `ai-resume-job-matcher` AI 简历岗位匹配助手
   8. `life-species-coze` 生活物种 · 测测你是什么生活物种
-- 服务卡片 2 个：GPT 代充值、Claude Code 中转服务（`app/content.ts` `services`）。
+- 服务卡片 1 个：GPT 代充值（`app/content.ts` `services`）。**2026-10-03 起「Claude Code 中转服务」已按用户要求下架**（链接、封面图、测试断言一并移除，回归用例 `retired service stays removed from the page` 钉住）。
 - 联系方式：微信二维码（`public/contact/wechat-qr.png`）、GitHub、YouTube 均已实现（`app/ContactPanel.tsx`）。
 - 下一发版：沿用现有双线地址，必须通过 `npm test`；新增/调整项目内容改 `app/content.ts`，联系方式改 `app/ContactPanel.tsx`。
 - 已知测试覆盖缺口：`tests/rendered-html.test.mjs` 已覆盖首页 + `cny-us-rate-board` + `50-haikou-cafes` / `a-share-index-valuation-report` / `ai-resume-job-matcher` / `life-species-coze` 路由，但尚未为 `deepseek-balance-widget` / `nomad-seasons` / `ai-storyboard-studio` 增加独立路由回归（见 `docs/qa/QA_CHECKLIST.md`）。
@@ -137,7 +137,8 @@ houfan-xuezhang-personal-site/
 
 > 历史残留（Cloudflare Workers / OpenAI Sites 时代，已不参与构建，`tsconfig.json` 已 exclude）：
 > `worker/`、`build/`、`db/`、`drizzle/`、`examples/`、`vite.config.ts`、`drizzle.config.ts`、`.openai/`。
-> 保留原因：`.openai/hosting.json` 记录原 Sites `project_id`；其余为回滚备用。清理前需用户确认。
+> 保留原因：`.openai/hosting.json` 记录原 Sites `project_id`（仍入库）；其余为回滚备用。
+> **2026-10-03 起其余残留已停止跟踪**（`.gitignore` 已加 `/worker/`、`/db/`、`/build/`、`/drizzle/`、`/examples/`、`vite.config.ts`、`drizzle.config.ts`），文件仍保留在工作区，彻底删除前需用户确认。
 > 注：源码置于 `app/`（非规范模板默认的 `src/`），以兼容现有 `next.config.ts`、`npm test` 与双线托管，故未做迁移。
 
 ## 约束

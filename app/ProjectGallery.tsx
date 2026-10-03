@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
   projectCategoryLabels,
@@ -56,37 +55,56 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
       </div>
 
       <div className="project-grid">
-        {visible.map((project, index) => (
-          <article
-            className={index === 0 ? "project-card featured" : "project-card"}
-            key={project.slug}
-          >
+        {visible.map((project) => (
+          <article className="project-card" key={project.slug}>
             {project.cover && (
-              <Link
-                className="project-card-cover"
-                href={`/projects/${project.slug}`}
-                aria-label={`查看${project.title}项目详情`}
-              >
+              <div className="project-card-cover">
                 <img
                   src={asset(project.cover)}
                   alt={`${project.title}项目封面`}
                   loading="lazy"
                   decoding="async"
                 />
-              </Link>
+              </div>
             )}
             <p className="project-meta">
               {project.year} · {project.statusLabel} ·{" "}
               {projectCategoryLabels[project.category]}
             </p>
             <h3>{project.title}</h3>
-            <p>{project.summary}</p>
-            <div className="project-tags">
-              {project.tags.map((tag) => (
-                <span key={tag}>{tag}</span>
-              ))}
+            <p className="project-summary">{project.summary}</p>
+            {/* 卡片只给两个「成果」入口：成品本身（网站或下载页）+ GitHub。 */}
+            <div className="project-card-actions">
+              {project.siteUrl ? (
+                <a
+                  className="project-action is-primary"
+                  href={project.siteUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  查看成品
+                </a>
+              ) : project.releaseUrl ? (
+                <a
+                  className="project-action is-primary"
+                  href={project.releaseUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  下载应用
+                </a>
+              ) : null}
+              {project.repoUrl && (
+                <a
+                  className="project-action"
+                  href={project.repoUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  GitHub 页面
+                </a>
+              )}
             </div>
-            <Link href={`/projects/${project.slug}`}>阅读项目档案 →</Link>
           </article>
         ))}
       </div>

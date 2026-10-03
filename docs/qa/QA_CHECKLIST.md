@@ -25,7 +25,7 @@
 - [ ] 照片缺位时显示杂志式占位框，不出现破图。
 - [ ] 键盘可达、焦点态可见、alt 完整、reduced motion 生效。
 - [ ] 中文文案一致、无错别字、无占位文字；无 `mailto:`、无中/EN 语言切换残留（见测试 `doesNotMatch` 断言）。
-- [ ] 内容与 `app/content.ts` 真值一致，已发布项目共 8 个、服务卡片 2 个，无臆造项目 / 资质 / 联系方式。
+- [ ] 内容与 `app/content.ts` 真值一致，已发布项目共 8 个、服务卡片 1 个（仅 GPT 代充值），无臆造项目 / 资质 / 联系方式。
 - [ ] `tests/rendered-html.test.mjs` 覆盖的路由回归：首页、`/projects/cny-us-rate-board`、`/projects/50-haikou-cafes`、`/projects/a-share-index-valuation-report`、`/projects/ai-resume-job-matcher`、`/projects/life-species-coze`、未知项目 → 404。
 
 ## 已知覆盖缺口（建议补充，非当前阻断）

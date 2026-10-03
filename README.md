@@ -8,7 +8,7 @@
   - Vercel（主）：https://houfan-xuezhang-site.vercel.app
   - GitHub Pages：https://wanghoufan.github.io/p003-houfan-xuezhang-site/
 - 已发布项目（以 `app/content.ts` 为准，共 8 个）：`cny-us-rate-board`、`deepseek-balance-widget`、`nomad-seasons`、`ai-storyboard-studio`、`50-haikou-cafes`、`a-share-index-valuation-report`、`ai-resume-job-matcher`、`life-species-coze`
-- 服务卡片（2 个）：GPT 代充值、Claude Code 中转服务
+- 服务卡片（1 个）：GPT 代充值
 - 当前语言：中文
 - 当前发布平台：Vercel（主）+ GitHub Pages（镜像）
 
