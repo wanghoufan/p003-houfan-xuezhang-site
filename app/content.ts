@@ -163,7 +163,7 @@ export const projects: Project[] = [
     summary:
       "一个面向 Windows 11 的 DeepSeek API 余额监控工具，集中展示余额变化、充值与赠送明细，并在余额异常时及时提醒。",
     cover:
-      "https://raw.githubusercontent.com/wanghoufan/DeepSeekBalanceWidget/master/artifacts/ui-audit/02-after.png",
+      "https://raw.githubusercontent.com/wanghoufan/DeepSeekBalanceWidget-Windows/master/artifacts/ui-audit/02-after.png",
     tags: ["Windows 11", ".NET 8", "WPF", "API 监控"],
     role: "独立设计与开发",
     background:
@@ -303,7 +303,7 @@ export const projects: Project[] = [
     summary:
       "一份汇总 11 只 A 股核心指数十年估值分位的单页响应式报告，用统一标记展示当前估值水位。",
     cover:
-      "https://raw.githubusercontent.com/wanghoufan/a-share-index-valuation-report/master/screenshots/preview-hero.png",
+      "https://raw.githubusercontent.com/wanghoufan/p023-a-share-index-valuation/master/screenshots/preview-hero.png",
     tags: ["A股", "估值分析", "数据可视化", "HTML"],
     role: "独立设计与开发",
     background:
