@@ -36,6 +36,27 @@
 ## 补充回归项（持续累积）
 <!-- 【测试】在此追加高价值回归项 -->
 
+## 三主题切换回归（2026-10-03 新增）
+主题 ID：`dark`（指挥舱，默认）/ `glass`（极光玻璃）/ `paper`（情报剪报）。
+历史 `light` 值仍被 `themeInitScript` 白名单接受，但 UI 无入口（无分段选项）。
+
+- [x] `app/layout.tsx` 的 `themeInitScript` 白名单为 `dark|light|glass|paper`。
+- [x] `app/ThemeToggle.tsx` 渲染 `role="group"` 分段控件，3 个 `button[data-theme-option]`，
+      标签分别为「指挥舱 / 极光 / 剪报」，`aria-pressed` 随当前主题变化。
+- [x] 点击分段选项 → `<html data-theme>` 立即变更，`localStorage.theme` 同步写入。
+- [x] 刷新后主题保持（Playwright 实测：设`glass` 重载仍 `glass`，设 `paper` 重载仍 `paper`）。
+- [x] 三主题桌面 1440×900 各截图目检：hero、头像、项目卡、筛选条无错位 / 裁切 / 溢出。
+- [x] 三主题窄屏 390×844 各截图目检：导航换行、主题切换器不溢出，正文不横向滚动。
+- [x] `glass`：卡片 / 分段控件 / chip 全部圆角化（`--radius-card: 20px`、`--radius-chip: 999px`），
+      `filter-chip.is-active` 与 `theme-option.is-active` 为靛青→青渐变 + 白字。
+- [x] `paper`：`--font-display` 走衬线栈（Songti SC / Noto Serif CJK SC / SimSun），
+      全部 `text-shadow` / 发光 `box-shadow` 去除，`body::before` 网格与 `body::after` 扫描线 `display: none`。
+- [x] 子页 `/projects/ai-storyboard-studio` 在 `glass` / `paper` 下样式一致（衬线标题、方角分隔线）。
+- [x] `npm test` 5/5 通过；`npm run lint` 0 error（余 6 条历史 `<img>` warning）。
+- [ ] **待用户签收**：三主题视觉与交互需用户本人在http://localhost:3000 确认后才算收尾。
+
+> 截图证据在 `temp/theme-shots/`（18 张，含 `-filter` 局部图与子页图），`temp/` 已 gitignore，不入库。
+
 ## 规则
 - 开发者自测不能替代独立 QA。
 - neat-freak 在重要阶段负责修剪、去重和更新本清单。

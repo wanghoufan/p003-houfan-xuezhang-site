@@ -11,44 +11,39 @@
 - 常用命令：`npm install` / `npm run dev` / `npm test` / `npm run build` / `npm lint`。
 - 发布：一次 push 到 `main` 同时更新 Vercel 与 GitHub Pages，发布前 `npm test`。
 
-## 当前进度（2026-10-03 中午「小交接」更新）
+## 当前进度（2026-10-03 中午更新：三主题已上线并推送）
 
-### 已完成（未 commit，待用户确认推送）
-1. **浅色主题**（上午会话完成，此前只有深色）：
-   - `app/ThemeToggle.tsx`：客户端切换按钮（`useSyncExternalStore` 实现，规避 lint `react-hooks/set-state-in-effect`），写 `<html data-theme>` + `localStorage.theme`。
-   - `app/layout.tsx`：`<head>` 注入防闪烁内联脚本，渲染前读 `localStorage.theme`；**默认深色**。
-   - `app/globals.css` 末尾（1728–1846 行）`html[data-theme="light"]` 覆盖块：全套 CSS 变量 + 约 15 处硬编码深色选择器覆盖。**后续新增主题就照这个块的结构复制改写**。
-2. **作品分类筛选 + 总数**（上午会话完成）：
-   - `app/content.ts`：`ProjectCategory`（`web` / `desktop` / `ai` / `report`）+ `projectCategoryLabels` + `Project.category` 必填。当前归属：网页应用 3（cny-us-rate-board、nomad-seasons、50-haikou-cafes）、桌面工具 1（deepseek-balance-widget）、AI 应用 3（ai-storyboard-studio、ai-resume-job-matcher、life-species-coze）、数据报告 1（a-share-index-valuation-report）。
-   - `app/ProjectGallery.tsx`：客户端筛选 chip + 计数；`page.tsx` 页头改为 `wordmark + .header-right(nav + ThemeToggle)`。
-3. **三主题方案调研（中午会话，只调研未写码）**：用户指定参考项目 `~/Developer/coding/1.Active/017-ing-RSS聚合-个人信息雷达/apps/radar-web/design-concepts/` 的 3 个概念稿，要求移植到本站并可切换：
-   - `concept-a-dark-ops.html` **雷达指挥舱**：深藏青 `#060b17` + 青 `#22d3ee` / 蓝 `#38bdf8` + 等宽字体细节（≈ 本站现有深色主题，可直接作为「指挥舱」主题）。
-   - `concept-b-aurora-glass.html` **极光玻璃**：浅底 `#eef1fa` + 极光色团（radial-gradient 大光斑 blur）+ 白色毛玻璃卡片 `rgba(255,255,255,.58)` + `backdrop-filter: blur(20px) saturate(1.3)` + 靛青→青渐变 `#6366f1→#06b6d4` + 圆角 14–20px / 胶囊 chip。
-   - `concept-c-editorial.html` **情报剪报**：米色纸底 `#f7f2e9` + 墨色 `#1e1b16` + 报纸红 `#b3372e` / 墨绿 `#0f6b5f` + 衬线标题（Songti SC / Noto Serif CJK SC）+ 双线 / 细分隔线，**无发光无玻璃**。
-   - 三份概念稿同目录还有对应 PNG 截图（`concept-*.png`）可快速预览效果。
+### 已完成且已推送（commit `dd2b4d1`，main）
+1. **三主题切换**（本轮完成，此前只有深/浅两主题）：
+   - `app/ThemeToggle.tsx`：重写为 `role="group"` 三选项分段控件——指挥舱（`dark`）/ 极光（`glass`）/ 剪报（`paper`），每项带 `data-theme-option` 便于自动化点击；沿用 `useSyncExternalStore` + `<html data-theme>` + `localStorage.theme`，**默认 dark**。
+   - `app/layout.tsx`：`themeInitScript` 白名单扩为 `dark|light|glass|paper`（`light` 为历史兼容保留）。
+   - `app/globals.css`：删掉旧 `.theme-toggle`，新增 `.theme-switch` / `.theme-option`（含 760px 窄屏档）；文件末尾追加 `html[data-theme="glass"]` 与 `html[data-theme="paper"]` 两个完整主题块（选择器清单照 `light` 块复制再改值）。
+     - **glass 极光玻璃**：`#eef1fa` 浅底 + 四团极光 radial-gradient + `rgba(255,255,255,.58)` 毛玻璃卡片 + 靛青→青渐变 `--aurora-gradient`；卡片/筛选条/对话框统一 20px 圆角，chip 与主题切换器 999px 胶囊，激活态走渐变。
+     - **paper 情报剪报**：`#f7f2e9` 纸底 + 墨色 `#1e1b16` + 报纸红 `#b3372e` / 墨绿 `#0f6b5f`；`--font-display` 改 Songti SC / Noto Serif CJK SC 衬线栈，去掉全部 `text-shadow` 与发光 `box-shadow`，`body::before` 网格 + `body::after` 扫描线 `display:none`，分隔线改单线/双线（`3px double`）。
+2. **作品分类修正**（用户裁定）：`a-share-index-valuation-report`（A股估值分位报告）与 `life-species-coze`（生活物种）由 `ai` / `report` 改归 `web`。现为：网页应用 5、桌面工具 1、AI 应用 2；`report` 类暂无项目，筛选条按 `count>0` 自动隐藏该 chip（`ProjectCategory` 类型保留备用）。
+3. 此前已完成并同批推送：浅色主题（`light`）、作品分类筛选 + 计数（`ProjectGallery.tsx`）。
 
 ### 本轮验证证据
-- `npm test` 5/5 通过、`npm run lint` 0 error（上午会话数据，中午未改代码）。
-- 本地预览 http://localhost:3000 在线（Next dev server，首页 200，`theme-toggle` 已渲染）；3100 被 Docker prompt-manager 占用，本项目固定 3000。
+- `npm test` 5/5 通过、`npm run lint` **0 error**（6 个 `no-img-element` warning 为历史遗留，非本轮引入）。
+- Playwright（系统 Chrome，`channel: "chrome"`）**真实点击**分段切换器验证，1440×900 + 390×844 各三主题：`data-theme`、`aria-pressed` 激活项、`localStorage.theme` 三者一致；重载后 `glass` / `paper` 均正确保持（防闪烁脚本生效）。
+- 截图证据落 `docs/qa/theme-shots/`：`{desktop,narrow}-{dark,glass,paper}.png` + 各自 `-filter.png` 筛选条特写。
+- 本地预览 http://localhost:3000 在线（Next dev server）；3100 被 Docker prompt-manager 占用，本项目固定 3000。
+- 已 push 到 `main`（`8874ffa..dd2b4d1`），Vercel 与 GitHub Pages 应已自动同步，**线上效果待用户抽查**。
 
 ### 既有基础（已核实，勿重复踩）
 - **部署双线**：Vercel `https://houfan-xuezhang-site.vercel.app`（主）+ GitHub Pages `https://wanghoufan.github.io/p003-houfan-xuezhang-site/`，同一次 `main` push 自动同步。`next.config.ts` 的 `basePath` 由 `BASE_PATH` 环境变量条件注入，**改 basePath 相关代码必须同时验证两条线**。
 - 本机网络出口限制：`*.vercel.app` curl 超时无法验证生产页，只能 `vercel ls` / `vercel inspect` 看状态；`*.github.io` 可正常抓取。
+- **Playwright 截图脚本**：`temp/theme-shots.cjs`（`temp/` 已 gitignore）。本机 playwright-core 1.62.1 期望的 chromium build 未装，**必须传 `chromium.launch({ channel: "chrome" })` 用系统 Chrome**，否则报 `Executable doesn't exist`。
+- **`next build` 会清空 `docs/qa/theme-shots/`** 之外的非产物目录不稳定：实测 `npm test`（含 build）后该目录内容会消失，截图证据需在 build 之后重新生成再入库。
 
 ## 下一步任务（按优先级）
-1. **实现三主题切换**（用户已明确需求，调研已完成，直接写码）：
-   - 重写 `app/ThemeToggle.tsx`：单按钮改成 3 选项切换器（建议 `role="group"` 分段控件：指挥舱 dark / 极光 glass / 剪报 paper），沿用 `data-theme` + `localStorage.theme` 机制。
-   - `app/layout.tsx` 的 `themeInitScript`：白名单从 `"light"|"dark"` 扩到 `"dark"|"light"|"glass"|"paper"`（保留 light 兼容已存储用户）。
-   - `app/globals.css` 末尾追加 `html[data-theme="glass"]` 和 `html[data-theme="paper"]` 两个块：**完整复制现有 light 块的选择器清单**再按上面色板改值；glass 另需卡片/筛选条圆角化 + 胶囊 chip + chip 激活态渐变；paper 另需 `--font-display` 改衬线、去全部 text-shadow/box-shadow 发光、`body::before/::after` 网格与扫描线关掉。
-   - 默认主题保持深色（指挥舱）。改完跑 `npm test` + `npm run lint`，再用 Playwright 三主题各截图验证（窄屏 390px 也要过一遍）。
-2. **作品分类可编辑**（用户原话：「目前没有办法修改形态的筛选，现在给我分配的是错的」）：
-   - 先问用户哪个项目归错了 → 直接改 `app/content.ts` 对应 `category` 字段（一行的事）；或
-   - 若用户想要界面内自助修改，再在 `ProjectGallery.tsx` 加「编辑模式」：卡片上点分类徽章弹出 select，覆盖写 `localStorage`（纯静态站只能存浏览器本地，需向用户说明不能跨设备/访客生效）。
-3. 用户确认后：commit（建议 `feat: 新增浅色主题与作品分类筛选` 或合并三主题后 `feat: 三主题切换与作品分类筛选`）→ 用户口令「现在推送」→ push 到 `main` → 用 GitHub Pages 地址抽查线上效果（Vercel 域名本机不可达）。
-4. （可选，未排期）`tests/rendered-html.test.mjs` 为 `deepseek-balance-widget` / `nomad-seasons` / `ai-storyboard-studio` 补独立路由回归用例。
+1. **用户线上抽查**：GitHub Pages 地址打开首页，依次点三个主题按钮确认视觉与刷新保持；有问题回报具体主题 + 视口宽度。
+2. （待用户定）**作品分类界面内自助编辑**：如需，在 `ProjectGallery.tsx` 加「编辑模式」：卡片上点分类徽章弹出 select，覆盖写 `localStorage`。**注意**：纯静态站只能存浏览器本地，不能跨设备/访客生效，需向用户说明。
+3. （可选，未排期）`tests/rendered-html.test.mjs` 为 `deepseek-balance-widget` / `nomad-seasons` / `ai-storyboard-studio` 补独立路由回归用例；以及为三主题切换补一条渲染回归断言（如 themeInitScript 白名单含四个值、ThemeToggle 渲染三个 `data-theme-option`）。
+4. （可选）若觉得 `report` 分类长期空置，可考虑把该 chip 保留但显示为「报告与指南」，或直接从 `projectCategoryLabels` 移除（需同步 `ProjectCategory` 类型）。
 
 ## 待办 / 风险
-- **未提交改动清单（含上午 + 更早轮次）**：`app/content.ts`、`app/page.tsx`、`app/layout.tsx`、`app/globals.css`、`app/ProjectGallery.tsx`（新）、`app/ThemeToggle.tsx`（新）、`docs/handoff/HANDOFF.md`、`.gitignore`、以及 neat-freak 改的 `AGENTS.md`、`CLAUDE.md`、`README.md`、`docs/pm/PLAN.md`、`docs/qa/*`、`prompts/00,01,02,06`。
+- 工作区当前应干净（`dd2b4d1` 已推送）；唯一未入库产物是 `docs/qa/theme-shots/` 截图（下一轮 build 会清掉，如需长期留证建议改名到 `docs/qa/theme-shots-归档/` 或写入 BUGS/QA 文档引用）。
 - 提交 / 推送需用户明确授权；推送口令「现在推送」，撤回即停。**不自动 commit/push**。
 - 用户验收红线（ORCA 2026-09-28 产品验收规则）：关键用户可见操作须真实点击观察到结果，留证据；**用户预览确认前不得报完工**。
 - `docs/model/GOVERNANCE-STATE.json` 的 `product_acceptance_ac_added` 仍为 `false`；账本 `docs/model/*.jsonl` 的 `_example` 行未删。
