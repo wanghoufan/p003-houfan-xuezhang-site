@@ -101,7 +101,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                   target="_blank"
                   rel="noreferrer noopener"
                 >
-                  GitHub 页面
+                  GitHub
                 </a>
               )}
             </div>
