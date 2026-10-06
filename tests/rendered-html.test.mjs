@@ -277,24 +277,17 @@ test("static export ships every published project as its own folder", async () =
   assert.match(notFoundHtml, /这一页还没有写进故事里。/);
 });
 
-test("方法与体系 是独立区块，且不与作品墙重复展示", async () => {
+test("方法与体系 是筛选标签，两条作品就在同一面作品墙里", async () => {
   const { text } = await get("/");
-  const worksAt = text.indexOf('aria-labelledby="projects-title"');
-  const methodAt = text.indexOf('aria-labelledby="method"');
-  const servicesAt = text.indexOf('aria-labelledby="services-title"');
-  assert.ok(
-    worksAt > -1 && methodAt > worksAt && servicesAt > methodAt,
-    "首页区块顺序应为 02 作品 → 03 方法与体系 → 04 我能帮你",
-  );
-  const worksBlock = text.slice(worksAt, methodAt);
-  const methodBlock = text.slice(methodAt, servicesAt);
-  assert.match(methodBlock, /<h2>方法与体系<\/h2>/);
+  const wall = text
+    .slice(
+      text.indexOf('aria-labelledby="projects-title"'),
+      text.indexOf('aria-labelledby="services-title"'),
+    )
+    .replace(/<!--.*?-->/g, "");
+  assert.match(wall, /方法与体系（2）/, "筛选条应出现「方法与体系（2）」标签");
+  assert.match(wall, /全部（27）/, "全部计数应含两条新增作品");
   for (const title of ["Skill 能力地图", "ORCA 治理模板"]) {
-    assert.ok(methodBlock.includes(title), `${title} 应出现在方法与体系区块`);
-    assert.ok(!worksBlock.includes(title), `${title} 不应重复出现在作品墙区块`);
+    assert.ok(wall.includes(`<h3>${title}</h3>`), `${title} 应作为卡片出现在作品墙内`);
   }
-  assert.ok(
-    methodBlock.includes("project-card-cover"),
-    "有封面的条目应渲染封面容器（无封面条目自然跳过）",
-  );
 });

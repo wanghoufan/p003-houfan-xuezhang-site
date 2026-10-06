@@ -123,3 +123,4 @@
 3. `docs/model/GOVERNANCE-STATE.json` 的 `product_acceptance_ac_added` 仍为 `false`；账本 `docs/model/*.jsonl` 的 `_example` 行未删。
 4. `deepseek-balance-widget` / `nomad-seasons` / `ai-storyboard-studio` 三条路由仍未纳入 `tests/rendered-html.test.mjs` 独立用例。
 - 2026-10-07（项目管家会话）：新增首页分区「03 方法与体系」，收录 Skill 能力地图（`skill-system-map`，已发布、在线站实测 200）与 ORCA 治理模板（`orca-governance-template`，源码公开、无在线站故 `cover:null`）；`Project` 加 `section` 字段、`ProjectCategory` 加 `template`，后续区块编号顺延至 07；`npm test` 10/10 通过（含三处钉桩与新区块断言）；1440 与 500 两档实测封面等高（159 / 230.1px）、卡片零重叠、无横向溢出；已发布条目 25 → 27，与 GitHub 主页 README 27 条对齐。fork 仓 `CodexBar`、`p042-aihot` 按用户决定暂不计入作品。
+- 2026-10-07（更正上一条）：按用户指正改法——不新开首页区块，改为在 `ProjectCategory` 加 `method`（显示名「方法与体系」），两条作品放回「02 AI 项目作品」同一面墙，靠筛选条标签区分；区块编号恢复 01-06，`section` 字段与 `template` 分类已撤销，`npm test` 10/10。GitHub 主页 README 的「🧭 方法与体系（2）」分类移到作品清单末尾（提交 `23e9d94`）。

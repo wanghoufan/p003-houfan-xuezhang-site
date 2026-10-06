@@ -1,16 +1,13 @@
 export type ProjectStatus = "draft" | "published";
 
-// 作品形态分类：网页应用 / 桌面工具 / 移动应用 / AI 应用 / 数据报告 / 模板与规范
+// 作品形态分类：网页应用 / 桌面工具 / 移动应用 / AI 应用 / 数据报告 / 方法与体系
 export type ProjectCategory =
   | "web"
   | "desktop"
   | "mobile"
   | "ai"
   | "report"
-  | "template";
-
-// 首页分区：默认进「AI 项目作品」，标 method 的进「方法与体系」
-export type ProjectSection = "works" | "method";
+  | "method";
 
 export const projectCategoryLabels: Record<ProjectCategory, string> = {
   web: "网页应用",
@@ -18,7 +15,7 @@ export const projectCategoryLabels: Record<ProjectCategory, string> = {
   mobile: "移动应用",
   ai: "AI 应用",
   report: "数据报告",
-  template: "模板与规范",
+  method: "方法与体系",
 };
 
 export type ProjectLink = {
@@ -33,7 +30,6 @@ export type Project = {
   statusLabel: string;
   year: string;
   category: ProjectCategory;
-  section?: ProjectSection;
   summary: string;
   cover: string | null;
   tags: string[];
@@ -954,8 +950,7 @@ export const projects: Project[] = [
     status: "published",
     statusLabel: "已发布",
     year: "2026",
-    category: "web",
-    section: "method",
+    category: "method",
     summary:
       "把工作、学习和生活中的方法整理成可复用的 Skill，一张图看清能力分布、来源和流程之间怎么衔接。",
     cover: "/projects/skill-system-map.png",
@@ -989,8 +984,7 @@ export const projects: Project[] = [
     status: "published",
     statusLabel: "源码公开",
     year: "2026",
-    category: "template",
-    section: "method",
+    category: "method",
     summary:
       "多智能体协作照着它开工：一页全员规则、角色卡、计划与验收模板、账本校验，按阶段推进不跑偏。",
     cover: null,
