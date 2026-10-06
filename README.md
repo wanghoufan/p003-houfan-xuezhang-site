@@ -6,10 +6,10 @@
 
 ![后翻学长个人网站首页](public/og.png)
 
-- 线上地址（两条线内容一致）：
-  - Vercel（主）：https://houfan-xuezhang-site.vercel.app
-  - GitHub Pages：https://wanghoufan.github.io/p003-houfan-xuezhang-site/
-- 已发布项目 8 个、服务卡片 1 张，界面语言为中文
+- 线上地址（两条线内容一致，访客走 GitHub Pages，国内打开更快）：
+  - GitHub Pages（对外主地址）：https://wanghoufan.github.io/p003-houfan-xuezhang-site/
+  - Vercel（镜像备用）：https://houfan-xuezhang-site.vercel.app
+- 已发布项目 9 个、服务卡片 1 张，界面语言为中文
 - 纯静态站点，无数据库、无登录、无留言、无后台
 
 ## 站点能做什么
@@ -95,7 +95,7 @@ git push
 - Next.js 16.2.6（App Router）+ Turbopack
 - Tailwind v4
 - `output: "export"` 纯静态导出，产物在 `out/`
-- 部署：Vercel（主）+ GitHub Pages，触发条件为 push 到 `main`
+- 部署：GitHub Pages（对外主地址）+ Vercel（镜像备用），触发条件为 push 到 `main`
 
 站内路由只有三个：首页 `/`、项目详情页 `/projects/[slug]/`、404 页。
 

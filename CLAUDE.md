@@ -4,7 +4,7 @@
 
 ## 项目
 - 后翻学长个人网站（houfan-xuezhang-personal-site）：非求职导向的个人展示站，中文。
-- 线上（双线，一次 push 同步）：Vercel `https://houfan-xuezhang-site.vercel.app`｜GitHub Pages `https://wanghoufan.github.io/p003-houfan-xuezhang-site/`
+- 线上（双线，一次 push 同步；**对外一律给 GitHub Pages，国内打开更快**）：GitHub Pages（对外主地址）`https://wanghoufan.github.io/p003-houfan-xuezhang-site/`｜Vercel（镜像备用）`https://houfan-xuezhang-site.vercel.app`
 
 ## 技术栈
 - React 19 + TypeScript + Next.js 16.2.6（App Router）+ Turbopack + Tailwind v4。

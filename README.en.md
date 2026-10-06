@@ -6,10 +6,10 @@ A non-job-hunting personal showcase site that presents personal background, AI a
 
 ![Houfan Xuezhang personal site homepage](public/og.png)
 
-- Live URLs (both serve identical content):
-  - Vercel (primary): https://houfan-xuezhang-site.vercel.app
-  - GitHub Pages: https://wanghoufan.github.io/p003-houfan-xuezhang-site/
-- 8 published projects, 1 service card, Chinese-language interface
+- Live URLs (both serve identical content; visitors should use GitHub Pages, which loads faster in mainland China):
+  - GitHub Pages (primary): https://wanghoufan.github.io/p003-houfan-xuezhang-site/
+  - Vercel (mirror): https://houfan-xuezhang-site.vercel.app
+- 9 published projects, 1 service card, Chinese-language interface
 - Fully static — no database, no login, no comments, no admin panel
 
 ## What the site does
