@@ -191,6 +191,41 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "deepseek-balance-mac",
+    title: "DeepSeek 额度悬浮窗（Mac 版）",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    category: "desktop",
+    summary:
+      "macOS 版：DeepSeek 余额和 ChatGPT Plus 用量摆在桌面角落，贴边自动隐藏、可缩成迷你胶囊、也能常驻菜单栏，额度异常会提示。",
+    cover: "/projects/deepseek-balance-mac.jpg",
+    tags: ["macOS 桌面工具", "Avalonia / .NET 8", "额度监控", "菜单栏常驻"],
+    role: "独立设计与开发",
+    background:
+      "和 Windows 版同一个出发点：API 余额与用量分散在控制台里，不盯就超。这一条是 macOS 端的独立实现，也是独立仓库。",
+    challenge:
+      "要在 macOS 12+ 上做悬浮窗：贴边自动隐藏、菜单栏常驻、完整卡片与迷你胶囊两态切换；ChatGPT 侧还要分清高峰/非高峰，以及每个账号的 5 小时额度与周额度各自的恢复时间。",
+    solution:
+      "用 Avalonia + .NET 8 实现界面与轮询，展示 DeepSeek 余额、变化幅度与 ChatGPT Plus 剩余额度；支持开机自启、拖动定位、置顶与异常状态提示；发布成 Apple Silicon 与 Intel 两种 zip，解压把 .app 拖进「应用程序」即可，无需预装 .NET。",
+    outcome:
+      "已发 Release v0.6.0，提供两种架构的安装包。Windows（WPF）端已拆到独立仓库单独维护，本仓库只负责 macOS。",
+    gallery: [],
+    releaseUrl:
+      "https://github.com/wanghoufan/p010-deepseek-balance-mac/releases/latest",
+    repoUrl: "https://github.com/wanghoufan/p010-deepseek-balance-mac",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p010-deepseek-balance-mac",
+      },
+      {
+        label: "下载最新版本",
+        href: "https://github.com/wanghoufan/p010-deepseek-balance-mac/releases/latest",
+      },
+    ],
+  },
+  {
     slug: "nomad-seasons",
     title: "候鸟 / Nomad Seasons",
     status: "published",
