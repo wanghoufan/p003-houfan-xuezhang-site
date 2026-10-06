@@ -142,6 +142,8 @@ test("every project repoUrl points at a real renamed repository", async () => {
     "photo-library": "p015-photo-library",
     "fill-light": "p026-yejian-buguangdeng",
     "ai-storyboard-studio": "p044-ai-storyboard-studio",
+    "skill-system-map": "alw-002-skill-system-map",
+    "orca-governance-template": "orca-v2.1-governance",
   };
   for (const [slug, repo] of Object.entries(expected)) {
     const { res, text } = await get(`/projects/${slug}/`);
@@ -190,6 +192,8 @@ test("new published project routes render their details", async () => {
     ["stretch-side-timer", /拉伸换边计时器/],
     ["photo-library", /摄影作品库/],
     ["fill-light", /夜间补光灯/],
+    ["skill-system-map", /Skill 能力地图/],
+    ["orca-governance-template", /ORCA 治理模板/],
   ];
   for (const [slug, title] of routes) {
     const { res, text } = await get(`/projects/${slug}/`);
@@ -251,6 +255,8 @@ test("static export ships every published project as its own folder", async () =
     "stretch-side-timer",
     "photo-library",
     "fill-light",
+    "skill-system-map",
+    "orca-governance-template",
   ];
   const dirs = (await readdir(path.join(OUT, "projects"), { withFileTypes: true }))
     .filter((entry) => entry.isDirectory())
@@ -269,4 +275,26 @@ test("static export ships every published project as its own folder", async () =
 
   const notFoundHtml = await readFile(path.join(OUT, "404.html"), "utf8");
   assert.match(notFoundHtml, /这一页还没有写进故事里。/);
+});
+
+test("方法与体系 是独立区块，且不与作品墙重复展示", async () => {
+  const { text } = await get("/");
+  const worksAt = text.indexOf('aria-labelledby="projects-title"');
+  const methodAt = text.indexOf('aria-labelledby="method"');
+  const servicesAt = text.indexOf('aria-labelledby="services-title"');
+  assert.ok(
+    worksAt > -1 && methodAt > worksAt && servicesAt > methodAt,
+    "首页区块顺序应为 02 作品 → 03 方法与体系 → 04 我能帮你",
+  );
+  const worksBlock = text.slice(worksAt, methodAt);
+  const methodBlock = text.slice(methodAt, servicesAt);
+  assert.match(methodBlock, /<h2>方法与体系<\/h2>/);
+  for (const title of ["Skill 能力地图", "ORCA 治理模板"]) {
+    assert.ok(methodBlock.includes(title), `${title} 应出现在方法与体系区块`);
+    assert.ok(!worksBlock.includes(title), `${title} 不应重复出现在作品墙区块`);
+  }
+  assert.ok(
+    methodBlock.includes("project-card-cover"),
+    "有封面的条目应渲染封面容器（无封面条目自然跳过）",
+  );
 });

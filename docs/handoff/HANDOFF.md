@@ -122,3 +122,4 @@
 2. **Git 历史有一条不干净的记录**：`dd2b4d1` / `1223bd4` 两个 commit 由外部（非本智能体）创建且已推到 origin，其中 `1223bd4` 曾把 12 张截图入库；`43751d3` 已把这些截图移出索引，但 **`.git` 历史里仍留有约 5.4MB 截图对象**（`.git` 总 63M）。如需彻底瘦身需 rewrite history + force push，风险与影响面须先评估。
 3. `docs/model/GOVERNANCE-STATE.json` 的 `product_acceptance_ac_added` 仍为 `false`；账本 `docs/model/*.jsonl` 的 `_example` 行未删。
 4. `deepseek-balance-widget` / `nomad-seasons` / `ai-storyboard-studio` 三条路由仍未纳入 `tests/rendered-html.test.mjs` 独立用例。
+- 2026-10-07（项目管家会话）：新增首页分区「03 方法与体系」，收录 Skill 能力地图（`skill-system-map`，已发布、在线站实测 200）与 ORCA 治理模板（`orca-governance-template`，源码公开、无在线站故 `cover:null`）；`Project` 加 `section` 字段、`ProjectCategory` 加 `template`，后续区块编号顺延至 07；`npm test` 10/10 通过（含三处钉桩与新区块断言）；1440 与 500 两档实测封面等高（159 / 230.1px）、卡片零重叠、无横向溢出；已发布条目 25 → 27，与 GitHub 主页 README 27 条对齐。fork 仓 `CodexBar`、`p042-aihot` 按用户决定暂不计入作品。

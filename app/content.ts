@@ -1,7 +1,16 @@
 export type ProjectStatus = "draft" | "published";
 
-// 作品形态分类：网页应用 / 桌面工具 / 移动应用 / AI 应用 / 数据报告
-export type ProjectCategory = "web" | "desktop" | "mobile" | "ai" | "report";
+// 作品形态分类：网页应用 / 桌面工具 / 移动应用 / AI 应用 / 数据报告 / 模板与规范
+export type ProjectCategory =
+  | "web"
+  | "desktop"
+  | "mobile"
+  | "ai"
+  | "report"
+  | "template";
+
+// 首页分区：默认进「AI 项目作品」，标 method 的进「方法与体系」
+export type ProjectSection = "works" | "method";
 
 export const projectCategoryLabels: Record<ProjectCategory, string> = {
   web: "网页应用",
@@ -9,6 +18,7 @@ export const projectCategoryLabels: Record<ProjectCategory, string> = {
   mobile: "移动应用",
   ai: "AI 应用",
   report: "数据报告",
+  template: "模板与规范",
 };
 
 export type ProjectLink = {
@@ -23,6 +33,7 @@ export type Project = {
   statusLabel: string;
   year: string;
   category: ProjectCategory;
+  section?: ProjectSection;
   summary: string;
   cover: string | null;
   tags: string[];
@@ -934,6 +945,71 @@ export const projects: Project[] = [
       {
         label: "下载安卓安装包",
         href: "https://github.com/wanghoufan/p026-yejian-buguangdeng/releases/tag/v2.1.0",
+      },
+    ],
+  },
+  {
+    slug: "skill-system-map",
+    title: "Skill 能力地图",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    category: "web",
+    section: "method",
+    summary:
+      "把工作、学习和生活中的方法整理成可复用的 Skill，一张图看清能力分布、来源和流程之间怎么衔接。",
+    cover: "/projects/skill-system-map.png",
+    tags: ["静态网页", "GitHub Pages", "能力盘点", "Skill 治理"],
+    role: "独立设计与维护",
+    background:
+      "方法攒了不少，却看不出自己到底会什么、它们彼此怎么接上。这块地图把可复用的 Skill 按能力领域、来源和流程铺开，让盘点变成看一眼的事。",
+    challenge:
+      "统计口径要防漂移：数据合并中央登记档案与个人已安装清单并按名称去重；插件自带 Skill、角色流程和项目专用规范不计入 Skill 总数；迭代热力图只统计有日期的变更登记，不代表质量或投入时长。",
+    solution:
+      "页面分三块：持续改进看变更登记热力图与近期更新；工作与生活的流程地图把生活管理与项目交付各环节连起来，点任一环节可跳到对应 Skill；能力盘点按能力领域浏览，支持按自建、官方上游、社区待核验三种来源筛选并搜索名称与用途。",
+    outcome:
+      "已发布到 GitHub Pages，打开即看、无需安装。公开快照登记 75 个 Skill：自建 38、官方上游 24、社区待核验 13，覆盖生活管理、出行服务、需求澄清、项目协作、UI 设计、内容创作、学习与知识管理、数据分析、效率自动化、测试、部署运维与 Skill 治理等领域。",
+    gallery: ["/projects/skill-system-map-iterations.png"],
+    siteUrl: "https://wanghoufan.github.io/alw-002-skill-system-map/",
+    repoUrl: "https://github.com/wanghoufan/alw-002-skill-system-map",
+    links: [
+      {
+        label: "打开在线地图",
+        href: "https://wanghoufan.github.io/alw-002-skill-system-map/",
+      },
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/alw-002-skill-system-map",
+      },
+    ],
+  },
+  {
+    slug: "orca-governance-template",
+    title: "ORCA 治理模板",
+    status: "published",
+    statusLabel: "源码公开",
+    year: "2026",
+    category: "template",
+    section: "method",
+    summary:
+      "多智能体协作照着它开工：一页全员规则、角色卡、计划与验收模板、账本校验，按阶段推进不跑偏。",
+    cover: null,
+    tags: ["多智能体协作", "治理模板", "客户端无关", "验收留痕"],
+    role: "独立设计与维护",
+    background:
+      "体系不绑定 Orca，也不绑定任何客户端：Orca、Trae、Qoder、Codex、CodeArts Agent、opencode、Claude Code 随便切，规则、角色卡、账本和验收口径必须是同一套。",
+    challenge:
+      "规则要一处改动全项目同步：各项目根的分工表用软链指向母版真源，禁拷实文件，跨机器断链时才拷实文件并记交接；模板名冻结，版本真相以仓库 Git 提交历史为准，版本标记文件只是指针。",
+    solution:
+      "开工读盘顺序全体系唯一：全员规则 → 本次角色卡 → 模型表 → 交接现状 → 经验一句话，任务目标放最后。每轮开工先自动探测当前客户端再选派工口，有原生子代理就在窗口内直派，没有就走通道 CLI 直调，用户不填配置也不指派角色；用户只需记住三个口令：第一阶段计划、第二阶段开发、变更请求。",
+    outcome:
+      "分发版已公开在 GitHub，含中英文导航、角色规范、计划与验收模板和账本校验脚本；模型与通道口径以根目录那张表为唯一准，导航里不复述模型 ID，避免与表漂移。",
+    gallery: [],
+    repoUrl: "https://github.com/wanghoufan/orca-v2.1-governance",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/orca-v2.1-governance",
       },
     ],
   },

@@ -38,8 +38,14 @@ function SectionHeading({
 
 export default function Home() {
   const publishedProjects = projects.filter(
-    (project) => project.status === "published",
-  );  const interestGroups = [
+    (project) =>
+      project.status === "published" && project.section !== "method",
+  );
+  const methodProjects = projects.filter(
+    (project) =>
+      project.status === "published" && project.section === "method",
+  );
+  const interestGroups = [
     {
       title: "生活类",
       items: interests.filter((interest) => interest.category === "生活类"),
@@ -157,8 +163,22 @@ export default function Home() {
           )}
         </section>
 
+        <section className="projects-section reveal" aria-labelledby="method">
+          <SectionHeading number="03" title="方法与体系" id="method" />
+          {methodProjects.length > 0 ? (
+            <ProjectGallery projects={methodProjects} />
+          ) : (
+            <div className="project-empty">
+              <div className="project-empty-copy">
+                <p className="kicker">方法与体系</p>
+                <h3>沉淀中的可复用方法。</h3>
+              </div>
+            </div>
+          )}
+        </section>
+
         <section className="services-section reveal" aria-labelledby="services-title">
-          <SectionHeading number="03" title="我能帮你" id="services" />
+          <SectionHeading number="04" title="我能帮你" id="services" />
           <div className="service-grid">
             {services.map((service, index) => (
               <ServiceCard
@@ -171,7 +191,7 @@ export default function Home() {
         </section>
 
         <section className="interests-section reveal" aria-labelledby="interests-title">
-          <SectionHeading number="04" title="兴趣切片" id="interests" />
+          <SectionHeading number="05" title="兴趣切片" id="interests" />
           <p className="section-lead">
             工作之外，也在生活与运动中认识世界。
           </p>
@@ -206,7 +226,7 @@ export default function Home() {
         </section>
 
         <section className="milestones-section reveal" aria-labelledby="milestones-title">
-          <SectionHeading number="05" title="经历与认证" id="milestones-title" />
+          <SectionHeading number="06" title="经历与认证" id="milestones-title" />
           <ul className="milestone-list">
             {milestones.map((item, index) => (
               <li key={item}>
@@ -218,7 +238,7 @@ export default function Home() {
         </section>
 
         <section className="topics-section reveal" aria-labelledby="topics-title">
-          <SectionHeading number="06" title="曾研究的专题" id="topics" />
+          <SectionHeading number="07" title="曾研究的专题" id="topics" />
           <div className="topic-grid">
             {topics.map((topic, index) => (
               <article key={topic.title}>
