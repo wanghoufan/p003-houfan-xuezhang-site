@@ -130,6 +130,15 @@ test("every project repoUrl points at a real renamed repository", async () => {
     "hongli-dixin-calc": "p022-hongli-dixin-calc",
     "video2obsidian": "p018-video2obsidian-mac",
     "family-insurance-dashboard": "p001-family-insurance-dashboard",
+    "bar-games": "p039-bar-games",
+    "party-night": "p028-party-night",
+    "place-journal": "p011-place-journal",
+    "nightrec": "p041-nightrec",
+    "talent-showroom": "p040-talent-showroom",
+    "stretch-routine": "p025-stretch-routine-app",
+    "stretch-side-timer": "p020-stretch-side-timer",
+    "photo-library": "p015-photo-library",
+    "fill-light": "p026-yejian-buguangdeng",
     "ai-storyboard-studio": "p044-ai-storyboard-studio",
   };
   for (const [slug, repo] of Object.entries(expected)) {
@@ -168,6 +177,15 @@ test("new published project routes render their details", async () => {
     ["hongli-dixin-calc", /红利打新底仓计算器/],
     ["video2obsidian", /懒得笔记/],
     ["family-insurance-dashboard", /家庭保单数据看板/],
+    ["bar-games", /酒吧游戏/],
+    ["party-night", /聚会游戏 Party Night/],
+    ["place-journal", /地点手账/],
+    ["nightrec", /夜间现场录音/],
+    ["talent-showroom", /才艺展示厅/],
+    ["stretch-routine", /拉伸语音播报/],
+    ["stretch-side-timer", /拉伸换边计时器/],
+    ["photo-library", /摄影作品库/],
+    ["fill-light", /夜间补光灯/],
   ];
   for (const [slug, title] of routes) {
     const { res, text } = await get(`/projects/${slug}/`);
@@ -218,6 +236,15 @@ test("static export ships every published project as its own folder", async () =
     "hongli-dixin-calc",
     "video2obsidian",
     "family-insurance-dashboard",
+    "bar-games",
+    "party-night",
+    "place-journal",
+    "nightrec",
+    "talent-showroom",
+    "stretch-routine",
+    "stretch-side-timer",
+    "photo-library",
+    "fill-light",
   ];
   const dirs = (await readdir(path.join(OUT, "projects"), { withFileTypes: true }))
     .filter((entry) => entry.isDirectory())

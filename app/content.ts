@@ -594,4 +594,283 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "bar-games",
+    title: "酒吧游戏",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    category: "web",
+    summary:
+      "酒吧聚会怕冷场就用它：人数、尺度、雷区先说好，玩法自动轮着出题，手机打开就开局，断网也能继续。",
+    cover: "/projects/bar-games.jpg",
+    tags: ["移动 PWA", "Next.js 16", "离线可用", "聚会游戏"],
+    role: "独立产品设计与开发",
+    background:
+      "聚会开局最怕冷场，也最怕题目越过界。这个 PWA 把「先说好人数、关系、尺度和雷区」放在开局第一步，再把出题和轮次交给程序。",
+    challenge:
+      "整局题目要在开局前一次性预生成，断网也能继续玩；API Key 只能留在本机，得加密存储、经同源代理转发，自定义 Provider 还要阻断私网地址防 SSRF；玩法引擎与游戏包必须解耦，玩家才能自己加包。",
+    solution:
+      "真心话、谁最可能、我从来没有等多种玩法混着玩；题库可纯本地，也可接 DeepSeek / OpenAI Compatible 出题；支持自定义游戏包、随机点名分组与 8 种酒桌规则库；局中能调强度，散场生成总结。",
+    outcome:
+      "完成移动 PWA，并另配 Capacitor 安卓壳。V1 明确不做账号、支付、云同步、多人房间与数据导出，是一款免费离线工具。",
+    gallery: [],
+    siteUrl: "https://p039-bar-games.vercel.app",
+    repoUrl: "https://github.com/wanghoufan/p039-bar-games",
+    links: [
+      { label: "打开在线体验", href: "https://p039-bar-games.vercel.app" },
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p039-bar-games",
+      },
+    ],
+  },
+  {
+    slug: "party-night",
+    title: "聚会游戏 Party Night",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    category: "web",
+    summary:
+      "真心话大冒险、谁最可能一轮轮换着上，冷场交给它：手机打开就开局，也能装成安卓应用带去现场。",
+    cover: "/projects/party-night.jpg",
+    tags: ["移动 PWA", "Next.js 16", "Capacitor", "离线可用"],
+    role: "独立产品设计与开发",
+    background:
+      "同一批朋友反复聚会，题目容易越玩越尬。这个工具把玩法、轮次和尺度控制做成可离线继续的移动端 PWA，开局不用讲规则。",
+    challenge:
+      "整局 Deck 要能离线生成、断网续玩；AI 出的题必须校验过才敢上屏；Key 只能存本机；玩法要能中途切换，又要允许玩家自己加游戏包。",
+    solution:
+      "真心话大冒险、谁最可能、我从来没有、AI 即兴混玩，另有二选一、转瓶子等单玩并支持局中切换；题库可本地或接 DeepSeek / OpenAI Compatible；Key 用 AES-GCM 存 IndexedDB；Engine 与 Game Pack 解耦，AI 输出走 Zod 校验；再配随机点名分组与 8 种酒桌规则库。",
+    outcome:
+      "完成 V1 并部署上线，同时有 Capacitor 安卓壳。不含账号、支付与云同步，数据留在本机。",
+    gallery: [],
+    siteUrl: "https://party-night-v1-2.vercel.app",
+    repoUrl: "https://github.com/wanghoufan/p028-party-night",
+    links: [
+      { label: "打开在线体验", href: "https://party-night-v1-2.vercel.app" },
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p028-party-night",
+      },
+    ],
+  },
+  {
+    slug: "place-journal",
+    title: "地点手账",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    category: "web",
+    summary:
+      "去过的地方拍张照、写两句，自动整理成一本能翻、能找、能分享的地点手账，按地点和标签回到那天的感觉。",
+    cover: "/projects/place-journal.jpg",
+    tags: ["PWA", "React 18 + Vite", "Supabase 同步", "本地优先"],
+    role: "独立产品设计与开发",
+    background:
+      "照片攒了一堆，想按「我去过哪些地方」回看却没有结构。这个手账把每次记录变成有地点、有标签、能检索的条目。",
+    challenge:
+      "AI 供应商要能换（OpenRouter / DeepSeek / OpenCode 三个适配器，12 秒降级）；多端同时改要有冲突裁决；分享出去的快照绝不能带出私密内容。",
+    solution:
+      "拍照加语音记一笔，AI 提炼地点与标签；按地点、时间线、标签回顾，支持自然语言搜地点；分享有单卡、清单、地图三种形态且私密字段默认不外泄；数据先写本机 IndexedDB，再由 outbox 同步 Supabase，另配 Expo 安卓壳。",
+    outcome:
+      "PWA 已上线并通过验收。云同步、地图与 AI 都需自备 Key，不填也能当纯本机手账用。",
+    gallery: [],
+    siteUrl: "https://place-journal-xi.vercel.app",
+    repoUrl: "https://github.com/wanghoufan/p011-place-journal",
+    links: [
+      { label: "打开在线体验", href: "https://place-journal-xi.vercel.app" },
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p011-place-journal",
+      },
+    ],
+  },
+  {
+    slug: "nightrec",
+    title: "夜间现场录音",
+    status: "published",
+    statusLabel: "源码公开",
+    year: "2026",
+    category: "mobile",
+    summary:
+      "整夜 DJ 现场录成一条不断带的录音：中途暂离不拆场，边录边识曲，第二天点歌名就跳回昨晚那一段。",
+    cover: "/projects/nightrec.jpg",
+    tags: ["Android", "Kotlin / Compose", "Media3", "现场记录"],
+    role: "独立设计与开发",
+    background:
+      "想留住的是那一晚完整的声音现场，而不是一份零散的歌单。所以录音从「一场」出发，而不是从「一首」出发。",
+    challenge:
+      "长时间录音要能中途暂离、回来仍算同一场；识曲接口必须节流并去重，否则一晚下来请求爆掉；AI 净化只能当保守 Beta，任何异常都得保住原始录音。",
+    solution:
+      "Kotlin + Jetpack Compose 界面，Media3 负责录制，Room 存场次；AudD 连续识曲并去重，整晚一条进度条配 Marker 跳转回听，WorkManager 维持后台任务；识别失败保留未知段并可重新识别。",
+    outcome:
+      "完成 Android App（minSdk 29），真机验证截图入库。AI 净化为 Beta，识曲依赖 AudD 共享额度，插有线耳机时无法识曲；未做签名发布，源码与验证记录公开在仓库。",
+    gallery: [],
+    repoUrl: "https://github.com/wanghoufan/p041-nightrec",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p041-nightrec",
+      },
+    ],
+  },
+  {
+    slug: "talent-showroom",
+    title: "才艺展示厅",
+    status: "published",
+    statusLabel: "源码公开",
+    year: "2026",
+    category: "mobile",
+    summary:
+      "练的歌和谱分库记下调性，循环变速陪练，整场节目单装进手机，出门没网也能冷启动直接开演。",
+    cover: "/projects/talent-showroom.jpg",
+    tags: ["Capacitor", "离线优先", "曲库管理", "练习工具"],
+    role: "独立设计与开发",
+    background:
+      "带着手机去演出或练习，现场常常没有网络，临时翻抖音找谱很狼狈。这个曲库的目标就是：没网也能直接播、直接练。",
+    challenge:
+      "离线是硬要求：下载要能断点重试，操作要能排队等网络恢复再同步；曲谱 PDF 必须随包打开，不能依赖在线服务。",
+    solution:
+      "吉他与唱歌分库并记录调性和 Capo；练习播放器支持循环与变速；一键下载全部到本地；批量分类配断网操作队列；从视频里裁出跳舞音乐，支持抖音链接收录；再配「今晚节目单」与演出模式。React 19 + Vite 前端、node:sqlite 后端、Capacitor 8 打包，PDF.js 随 APK 内置。",
+    outcome:
+      "完成 Web 与安卓双形态，尚未部署公网服务；吉他模块已于 2026-10-03 冻结。",
+    gallery: [],
+    repoUrl: "https://github.com/wanghoufan/p040-talent-showroom",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p040-talent-showroom",
+      },
+    ],
+  },
+  {
+    slug: "stretch-routine",
+    title: "拉伸语音播报",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    category: "mobile",
+    summary:
+      "做拉伸不用盯屏幕数时间：动作和节拍靠语音念给你听，跟着走完一轮就行。",
+    cover: null,
+    tags: ["Android", "Expo / React Native", "语音播报", "离线 SQLite"],
+    role: "独立设计与开发",
+    background:
+      "拉伸时盯着倒计时很别扭，手机放远处又看不清。把动作和节拍交给语音念出来，人就能闭眼跟着走完一轮。",
+    challenge:
+      "计时不能被「用户改系统时钟」搞丢档；启动不能白闪一下；整套动作库要能按场景和部位筛，还得允许自己编排流程。",
+    solution:
+      "59 种动作按场景与部位动态筛选，流程编辑器支持批量录入与训练类型；跟练页用 TTS 播报动作与节拍，配倒计时背景音与中英双语；历史统计累计时长按类型分类；数据全部存本机 SQLite。计时改由自写 Kotlin 模块读 elapsedRealtime 与开机次数，真机实测 ±1 天跳钟误差 4 秒；启动用 SplashScreen 防白闪并在首帧后隐藏。",
+    outcome:
+      "已发 GitHub Release v1.2.0 并挂 APK，可直接下载安装。音频全部由项目自行程序化合成，正式播报走系统 TTS 引擎；仅 Android，后台加固与部分统计口径仍按挂账处理。",
+    gallery: [],
+    releaseUrl:
+      "https://github.com/wanghoufan/p025-stretch-routine-app/releases/tag/v1.2.0",
+    repoUrl: "https://github.com/wanghoufan/p025-stretch-routine-app",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p025-stretch-routine-app",
+      },
+      {
+        label: "下载安卓安装包",
+        href: "https://github.com/wanghoufan/p025-stretch-routine-app/releases/tag/v1.2.0",
+      },
+    ],
+  },
+  {
+    slug: "stretch-side-timer",
+    title: "拉伸换边计时器",
+    status: "published",
+    statusLabel: "源码公开",
+    year: "2026",
+    category: "mobile",
+    summary:
+      "拉伸不用自己数秒：这边响完提醒换那边，一段接一段跑完全程，还有小动物陪着练。",
+    cover: "/projects/stretch-side-timer.jpg",
+    tags: ["Android", "Expo / React Native", "拉伸", "计时提醒"],
+    role: "独立设计与开发",
+    background:
+      "左右对称的拉伸和筋膜放松，最难的是记住「这边够了没、该不该换边」。数秒会分心，干脆交给提示音。",
+    challenge:
+      "锁屏之后计时还要准；安卓桌面图标要显示英文名，得自己写 config plugin 才能做到。",
+    solution:
+      "分段循环倒计时配换边响铃，跑完一段自动接下一段；陪伴小动物用 emoji 做五状态动画；4 套主题、8 种换边音与 9 种背景音、中英文跟随系统，历史记录存 AsyncStorage；锁屏计时用结束时间戳回校。",
+    outcome:
+      "完成 Android APK 并在真机验收（无 iOS）。背景音使用 Incompetech 的 CC BY 4.0 署名素材；安装包未发 GitHub Release，源码与真机运行证明公开在仓库。",
+    gallery: [],
+    repoUrl: "https://github.com/wanghoufan/p020-stretch-side-timer",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p020-stretch-side-timer",
+      },
+    ],
+  },
+  {
+    slug: "photo-library",
+    title: "摄影作品库",
+    status: "published",
+    statusLabel: "源码公开",
+    year: "2026",
+    category: "web",
+    summary:
+      "拍过的照片变成找得到的作品：按地点、风格、构图筛出满意的一批，链接一甩就能给别人看同一批结果。",
+    cover: "/projects/photo-library.jpg",
+    tags: ["React 19 + Vite", "PWA", "分面筛选", "本地优先"],
+    role: "独立设计与开发",
+    background:
+      "照片按文件夹存着就再也找不到了。这个项目把它变成一座私人收藏馆：图片是主角，靠标签和分面把「满意的那一批」随时捞出来。",
+    challenge:
+      "六个维度的筛选要能叠加并实时显示命中数；筛选条件还得编进 URL，别人打开链接看到的是同一批结果；写入要先落本地、登录后再按依赖顺序推云端，删除必须反序。",
+    solution:
+      "瀑布流与网格两种画廊配灯箱；地点、风格、构图、年份、方向、收藏六维分面，支持单张与批量导入、标签改名与删除；IndexedDB 本地优先加 outbox 待推送队列，Google 登录后同步到自建 Supabase 的独立 schema；筛选状态写进 URL 用于分享；PWA 可安装，移动优先、桌面增强。",
+    outcome:
+      "完成可用系统并以 Docker 自托管，未公开部署站点地址。演示图走 Unsplash 外链，离线会空；「导出数据」按钮尚未实现。",
+    gallery: [],
+    repoUrl: "https://github.com/wanghoufan/p015-photo-library",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p015-photo-library",
+      },
+    ],
+  },
+  {
+    slug: "fill-light",
+    title: "夜间补光灯",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    category: "mobile",
+    summary:
+      "手边没灯时，第二台手机就是补光灯：全屏常亮，颜色和强度随手调，两台手机不用配对、也不能远程控制。",
+    cover: "/projects/fill-light.jpg",
+    tags: ["Android", "Expo / React Native", "补光", "离线单机"],
+    role: "独立设计与开发",
+    background:
+      "一台手机既要拍又要补光就冲突；手电筒光质偏硬刺眼，专业补光灯又贵。把闲置的第二台手机变成灯最省事。",
+    challenge:
+      "上架包要求 0 权限，网络权限只能留在 debug 构建里；语言偏好写入要串行，否则并发会丢；色轮贴图得用脚本生成而不是手摆。",
+    solution:
+      "全屏补光画布默认暖白常亮；8 组预设色加 HSV 色轮自定义；颜色强度与屏幕亮度双滑条；操作面板 5 秒自动收起避免误触；状态本地持久化，中英双语；Expo + React Native 实现，仅本机生效。",
+    outcome:
+      "已发 GitHub Release v2.1.0 并挂 app-release.apk，真机 release 截图入库。仅 Android，iOS 未实装。",
+    gallery: [],
+    releaseUrl:
+      "https://github.com/wanghoufan/p026-yejian-buguangdeng/releases/tag/v2.1.0",
+    repoUrl: "https://github.com/wanghoufan/p026-yejian-buguangdeng",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p026-yejian-buguangdeng",
+      },
+      {
+        label: "下载安卓安装包",
+        href: "https://github.com/wanghoufan/p026-yejian-buguangdeng/releases/tag/v2.1.0",
+      },
+    ],
+  },
 ];
