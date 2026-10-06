@@ -130,6 +130,7 @@ test("every project repoUrl points at a real renamed repository", async () => {
     "hongli-dixin-calc": "p022-hongli-dixin-calc",
     "video2obsidian": "p018-video2obsidian-mac",
     "family-insurance-dashboard": "p001-family-insurance-dashboard",
+    "ai-storyboard-studio": "p044-ai-storyboard-studio",
   };
   for (const [slug, repo] of Object.entries(expected)) {
     const { res, text } = await get(`/projects/${slug}/`);
@@ -142,14 +143,16 @@ test("every project repoUrl points at a real renamed repository", async () => {
   }
 });
 
-test("storyboard project carries no dead links and ships its screenshots", async () => {
+test("storyboard project links to its public repo and live Vercel site", async () => {
   const { res, text } = await get("/projects/ai-storyboard-studio/");
   assert.equal(res.status, 200);
-  // 该产品的仓库是私有快照、公网版已停更，两条链接访客点开分别是 404 / 403
-  assert.doesNotMatch(text, /ai-storyboard-generator/);
+  // 仓库已转公开并补回源码，公网版改由 Vercel 托管（2026-10-06）
+  assert.match(text, /wanghoufan\/p044-ai-storyboard-studio/);
+  assert.match(text, /ai-storyboard-studio-zeta\.vercel\.app/);
+  // 已停更的 ChatGPT Sites 旧地址不得再出现在页面上
   assert.doesNotMatch(text, /chatgpt\.site/);
-  assert.doesNotMatch(text, /查看 GitHub 项目/);
-  // 改用它自己的真实运行截图作展示
+  assert.doesNotMatch(text, /ai-storyboard-generator/);
+  // 展示仍用它自己的真实运行截图
   assert.match(text, /ai-storyboard-studio-desktop\.jpg/);
   assert.match(text, /ai-storyboard-studio-mobile\.jpg/);
 });

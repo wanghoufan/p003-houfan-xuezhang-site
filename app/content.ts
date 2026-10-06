@@ -229,7 +229,7 @@ export const projects: Project[] = [
     slug: "ai-storyboard-studio",
     title: "AI 图文短剧分镜生成器",
     status: "published",
-    statusLabel: "本地演示版",
+    statusLabel: "已发布",
     year: "2026",
     category: "web",
     summary:
@@ -250,7 +250,18 @@ export const projects: Project[] = [
       "/projects/ai-storyboard-studio-mobile.jpg",
       "/projects/ai-storyboard-studio-lightbox.jpg",
     ],
-    links: [],
+    siteUrl: "https://ai-storyboard-studio-zeta.vercel.app",
+    repoUrl: "https://github.com/wanghoufan/p044-ai-storyboard-studio",
+    links: [
+      {
+        label: "打开在线体验",
+        href: "https://ai-storyboard-studio-zeta.vercel.app",
+      },
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p044-ai-storyboard-studio",
+      },
+    ],
   },
   {
     slug: "50-haikou-cafes",
