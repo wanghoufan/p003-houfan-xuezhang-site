@@ -228,7 +228,7 @@ export const projects: Project[] = [
     slug: "ai-storyboard-studio",
     title: "AI 图文短剧分镜生成器",
     status: "published",
-    statusLabel: "已发布",
+    statusLabel: "本地演示版",
     year: "2026",
     category: "web",
     summary:
@@ -244,19 +244,12 @@ export const projects: Project[] = [
       "用户输入短剧主题、剧本和风格后，系统自动完成文字分镜拆解，并为每个镜头生成电影感画面，形成按镜头组织的图文创作工作区。",
     outcome:
       "完成一款面向短视频创作流程的 AI 分镜工具，帮助创作者快速把剧本转化为可理解、可讨论、可执行的视觉方案。",
-    gallery: [],
-    siteUrl: "https://ai-storyboard-studio-2026.mortimerstephanie14.chatgpt.site/",
-    repoUrl: "https://github.com/wanghoufan/ai-storyboard-generator",
-    links: [
-      {
-        label: "打开在线体验",
-        href: "https://ai-storyboard-studio-2026.mortimerstephanie14.chatgpt.site/",
-      },
-      {
-        label: "查看 GitHub 项目",
-        href: "https://github.com/wanghoufan/ai-storyboard-generator",
-      },
+    gallery: [
+      "/projects/ai-storyboard-studio-desktop.jpg",
+      "/projects/ai-storyboard-studio-mobile.jpg",
+      "/projects/ai-storyboard-studio-lightbox.jpg",
     ],
+    links: [],
   },
   {
     slug: "50-haikou-cafes",

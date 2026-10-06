@@ -119,7 +119,6 @@ test("every project repoUrl points at a real renamed repository", async () => {
     "cny-us-rate-board": "p036-cny-us-rate-board",
     "deepseek-balance-widget": "DeepSeekBalanceWidget-Windows",
     "nomad-seasons": "nomad-seasons",
-    "ai-storyboard-studio": "ai-storyboard-generator",
     "50-haikou-cafes": "50-haikou-cafes",
     "a-share-index-valuation-report": "p023-a-share-index-valuation",
     "ai-resume-job-matcher": "ai-resume-job-matcher",
@@ -134,6 +133,18 @@ test("every project repoUrl points at a real renamed repository", async () => {
       `${slug} 应链接到 github.com/wanghoufan/${repo}`,
     );
   }
+});
+
+test("storyboard project carries no dead links and ships its screenshots", async () => {
+  const { res, text } = await get("/projects/ai-storyboard-studio/");
+  assert.equal(res.status, 200);
+  // 该产品的仓库是私有快照、公网版已停更，两条链接访客点开分别是 404 / 403
+  assert.doesNotMatch(text, /ai-storyboard-generator/);
+  assert.doesNotMatch(text, /chatgpt\.site/);
+  assert.doesNotMatch(text, /查看 GitHub 项目/);
+  // 改用它自己的真实运行截图作展示
+  assert.match(text, /ai-storyboard-studio-desktop\.jpg/);
+  assert.match(text, /ai-storyboard-studio-mobile\.jpg/);
 });
 
 test("new published project routes render their details", async () => {
