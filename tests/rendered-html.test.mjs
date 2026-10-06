@@ -118,13 +118,18 @@ test("published project route renders its story and GitHub link", async () => {
 test("every project repoUrl points at a real renamed repository", async () => {
   const expected = {
     "cny-us-rate-board": "p036-cny-us-rate-board",
-    "deepseek-balance-widget": "DeepSeekBalanceWidget-Windows",
+    "deepseek-balance-widget": "p010-deepseek-balance-windows",
     "nomad-seasons": "nomad-seasons",
     "50-haikou-cafes": "50-haikou-cafes",
     "a-share-index-valuation-report": "p023-a-share-index-valuation",
     "ai-resume-job-matcher": "ai-resume-job-matcher",
     "life-species-coze": "p002-life-species-test",
     "protein-calculator": "p027-protein-calculator",
+    "roll-position-calculator": "p013-roll-position-calculator",
+    "breakout-radar": "p014-doge-breakout-radar",
+    "hongli-dixin-calc": "p022-hongli-dixin-calc",
+    "video2obsidian": "p018-video2obsidian-mac",
+    "family-insurance-dashboard": "p001-family-insurance-dashboard",
   };
   for (const [slug, repo] of Object.entries(expected)) {
     const { res, text } = await get(`/projects/${slug}/`);
@@ -155,6 +160,11 @@ test("new published project routes render their details", async () => {
     ["ai-resume-job-matcher", /AI 简历岗位匹配助手/],
     ["life-species-coze", /生活物种/],
     ["protein-calculator", /蛋白质计算器/],
+    ["roll-position-calculator", /滚仓计算器/],
+    ["breakout-radar", /突破雷达/],
+    ["hongli-dixin-calc", /红利打新底仓计算器/],
+    ["video2obsidian", /懒得笔记/],
+    ["family-insurance-dashboard", /家庭保单数据看板/],
   ];
   for (const [slug, title] of routes) {
     const { res, text } = await get(`/projects/${slug}/`);
@@ -200,6 +210,11 @@ test("static export ships every published project as its own folder", async () =
     "ai-resume-job-matcher",
     "life-species-coze",
     "protein-calculator",
+    "roll-position-calculator",
+    "breakout-radar",
+    "hongli-dixin-calc",
+    "video2obsidian",
+    "family-insurance-dashboard",
   ];
   const dirs = (await readdir(path.join(OUT, "projects"), { withFileTypes: true }))
     .filter((entry) => entry.isDirectory())

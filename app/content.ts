@@ -164,7 +164,7 @@ export const projects: Project[] = [
     summary:
       "一个面向 Windows 11 的 DeepSeek API 余额监控工具，集中展示余额变化、充值与赠送明细，并在余额异常时及时提醒。",
     cover:
-      "https://raw.githubusercontent.com/wanghoufan/DeepSeekBalanceWidget-Windows/master/artifacts/ui-audit/02-after.png",
+      "https://raw.githubusercontent.com/wanghoufan/p010-deepseek-balance-windows/master/artifacts/ui-audit/02-after.png",
     tags: ["Windows 11", ".NET 8", "WPF", "API 监控"],
     role: "独立设计与开发",
     background:
@@ -177,16 +177,16 @@ export const projects: Project[] = [
       "完成一个可独立运行的 Windows x64 自包含单文件工具，并通过 GitHub Actions 持续检查构建与测试；发布包无需目标电脑预装 .NET Runtime。",
     gallery: [],
     releaseUrl:
-      "https://github.com/wanghoufan/DeepSeekBalanceWidget-Windows/releases/latest",
-    repoUrl: "https://github.com/wanghoufan/DeepSeekBalanceWidget-Windows",
+      "https://github.com/wanghoufan/p010-deepseek-balance-windows/releases/latest",
+    repoUrl: "https://github.com/wanghoufan/p010-deepseek-balance-windows",
     links: [
       {
         label: "查看 GitHub 项目",
-        href: "https://github.com/wanghoufan/DeepSeekBalanceWidget-Windows",
+        href: "https://github.com/wanghoufan/p010-deepseek-balance-windows",
       },
       {
         label: "下载最新版本",
-        href: "https://github.com/wanghoufan/DeepSeekBalanceWidget-Windows/releases/latest",
+        href: "https://github.com/wanghoufan/p010-deepseek-balance-windows/releases/latest",
       },
     ],
   },
@@ -425,6 +425,161 @@ export const projects: Project[] = [
       {
         label: "下载安卓安装包",
         href: "https://github.com/wanghoufan/p027-protein-calculator/releases/tag/styleB-20260920",
+      },
+    ],
+  },
+  {
+    slug: "roll-position-calculator",
+    title: "滚仓计算器",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    category: "web",
+    summary:
+      "每级涨多少、加多少杠杆、走到哪会崩，先演给你看：一张滚仓推演表配本地历史和实盘记录，全程在浏览器里跑，不联网。",
+    cover: "/projects/roll-position-calculator.jpg",
+    tags: ["纯前端单文件", "零依赖", "滚仓推演", "本地存储"],
+    role: "独立设计与开发",
+    background:
+      "滚仓要同时盯每一级的涨幅、杠杆、仓位和资产变化，在表格软件里改一格就要重算一轮，也留不下每次推演的版本，更没法把真实成交和假设摆在一起对照。",
+    challenge:
+      "在「单个 HTML 文件、零依赖、不联网」的前提下，文字记录要存 localStorage、截图要存 IndexedDB（原图与缩略图双份），还要处理隐私模式写入失败、窄屏下宽表格读不动这些真实情况。",
+    solution:
+      "四项输入生成 12 阶段推演表，规则是涨幅 × 上一阶段杠杆 = 1、资产逐级翻倍；本地历史快照最多 100 条可回退，支持 JSON 导出导入；实盘记录做盈亏台账与总收益，可原地编辑不产生重复；截图留证支持点击、拖拽、Ctrl+V 三种录入，用 canvas 压到 1600 与 320 两档；680px 断点把表格转成卡片。",
+    outcome:
+      "已上线并线上实测通过，代码无待修 Bug。未计入手续费、资金费率、滑点与强平风险，不构成任何投资建议；所有数据留在本机浏览器，不上传。",
+    gallery: [],
+    siteUrl: "https://roll-position-calculator-houfan.vercel.app",
+    repoUrl: "https://github.com/wanghoufan/p013-roll-position-calculator",
+    links: [
+      {
+        label: "打开在线体验",
+        href: "https://roll-position-calculator-houfan.vercel.app",
+      },
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p013-roll-position-calculator",
+      },
+    ],
+  },
+  {
+    slug: "breakout-radar",
+    title: "PEPE / DOGE 突破雷达",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    category: "web",
+    summary:
+      "把历史量化研究做成一台能实时看的行情观测雷达：六层独立评分加十态状态机，每个信号都带值、证据来源、时间戳和数据新鲜度。",
+    cover: "/projects/breakout-radar.jpg",
+    tags: ["Next.js 16", "量化研究", "可解释信号", "回测"],
+    role: "独立产品设计与开发",
+    background:
+      "山寨币突破这件事，多数工具只给一个「像不像要涨了」的模糊结论。这个项目想反过来做：用严格时点对齐、无未来数据污染的方法，把判断过程摊开给人看，包括失败的样本。",
+    challenge:
+      "时点必须对齐——回看窗口取 42 根 4H，MFE/MAE 从突破收盘起算，窗口不含突破那根 K 线；历史样本口径要冻结，不能为了让结论好看而扩容；交易所接口既要避开 CORS 又不能暴露密钥；网络不可用时得诚实降级，不能拿快照冒充实时。",
+    solution:
+      "用 Rolling Breakout 配 EMA、ATR、量比、相对 BTC 强度与资金费率把币种归入十态状态机，再拆成环境闸门、Setup、Trigger、Follow-through、Risk、Hard Veto 六层独立评分；收录 21 个历史波段事件矿场与成功/失败冻结样本做 walk-forward 检验；另配相似性引擎回答「当前最像哪一波」。",
+    outcome:
+      "已上线 Vercel，73 项单测加 21 事件回归通过。不输出胜率、准确率、假突破概率或任何收益承诺，回测指标只作为研究诚实性证据呈现；行情取自 OKX / Binance 公开接口，不构成投资建议。",
+    gallery: [],
+    siteUrl: "https://pepe-doge-breakout-radar.vercel.app",
+    repoUrl: "https://github.com/wanghoufan/p014-doge-breakout-radar",
+    links: [
+      {
+        label: "打开在线体验",
+        href: "https://pepe-doge-breakout-radar.vercel.app",
+      },
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p014-doge-breakout-radar",
+      },
+    ],
+  },
+  {
+    slug: "hongli-dixin-calc",
+    title: "红利打新底仓计算器",
+    status: "published",
+    statusLabel: "本机自托管版",
+    year: "2026",
+    category: "web",
+    summary:
+      "一个人也能跑完的打新底仓闭环：从估值判断、官方成分核对，到算出每只买多少股、冻结下单计划、手机辅助下单，再回到真实持仓追溯。",
+    cover: "/projects/hongli-dixin-calc.jpg",
+    tags: ["Python 标准库", "SQLite", "红利指数", "打新底仓"],
+    role: "独立设计与开发",
+    background:
+      "配底仓打新时，估值、成分权重、资金分配、下单数量、持仓追溯散落在不同地方，一个人很难一次算清还核得准。这个工具把它们串成一条本机就能走完的流程。",
+    challenge:
+      "估值与回撤要双源核验：同指数 inner join、缺失率不超 0.5%、误差不超 0.10%，任一不过就显示「暂无数据」而不是凑一个数；行情走三路五态契约（3 秒超时、2 次退避、72 小时陈旧判定）；下单计划要能冻结，也要允许人工确认与修正。",
+    solution:
+      "服务端只用 Python 标准库 http.server 加 SQLite 账本，前端是单文件页面；官方成分与权重做三层缓存；资金到下单数量由四生命周期计划引擎算出，手机端提供 checklist 四态辅助下单；持仓与现金从账本视图重建，手动覆盖价不参与账本定价。",
+    outcome:
+      "完成 V1.3 全流程闭环，在 Mac Mini 本机自托管、可选 Docker 部署。它只做计划、记录和核对，不接券商接口、不自动交易；行情仅供资金测算，正式下单以券商盘口为准，不构成投资建议。",
+    gallery: [],
+    repoUrl: "https://github.com/wanghoufan/p022-hongli-dixin-calc",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p022-hongli-dixin-calc",
+      },
+    ],
+  },
+  {
+    slug: "video2obsidian",
+    title: "懒得笔记 · 本地视频转文字",
+    status: "published",
+    statusLabel: "macOS 本机版",
+    year: "2026",
+    category: "desktop",
+    summary:
+      "课程和播客视频不再烂在硬盘里：丢进一个文件夹，本机自动转写、分段整理成能搜的 Markdown 笔记，数据全程不上传。",
+    cover: "/projects/video2obsidian.jpg",
+    tags: ["macOS 桌面工具", "本机语音转写", "Obsidian", "离线无 API 费用"],
+    role: "独立设计与开发",
+    background:
+      "手头攒了不少课程和播客视频，想变成能搜的笔记，但不想把文件上传到云服务、也不想按分钟付 API 费用。于是把转写搬到本机跑。",
+    challenge:
+      "已有笔记不能被覆盖；刚拷进文件夹的视频要等约 7 秒写稳才能入队，否则会把半个文件送去转写；重启后监听状态不恢复；长视频端到端要能重试、能预览，还得让人看清每一步卡在哪。",
+    solution:
+      "拆成 stage1–12 的分阶段流水线，本机用 mlx-whisper（large-v3-turbo 冻结版）加 ffmpeg 提音频转写，watchdog 监听文件夹自动排队；词汇区填「错词 → 正词」可重跑；整理成分段 Markdown，填了笔记库目录就镜像写入 Obsidian，不填只留在数据目录；任务列表按发现 → 听写 → 整理 → 成稿 → 入库展示状态。",
+    outcome:
+      "冻结版已打 tag `v1.0-mac`。只需 Apple Silicon Mac、Python 3.12 与 ffmpeg，不需要任何 API Key；Windows 版在同一仓库独立开发，尚未发布。",
+    gallery: [],
+    repoUrl: "https://github.com/wanghoufan/p018-video2obsidian-mac",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p018-video2obsidian-mac",
+      },
+    ],
+  },
+  {
+    slug: "family-insurance-dashboard",
+    title: "家庭保单数据看板",
+    status: "published",
+    statusLabel: "本地演示版",
+    year: "2026",
+    category: "web",
+    summary:
+      "家里买了哪些保险终于说得清：谁保障不够、哪张快到期、今年要交多少钱，不用再翻箱倒柜找合同。",
+    cover: "/projects/family-insurance-dashboard.png",
+    tags: ["纯前端单文件", "离线可用", "数据脱敏", "家庭财务"],
+    role: "独立设计与开发",
+    background:
+      "家庭保单往往分散在不同保司、不同年份的合同里，想知道「谁的保障不够、哪张快到期、今年一共交多少」只能一份份翻。",
+    challenge:
+      "要守住一个边界：身份证号和合同附件永远只存本机，不联网时完全离线可用；同时开启云同步后，离线期间的改动不能丢；单文件页面还要避免主题切换时闪一下白。",
+    solution:
+      "原生 HTML / CSS / JavaScript 单文件，零依赖零构建：保单字段存 localStorage，合同附件存 IndexedDB；到期提醒配桌面通知，费率趋势看同比；可选 Supabase 云同步，用记录级写入队列与 outbox 排队补传，并以 INITIAL_SESSION 守卫防止刷新循环；备份走 WebCrypto 加密，可导出 Excel 模板与 JSON。",
+    outcome:
+      "MVP 已完成并通过验收，可用 nginx / Docker 自托管。内置示例数据全部脱敏（示例投保人甲 / 乙、示例保单号），真实保单只留在本机浏览器，绝不上传。",
+    gallery: [],
+    repoUrl: "https://github.com/wanghoufan/p001-family-insurance-dashboard",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p001-family-insurance-dashboard",
       },
     ],
   },
