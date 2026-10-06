@@ -1,11 +1,12 @@
 export type ProjectStatus = "draft" | "published";
 
-// 作品形态分类：网页应用 / 桌面工具 / AI 应用 / 数据报告
-export type ProjectCategory = "web" | "desktop" | "ai" | "report";
+// 作品形态分类：网页应用 / 桌面工具 / 移动应用 / AI 应用 / 数据报告
+export type ProjectCategory = "web" | "desktop" | "mobile" | "ai" | "report";
 
 export const projectCategoryLabels: Record<ProjectCategory, string> = {
   web: "网页应用",
   desktop: "桌面工具",
+  mobile: "移动应用",
   ai: "AI 应用",
   report: "数据报告",
 };
@@ -386,6 +387,44 @@ export const projects: Project[] = [
       {
         label: "查看 GitHub 项目",
         href: "https://github.com/wanghoufan/p002-life-species-test",
+      },
+    ],
+  },
+  {
+    slug: "protein-calculator",
+    title: "蛋白质计算器",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    category: "mobile",
+    summary:
+      "不用注册、不用联网的 Android 小工具：按体重算出每天该吃多少蛋白质，再对照高蛋白食物榜把这顿饭还差多少算清楚。",
+    cover: "/projects/protein-calculator.png",
+    tags: ["Android", "Expo / React Native", "离线单机", "中英双语"],
+    role: "独立设计与开发",
+    background:
+      "健身或关注饮食的人想知道每天大概需要多少蛋白质，以及几块鸡胸肉、几个鸡蛋、一瓶牛奶分别提供多少。查成分表麻烦，在线工具要注册还要联网，判断成本比问题本身还高。",
+    challenge:
+      "要在手机屏幕上同时容纳每日目标计算（四种目标模式、低档与高档两个取值）、30 种常见食物的蛋白排行、按克 / 毫升 / 个 / 瓶等混合单位录入，外加深浅色与中英双语，并且全程离线可用。",
+    solution:
+      "输入体重并选择目标模式即得到每日目标克数；高蛋白食物榜按每 100g 蛋白含量排序，点「+」可连续加入，页面实时汇总本顿摄入、还差多少并用进度条表示。预设食物的营养值与常用份量能按实际包装改写，也可新增自定义食物并恢复默认；体重、系数、数量与自定义食物都存在本机，杀进程重开可以接着用，数据损坏时自动回落默认而不闪退。",
+    outcome:
+      "完成一款仅 Android 的单机 App，支持中英双语与跟随系统的深浅色；榜单数据取自中国疾病预防控制中心营养与健康所《中国食物成分表》查询平台（核验 2026-09），App 内保留来源与说明卡并声明不代表全库排名；源码与运行截图已公开在 GitHub。",
+    gallery: [
+      "/projects/protein-calculator-ranking.png",
+      "/projects/protein-calculator-dark-home.png",
+    ],
+    releaseUrl:
+      "https://github.com/wanghoufan/p027-protein-calculator/releases/tag/styleB-20260920",
+    repoUrl: "https://github.com/wanghoufan/p027-protein-calculator",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p027-protein-calculator",
+      },
+      {
+        label: "下载安卓安装包",
+        href: "https://github.com/wanghoufan/p027-protein-calculator/releases/tag/styleB-20260920",
       },
     ],
   },

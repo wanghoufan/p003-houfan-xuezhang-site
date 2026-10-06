@@ -82,6 +82,7 @@ test("server-renders the complete personal homepage", async () => {
   assert.match(text, /海口值得去的 50 家咖啡店/);
   assert.match(text, /A股十一大指数十年估值分位报告/);
   assert.match(text, /AI 简历岗位匹配助手/);
+  assert.match(text, /蛋白质计算器/);
   assert.match(text, /生活类/);
   assert.match(text, /运动类/);
   assert.match(text, /微信/);
@@ -123,6 +124,7 @@ test("every project repoUrl points at a real renamed repository", async () => {
     "a-share-index-valuation-report": "p023-a-share-index-valuation",
     "ai-resume-job-matcher": "ai-resume-job-matcher",
     "life-species-coze": "p002-life-species-test",
+    "protein-calculator": "p027-protein-calculator",
   };
   for (const [slug, repo] of Object.entries(expected)) {
     const { res, text } = await get(`/projects/${slug}/`);
@@ -152,11 +154,31 @@ test("new published project routes render their details", async () => {
     ["a-share-index-valuation-report", /A股十一大指数十年估值分位报告/],
     ["ai-resume-job-matcher", /AI 简历岗位匹配助手/],
     ["life-species-coze", /生活物种/],
+    ["protein-calculator", /蛋白质计算器/],
   ];
   for (const [slug, title] of routes) {
     const { res, text } = await get(`/projects/${slug}/`);
     assert.equal(res.status, 200);
     assert.match(text, title);
+  }
+});
+
+// 封面与详情图用站内本地图（外链图床在国内访客侧不可靠）；文件名一改就会静默空图，这里钉住。
+test("protein calculator ships its own screenshots from the site", async () => {
+  const { res, text } = await get("/projects/protein-calculator/");
+  assert.equal(res.status, 200);
+  assert.match(text, /protein-calculator\.png/);
+  assert.match(text, /protein-calculator-ranking\.png/);
+  assert.match(text, /protein-calculator-dark-home\.png/);
+  // 下载入口指向真实存在的 tag 页：只有预发布版时 /releases/latest 会 404
+  assert.match(text, /releases\/tag\/styleB-20260920/);
+  for (const file of [
+    "protein-calculator.png",
+    "protein-calculator-ranking.png",
+    "protein-calculator-dark-home.png",
+  ]) {
+    const bytes = await readFile(path.join(OUT, "projects", file));
+    assert.ok(bytes.length > 10_000, `${file} 应随静态导出一起发布`);
   }
 });
 
@@ -177,6 +199,7 @@ test("static export ships every published project as its own folder", async () =
     "a-share-index-valuation-report",
     "ai-resume-job-matcher",
     "life-species-coze",
+    "protein-calculator",
   ];
   const dirs = (await readdir(path.join(OUT, "projects"), { withFileTypes: true }))
     .filter((entry) => entry.isDirectory())
