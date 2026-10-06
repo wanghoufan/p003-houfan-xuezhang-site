@@ -90,6 +90,7 @@ export const interests = [
   { name: "咖啡", mark: "COFFEE", category: "生活类", photo: "/photos/coffee.webp" },
   { name: "阅读", mark: "READ", category: "生活类", photo: "/photos/reading.webp" },
   { name: "吉他", mark: "GUITAR", category: "生活类", photo: "/photos/guitar.webp" },
+  { name: "AI 编程", mark: "CODE", category: "生活类", photo: "/photos/ai-coding.webp" },
   { name: "健身", mark: "FITNESS", category: "运动类", photo: "/photos/fitness.webp" },
   { name: "篮球", mark: "BASKETBALL", category: "运动类", photo: "/photos/basketball.webp" },
   { name: "抖舞", mark: "DANCE", category: "运动类", photo: "/photos/dance.webp" },

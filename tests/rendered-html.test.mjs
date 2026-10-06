@@ -291,3 +291,17 @@ test("方法与体系 是筛选标签，两条作品就在同一面作品墙里"
     assert.ok(wall.includes(`<h3>${title}</h3>`), `${title} 应作为卡片出现在作品墙内`);
   }
 });
+
+test("生活类兴趣含 AI 编程且照片资源存在", async () => {
+  const { text } = await get("/");
+  const plain = text.replace(/<!--.*?-->/g, "");
+  const at = plain.indexOf("生活类");
+  const group = plain.slice(at, plain.indexOf("运动类"));
+  assert.match(group, /4 项兴趣/, "生活类应为 4 项");
+  for (const name of ["咖啡", "阅读", "吉他", "AI 编程"]) {
+    assert.ok(group.includes(name), `生活类应包含 ${name}`);
+  }
+  assert.ok(group.includes("/photos/ai-coding.webp"), "AI 编程应指向 ai-coding.webp");
+  const img = await fetch(`${BASE}/photos/ai-coding.webp`);
+  assert.equal(img.status, 200, "AI 编程照片应随构建产出");
+});
