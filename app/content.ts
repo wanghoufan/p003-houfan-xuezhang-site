@@ -226,6 +226,35 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "prompt-manager",
+    title: "提示词管理器",
+    status: "published",
+    statusLabel: "源码公开",
+    year: "2026",
+    category: "web",
+    summary:
+      "把散落各处的提示词存成能搜的卡片：粘贴正文就自动起标题、打标签，复制过几次一目了然，设个调取码还能让 AI 编程助手直接按它开工。",
+    cover: null,
+    tags: ["本地网页端", "SQLite", "MCP 接入", "提示词知识库"],
+    role: "独立设计与开发",
+    background:
+      "提示词散在聊天记录、备忘录、本地 txt 里，想复用时找不到；每次想让 AI 换个角色又要重贴一大段；电脑 A 整理的电脑 B 看不到；哪个最常用也没有数据支撑。",
+    challenge:
+      "多台电脑共用一份数据要秒级互推；编辑要「失焦即存」但不能每次失焦都生成版本快照；搜索既要覆盖标题、正文、标签、备注，又要支持按调取码直达，高亮还得在暗色与亮色两套主题下都够对比度。",
+    solution:
+      "数据存本机 SQLite；搜索框 300ms 防抖，支持 `@code` 按调取码直达与命中计数，高亮用 CSS 变量分别适配两套主题；手动复制与 MCP 调取共用次数统计；正文保存自动存档最多 10 版可回滚；主题三档跟随系统并用首屏内联脚本防闪烁；再通过 MCP 让 WorkBuddy 等 Agent 用一句「调取 <码>」把卡片正文注入为系统提示词直接执行。",
+    outcome:
+      "完成本地网页端与 MCP 接入，支持局域网多端实时同步与 Docker 自托管，源码公开在 GitHub。暂无公网演示站；仓库 README 里的界面截图含本机真实使用数据与本地路径，因此本站暂不展示封面图。",
+    gallery: [],
+    repoUrl: "https://github.com/wanghoufan/p006-prompt-manager",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p006-prompt-manager",
+      },
+    ],
+  },
+  {
     slug: "nomad-seasons",
     title: "候鸟 / Nomad Seasons",
     status: "published",

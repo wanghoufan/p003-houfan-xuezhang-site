@@ -9,7 +9,7 @@ A non-job-hunting personal showcase site that presents personal background, AI a
 - Live URLs (both serve identical content; visitors should use GitHub Pages, which loads faster in mainland China):
   - GitHub Pages (primary): https://wanghoufan.github.io/p003-houfan-xuezhang-site/
   - Vercel (mirror): https://houfan-xuezhang-site.vercel.app
-- 24 published projects, 1 service card, Chinese-language interface
+- 25 published projects, 1 service card, Chinese-language interface
 - Fully static — no database, no login, no comments, no admin panel
 
 ## What the site does
