@@ -1,0 +1,12 @@
+# 项目机器身份 — 由 Project Steward 生成，请勿删除
+project_id: P003
+name_zh: 个人网站 site
+slug: houfan-xuezhang-site
+status: ing
+github: wanghoufan/p003-houfan-xuezhang-site
+visibility: public
+created_at: 2026-08-17T00:00:00+08:00  # GitHub 建仓日（回填时取自 API）
+local_path: /Users/zzymima0000/Developer/coding/1.Active/003-ing-个人网站项目-site
+default_branch: main
+repo_role: primary
+lifecycle: [ing, paused, done, archived]
