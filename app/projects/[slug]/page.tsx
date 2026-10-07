@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { projects } from "../../content";
+import { projectCategoryLabels, projects } from "../../content";
 import { asset } from "../../asset";
 
 type ProjectPageProps = {
@@ -53,7 +53,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </nav>
 
       <header className="project-hero">
-        <p>{project.year} · {project.statusLabel}</p>
+        <p>{project.year} · {projectCategoryLabels[project.category]}</p>
         <h1>{project.title}</h1>
         <div className="project-hero-summary">
           <p>{project.summary}</p>

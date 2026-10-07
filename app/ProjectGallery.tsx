@@ -68,8 +68,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
               </div>
             )}
             <p className="project-meta">
-              {project.year} · {project.statusLabel} ·{" "}
-              {projectCategoryLabels[project.category]}
+              {project.year} · {projectCategoryLabels[project.category]}
             </p>
             <h3>{project.title}</h3>
             <p className="project-summary">{project.summary}</p>

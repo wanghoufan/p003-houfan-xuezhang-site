@@ -89,7 +89,12 @@ test("server-renders the complete personal homepage", async () => {
   assert.match(text, /GitHub/);
   assert.match(text, /YouTube/);
   assert.match(text, /loading="lazy"/);
-  assert.doesNotMatch(text, /href="https:\/\/tiancexai\.com/);
+  // 2026-10-07：用户反馈服务卡「点了没反应」。原因是用 window.open 打开外链会被
+  // 浏览器弹窗拦截；恢复为标准 <a href target="_blank">，让链接在任何浏览器都能打开。
+  assert.match(
+    text,
+    /<a[^>]*class="service-card-link"[^>]*href="https:\/\/tiancexai\.com\/\?aff=HOUFAN"/,
+  );
   assert.doesNotMatch(text, /正在备考与探索|ongoing-column/);
 });
 

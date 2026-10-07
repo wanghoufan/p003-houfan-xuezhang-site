@@ -1,5 +1,3 @@
-"use client";
-
 import type { Service } from "./content";
 import { asset } from "./asset";
 
@@ -9,16 +7,13 @@ type ServiceCardProps = {
 };
 
 export function ServiceCard({ service, priority = false }: ServiceCardProps) {
-  const openService = () => {
-    window.open(service.href, "_blank", "noopener,noreferrer");
-  };
-
   return (
     <article className="service-card">
-      <button
-        type="button"
+      <a
         className="service-card-link"
-        onClick={openService}
+        href={service.href}
+        target="_blank"
+        rel="noopener noreferrer"
         aria-label={`在新窗口查看服务：${service.title}`}
       >
         <img
@@ -34,7 +29,7 @@ export function ServiceCard({ service, priority = false }: ServiceCardProps) {
           <h3>{service.title}</h3>
           <span aria-hidden="true">查看服务 →</span>
         </div>
-      </button>
+      </a>
     </article>
   );
 }
