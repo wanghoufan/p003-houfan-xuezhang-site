@@ -242,7 +242,7 @@ export const projects: Project[] = [
     category: "web",
     summary:
       "把散落各处的提示词存成能搜的卡片：粘贴正文就自动起标题、打标签，复制过几次一目了然，设个调取码还能让 AI 编程助手直接按它开工。",
-    cover: null,
+    cover: "/projects/prompt-manager.jpg",
     tags: ["本地网页端", "SQLite", "MCP 接入", "提示词知识库"],
     role: "独立设计与开发",
     background:
@@ -252,7 +252,7 @@ export const projects: Project[] = [
     solution:
       "数据存本机 SQLite；搜索框 300ms 防抖，支持 `@code` 按调取码直达与命中计数，高亮用 CSS 变量分别适配两套主题；手动复制与 MCP 调取共用次数统计；正文保存自动存档最多 10 版可回滚；主题三档跟随系统并用首屏内联脚本防闪烁；再通过 MCP 让 WorkBuddy 等 Agent 用一句「调取 <码>」把卡片正文注入为系统提示词直接执行。",
     outcome:
-      "完成本地网页端与 MCP 接入，支持局域网多端实时同步与 Docker 自托管，源码公开在 GitHub。暂无公网演示站；仓库 README 里的界面截图含本机真实使用数据与本地路径，因此本站暂不展示封面图。",
+      "完成本地网页端与 MCP 接入，支持局域网多端实时同步与 Docker 自托管，源码公开在 GitHub。暂无公网演示站；站内封面取自应用内置的「示例知识库」只读视图，不含任何真实使用数据。",
     gallery: [],
     repoUrl: "https://github.com/wanghoufan/p006-prompt-manager",
     links: [
@@ -826,7 +826,7 @@ export const projects: Project[] = [
     category: "mobile",
     summary:
       "做拉伸不用盯屏幕数时间：动作和节拍靠语音念给你听，跟着走完一轮就行。",
-    cover: null,
+    cover: "/projects/stretch-routine.jpg",
     tags: ["Android", "Expo / React Native", "语音播报", "离线 SQLite"],
     role: "独立设计与开发",
     background:

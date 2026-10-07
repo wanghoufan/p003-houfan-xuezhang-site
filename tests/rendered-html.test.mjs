@@ -305,3 +305,15 @@ test("生活类兴趣含 AI 编程且照片资源存在", async () => {
   const img = await fetch(`${BASE}/photos/ai-coding.webp`);
   assert.equal(img.status, 200, "AI 编程照片应随构建产出");
 });
+
+test("提示词管理器与拉伸语音播报用真实运行截图当封面", async () => {
+  const { text } = await get("/");
+  for (const [slug, file] of [
+    ["prompt-manager", "prompt-manager.jpg"],
+    ["stretch-routine", "stretch-routine.jpg"],
+  ]) {
+    assert.ok(text.includes(`/projects/${file}`), `${slug} 的卡片应引用 ${file}`);
+    const { res } = await get(`/projects/${file}`);
+    assert.equal(res.status, 200, `${file} 必须随构建产出`);
+  }
+});
