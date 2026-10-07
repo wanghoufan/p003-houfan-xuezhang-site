@@ -988,7 +988,7 @@ export const projects: Project[] = [
     category: "method",
     summary:
       "多智能体协作照着它开工：一页全员规则、角色卡、计划与验收模板、账本校验，按阶段推进不跑偏。",
-    cover: null,
+    cover: "/projects/orca-governance-template.png",
     tags: ["多智能体协作", "治理模板", "客户端无关", "验收留痕"],
     role: "独立设计与维护",
     background:
@@ -999,7 +999,9 @@ export const projects: Project[] = [
       "开工读盘顺序全体系唯一：全员规则 → 本次角色卡 → 模型表 → 交接现状 → 经验一句话，任务目标放最后。每轮开工先自动探测当前客户端再选派工口，有原生子代理就在窗口内直派，没有就走通道 CLI 直调，用户不填配置也不指派角色；用户只需记住三个口令：第一阶段计划、第二阶段开发、变更请求。",
     outcome:
       "分发版已公开在 GitHub，含中英文导航、角色规范、计划与验收模板和账本校验脚本；模型与通道口径以根目录那张表为唯一准，导航里不复述模型 ID，避免与表漂移。",
-    gallery: [],
+    gallery: [
+      "/projects/orca-governance-template-chain.png",
+    ],
     repoUrl: "https://github.com/wanghoufan/orca-v2.1-governance",
     links: [
       {
