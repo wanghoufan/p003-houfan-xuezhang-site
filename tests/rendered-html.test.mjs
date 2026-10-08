@@ -198,7 +198,7 @@ test("new published project routes render their details", async () => {
     ["photo-library", /摄影作品库/],
     ["fill-light", /夜间补光灯/],
     ["skill-system-map", /Skill 能力地图/],
-    ["orca-governance-template", /ORCA 治理模板/],
+    ["orca-governance-template", /ORCA 多智能体开发系统/],
   ];
   for (const [slug, title] of routes) {
     const { res, text } = await get(`/projects/${slug}/`);
@@ -292,7 +292,7 @@ test("方法与体系 是筛选标签，两条作品就在同一面作品墙里"
     .replace(/<!--.*?-->/g, "");
   assert.match(wall, /方法与体系（2）/, "筛选条应出现「方法与体系（2）」标签");
   assert.match(wall, /全部（27）/, "全部计数应含两条新增作品");
-  for (const title of ["Skill 能力地图", "ORCA 治理模板"]) {
+  for (const title of ["Skill 能力地图", "ORCA 多智能体开发系统"]) {
     assert.ok(wall.includes(`<h3>${title}</h3>`), `${title} 应作为卡片出现在作品墙内`);
   }
 });

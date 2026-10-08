@@ -981,7 +981,7 @@ export const projects: Project[] = [
   },
   {
     slug: "orca-governance-template",
-    title: "ORCA 治理模板",
+    title: "ORCA 多智能体开发系统",
     status: "published",
     statusLabel: "源码公开",
     year: "2026",
