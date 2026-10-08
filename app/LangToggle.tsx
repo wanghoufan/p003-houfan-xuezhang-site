@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useSyncExternalStore } from "react";
-import { ui, type Lang, type UiKey } from "./i18n";
+import { ui, uiDetail, type Lang, type UiDetailKey, type UiKey } from "./i18n";
 
 /**
  * 中英双语：值写到 <html data-lang> + localStorage["site-lang"]，默认中文。
@@ -17,6 +17,20 @@ function subscribe(listener: () => void) {
   };
 }
 
+function applyStored() {
+  let stored: string | null = null;
+  try {
+    stored = localStorage.getItem("site-lang");
+  } catch {
+    return; // 隐私模式：只在本次会话内可切换
+  }
+  if (stored === "en" && document.documentElement.dataset.lang !== "en") {
+    document.documentElement.dataset.lang = "en";
+    document.documentElement.lang = "en";
+    for (const listener of listeners) listener();
+  }
+}
+
 function read(): Lang {
   return document.documentElement.dataset.lang === "en" ? "en" : "zh";
 }
@@ -30,30 +44,28 @@ export function useT() {
   return useCallback((key: UiKey) => ui[key][lang], [lang]);
 }
 
+/** 详情页与联系面板的界面词。 */
+export function useTd() {
+  const lang = useLang();
+  return useCallback((key: UiDetailKey) => uiDetail[key][lang], [lang]);
+}
+
 const LANGS: { value: Lang; label: string }[] = [
   { value: "zh", label: "中文" },
   { value: "en", label: "EN" },
 ];
 
+/** 挂在 layout 上：让没放切换按钮的页面（作品详情）也继承上次的语言。 */
+export function LangBootstrap() {
+  useEffect(() => {
+    applyStored();
+  }, []);
+  return null;
+}
+
 export function LangToggle() {
   const lang = useLang();
   const t = useT();
-
-  // 静态导出的首屏永远是中文（服务端没有语言协商），挂载后再套用上次选择，
-  // 这样水合阶段两边一致，不会报 hydration 不匹配。
-  useEffect(() => {
-    let stored: string | null = null;
-    try {
-      stored = localStorage.getItem("site-lang");
-    } catch {
-      return;
-    }
-    if (stored === "en" && document.documentElement.dataset.lang !== "en") {
-      document.documentElement.dataset.lang = "en";
-      document.documentElement.lang = "en";
-      for (const listener of listeners) listener();
-    }
-  }, []);
 
   const select = useCallback((next: Lang) => {
     document.documentElement.dataset.lang = next;

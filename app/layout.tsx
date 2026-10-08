@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LangBootstrap } from "./LangToggle";
 import { Orbitron, Noto_Sans_SC } from "next/font/google";
 import "./globals.css";
 
@@ -73,6 +74,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className={`${orbitron.variable} ${notoSansSC.variable}`}>
+        <LangBootstrap />
         {children}
       </body>
     </html>

@@ -65,7 +65,41 @@ export const ui = {
   coverAlt: { zh: "项目封面", en: "project cover" },
 } as const;
 
+/** 详情页与联系面板的界面词（第二批）。 */
+export const uiDetail = {
+  navAria: { zh: "项目页面导航", en: "Project page navigation" },
+  backToList: { zh: "← 返回项目列表", en: "← Back to all projects" },
+  siteName: { zh: "后翻学长", en: "Houfan" },
+  myRole: { zh: "我的角色", en: "My role" },
+  techUsed: { zh: "使用技术", en: "Built with" },
+  techJoin: { zh: "、", en: ", " },
+  cover: { zh: "项目封面", en: "Project cover" },
+  coverPending: { zh: "项目封面待更新", en: "Cover to be added" },
+  imagePending: { zh: "PROJECT IMAGE · 待更新", en: "PROJECT IMAGE · to be added" },
+  background: { zh: "背景", en: "Background" },
+  challenge: { zh: "挑战", en: "Challenge" },
+  approach: { zh: "方案与过程", en: "Approach" },
+  outcome: { zh: "成果", en: "Outcome" },
+  gallery: { zh: "项目图片", en: "Project images" },
+  galleryAlt: { zh: "项目图片", en: "project image" },
+  notFound: { zh: "项目未找到", en: "Project not found" },
+  channelsAria: { zh: "联系方式", en: "Ways to reach me" },
+  wechat: { zh: "微信", en: "WeChat" },
+  viewQr: { zh: "查看二维码", en: "View the QR code" },
+  visitHome: { zh: "访问主页 ↗", en: "Visit ↗" },
+  homePending: { zh: "主页链接待补充", en: "Link to be added" },
+  visitChannel: { zh: "访问频道 ↗", en: "Visit the channel ↗" },
+  channelPending: { zh: "频道链接待补充", en: "Channel link to be added" },
+  closeQr: { zh: "关闭微信二维码", en: "Close the WeChat QR code" },
+  wechatTitle: { zh: "微信联系", en: "Reach me on WeChat" },
+  qrAlt: { zh: "后翻学长的微信二维码", en: "My WeChat QR code" },
+  qrPending: { zh: "二维码待补充", en: "QR code to be added" },
+  qrReplace: { zh: "稍后替换为真实微信二维码", en: "Will be replaced with the real QR code" },
+} as const;
+
 export type UiKey = keyof typeof ui;
+
+export type UiDetailKey = keyof typeof uiDetail;
 
 export const categoryLabelsEn: Record<ProjectCategory, string> = {
   web: "Web app",

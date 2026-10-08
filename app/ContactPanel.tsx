@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { asset } from "./asset";
+import { useTd } from "./LangToggle";
 
 const githubUrl: string | null = "https://github.com/wanghoufan";
 const youtubeUrl: string | null =
@@ -9,6 +10,7 @@ const youtubeUrl: string | null =
 const wechatQr: string | null = asset("/contact/wechat-qr.png");
 
 export function ContactPanel() {
+  const td = useTd();
   const [wechatOpen, setWechatOpen] = useState(false);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -33,24 +35,24 @@ export function ContactPanel() {
 
   return (
     <>
-      <div className="contact-channels" aria-label="联系方式">
+      <div className="contact-channels" aria-label={td("channelsAria")}>
         <button type="button" onClick={() => setWechatOpen(true)}>
           <span>01</span>
-          <strong>微信</strong>
-          <small>查看二维码</small>
+          <strong>{td("wechat")}</strong>
+          <small>{td("viewQr")}</small>
         </button>
 
         {githubUrl ? (
           <a href={githubUrl} target="_blank" rel="noreferrer">
             <span>02</span>
             <strong>GitHub</strong>
-            <small>访问主页 ↗</small>
+            <small>{td("visitHome")}</small>
           </a>
         ) : (
           <span className="contact-channel-pending" aria-disabled="true">
             <span>02</span>
             <strong>GitHub</strong>
-            <small>主页链接待补充</small>
+            <small>{td("homePending")}</small>
           </span>
         )}
 
@@ -58,13 +60,13 @@ export function ContactPanel() {
           <a href={youtubeUrl} target="_blank" rel="noreferrer">
             <span>03</span>
             <strong>YouTube</strong>
-            <small>访问频道 ↗</small>
+            <small>{td("visitChannel")}</small>
           </a>
         ) : (
           <span className="contact-channel-pending" aria-disabled="true">
             <span>03</span>
             <strong>YouTube</strong>
-            <small>频道链接待补充</small>
+            <small>{td("channelPending")}</small>
           </span>
         )}
       </div>
@@ -90,23 +92,23 @@ export function ContactPanel() {
               type="button"
               ref={closeButtonRef}
               onClick={() => setWechatOpen(false)}
-              aria-label="关闭微信二维码"
+              aria-label={td("closeQr")}
             >
               ×
             </button>
             <p className="kicker">WECHAT</p>
-            <h2 id="wechat-dialog-title">微信联系</h2>
+            <h2 id="wechat-dialog-title">{td("wechatTitle")}</h2>
             <div className="wechat-qr">
               {wechatQr ? (
                 <img
                   src={wechatQr}
-                  alt="后翻学长的微信二维码"
+                  alt={td("qrAlt")}
                   decoding="async"
                 />
               ) : (
                 <>
-                  <strong>二维码待补充</strong>
-                  <small>稍后替换为真实微信二维码</small>
+                  <strong>{td("qrPending")}</strong>
+                  <small>{td("qrReplace")}</small>
                 </>
               )}
             </div>

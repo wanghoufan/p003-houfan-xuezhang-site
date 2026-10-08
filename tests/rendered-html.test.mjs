@@ -342,6 +342,14 @@ test("每个作品都有英文标题与摘要，语言切换随构建产出", as
     "英文字典里有已不存在的作品，删掉或改回 slug",
   );
   assert.ok(dict.every(([, , title]) => title.trim().length > 0), "英文标题不许为空");
+  const detail = await readFile(path.join(PROJECT, "app/i18n.detail.ts"), "utf8");
+  for (const slug of slugs) {
+    const block = detail.match(new RegExp('\\n  ?"?' + slug + '"?: \\{([\\s\\S]*?)\\n  \\},'));
+    assert.ok(block, `${slug} 缺详情页英文块（role/background/challenge/solution/outcome/tags）`);
+    for (const field of ["role", "background", "challenge", "solution", "outcome", "tags"]) {
+      assert.match(block[1], new RegExp(field + ":"), `${slug} 的英文详情缺 ${field}`);
+    }
+  }
   const { text } = await get("/");
   assert.match(text, /data-lang-option="en"/, "页面必须带语言切换按钮");
   assert.match(text, /data-lang-option="zh"/);

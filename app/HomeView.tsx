@@ -8,6 +8,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { LangToggle, useLang, useT } from "./LangToggle";
 import { ProjectGallery } from "./ProjectGallery";
 import { asset } from "./asset";
+import { contentEn } from "./i18n.detail";
 import { profileSrc } from "./profile-inline";
 import {
   experiences,
@@ -86,11 +87,11 @@ export function HomeView() {
             <p className="eyebrow">{t("eyebrow")}</p>
             <h1 id="hero-title">{profile.nickname}</h1>
             <div className="tag-row" aria-label={t("homeAria")}>
-              {profile.tags.map((tag) => (
+              {(lang === "en" ? contentEn.tags : profile.tags).map((tag) => (
                 <span key={tag}>{tag}</span>
               ))}
             </div>
-            <blockquote>“{profile.motto}”</blockquote>
+            <blockquote>“{lang === "en" ? contentEn.motto : profile.motto}”</blockquote>
             <p className="hero-intro">{t("heroIntro")}</p>
           </div>
 
@@ -123,7 +124,7 @@ export function HomeView() {
         <section className="experience-section reveal" aria-labelledby="experience-title">
           <SectionHeading number="01" title={t("sectionExperience")} id="experience-title" />
           <ol className="timeline">
-            {experiences.map((experience) => (
+            {(lang === "en" ? contentEn.experiences : experiences).map((experience) => (
               <li key={experience.period}>
                 <time>{experience.period}</time>
                 <div>
@@ -197,14 +198,18 @@ export function HomeView() {
                         src={asset(interest.photo)}
                         alt={
                           lang === "en"
-                            ? `${interest.name} — life photo`
+                            ? `${contentEn.interests[interest.name] ?? interest.name} — life photo`
                             : `后翻学长的${interest.name}生活照片`
                         }
                       >
                         <span>{interest.mark}</span>
                         <small>{t("photoPending")}</small>
                       </PhotoSlot>
-                      <h4>{interest.name}</h4>
+                      <h4>
+                        {lang === "en"
+                          ? (contentEn.interests[interest.name] ?? interest.name)
+                          : interest.name}
+                      </h4>
                     </article>
                   ))}
                 </div>
@@ -216,7 +221,7 @@ export function HomeView() {
         <section className="milestones-section reveal" aria-labelledby="milestones-title">
           <SectionHeading number="05" title={t("sectionMilestones")} id="milestones-title" />
           <ul className="milestone-list">
-            {milestones.map((item, index) => (
+            {(lang === "en" ? contentEn.milestones : milestones).map((item, index) => (
               <li key={item}>
                 <span>0{index + 1}</span>
                 <p>{item}</p>
@@ -231,7 +236,11 @@ export function HomeView() {
             {topics.map((topic, index) => (
               <article key={topic.title}>
                 <span>0{index + 1}</span>
-                <h3>{topic.title}</h3>
+                <h3>
+                  {lang === "en"
+                    ? (contentEn.topics[topic.title] ?? topic.title)
+                    : topic.title}
+                </h3>
                 <div aria-hidden="true" className="topic-mark" />
               </article>
             ))}
