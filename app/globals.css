@@ -187,7 +187,8 @@ a:focus-visible {
 }
 
 /* 三主题分段切换器：指挥舱 / 极光 / 剪报 */
-.theme-switch {
+.theme-switch,
+.lang-switch {
   display: inline-flex;
   flex: 0 0 auto;
   padding: 3px;
@@ -197,7 +198,8 @@ a:focus-visible {
   -webkit-backdrop-filter: blur(8px);
 }
 
-.theme-option {
+.theme-option,
+.lang-option {
   padding: 6px 12px;
   border: 0;
   color: var(--text-muted);
@@ -211,11 +213,14 @@ a:focus-visible {
 }
 
 .theme-option:hover,
-.theme-option:focus-visible {
+.theme-option:focus-visible,
+.lang-option:hover,
+.lang-option:focus-visible {
   color: var(--primary-bright);
 }
 
-.theme-option.is-active {
+.theme-option.is-active,
+.lang-option.is-active {
   color: var(--bg);
   background: var(--primary);
   box-shadow: var(--shadow-glow);
@@ -1522,6 +1527,27 @@ footer p {
   }
 }
 
+/* 英文导航标签更长：≤1120 允许头部换行，避免横向溢出（中文态本来放得下，不受影响） */
+@media (max-width: 1120px) {
+  .site-header {
+    height: auto;
+    min-height: 72px;
+    padding-block: 10px;
+  }
+
+  .site-header nav {
+    gap: 6px clamp(14px, 2vw, 26px);
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .header-right {
+    gap: 10px clamp(12px, 1.6vw, 24px);
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+}
+
 @media (max-width: 1040px) {
   .project-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1578,11 +1604,13 @@ footer p {
     justify-content: flex-end;
   }
 
-  .theme-switch {
+  .theme-switch,
+  .lang-switch {
     padding: 2px;
   }
 
-  .theme-option {
+  .theme-option,
+  .lang-option {
     padding: 6px 9px;
     font-size: 11px;
   }
@@ -1965,18 +1993,21 @@ html[data-theme="glass"] .wordmark-stamp {
   box-shadow: 0 6px 16px -6px rgba(99, 102, 241, 0.55);
 }
 
-html[data-theme="glass"] .theme-switch {
+html[data-theme="glass"] .theme-switch,
+html[data-theme="glass"] .lang-switch {
   border-radius: var(--radius-chip);
   background: var(--surface-strong);
   border-color: rgba(255, 255, 255, 0.85);
   box-shadow: 0 2px 10px -4px rgba(80, 90, 160, 0.28);
 }
 
-html[data-theme="glass"] .theme-option {
+html[data-theme="glass"] .theme-option,
+html[data-theme="glass"] .lang-option {
   border-radius: var(--radius-chip);
 }
 
-html[data-theme="glass"] .theme-option.is-active {
+html[data-theme="glass"] .theme-option.is-active,
+html[data-theme="glass"] .lang-option.is-active {
   color: #ffffff;
   background: var(--aurora-gradient);
   box-shadow: 0 6px 16px -6px rgba(99, 102, 241, 0.6);
@@ -2280,7 +2311,8 @@ html[data-theme="paper"] .theme-option {
   letter-spacing: 0.04em;
 }
 
-html[data-theme="paper"] .theme-option.is-active {
+html[data-theme="paper"] .theme-option.is-active,
+html[data-theme="paper"] .lang-option.is-active {
   color: var(--surface-strong);
   background: var(--primary);
   box-shadow: none;

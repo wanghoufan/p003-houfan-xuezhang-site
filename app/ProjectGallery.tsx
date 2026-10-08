@@ -7,24 +7,32 @@ import {
   type ProjectCategory,
 } from "./content";
 import { asset } from "./asset";
+import { useLang, useT } from "./LangToggle";
+import { categoryLabelsEn, projectEn } from "./i18n";
 
 type FilterKey = "all" | ProjectCategory;
 
 export function ProjectGallery({ projects }: { projects: Project[] }) {
   const [filter, setFilter] = useState<FilterKey>("all");
+  const lang = useLang();
+  const t = useT();
+
+  const labelFor = (key: ProjectCategory) =>
+    lang === "en" ? categoryLabelsEn[key] : projectCategoryLabels[key];
 
   const filters = useMemo<{ key: FilterKey; label: string; count: number }[]>(
     () => [
-      { key: "all", label: "全部", count: projects.length },
+      { key: "all", label: t("filterAll"), count: projects.length },
       ...(Object.keys(projectCategoryLabels) as ProjectCategory[])
         .map((key) => ({
           key: key as FilterKey,
-          label: projectCategoryLabels[key],
+          label: labelFor(key),
           count: projects.filter((project) => project.category === key).length,
         }))
         .filter((item) => item.count > 0),
     ],
-    [projects],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [projects, lang],
   );
 
   const visible =
@@ -35,8 +43,8 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
   return (
     <>
       <div className="project-filter">
-        <div className="filter-row" role="group" aria-label="按形态筛选作品">
-          <span className="filter-label">按形态筛选</span>
+        <div className="filter-row" role="group" aria-label={t("filterLabel")}>
+          <span className="filter-label">{t("filterLabel")}</span>
           {filters.map((item) => (
             <button
               key={item.key}
@@ -45,67 +53,77 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
               aria-pressed={filter === item.key}
               onClick={() => setFilter(item.key)}
             >
-              {item.label}（{item.count}）
+              {item.label}
+              {lang === "en" ? ` (${item.count})` : `（${item.count}）`}
             </button>
           ))}
         </div>
         <p className="filter-count" role="status">
-          当前显示 <strong>{visible.length}</strong> 个作品
+          {t("showingCount")} <strong>{visible.length}</strong> {t("projectsWord")}
         </p>
       </div>
 
       <div className="project-grid">
-        {visible.map((project) => (
-          <article className="project-card" key={project.slug}>
-            {project.cover && (
-              <div className="project-card-cover">
-                <img
-                  src={asset(project.cover)}
-                  alt={`${project.title}项目封面`}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            )}
-            <p className="project-meta">
-              {project.year} · {projectCategoryLabels[project.category]}
-            </p>
-            <h3>{project.title}</h3>
-            <p className="project-summary">{project.summary}</p>
-            {/* 卡片只给两个「成果」入口：成品本身（网站或下载页）+ GitHub。 */}
-            <div className="project-card-actions">
-              {project.siteUrl ? (
-                <a
-                  className="project-action is-primary"
-                  href={project.siteUrl}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  查看成品
-                </a>
-              ) : project.releaseUrl ? (
-                <a
-                  className="project-action is-primary"
-                  href={project.releaseUrl}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  下载应用
-                </a>
-              ) : null}
-              {project.repoUrl && (
-                <a
-                  className="project-action"
-                  href={project.repoUrl}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  GitHub
-                </a>
+        {visible.map((project) => {
+          const copy = lang === "en" ? projectEn[project.slug] : undefined;
+          const title = copy?.title ?? project.title;
+          const summary = copy?.summary ?? project.summary;
+          return (
+            <article className="project-card" key={project.slug}>
+              {project.cover && (
+                <div className="project-card-cover">
+                  <img
+                    src={asset(project.cover)}
+                    alt={
+                      lang === "en"
+                        ? `${title} ${t("coverAlt")}`
+                        : `${title}${t("coverAlt")}`
+                    }
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
               )}
-            </div>
-          </article>
-        ))}
+              <p className="project-meta">
+                {project.year} · {labelFor(project.category)}
+              </p>
+              <h3>{title}</h3>
+              <p className="project-summary">{summary}</p>
+              {/* 卡片只给两个「成果」入口：成品本身（网站或下载页）+ GitHub。 */}
+              <div className="project-card-actions">
+                {project.siteUrl ? (
+                  <a
+                    className="project-action is-primary"
+                    href={project.siteUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    {t("viewSite")}
+                  </a>
+                ) : project.releaseUrl ? (
+                  <a
+                    className="project-action is-primary"
+                    href={project.releaseUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    {t("downloadApp")}
+                  </a>
+                ) : null}
+                {project.repoUrl && (
+                  <a
+                    className="project-action"
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    GitHub
+                  </a>
+                )}
+              </div>
+            </article>
+          );
+        })}
       </div>
     </>
   );

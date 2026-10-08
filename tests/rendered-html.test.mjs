@@ -322,3 +322,27 @@ test("提示词管理器与拉伸语音播报用真实运行截图当封面", as
     assert.equal(res.status, 200, `${file} 必须随构建产出`);
   }
 });
+
+test("每个作品都有英文标题与摘要，语言切换随构建产出", async () => {
+  const content = await readFile(path.join(PROJECT, "app/content.ts"), "utf8");
+  const i18n = await readFile(path.join(PROJECT, "app/i18n.ts"), "utf8");
+  const body = content.slice(content.indexOf("export const projects"));
+  const slugs = [...body.matchAll(/slug: "([^"]+)"/g)].map((m) => m[1]);
+  const dict = [...i18n.matchAll(/\n  "?([a-z0-9-]+)"?: \{\n\s+title: "([^"]+)",\n\s+summary:/g)];
+  const keys = dict.map((m) => m[1]);
+  assert.ok(slugs.length > 0);
+  assert.deepEqual(
+    slugs.filter((s) => !keys.includes(s)),
+    [],
+    "有作品缺英文版标题/摘要，补 app/i18n.ts 的 projectEn",
+  );
+  assert.deepEqual(
+    keys.filter((k) => !slugs.includes(k)),
+    [],
+    "英文字典里有已不存在的作品，删掉或改回 slug",
+  );
+  assert.ok(dict.every(([, , title]) => title.trim().length > 0), "英文标题不许为空");
+  const { text } = await get("/");
+  assert.match(text, /data-lang-option="en"/, "页面必须带语言切换按钮");
+  assert.match(text, /data-lang-option="zh"/);
+});
