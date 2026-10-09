@@ -337,6 +337,18 @@ export const projectDetailEn: Record<string, ProjectDetailEn> = {
       "The distribution version is public on GitHub with bilingual navigation, role specifications, plan and acceptance templates and ledger validation scripts; model and channel policy is governed by that one table at the repository root, and the navigation deliberately does not restate model IDs so it cannot drift from the table.",
     tags: ["Multi-agent collaboration", "Governance template", "Client-agnostic", "Acceptance trail"],
   },
+  "mahjong-quick-guide": {
+    role: "Sole design and development",
+    background:
+      "Before a first game, people get stuck on the same handful of questions: can this hand win or not, why not, and what do sequence, triplet, pung, chow and kong actually mean. This project is not an encyclopedia of scoring patterns — it answers only the things that block you before you sit down, with real tile faces for every rule.",
+    challenge:
+      "It has to be readable by someone who has never played mahjong: every term is explained where it first appears, with no unexplained jargon left; the tile faces must be authentic and legible, and Hainan's four conditions — the pair is 2/5/8, your seat matches your flowers, winds or dragons form a triplet, and fan decides whether you can win off a discard — must each be spelled out. It also stays dependency-free and fully offline, openable by double-clicking.",
+    solution:
+      "A plain static site (index.html + app.js + app.css + i18n.js + data/*.js) with no framework, no build step and no external links; 'when can I win' and 'why can't I win' each get a page, with 8 real hands and a glossary shown as tile faces; two small tools sit alongside — a seat table and a big-screen table view; the UI is bilingual with a follow-system option, has light/dark/follow-system themes that never lose the page you are on, and installs as a PWA that keeps working offline, with SW_VERSION controlling the cache version and the page auto-refreshing once a new version takes over.",
+    outcome:
+      "The online version is published — add it to your phone's home screen and it opens like an app, even with no network. The rules cover Hainan mahjong only; it is not a hand-evaluation engine and shows 8 reviewed static hands; the rules come from public sources and local play and contain no betting, scoring or gambling features.",
+    tags: ["Static site", "Installable PWA", "Bilingual", "Rule reference"],
+  },
 };
 
 /** 详情页与卡片上的链接按钮名。 */

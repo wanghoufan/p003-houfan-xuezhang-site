@@ -247,4 +247,9 @@ export const projectEn: Record<string, { title: string; summary: string }> = {
     summary:
       "Multi-agent collaboration that follows one template: a single page of rules for everyone, role cards, plan and acceptance templates, ledger checks — advancing by phase without drifting.",
   },
+  "mahjong-quick-guide": {
+    title: "Mahjong Quick Guide",
+    summary:
+      "Before your first game of Hainan mahjong, get 'when can I win' straight: every rule comes with real tile faces, so you can follow along with no prior knowledge — just open it on your phone.",
+  },
 };

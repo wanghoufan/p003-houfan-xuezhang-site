@@ -1010,4 +1010,38 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "mahjong-quick-guide",
+    title: "麻将小白助手",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    category: "web",
+    summary:
+      "第一次上桌打海南麻将之前，先把「什么情况下能胡」看明白：规则全部配真实牌面，不懂麻将也能照着上手，手机打开就能看。",
+    cover: "/projects/mahjong-quick-guide.jpg",
+    tags: ["纯静态网页", "PWA 可离线", "中英双语", "规则速查"],
+    role: "独立设计与开发",
+    background:
+      "第一次上桌前总卡在同一批问题上：这手牌到底能不能胡、为什么不能胡，以及顺子、刻子、碰、吃、杠这些词究竟指什么。这个项目不做番种大全，只把上桌前真正会卡住的几件事讲清楚，每条规则都配真实牌面。",
+    challenge:
+      "要让完全不懂麻将的人也能看懂：术语第一次出现就地解释，不留没解释的专业词；牌面要真实可辨，还得把海南玩法的四条条件（眼是二/五/八、座位对花、风牌箭牌凑三张、有番才能点炮）逐条讲透；同时保持零依赖、零联网，双击就能打开。",
+    solution:
+      "纯静态页面（index.html + app.js + app.css + i18n.js + data/*.js），无框架、无构建、无外链；「什么情况下能胡」「为什么不能胡」各占一页，8 条真实牌例与术语表都配牌面；另附座次表、牌桌大屏两个小工具；中英双语可跟随系统，浅色/深色/跟随系统三态外观，切换不丢当前页面；PWA 可安装、断网可看，SW_VERSION 控制缓存版本、新版本接管后自动刷新。",
+    outcome:
+      "线上版已发布，手机上可「添加到主屏幕」当 App 用、断网也能看。玩法只覆盖海南麻将这一档；不是判牌引擎，只呈现 8 条已审核的静态牌例；规则来自公开资料与本地玩法整理，不含任何下注、计分或赌博功能。",
+    gallery: [],
+    siteUrl: "https://p046-mahjong-guide.vercel.app/index.html",
+    repoUrl: "https://github.com/wanghoufan/p046-mahjong-beginner-assistant",
+    links: [
+      {
+        label: "打开在线体验",
+        href: "https://p046-mahjong-guide.vercel.app/index.html",
+      },
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p046-mahjong-beginner-assistant",
+      },
+    ],
+  },
 ];
