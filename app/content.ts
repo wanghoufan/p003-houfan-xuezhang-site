@@ -1031,12 +1031,12 @@ export const projects: Project[] = [
     outcome:
       "线上版已发布，手机上可「添加到主屏幕」当 App 用、断网也能看。玩法只覆盖海南麻将这一档；不是判牌引擎，只呈现 8 条已审核的静态牌例；规则来自公开资料与本地玩法整理，不含任何下注、计分或赌博功能。",
     gallery: [],
-    siteUrl: "https://p046-mahjong-guide.vercel.app/index.html",
+    siteUrl: "https://wanghoufan.github.io/p046-mahjong-beginner-assistant/",
     repoUrl: "https://github.com/wanghoufan/p046-mahjong-beginner-assistant",
     links: [
       {
         label: "打开在线体验",
-        href: "https://p046-mahjong-guide.vercel.app/index.html",
+        href: "https://wanghoufan.github.io/p046-mahjong-beginner-assistant/",
       },
       {
         label: "查看 GitHub 项目",

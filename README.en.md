@@ -9,14 +9,14 @@ A non-job-hunting personal showcase site that presents personal background, AI a
 - Live URLs (both serve identical content; visitors should use GitHub Pages, which loads faster in mainland China):
   - GitHub Pages (primary): https://wanghoufan.github.io/p003-houfan-xuezhang-site/
   - Vercel (mirror): https://houfan-xuezhang-site.vercel.app
-- 25 published projects, 1 service card, Chinese-language interface
+- 28 published projects (17 web apps, 6 mobile apps, 3 desktop tools, 2 methods & systems), 4 research topics, 9 interests, 1 service card, Chinese-language interface
 - Fully static — no database, no login, no comments, no admin panel
 
 ## What the site does
 
 - **Three switchable themes**: Operations Deck (dark), Aurora Glass (light frosted glass), and Editorial Dossier (beige newspaper). Your choice is remembered in the browser and restored on the next visit.
-- **Filter projects by form**: chips for Web App and Desktop Tool, each showing its count. All 8 projects are visible at once.
-- **Two exits per project**: open the finished product directly (desktop tools link to the download instead), or view the GitHub source repository.
+- **Filter projects by form**: chips for Web App, Mobile App, Desktop Tool, and Methods & Systems, each showing its count. All 28 projects are visible at once.
+- **Exits follow reality**: 13 projects open a live site directly, 6 desktop and mobile apps link to an installable build, the remaining 9 fall back to the repository entry; all 28 link to their GitHub source.
 - **Project detail pages**: every project has its own record of background, challenge, approach, and outcome.
 - **Contact channels**: WeChat QR code, GitHub, YouTube.
 
