@@ -144,6 +144,7 @@ test("every project repoUrl points at a real renamed repository", async () => {
     "talent-showroom": "p040-talent-showroom",
     "stretch-routine": "p025-stretch-routine-app",
     "stretch-side-timer": "p020-stretch-side-timer",
+    "kegel-trainer": "p045-kegel-training",
     "photo-library": "p015-photo-library",
     "fill-light": "p026-yejian-buguangdeng",
     "ai-storyboard-studio": "p044-ai-storyboard-studio",
@@ -196,6 +197,7 @@ test("new published project routes render their details", async () => {
     ["talent-showroom", /才艺展示厅/],
     ["stretch-routine", /拉伸语音播报/],
     ["stretch-side-timer", /拉伸换边计时器/],
+    ["kegel-trainer", /盆底肌训练/],
     ["photo-library", /摄影作品库/],
     ["fill-light", /夜间补光灯/],
     ["skill-system-map", /Skill 能力地图/],
@@ -260,6 +262,7 @@ test("static export ships every published project as its own folder", async () =
     "talent-showroom",
     "stretch-routine",
     "stretch-side-timer",
+    "kegel-trainer",
     "photo-library",
     "fill-light",
     "skill-system-map",
@@ -294,7 +297,7 @@ test("方法与体系 是筛选标签，两条作品就在同一面作品墙里"
     )
     .replace(/<!--.*?-->/g, "");
   assert.match(wall, /方法与体系（2）/, "筛选条应出现「方法与体系（2）」标签");
-  assert.match(wall, /全部（28）/, "全部计数应含两条新增作品");
+  assert.match(wall, /全部（29）/, "全部计数应含新增作品");
   for (const title of ["Skill 能力地图", "ORCA 多智能体开发系统"]) {
     assert.ok(wall.includes(`<h3>${title}</h3>`), `${title} 应作为卡片出现在作品墙内`);
   }
@@ -319,6 +322,7 @@ test("提示词管理器与拉伸语音播报用真实运行截图当封面", as
   for (const [slug, file] of [
     ["prompt-manager", "prompt-manager.jpg"],
     ["stretch-routine", "stretch-routine.jpg"],
+    ["kegel-trainer", "kegel-trainer.jpg"],
   ]) {
     assert.ok(text.includes(`/projects/${file}`), `${slug} 的卡片应引用 ${file}`);
     const { res } = await get(`/projects/${file}`);

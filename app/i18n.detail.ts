@@ -289,6 +289,18 @@ export const projectDetailEn: Record<string, ProjectDetailEn> = {
       "An Android APK complete and accepted on a real device (no iOS). Background audio uses CC BY 4.0 material credited to Incompetech; the installer is not published as a GitHub Release, and both source and on-device proof are public in the repository.",
     tags: ["Android", "Expo / React Native", "Stretching", "Switch reminder"],
   },
+  "kegel-trainer": {
+    role: "Sole design and development",
+    background:
+      "The hard part of Kegel (pelvic floor) training is not the exercise but keeping it up: typical apps make you watch a countdown and count reps in your head, which is fiddly and distracting.",
+    challenge:
+      "The audio has to survive lock screens, incoming calls and backgrounding; the voice and the timer must stay strictly in step; the assessment must never ask the user to count manually; and a safety exit has to be reachable mid-session.",
+    solution:
+      "Built with Kotlin and Jetpack Compose; audio runs on a Media3 foreground media session. Daily training auto-generates an endurance + quick-control script from the current level, voicing tighten / hold countdown / relax / rest; all 5 assessment items ship with built-in timers and audio cues and suggest a level from L1 to L6; daily contractions are capped at 40 with a low-key silent mode, a half-dose switch, light/dark/system themes and zh-CN/English — all data stays on-device, no network, no accounts.",
+    outcome:
+      "GitHub Release v1.0 published with a directly downloadable APK (debug-signed, Android 12+); all 34 product acceptance criteria passed with per-item screenshot evidence.",
+    tags: ["Android", "Kotlin / Jetpack Compose", "Voice-guided", "Offline on-device data"],
+  },
   "photo-library": {
     role: "Sole design and development",
     background:

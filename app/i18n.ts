@@ -227,6 +227,11 @@ export const projectEn: Record<string, { title: string; summary: string }> = {
     summary:
       "Stop counting seconds yourself: it pings when this side is done so you switch, runs one segment after another to the end, and a little animal practises alongside you.",
   },
+  "kegel-trainer": {
+    title: "Pelvic Trainer",
+    summary:
+      "Do Kegels by ear: spoken cues guide every tighten-hold-relax through six auto-built levels, so there is no screen to watch and no reps to count.",
+  },
   "photo-library": {
     title: "Photo Library",
     summary:
