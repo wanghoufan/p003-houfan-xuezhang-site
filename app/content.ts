@@ -882,41 +882,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "kegel-trainer",
-    title: "盆底肌训练",
-    status: "published",
-    statusLabel: "已发布",
-    year: "2026",
-    category: "mobile",
-    summary:
-      "戴上耳机跟着语音做凯格尔训练：收紧、保持、放松全程念给你听，六级进阶自动排课，不用盯屏幕、不用心里数数。",
-    cover: "/projects/kegel-trainer.jpg",
-    tags: ["Android", "Kotlin / Jetpack Compose", "语音引导", "离线本机数据"],
-    role: "独立设计与开发",
-    background:
-      "凯格尔（盆底肌）训练最难的不是动作，而是坚持：传统 App 要盯着屏幕看倒计时、心里默数次数，练起来麻烦又容易分心。",
-    challenge:
-      "语音要能扛住锁屏、来电和切后台不中断；计时与播报必须严格对齐；摸底全程不能要求用户手动计数；训练中途还要留得出安全出口。",
-    solution:
-      "Kotlin + Jetpack Compose 实现，音频走 Media3 前台媒体服务；训练按当前等级自动生成「耐力 + 快速」脚本，语音播报收紧 / 保持倒计时 / 放松 / 休息；5 项摸底全部内置计时与语音引导并给出 L1–L6 等级建议；每日收缩额度封顶 40 次，支持低调模式、半量与中英双语、主题三态，数据仅存本机、无联网无账号。",
-    outcome:
-      "已发 GitHub Release v1.0 并挂可直接下载的 APK（debug 签名，Android 12+）；34 条产品验收 AC 全部通过并留有逐条截图证据。",
-    gallery: [],
-    releaseUrl:
-      "https://github.com/wanghoufan/p045-kegel-training/releases/tag/v1.0",
-    repoUrl: "https://github.com/wanghoufan/p045-kegel-training",
-    links: [
-      {
-        label: "查看 GitHub 项目",
-        href: "https://github.com/wanghoufan/p045-kegel-training",
-      },
-      {
-        label: "下载安卓安装包",
-        href: "https://github.com/wanghoufan/p045-kegel-training/releases/tag/v1.0",
-      },
-    ],
-  },
-  {
     slug: "photo-library",
     title: "摄影作品库",
     status: "published",
@@ -1076,6 +1041,41 @@ export const projects: Project[] = [
       {
         label: "查看 GitHub 项目",
         href: "https://github.com/wanghoufan/p046-mahjong-beginner-assistant",
+      },
+    ],
+  },
+  {
+    slug: "kegel-trainer",
+    title: "盆底肌训练",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    category: "mobile",
+    summary:
+      "戴上耳机跟着语音做凯格尔训练：收紧、保持、放松全程念给你听，六级进阶自动排课，不用盯屏幕、不用心里数数。",
+    cover: "/projects/kegel-trainer.jpg",
+    tags: ["Android", "Kotlin / Jetpack Compose", "语音引导", "离线本机数据"],
+    role: "独立设计与开发",
+    background:
+      "凯格尔（盆底肌）训练最难的不是动作，而是坚持：传统 App 要盯着屏幕看倒计时、心里默数次数，练起来麻烦又容易分心。",
+    challenge:
+      "语音要能扛住锁屏、来电和切后台不中断；计时与播报必须严格对齐；摸底全程不能要求用户手动计数；训练中途还要留得出安全出口。",
+    solution:
+      "Kotlin + Jetpack Compose 实现，音频走 Media3 前台媒体服务；训练按当前等级自动生成「耐力 + 快速」脚本，语音播报收紧 / 保持倒计时 / 放松 / 休息；5 项摸底全部内置计时与语音引导并给出 L1–L6 等级建议；每日收缩额度封顶 40 次，支持低调模式、半量与中英双语、主题三态，数据仅存本机、无联网无账号。",
+    outcome:
+      "已发 GitHub Release v1.0 并挂可直接下载的 APK（debug 签名，Android 12+）；34 条产品验收 AC 全部通过并留有逐条截图证据。",
+    gallery: [],
+    releaseUrl:
+      "https://github.com/wanghoufan/p045-kegel-training/releases/tag/v1.0",
+    repoUrl: "https://github.com/wanghoufan/p045-kegel-training",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p045-kegel-training",
+      },
+      {
+        label: "下载安卓安装包",
+        href: "https://github.com/wanghoufan/p045-kegel-training/releases/tag/v1.0",
       },
     ],
   },
