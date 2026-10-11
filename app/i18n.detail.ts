@@ -361,6 +361,18 @@ export const projectDetailEn: Record<string, ProjectDetailEn> = {
       "The online version is published — add it to your phone's home screen and it opens like an app, even with no network. The rules cover Hainan mahjong only; it is not a hand-evaluation engine and shows 8 reviewed static hands; the rules come from public sources and local play and contain no betting, scoring or gambling features.",
     tags: ["Static site", "Installable PWA", "Bilingual", "Rule reference"],
   },
+  "socialmate": {
+    role: "Sole design and development",
+    background:
+      "The hard part of socializing in a foreign language is not opening your mouth but remembering what happened: conversations scatter across chat logs, and before meeting the same person again you dig through records to recall what you already covered.",
+    challenge:
+      "All data must stay on the local machine with no accounts or cloud services; edits to people profiles must go through a review preview instead of letting an AI overwrite files directly; and moving between topic reading, speaking practice and profile organizing has to feel smooth, without hopping between pages.",
+    solution:
+      "A pure-frontend app served by Node's built-in HTTP module, with Markdown files as the single source of truth: a wiki-style layout keeps navigation in a left sidebar with content opening on the right; the topic library is searchable and remembers the last topic you read; speaking practice pairs scenarios with five difficulty levels and generates a copy-ready prompt for ChatGPT Live; main-profile edits go through a review preview before being written; three themes (Dawn, Ink Night, Pine Forest) are included, and the Docker deployment listens only on 127.0.0.1.",
+    outcome:
+      "Source code is public and the app runs persistently in local Docker; the local-server acceptance tests all pass, main-profile edits require a review preview, and interaction records cannot be overwritten through the review API.",
+    tags: ["Local-first", "Markdown", "Node.js", "Docker", "Self-hosted"],
+  },
 };
 
 /** 详情页与卡片上的链接按钮名。 */

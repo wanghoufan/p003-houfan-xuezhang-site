@@ -1079,4 +1079,34 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "socialmate",
+    title: "SocialMate 外语社交系统",
+    status: "published",
+    statusLabel: "源码公开",
+    year: "2026",
+    category: "web",
+    summary:
+      "练前挑话题自然开场、按场景和难度模拟口语，聊完把真实交流整理成人物档案，数据全部保存在本机 Markdown 文件里。",
+    cover: "/projects/socialmate.jpg",
+    tags: ["本地优先", "Markdown", "Node.js", "Docker", "自托管"],
+    role: "独立设计与开发",
+    background:
+      "练外语社交最麻烦的不是开口，而是记不住聊过的东西：交流散落在聊天记录里，下次再见同一个人，上次聊过什么、聊到哪一步，全靠翻记录。",
+    challenge:
+      "数据要只存本机、不依赖账号和云端；人物档案的修改要走预览确认，不能让 AI 直接覆盖文件；话题阅读、口语练习和档案整理之间来回切换还得顺手，不能每一步都跳页。",
+    solution:
+      "纯前端加 Node 内置 HTTP 服务实现，Markdown 文件是唯一数据真源：wiki 式界面左侧放功能导航、右侧内容直达；话题库支持搜索并记住上次读到的话题；口语练习按场景配五档难度，一键生成提示词交给 ChatGPT Live；人物主档修改须经预览确认后落盘；提供晨光、墨夜、松林三套主题，Docker 部署只监听 127.0.0.1。",
+    outcome:
+      "源码已公开，并在本机 Docker 常驻运行；本地服务验收测试全部通过，人物主档编辑须经过 Review 预览确认，互动记录不可被审阅接口覆盖。",
+    gallery: [],
+    repoUrl:
+      "https://github.com/wanghoufan/alw-001-foreign-language-social-system",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/alw-001-foreign-language-social-system",
+      },
+    ],
+  },
 ];

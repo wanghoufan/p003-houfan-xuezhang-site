@@ -151,6 +151,7 @@ test("every project repoUrl points at a real renamed repository", async () => {
     "skill-system-map": "alw-002-skill-system-map",
     "orca-governance-template": "orca-v2.1-governance",
     "mahjong-quick-guide": "p046-mahjong-beginner-assistant",
+    "socialmate": "alw-001-foreign-language-social-system",
   };
   for (const [slug, repo] of Object.entries(expected)) {
     const { res, text } = await get(`/projects/${slug}/`);
@@ -203,6 +204,7 @@ test("new published project routes render their details", async () => {
     ["skill-system-map", /Skill 能力地图/],
     ["orca-governance-template", /ORCA 多智能体开发系统/],
     ["mahjong-quick-guide", /麻将小白助手/],
+    ["socialmate", /外语社交系统/],
   ];
   for (const [slug, title] of routes) {
     const { res, text } = await get(`/projects/${slug}/`);
@@ -268,6 +270,7 @@ test("static export ships every published project as its own folder", async () =
     "skill-system-map",
     "orca-governance-template",
     "mahjong-quick-guide",
+    "socialmate",
   ];
   const dirs = (await readdir(path.join(OUT, "projects"), { withFileTypes: true }))
     .filter((entry) => entry.isDirectory())
@@ -297,7 +300,7 @@ test("方法与体系 是筛选标签，两条作品就在同一面作品墙里"
     )
     .replace(/<!--.*?-->/g, "");
   assert.match(wall, /方法与体系（2）/, "筛选条应出现「方法与体系（2）」标签");
-  assert.match(wall, /全部（29）/, "全部计数应含新增作品");
+  assert.match(wall, /全部（30）/, "全部计数应含新增作品");
   for (const title of ["Skill 能力地图", "ORCA 多智能体开发系统"]) {
     assert.ok(wall.includes(`<h3>${title}</h3>`), `${title} 应作为卡片出现在作品墙内`);
   }
@@ -323,6 +326,7 @@ test("提示词管理器与拉伸语音播报用真实运行截图当封面", as
     ["prompt-manager", "prompt-manager.jpg"],
     ["stretch-routine", "stretch-routine.jpg"],
     ["kegel-trainer", "kegel-trainer.jpg"],
+    ["socialmate", "socialmate.jpg"],
   ]) {
     assert.ok(text.includes(`/projects/${file}`), `${slug} 的卡片应引用 ${file}`);
     const { res } = await get(`/projects/${file}`);

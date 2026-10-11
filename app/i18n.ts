@@ -257,4 +257,9 @@ export const projectEn: Record<string, { title: string; summary: string }> = {
     summary:
       "Before your first game of Hainan mahjong, get 'when can I win' straight: every rule comes with real tile faces, so you can follow along with no prior knowledge — just open it on your phone.",
   },
+  "socialmate": {
+    title: "SocialMate Foreign-Language Social System",
+    summary:
+      "Pick a topic to break the ice, rehearse speaking by scenario and difficulty, then file what you actually said into people profiles you can pick up next time — all data stays in local Markdown files.",
+  },
 };
