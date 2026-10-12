@@ -385,6 +385,18 @@ export const projectDetailEn: Record<string, ProjectDetailEn> = {
       "GitHub Release v1.0.0 published with a directly downloadable universal APK (Android 7.0+, debug-signed); light/dark/system themes and Chinese-English UI, verified on two physical devices with per-item screenshot evidence.",
     tags: ["Android", "Expo / React Native", "Silent timer", "Offline on-device data"],
   },
+  "curated-skills": {
+    role: "Independently selected, written up and maintained",
+    background:
+      "The repository description says what this is: a curated set of AI skills verified on real work, each documenting the problem it solves, its prerequisites and its safety boundaries, so developers can judge whether it fits their workflow. The README opens with a harder line — every item was tried on a concrete task first, then adapted into instructions others can understand and follow.",
+    challenge:
+      "The hard part is drawing boundaries, not writing prompts: the showcase skill says outright that it does not run account-wide portfolio audits and stays inside the one project the user names; the documentation skill marks anything it cannot prove as unconfirmed instead of guessing, and treats a missing real screenshot as a release blocker; the Next.js skill concedes that features needing a server runtime cannot be kept by static export alone. The same bar applies to what gets included — nothing unverified gets in.",
+    solution:
+      "A contents table gives each skill one line at the top; below that every skill gets its own section — a positioning sentence, a result image checked against the current repository and live sites, what it suits, how to trigger it, then a link to the full SKILL.md. All three skills and the home README are bilingual, and the showcase skill ships four companion files (bilingual sync, cover sourcing, link testing, pre-delivery checklist) plus a read-only check script, consulted on demand rather than read end to end.",
+    outcome:
+      "3 skills across 24 tracked files: 16 Markdown (8 Chinese, 8 English), 6 result screenshots (3 pairs) and 1 read-only bilingual check script. The repository is public with no license chosen yet; the scope and redistribution terms of each skill keep being reviewed item by item.",
+    tags: ["AI Skill", "Bilingual", "SKILL.md", "Proven on real projects"],
+  },
 };
 
 /** 详情页与卡片上的链接按钮名。 */

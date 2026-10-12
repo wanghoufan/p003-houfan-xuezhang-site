@@ -1144,4 +1144,34 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "curated-skills",
+    title: "精选 Skill 开源仓库",
+    status: "published",
+    statusLabel: "源码公开",
+    year: "2026",
+    category: "method",
+    summary:
+      "把在真实项目里跑通过的 AI Skill 集中放一处：每项讲清它解决什么问题、要什么前提、安全边界划在哪，适不适合你的工作流程一眼能判。",
+    cover: "/projects/curated-skills.jpg",
+    tags: ["AI Skill", "中英双语", "SKILL.md", "真实项目验证"],
+    role: "独立筛选、整理与维护",
+    background:
+      "仓库简介里那句就是它的定位：精选经真实项目验证的 AI 技能，说明每项工具解决的问题、使用前提和安全边界，帮助开发者判断是否适合自己的工作流程。README 开头还写了一句更硬的口径——每项都先在具体工作中验证，再整理成别人看得懂、能照着用的指令。",
+    challenge:
+      "难的不是写指令，是把边界划清楚：展示同步那颗写明不做全账号作品盘点，工作范围只限用户点名的一个项目；文档维护那颗要求无法证实的内容标成待确认、不许补猜，没有真实界面图就列为发布阻断项；Next.js 部署那颗则承认依赖服务器运行时的功能不能只靠静态导出保留。收录的门槛同样卡在这里——没验证过的不进来。",
+    solution:
+      "首页一张目录表给每项留一句话，往下每颗单开一节：一句定位、一张按当前仓库与线上状态核验过的成果图、适合什么场景、怎么触发，再链到完整 SKILL.md。三颗 Skill 与首页 README 都做成中英对照，展示同步那颗另附双语同步流程、封面取材、链接实测、交付前检查四份附属文件和一个只读校验脚本，按需读而不用一次读完。",
+    outcome:
+      "当前收录 3 颗 Skill、仓库 24 个跟踪文件：16 份 Markdown（中英各 8）、6 张成果截图（中英各 3）、1 个只读双语校验脚本。仓库已公开，许可证尚未确定，每颗 Skill 的适用范围和再分发条件继续逐项核对。",
+    gallery: [],
+    repoUrl:
+      "https://github.com/wanghoufan/alw-003-curated-skill-open-source",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/alw-003-curated-skill-open-source",
+      },
+    ],
+  },
 ];
