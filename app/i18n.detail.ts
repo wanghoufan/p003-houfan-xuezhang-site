@@ -380,9 +380,9 @@ export const projectDetailEn: Record<string, ProjectDetailEn> = {
     challenge:
       "The timer has to survive lock screens and backgrounding without drifting; on some Xiaomi devices the system speech engine never returns a result, so the flow must fall back to keyboard dictation or typing without losing content; and the AI may only strip filler words — never change the meaning or add advice.",
     solution:
-      "Built with Expo and React Native. The countdown is a monotonic-clock state machine with wall-clock correction, so a locked phone resumes from real elapsed time; reminders are text-only and never audible. Notes can be dictated or typed, polished through a single provider interface backed by DeepSeek, compared side by side and confirmed before saving; the key lives in the device secure store and all data stays in local SQLite — no account, no cloud.",
+      "Built with Expo and React Native. The countdown is a monotonic-clock state machine with wall-clock correction, so a locked phone resumes from real elapsed time; reminders are text-only and never audible. Notes can be dictated or typed, polished through a single provider interface backed by DeepSeek, compared side by side and confirmed before saving; the key lives in the device secure store and all data stays in local SQLite — no account, no cloud — and meal logs and stats are aggregated on-device by local date so day boundaries don't skew them.",
     outcome:
-      "GitHub Release v1.0.0 published with a directly downloadable universal APK (Android 7.0+, debug-signed); light/dark/system themes and Chinese-English UI, verified on two physical devices with per-item screenshot evidence.",
+      "GitHub Release v1.0.0 published with a directly downloadable universal APK (Android 7.0+, debug-signed, matching the first release); the meal history and stats added afterwards can be built from source; light/dark/system themes and Chinese-English UI, verified on two physical devices with per-item screenshot evidence.",
     tags: ["Android", "Expo / React Native", "Silent timer", "Offline on-device data"],
   },
   "curated-skills": {

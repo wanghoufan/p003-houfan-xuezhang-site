@@ -1117,7 +1117,7 @@ export const projects: Project[] = [
     year: "2026",
     category: "mobile",
     summary:
-      "吃饭太快的人用它慢下来：光球计时全程静音，一句句慢食提示只显示不响铃；饭后说两句心得，AI 只去掉口水词，记录全部留在手机里。",
+      "吃饭太快的人用它慢下来：光球计时全程静音，慢食提示只显示不响铃；饭后说两句心得，AI 只去口水词；每顿饭自动留档，统计页摊开累计餐数与达标率，数据全留在本机。",
     cover: "/projects/bitetempo.jpg",
     tags: ["Android", "Expo / React Native", "静音计时", "离线本机数据"],
     role: "独立设计与开发",
@@ -1126,9 +1126,9 @@ export const projects: Project[] = [
     challenge:
       "计时要扛住锁屏和切后台不跑偏；部分小米机型的系统语音识别拿不到结果，得能退回键盘语音或手动输入且不丢内容；AI 只能去口水词，不能改意思、不能加建议。",
     solution:
-      "Expo / React Native 实现，计时用单调时钟加挂钟校正的状态机，锁屏回来按真实时间恢复；提醒只显示文字、不出声音；心得支持语音或手输，AI 整理走统一接口接 DeepSeek，原文与整理稿对照确认后才保存，Key 只存在手机安全存储里；数据全部存本机 SQLite，无账号、无云同步。",
+      "Expo / React Native 实现，计时用单调时钟加挂钟校正的状态机，锁屏回来按真实时间恢复；提醒只显示文字、不出声音；心得支持语音或手输，AI 整理走统一接口接 DeepSeek，原文与整理稿对照确认后才保存，Key 只存在手机安全存储里；数据全部存本机 SQLite，无账号、无云同步；用餐记录与统计同样在本机聚合，按本地时区分组、避开跨日界线的错算。",
     outcome:
-      "已发 GitHub Release v1.0.0 并挂可直接下载的通用 APK（Android 7.0+，debug 签名）；中英双语、主题三态，两台真机跑通并留有逐项截图证据。",
+      "已发 GitHub Release v1.0.0 并挂可直接下载的通用 APK（Android 7.0+，debug 签名，对应首发版本）；随后的用餐历史与统计可从源码构建；中英双语、主题三态，两台真机跑通并留有逐项截图证据。",
     gallery: [],
     releaseUrl:
       "https://github.com/wanghoufan/p047-mindful-eating/releases/tag/v1.0.0",

@@ -207,6 +207,7 @@ test("new published project routes render their details", async () => {
     ["orca-governance-template", /ORCA 多智能体开发系统/],
     ["mahjong-quick-guide", /麻将小白助手/],
     ["socialmate", /外语社交系统/],
+    ["bitetempo", /慢食刻/],
     ["curated-skills", /精选 Skill 开源仓库/],
   ];
   for (const [slug, title] of routes) {
@@ -274,6 +275,7 @@ test("static export ships every published project as its own folder", async () =
     "orca-governance-template",
     "mahjong-quick-guide",
     "socialmate",
+    "bitetempo",
     "curated-skills",
   ];
   const dirs = (await readdir(path.join(OUT, "projects"), { withFileTypes: true }))

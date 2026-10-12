@@ -265,7 +265,7 @@ export const projectEn: Record<string, { title: string; summary: string }> = {
   "bitetempo": {
     title: "BiteTempo",
     summary:
-      "A quiet meal timer for people who eat too fast: the orb never makes a sound and the reminders are text-only; after the meal you dictate two lines and the AI only strips the filler words. Everything stays on the phone.",
+      "A quiet meal timer for people who eat too fast: the orb never makes a sound and the reminders are text-only; after the meal you dictate two lines and the AI only strips the filler words. Every meal is logged automatically, and a stats page lays out your total meals and hit rate — all on the phone.",
   },
   "curated-skills": {
     title: "Curated Skills",
