@@ -394,7 +394,7 @@ export const projectDetailEn: Record<string, ProjectDetailEn> = {
     solution:
       "A contents table gives each skill one line at the top; below that every skill gets its own section — a positioning sentence, a result image checked against the current repository and live sites, what it suits, how to trigger it, then a link to the full SKILL.md. All three skills and the home README are bilingual, and the showcase skill ships four companion files (bilingual sync, cover sourcing, link testing, pre-delivery checklist) plus a read-only check script, consulted on demand rather than read end to end.",
     outcome:
-      "3 skills across 24 tracked files: 16 Markdown (8 Chinese, 8 English), 6 result screenshots (3 pairs) and 1 read-only bilingual check script. The repository is public with no license chosen yet; the scope and redistribution terms of each skill keep being reviewed item by item.",
+      "3 skills across 25 tracked files: 16 Markdown (8 Chinese, 8 English), 6 result screenshots (3 pairs), 1 read-only bilingual check script and the MIT license itself. Content ships under MIT; the scope of each skill keeps being reviewed item by item.",
     tags: ["AI Skill", "Bilingual", "SKILL.md", "Proven on real projects"],
   },
 };

@@ -1163,7 +1163,7 @@ export const projects: Project[] = [
     solution:
       "首页一张目录表给每项留一句话，往下每颗单开一节：一句定位、一张按当前仓库与线上状态核验过的成果图、适合什么场景、怎么触发，再链到完整 SKILL.md。三颗 Skill 与首页 README 都做成中英对照，展示同步那颗另附双语同步流程、封面取材、链接实测、交付前检查四份附属文件和一个只读校验脚本，按需读而不用一次读完。",
     outcome:
-      "当前收录 3 颗 Skill、仓库 24 个跟踪文件：16 份 Markdown（中英各 8）、6 张成果截图（中英各 3）、1 个只读双语校验脚本。仓库已公开，许可证尚未确定，每颗 Skill 的适用范围和再分发条件继续逐项核对。",
+      "当前收录 3 颗 Skill、仓库 25 个跟踪文件：16 份 Markdown（中英各 8）、6 张成果截图（中英各 3）、1 个只读双语校验脚本和 1 份 MIT 许可证。内容按 MIT 授权，每颗 Skill 的适用范围继续逐项核对。",
     gallery: [],
     repoUrl:
       "https://github.com/wanghoufan/alw-003-curated-skill-open-source",
