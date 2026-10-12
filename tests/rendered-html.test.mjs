@@ -152,6 +152,7 @@ test("every project repoUrl points at a real renamed repository", async () => {
     "orca-governance-template": "orca-v2.1-governance",
     "mahjong-quick-guide": "p046-mahjong-beginner-assistant",
     "socialmate": "alw-001-foreign-language-social-system",
+    "bitetempo": "p047-mindful-eating",
   };
   for (const [slug, repo] of Object.entries(expected)) {
     const { res, text } = await get(`/projects/${slug}/`);
@@ -300,7 +301,7 @@ test("方法与体系 是筛选标签，两条作品就在同一面作品墙里"
     )
     .replace(/<!--.*?-->/g, "");
   assert.match(wall, /方法与体系（2）/, "筛选条应出现「方法与体系（2）」标签");
-  assert.match(wall, /全部（30）/, "全部计数应含新增作品");
+  assert.match(wall, /全部（31）/, "全部计数应含新增作品");
   for (const title of ["Skill 能力地图", "ORCA 多智能体开发系统"]) {
     assert.ok(wall.includes(`<h3>${title}</h3>`), `${title} 应作为卡片出现在作品墙内`);
   }

@@ -373,6 +373,18 @@ export const projectDetailEn: Record<string, ProjectDetailEn> = {
       "Source code is public and the app runs persistently in local Docker; the local-server acceptance tests all pass, main-profile edits require a review preview, and interaction records cannot be overwritten through the review API.",
     tags: ["Local-first", "Markdown", "Node.js", "Docker", "Self-hosted"],
   },
+  "bitetempo": {
+    role: "Sole design and development",
+    background:
+      "Eating too fast, attention drifting to the phone, and by evening you can no longer recall what you ate — let alone how it felt. Typing a note feels like a chore, so no note gets written.",
+    challenge:
+      "The timer has to survive lock screens and backgrounding without drifting; on some Xiaomi devices the system speech engine never returns a result, so the flow must fall back to keyboard dictation or typing without losing content; and the AI may only strip filler words — never change the meaning or add advice.",
+    solution:
+      "Built with Expo and React Native. The countdown is a monotonic-clock state machine with wall-clock correction, so a locked phone resumes from real elapsed time; reminders are text-only and never audible. Notes can be dictated or typed, polished through a single provider interface backed by DeepSeek, compared side by side and confirmed before saving; the key lives in the device secure store and all data stays in local SQLite — no account, no cloud.",
+    outcome:
+      "GitHub Release v1.0.0 published with a directly downloadable universal APK (Android 7.0+, debug-signed); light/dark/system themes and Chinese-English UI, verified on two physical devices with per-item screenshot evidence.",
+    tags: ["Android", "Expo / React Native", "Silent timer", "Offline on-device data"],
+  },
 };
 
 /** 详情页与卡片上的链接按钮名。 */

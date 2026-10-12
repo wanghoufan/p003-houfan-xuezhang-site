@@ -1109,4 +1109,39 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "bitetempo",
+    title: "慢食刻",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    category: "mobile",
+    summary:
+      "吃饭太快的人用它慢下来：光球计时全程静音，一句句慢食提示只显示不响铃；饭后说两句心得，AI 只去掉口水词，记录全部留在手机里。",
+    cover: "/projects/bitetempo.jpg",
+    tags: ["Android", "Expo / React Native", "静音计时", "离线本机数据"],
+    role: "独立设计与开发",
+    background:
+      "吃饭快、注意力被手机带走，想记点感受又懒得打字，过几天连吃了什么都想不起来。",
+    challenge:
+      "计时要扛住锁屏和切后台不跑偏；部分小米机型的系统语音识别拿不到结果，得能退回键盘语音或手动输入且不丢内容；AI 只能去口水词，不能改意思、不能加建议。",
+    solution:
+      "Expo / React Native 实现，计时用单调时钟加挂钟校正的状态机，锁屏回来按真实时间恢复；提醒只显示文字、不出声音；心得支持语音或手输，AI 整理走统一接口接 DeepSeek，原文与整理稿对照确认后才保存，Key 只存在手机安全存储里；数据全部存本机 SQLite，无账号、无云同步。",
+    outcome:
+      "已发 GitHub Release v1.0.0 并挂可直接下载的通用 APK（Android 7.0+，debug 签名）；中英双语、主题三态，两台真机跑通并留有逐项截图证据。",
+    gallery: [],
+    releaseUrl:
+      "https://github.com/wanghoufan/p047-mindful-eating/releases/tag/v1.0.0",
+    repoUrl: "https://github.com/wanghoufan/p047-mindful-eating",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p047-mindful-eating",
+      },
+      {
+        label: "下载安卓安装包",
+        href: "https://github.com/wanghoufan/p047-mindful-eating/releases/tag/v1.0.0",
+      },
+    ],
+  },
 ];
