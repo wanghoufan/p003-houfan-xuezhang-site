@@ -296,9 +296,9 @@ export const projectDetailEn: Record<string, ProjectDetailEn> = {
     challenge:
       "The audio has to survive lock screens, incoming calls and backgrounding; the voice and the timer must stay strictly in step; the assessment must never ask the user to count manually; and a safety exit has to be reachable mid-session.",
     solution:
-      "Built with Kotlin and Jetpack Compose; audio runs on a Media3 foreground media session. Daily training auto-generates an endurance + quick-control script from the current level, voicing tighten / hold countdown / relax / rest; all 5 assessment items ship with built-in timers and audio cues and suggest a level from L1 to L6; daily contractions are capped at 40 with a low-key silent mode, a half-dose switch, light/dark/system themes and zh-CN/English — all data stays on-device, no network, no accounts.",
+      "Built with Kotlin and Jetpack Compose; audio runs on a Media3 foreground media session. Each level is defined as sessions-per-day × reps-per-session, so every session is identical (one endurance group + one quick round); a Standards page lists the endurance, quick and daily-total tables; all 5 assessment items ship with built-in timers and audio cues and suggest a level from L1 to L6; a History page shows totals plus daily-time and daily-reps bar charts. Low-key silent mode, half-dose switch, light/dark/system themes and zh-CN/English; all data stays on-device, no network, no accounts.",
     outcome:
-      "GitHub Release v1.0 published with a directly downloadable APK (debug-signed, Android 12+); all 34 product acceptance criteria passed with per-item screenshot evidence.",
+      "GitHub Release v1.1 published with a directly downloadable, release-signed APK (Android 12+); all product acceptance criteria passed; a History page provides training stats and charts.",
     tags: ["Android", "Kotlin / Jetpack Compose", "Voice-guided", "Offline on-device data"],
   },
   "photo-library": {

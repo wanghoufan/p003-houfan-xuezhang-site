@@ -1067,12 +1067,12 @@ export const projects: Project[] = [
     challenge:
       "语音要能扛住锁屏、来电和切后台不中断；计时与播报必须严格对齐；摸底全程不能要求用户手动计数；训练中途还要留得出安全出口。",
     solution:
-      "Kotlin + Jetpack Compose 实现，音频走 Media3 前台媒体服务；训练按当前等级自动生成「耐力 + 快速」脚本，语音播报收紧 / 保持倒计时 / 放松 / 休息；5 项摸底全部内置计时与语音引导并给出 L1–L6 等级建议；每日收缩额度封顶 40 次，支持低调模式、半量与中英双语、主题三态，数据仅存本机、无联网无账号。",
+      "Kotlin + Jetpack Compose 实现，音频走 Media3 前台媒体服务；每级按「每天几场 × 每场几次」定义，每场固定「1 个耐力组 + 1 个快速回合」，次数每次一致；「各级标准」页用耐力 / 快速 / 每日总计三张表列出；5 项摸底全部内置计时与语音引导并给出 L1–L6 等级建议；新增历史页，展示训练总计与每日时长 / 每日次数柱状图。支持低调模式、半量与中英双语、主题三态，数据仅存本机、无联网无账号。",
     outcome:
-      "已发 GitHub Release v1.0 并挂可直接下载的 APK（debug 签名，Android 12+）；34 条产品验收 AC 全部通过并留有逐条截图证据。",
+      "已发 GitHub Release v1.1 并挂可直接下载的正式签名 APK（Android 12+）；产品验收全部通过，历史页提供训练统计与图表。",
     gallery: [],
     releaseUrl:
-      "https://github.com/wanghoufan/p045-kegel-training/releases/tag/v1.0",
+      "https://github.com/wanghoufan/p045-kegel-training/releases/tag/v1.1",
     repoUrl: "https://github.com/wanghoufan/p045-kegel-training",
     links: [
       {
@@ -1081,7 +1081,7 @@ export const projects: Project[] = [
       },
       {
         label: "下载安卓安装包",
-        href: "https://github.com/wanghoufan/p045-kegel-training/releases/tag/v1.0",
+        href: "https://github.com/wanghoufan/p045-kegel-training/releases/tag/v1.1",
       },
     ],
   },
