@@ -738,16 +738,16 @@ export const projects: Project[] = [
     summary:
       "去过的地方拍张照、写两句，自动整理成一本能翻、能找、能分享的地点手账，按地点和标签回到那天的感觉。",
     cover: "/projects/place-journal.jpg",
-    tags: ["PWA", "React 18 + Vite", "Supabase 同步", "本地优先"],
+    tags: ["PWA", "React 18 + Vite", "Supabase 同步", "本地优先", "Expo + RN 安卓端"],
     role: "独立产品设计与开发",
     background:
       "照片攒了一堆，想按「我去过哪些地方」回看却没有结构。这个手账把每次记录变成有地点、有标签、能检索的条目。",
     challenge:
       "AI 供应商要能换（OpenRouter / DeepSeek / OpenCode 三个适配器，12 秒降级）；多端同时改要有冲突裁决；分享出去的快照绝不能带出私密内容。",
     solution:
-      "拍照加语音记一笔，AI 提炼地点与标签；按地点、时间线、标签回顾，支持自然语言搜地点；分享有单卡、清单、地图三种形态且私密字段默认不外泄；数据先写本机 IndexedDB，再由 outbox 同步 Supabase，另配 Expo 安卓壳。",
+      "拍照加语音记一笔，AI 提炼地点与标签；按地点、时间线、标签回顾，支持自然语言搜地点；分享有单卡、清单、地图三种形态且私密字段默认不外泄；数据先写本机 IndexedDB，再由 outbox 同步 Supabase；另有一个功能同构的 Expo + React Native 安卓 App，本机用 SQLite、登录同一账号即同步。",
     outcome:
-      "PWA 已上线并通过验收。云同步、地图与 AI 都需自备 Key，不填也能当纯本机手账用。",
+      "网页版已上线并通过验收，安卓 App 出包在真机自用。云同步、地图与 AI 都需自备 Key，不填也能当纯本机手账用。",
     gallery: [],
     siteUrl: "https://place-journal-xi.vercel.app",
     repoUrl: "https://github.com/wanghoufan/p011-place-journal",
