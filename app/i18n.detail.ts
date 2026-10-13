@@ -238,7 +238,7 @@ export const projectDetailEn: Record<string, ProjectDetailEn> = {
     solution:
       "A photo plus a spoken note, with AI extracting place and tags; review by place, timeline or tag, with natural-language place search; sharing in three forms — single card, list, map — with private fields withheld by default; data is written locally to IndexedDB first, then synced to Supabase through an outbox, alongside a feature-matching Expo + React Native Android app that keeps its own local SQLite and syncs once you sign into the same account.",
     outcome:
-      "The web app is live and accepted; the Android build runs on real phones for personal use. Cloud sync, maps and AI each need your own key; without them it still works as a purely local journal.",
+      "GitHub Release v0.1.0 ships a directly downloadable universal APK (Android 7.0+, signed with a dedicated release key). The web app is live and accepted; cloud sync, maps and AI each need your own key — without them it still works as a purely local journal.",
     tags: ["PWA", "React 18 + Vite", "Supabase sync", "Local first", "Expo + RN Android"],
   },
   nightrec: {

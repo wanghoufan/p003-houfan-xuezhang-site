@@ -747,15 +747,21 @@ export const projects: Project[] = [
     solution:
       "拍照加语音记一笔，AI 提炼地点与标签；按地点、时间线、标签回顾，支持自然语言搜地点；分享有单卡、清单、地图三种形态且私密字段默认不外泄；数据先写本机 IndexedDB，再由 outbox 同步 Supabase；另有一个功能同构的 Expo + React Native 安卓 App，本机用 SQLite、登录同一账号即同步。",
     outcome:
-      "网页版已上线并通过验收，安卓 App 出包在真机自用。云同步、地图与 AI 都需自备 Key，不填也能当纯本机手账用。",
+      "已发 GitHub Release v0.1.0 并挂可直接下载的通用 APK（Android 7.0+，自建发布密钥签名）。网页版已上线并通过验收；云同步、地图与 AI 都需自备 Key，不填也能当纯本机手账用。",
     gallery: [],
     siteUrl: "https://place-journal-xi.vercel.app",
+    releaseUrl:
+      "https://github.com/wanghoufan/p011-place-journal/releases/tag/v0.1.0",
     repoUrl: "https://github.com/wanghoufan/p011-place-journal",
     links: [
       { label: "打开在线体验", href: "https://place-journal-xi.vercel.app" },
       {
         label: "查看 GitHub 项目",
         href: "https://github.com/wanghoufan/p011-place-journal",
+      },
+      {
+        label: "下载安卓安装包",
+        href: "https://github.com/wanghoufan/p011-place-journal/releases/tag/v0.1.0",
       },
     ],
   },
