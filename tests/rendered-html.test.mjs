@@ -154,6 +154,7 @@ test("every project repoUrl points at a real renamed repository", async () => {
     "socialmate": "alw-001-foreign-language-social-system",
     "bitetempo": "p047-mindful-eating",
     "curated-skills": "alw-003-curated-skill-open-source",
+    "audiobook-cabin": "p051-sister-audiobook-cabin",
   };
   for (const [slug, repo] of Object.entries(expected)) {
     const { res, text } = await get(`/projects/${slug}/`);
@@ -277,6 +278,7 @@ test("static export ships every published project as its own folder", async () =
     "socialmate",
     "bitetempo",
     "curated-skills",
+    "audiobook-cabin",
   ];
   const dirs = (await readdir(path.join(OUT, "projects"), { withFileTypes: true }))
     .filter((entry) => entry.isDirectory())
@@ -306,7 +308,7 @@ test("方法与体系 是筛选标签，三条作品就在同一面作品墙里"
     )
     .replace(/<!--.*?-->/g, "");
   assert.match(wall, /方法与体系（3）/, "筛选条应出现「方法与体系（3）」标签");
-  assert.match(wall, /全部（32）/, "全部计数应含新增作品");
+  assert.match(wall, /全部（33）/, "全部计数应含新增作品");
   for (const title of ["Skill 能力地图", "ORCA 多智能体开发系统", "精选 Skill 开源仓库"]) {
     assert.ok(wall.includes(`<h3>${title}</h3>`), `${title} 应作为卡片出现在作品墙内`);
   }

@@ -112,6 +112,11 @@ export const categoryLabelsEn: Record<ProjectCategory, string> = {
 
 /** 作品标题与摘要的英文版（详情页长文暂未翻译）。 */
 export const projectEn: Record<string, { title: string; summary: string }> = {
+  "audiobook-cabin": {
+    title: "Sister's Audiobook Cabin",
+    summary:
+      "Turns the family's existing audiobook courses into a private listening cabin on a phone: browse by subject and level, play episode by episode, set a sleep timer, and keep listening offline — no app store, no login, and the audio never leaves home.",
+  },
   "cny-us-rate-board": {
     title: "CNY/USD Rate Board",
     summary:

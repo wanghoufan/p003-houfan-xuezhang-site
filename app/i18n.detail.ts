@@ -13,6 +13,18 @@ export type ProjectDetailEn = {
 };
 
 export const projectDetailEn: Record<string, ProjectDetailEn> = {
+  "audiobook-cabin": {
+    role: "Independently designed, built and shipped for family use",
+    background:
+      "The repository description says it plainly: the family's audiobook courses become a private cabin on a phone — browse by subject and level, a sleep timer, and listening that survives the network. The purchased course files had sat on a hard drive; listening once meant going through the computer first.",
+    challenge:
+      "The README draws the line itself: the course manifest, real audio and scan details stay on the local machine and never enter the repository — every public-facing screenshot is rendered with placeholder courses. Offline audio lives in the phone browser's cache, which can be reclaimed, while listening history must survive; four damaged source files must show as unplayable without affecting anything else.",
+    solution:
+      "The home computer runs a local server: a course API plus HTTP Range streaming, audio only over the LAN. On the phone it is a React PWA — a subject rail with level tabs and search, speed from 0.75x to 2x, loop modes, sleep timer and resume, whole-course downloads that pause and resume, installable to the home screen for offline play. Bilingual UI with light/dark/system themes.",
+    outcome:
+      "Installed on the sister's Android phone for daily use: downloaded courses play offline, progress survives page changes, and damaged sources are clearly marked unplayable. Code and docs are public on GitHub; the real course data is not in the repository.",
+    tags: ["Offline listening", "Sleep timer", "Bilingual", "Family-private"],
+  },
   "cny-us-rate-board": {
     role: "Sole design and development",
     background:

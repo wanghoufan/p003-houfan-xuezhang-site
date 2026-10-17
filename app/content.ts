@@ -1180,4 +1180,33 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "audiobook-cabin",
+    title: "妹妹的听书小屋",
+    status: "published",
+    statusLabel: "源码公开",
+    year: "2026",
+    category: "mobile",
+    summary:
+      "把家里已有的听书课程变成手机上的私人听书小屋：按学科和难度找课、逐集点播、睡前定时关闭、没网也能继续听。不用装 App、不用登录，音频永远不出家门。",
+    cover: "/projects/audiobook-cabin.jpg",
+    tags: ["离线收听", "睡眠定时", "中英双语", "家庭私有"],
+    role: "独立设计与全栈开发，交付家人日常使用",
+    background:
+      "仓库简介里那句就是它的定位：把家里的听书课程变成手机上的私人听书小屋，按学科和难度找课、睡前定时关闭、没网也能继续听。买回来的课程文件一直躺在硬盘里，孩子想听一次得先经过电脑，这个项目就是为了让手机点开即听。",
+    challenge:
+      "README 把边界写得很明白：课程清单、真实音频与扫描明细只保留在本机，不进入仓库——对外能看到的界面一律用占位课程数据渲染。离线缓存存在手机浏览器里，清除网站数据会删掉缓存但收听记录要保留；4 份损坏源文件要在界面上标成不可播放而不影响其余内容。",
+    solution:
+      "家里电脑跑一个本地服务：课程 API 加 HTTP Range 流式分发，音频只在局域网走；手机侧是 React PWA，学科栏配难度页签和搜索，倍速、循环模式、睡眠定时、断点续听齐全，整课可下载、可暂停续传，装到桌面后断网播放已下载分集。界面中英双语、浅色深色跟随系统。",
+    outcome:
+      "已装到妹妹的安卓手机日常使用：整课下载后断网可听，收听进度跨页面保留；损坏源文件在界面明确标注不可播放。代码与文档公开在 GitHub，真实课程数据不在仓库内。",
+    gallery: [],
+    repoUrl: "https://github.com/wanghoufan/p051-sister-audiobook-cabin",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p051-sister-audiobook-cabin",
+      },
+    ],
+  },
 ];
