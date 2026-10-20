@@ -277,4 +277,9 @@ export const projectEn: Record<string, { title: string; summary: string }> = {
     summary:
       "AI skills that already worked on real projects, gathered in one place: each states what it solves, what it assumes and where its safety boundaries are, so you can judge at a glance whether it fits your workflow.",
   },
+  "blinkguard": {
+    title: "BlinkGuard",
+    summary:
+      "An idle Android phone beside your monitor that watches your blinks for you: it counts complete blink cycles on-device, sounds an alert and says 「眨眨眼」 when you forget for too long, and keeps your daily eye-use trend and eye-care tips on that same phone — no network, nothing leaves the device.",
+  },
 };

@@ -409,6 +409,18 @@ export const projectDetailEn: Record<string, ProjectDetailEn> = {
       "3 skills across 25 tracked files: 16 Markdown (8 Chinese, 8 English), 6 result screenshots (3 pairs), 1 read-only bilingual check script and the MIT license itself. Content ships under MIT; the scope of each skill keeps being reviewed item by item.",
     tags: ["AI Skill", "Bilingual", "SKILL.md", "Proven on real projects"],
   },
+  "blinkguard": {
+    role: "Sole design and development",
+    background:
+      "The repository description says what this is: an idle Android phone propped next to the monitor that watches your blinks for you — an alert tone and a spoken 「眨眨眼」 when you go too long without blinking, with your daily eye-use trend kept on the same phone, everything processed on-device, no network, nothing sent out. A real device test added a sharper case: ‘I wear glasses, and when I look up-right at the screen my blinks are not detected.’",
+    challenge:
+      "That reported case was the hardest one: the analysis frame was only 640×480, head yaw past 18° was rejected as ‘turn your head’, and a blink needed two consecutive closed-eye frames — so looking up-right with glasses missed the most. Alert pacing had its own trap: a brief loss of face reset the 30-second repeat cooldown, measured at three alerts inside 12 seconds. The cross-device leg depends on a third-party relay, so whether it reaches the desktop is not this app's decision.",
+    solution:
+      "CameraX preview plus on-device ML Kit face detection; only a complete close-then-open cycle counts. The analysis stream moved to 1280×960 with 1.0/1.2/1.5× zoom; at 30–40° of side gaze it uses the more closed eye and falls back to whichever eye probability survives. Reminders obey 30 s and 90 s cooldowns with a 2 s minimum gap, and the last-alert timestamps persist with the session state, so leaving and coming back no longer resets them. The UI is a four-tab layout (Monitor / Stats / Tips / Settings); stats report blinks per effective minute as 24 hourly bars for today and 7 daily bars for the week, showing 0 below 60 effective seconds. Each reminder also posts a silent, text-only system notification for a desktop relay to forward, and if that relay fails the phone's own audio reminders carry on.",
+    outcome:
+      "Measured on a Redmi Note 11T Pro+ (Android 14): 30 human-counted blinks with glasses 30/30; without glasses 26/30 (one short, recorded as a known limitation); 2 h 03 m in one process, 0 crashes, 37.6 °C, battery 90% → 75%. 28 test classes and 285 unit tests green, lint reports 0 errors; the shipped APK asks for CAMERA and POST_NOTIFICATIONS only, with no INTERNET. Of the 72 acceptance items, 42 pass, 27 await evidence and 3 are blocked by external conditions — first-release user sign-off has not happened. The repository ships no APK binary; build it from source per the README.",
+    tags: ["Android", "On-device detection", "Offline, no network", "Eye-care reminder"],
+  },
 };
 
 /** 详情页与卡片上的链接按钮名。 */
