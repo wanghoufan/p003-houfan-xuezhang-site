@@ -9,7 +9,7 @@ A non-job-hunting personal showcase site that presents personal background, AI a
 - Live URLs (both serve identical content; visitors should use GitHub Pages, which loads faster in mainland China):
   - GitHub Pages (primary): https://wanghoufan.github.io/p003-houfan-xuezhang-site/
   - Vercel (mirror): https://houfan-xuezhang-site.vercel.app
-- 35 published projects (18 web apps, 11 mobile apps, 3 desktop tools, 3 methods & systems), 4 research topics, 9 interests, 1 service card, Chinese-language interface
+- 35 published projects (18 web apps, 11 mobile apps, 3 desktop tools, 3 methods & systems), 4 research topics, 9 interests, no service cards, Chinese-language interface
 - Fully static — no database, no login, no comments, no admin panel
 
 ## What the site does
@@ -47,7 +47,7 @@ npm run lint
 
 | What you want to change | File or directory |
 | --- | --- |
-| Profile, background, interests, topics, projects, services | `app/content.ts` |
+| Profile, background, interests, topics, projects | `app/content.ts` |
 | Contact panel and WeChat QR interaction | `app/ContactPanel.tsx` |
 | Homepage structure | `app/page.tsx` |
 | Project cards and category filter | `app/ProjectGallery.tsx` |

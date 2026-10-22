@@ -52,15 +52,6 @@ export type Project = {
   repoUrl?: string;
 };
 
-export type Service = {
-  title: string;
-  cover: string;
-  coverWidth: number;
-  coverHeight: number;
-  coverVersion: string;
-  href: string;
-};
-
 export const profile = {
   nickname: "后翻学长",
   location: "海南海口",
@@ -96,18 +87,6 @@ export const interests = [
   { name: "抖舞", mark: "DANCE", category: "运动类", photo: "/photos/dance.webp" },
   { name: "滑雪", mark: "SNOWBOARD", category: "运动类", photo: "/photos/snowboard.webp" },
   { name: "冲浪", mark: "SURF", category: "运动类", photo: "/photos/surf.webp" },
-];
-
-// 新增服务时，只需在这里补充一张服务卡片。
-export const services: Service[] = [
-  {
-    title: "GPT 代充值",
-    cover: "/services/gpt-recharge.png",
-    coverWidth: 1064,
-    coverHeight: 1153,
-    coverVersion: "20260811",
-    href: "https://tiancexai.com/?aff=HOUFAN",
-  },
 ];
 
 export const milestones = [

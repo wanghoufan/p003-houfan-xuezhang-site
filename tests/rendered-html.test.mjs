@@ -89,25 +89,20 @@ test("server-renders the complete personal homepage", async () => {
   assert.match(text, /GitHub/);
   assert.match(text, /YouTube/);
   assert.match(text, /loading="lazy"/);
-  // 2026-10-07：用户反馈服务卡「点了没反应」。原因是用 window.open 打开外链会被
-  // 浏览器弹窗拦截；恢复为标准 <a href target="_blank">，让链接在任何浏览器都能打开。
-  assert.match(
-    text,
-    /<a[^>]*class="service-card-link"[^>]*href="https:\/\/tiancexai\.com\/\?aff=HOUFAN"/,
-  );
   assert.doesNotMatch(text, /正在备考与探索|ongoing-column/);
 });
 
-// 2026-10-03：用户要求下架「Claude Code 中转服务」，链接与封面图一并移除。
-// 断言钉住，避免后续误加回来。
+// 2026-10-23：Google Safe Browsing 判定整站「欺骗性内容」，用户决定下架
+// 「GPT 代充值」服务卡与第三方推广外链（含 aff 参数）。断言钉住，避免误加回来。
 test("retired service stays removed from the page", async () => {
   const { res, text } = await get("/");
   assert.equal(res.status, 200);
   assert.doesNotMatch(text, /Claude Code 中转服务/);
   assert.doesNotMatch(text, /xuedingtoken\.com/);
   assert.doesNotMatch(text, /claude-code-relay/);
-  // 保留下来的服务卡仍在
-  assert.match(text, /GPT 代充值/);
+  assert.doesNotMatch(text, /GPT 代充值/);
+  assert.doesNotMatch(text, /tiancexai/);
+  assert.doesNotMatch(text, /aria-labelledby="services-title"/);
 });
 
 test("published project route renders its story and GitHub link", async () => {
@@ -307,7 +302,7 @@ test("方法与体系 是筛选标签，三条作品就在同一面作品墙里"
   const wall = text
     .slice(
       text.indexOf('aria-labelledby="projects-title"'),
-      text.indexOf('aria-labelledby="services-title"'),
+      text.indexOf('aria-labelledby="interests-title"'),
     )
     .replace(/<!--.*?-->/g, "");
   assert.match(wall, /方法与体系（3）/, "筛选条应出现「方法与体系（3）」标签");

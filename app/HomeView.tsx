@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { ContactPanel } from "./ContactPanel";
-import { ServiceCard } from "./ServiceCard";
 import { PhotoSlot } from "./PhotoSlot";
 import { ThemeToggle } from "./ThemeToggle";
 import { LangToggle, useLang, useT } from "./LangToggle";
@@ -16,7 +15,6 @@ import {
   milestones,
   profile,
   projects,
-  services,
   topics,
 } from "./content";
 
@@ -71,7 +69,6 @@ export function HomeView() {
           <nav aria-label={t("homeAria")}>
             <a href="#about">{t("navAbout")}</a>
             <a href="#projects">{t("navProjects")}</a>
-            <a href="#services">{t("navServices")}</a>
             <a href="#interests">{t("navInterests")}</a>
             <a href="#topics">{t("navTopics")}</a>
             <a href="#contact">{t("navContact")}</a>
@@ -160,21 +157,8 @@ export function HomeView() {
           )}
         </section>
 
-        <section className="services-section reveal" aria-labelledby="services-title">
-          <SectionHeading number="03" title={t("sectionServices")} id="services" />
-          <div className="service-grid">
-            {services.map((service, index) => (
-              <ServiceCard
-                key={service.href}
-                service={service}
-                priority={index === 0}
-              />
-            ))}
-          </div>
-        </section>
-
         <section className="interests-section reveal" aria-labelledby="interests-title">
-          <SectionHeading number="04" title={t("sectionInterests")} id="interests" />
+          <SectionHeading number="03" title={t("sectionInterests")} id="interests" />
           <p className="section-lead">{t("interestLead")}</p>
           <div className="interest-groups">
             {interestGroups.map((group) => (
@@ -219,7 +203,7 @@ export function HomeView() {
         </section>
 
         <section className="milestones-section reveal" aria-labelledby="milestones-title">
-          <SectionHeading number="05" title={t("sectionMilestones")} id="milestones-title" />
+          <SectionHeading number="04" title={t("sectionMilestones")} id="milestones-title" />
           <ul className="milestone-list">
             {(lang === "en" ? contentEn.milestones : milestones).map((item, index) => (
               <li key={item}>
@@ -231,7 +215,7 @@ export function HomeView() {
         </section>
 
         <section className="topics-section reveal" aria-labelledby="topics-title">
-          <SectionHeading number="06" title={t("sectionTopics")} id="topics" />
+          <SectionHeading number="05" title={t("sectionTopics")} id="topics" />
           <div className="topic-grid">
             {topics.map((topic, index) => (
               <article key={topic.title}>

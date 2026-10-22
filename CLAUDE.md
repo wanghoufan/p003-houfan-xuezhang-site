@@ -14,7 +14,7 @@
 - `npm install` / `npm run dev`（需 Node >=22.13.0）/ `npm test` / `npm run build` / `npm lint`
 
 ## 源真值
-- 内容：`app/content.ts`（28 个已发布项目 + 1 服务卡片「GPT 代充值」，2026-10-23 实测）；联系方式：`app/ContactPanel.tsx`；照片：`public/photos/*.webp`；封面：`public/projects/`；照片指引：`照片替换说明.md`
+- 内容：`app/content.ts`（35 个已发布项目，2026-10-23 实测；服务卡片已于 2026-10-23 全部下架）；联系方式：`app/ContactPanel.tsx`；照片：`public/photos/*.webp`；封面：`public/projects/`；照片指引：`照片替换说明.md`
 
 ## 硬性约定
 - 不臆造项目 / 资质 / 联系方式 / 照片；不放置伪造或空 contact 链接。

@@ -7,9 +7,17 @@
 - 项目名称：后翻学长个人网站（houfan-xuezhang-personal-site）
 - 定位：非求职导向的个人展示站（杂志叙事呈现经历 / AI 应用与编程项目 / 兴趣生活 / 专题研究 / 联系方式）。
 - 技术栈：React 19 + TypeScript + Next.js 16.2.6（App Router）+ Turbopack + Tailwind v4；`output: "export"` 纯静态导出到 `out/`。
-- 源真值：`app/content.ts`（内容，8 个已发布项目 + 2 服务卡片，项目含 `category` 分类字段）、`app/ContactPanel.tsx`（联系方式）、`public/photos/*.webp`（照片）、`public/projects/`（封面）、`public/contact/wechat-qr.png`（微信二维码）。
+- 源真值：`app/content.ts`（内容，35 个已发布项目，无服务卡片，项目含 `category` 分类字段）、`app/ContactPanel.tsx`（联系方式）、`public/photos/*.webp`（照片）、`public/projects/`（封面）、`public/contact/wechat-qr.png`（微信二维码）。
 - 常用命令：`npm install` / `npm run dev` / `npm test` / `npm run build` / `npm lint`。
 - 发布：一次 push 到 `main` 同时更新 Vercel 与 GitHub Pages，发布前 `npm test`。
+
+## 2026-10-23 紧急处理：Google Safe Browsing 判定整站「欺骗性内容」
+
+- 现象：`https://wanghoufan.github.io/` 及其下全部子站被标记「此网站不安全 — 某些网页会试图诱骗访问者透露个人信息或下载软件」，标记时间 2026-10-15，影响整个 `wanghoufan.github.io` 域名（p003 / p002 / p006 / posture-guard 等全部报红）。
+- 用户决定：下架「GPT 代充值」整块（A1），并授权本机改代码 + 推送（B1）。
+- 改动：`app/content.ts` 删 `services` 与 `Service` 类型；`app/HomeView.tsx` 删服务区块与导航项，区块序号 04/05/06 → 03/04/05；删 `app/ServiceCard.tsx`、`public/services/`、`tests/service-link-click.test.mjs`；`app/globals.css` 清 `.service-*` 规则（含 glass/paper 主题覆盖与媒体查询）；`app/i18n.ts` 删 `navServices` / `sectionServices`，`i18n.detail.ts` 删 `serviceTitle`；测试改为断言 `tiancexai` / `GPT 代充值` / `services-title` 均不出现。
+- 验证：`npm run build` 通过（38 条静态路由）、`node --test tests/**/*.test.mjs` 13/13、`npm run lint` 0 error（5 条既有 img 警告）。
+- 待办：Search Console 加 `wanghoufan.github.io` 前缀资源 → 安全与手动操作查看被举 URL → 提交「请求审核」。
 
 ## 当前进度（2026-10-03 13:18 已推送 main）
 

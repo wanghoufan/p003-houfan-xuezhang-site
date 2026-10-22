@@ -11,7 +11,7 @@
 - 构建层：纯 Next.js 16.2.6 + Turbopack，`next.config.ts` 设 `output: "export"`，产物 `out/`。
 - 部署：双线。Vercel `https://houfan-xuezhang-site.vercel.app`（根路径）+ GitHub Pages `https://wanghoufan.github.io/p003-houfan-xuezhang-site/`（`BASE_PATH` 注入子路径）。两者由 `.github/workflows/deploy.yml` 在 `main` push 时各自构建。
 - `npm test`（= `next build` + `node --test tests/rendered-html.test.mjs`，测试以 `next start` 起服务后 HTTP fetch 校验）→ **7/7 通过**。
-- 当前 7 个用例：① 首页完整内容（含教育时间线、分类、联系方式、无 `tiancexai` 外链、图片加载策略）② `/projects/cny-us-rate-board` 路由（含 GitHub 链接，2026-10-03 随仓库改名更新为 `p036-cny-us-rate-board`）③ 新发布项目路由（`50-haikou-cafes` / `a-share-index-valuation-report` / `ai-resume-job-matcher` / `life-species-coze`）④ 未知项目 → 404 ⑤ 静态导出含全部 8 个已发布项目的独立目录 ⑥ `every project repoUrl points at a real renamed repository`（钉住 8 个真实仓库名，防仓库改名后静默变死链）⑦ `retired service stays removed from the page`（钉住「Claude Code 中转服务」已下架）。
+- 当前 7 个用例：① 首页完整内容（含教育时间线、分类、联系方式、无 `tiancexai` 外链、图片加载策略）② `/projects/cny-us-rate-board` 路由（含 GitHub 链接，2026-10-03 随仓库改名更新为 `p036-cny-us-rate-board`）③ 新发布项目路由（`50-haikou-cafes` / `a-share-index-valuation-report` / `ai-resume-job-matcher` / `life-species-coze`）④ 未知项目 → 404 ⑤ 静态导出含全部 8 个已发布项目的独立目录 ⑥ `every project repoUrl points at a real renamed repository`（钉住 8 个真实仓库名，防仓库改名后静默变死链）⑦ `retired service stays removed from the page`（钉住「Claude Code 中转服务」与「GPT 代充值」均已下架）。
 - 历史约束（已解除）：2026-08-17 时 `npm test` 因 `sites` vite 插件的 `genie-trash` 二进制超时（ETIMEDOUT）退出非 0；迁移为纯 Next.js 后不再出现。
 
 ## 核心回归基线（P0/P1）
@@ -25,12 +25,12 @@
 - [ ] 照片缺位时显示杂志式占位框，不出现破图。
 - [ ] 键盘可达、焦点态可见、alt 完整、reduced motion 生效。
 - [ ] 中文文案一致、无错别字、无占位文字；无 `mailto:`、无中/EN 语言切换残留（见测试 `doesNotMatch` 断言）。
-- [ ] 内容与 `app/content.ts` 真值一致，已发布项目共 8 个、服务卡片 1 个（仅 GPT 代充值），无臆造项目 / 资质 / 联系方式。
+- [ ] 内容与 `app/content.ts` 真值一致，已发布项目共 35 个、服务卡片 0 个，无臆造项目 / 资质 / 联系方式。
 - [ ] `tests/rendered-html.test.mjs` 覆盖的路由回归：首页、`/projects/cny-us-rate-board`、`/projects/50-haikou-cafes`、`/projects/a-share-index-valuation-report`、`/projects/ai-resume-job-matcher`、`/projects/life-species-coze`、未知项目 → 404。
 
 ## 已知覆盖缺口（建议补充，非当前阻断）
 - [ ] `deepseek-balance-widget`、`nomad-seasons`、`ai-storyboard-studio` 三个已发布项目**尚未纳入常态化测试 `tests/rendered-html.test.mjs`** 的独立路由用例（仅在用例⑤的静态目录存在性检查中被覆盖）。建议补入 `new published project routes` 用例（标题分别为「DeepSeek 余额悬浮小工具」「候鸟 / Nomad Seasons」「AI 图文短剧分镜生成器」）。
-- [ ] 服务卡片 `GPT 代充值` 不应在页面暴露原始 `tiancexai.com` 外链（测试 `doesNotMatch(/href="https:\/\/tiancexai\.com/)`），发布前保留该断言。
+- [ ] 页面不得再出现 `GPT 代充值` / `tiancexai` / `services-title`（测试 `retired service stays removed from the page` 钉住），发布前保留该断言。
 - [ ] 本机网络出口受限，Vercel 域名（`*.vercel.app`）无法从本机 curl 验证；Pages 域名（`*.github.io`）可验证。Vercel 侧状态需用 `vercel ls` / `vercel inspect` 核对。
 
 ## 补充回归项（持续累积）

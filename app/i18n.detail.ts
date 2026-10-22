@@ -496,5 +496,4 @@ export const contentEn = {
     控糖饮食: "Low-glycaemic eating",
     孩子近视预防: "Preventing myopia in children",
   } as Record<string, string>,
-  serviceTitle: "GPT top-up service",
 };
