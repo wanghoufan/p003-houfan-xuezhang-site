@@ -112,6 +112,11 @@ export const categoryLabelsEn: Record<ProjectCategory, string> = {
 
 /** 作品标题与摘要的英文版（详情页长文暂未翻译）。 */
 export const projectEn: Record<string, { title: string; summary: string }> = {
+  "posture-guard": {
+    title: "PostureGuard",
+    summary:
+      "Put the phone beside you and the front camera quietly watches for forward head, a leaning torso and sustained neck flexion — then nudges you to stand up when you have been sitting too long. Frames are never saved or uploaded, and the app has no network access.",
+  },
   "audiobook-cabin": {
     title: "Sister's Audiobook Cabin",
     summary:

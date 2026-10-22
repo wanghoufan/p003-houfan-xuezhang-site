@@ -13,6 +13,18 @@ export type ProjectDetailEn = {
 };
 
 export const projectDetailEn: Record<string, ProjectDetailEn> = {
+  "posture-guard": {
+    role: "Independently designed and built",
+    background:
+      "Sitting at a computer for hours, the head drifts forward and the torso slowly collapses — and you rarely notice. Sitting stretches from morning to evening without a real break. Existing options either need extra hardware or send the camera feed to the cloud, and neither is something people want running all day.",
+    challenge:
+      "Run vision inference on the phone in real time while keeping the frames on the device; separate \"seated / stood up / cannot see you\" honestly, reporting \"cannot tell\" instead of a zero when landmarks are missing; and still work on narrow screens, with large text, in light and dark themes, and in Chinese and English without losing the live session when either changes.",
+    solution:
+      "CameraX capture with on-device MediaPipe Pose and Face Landmarker models; a 6–10 second calibration captures the user's own baseline, so deviations are measured against them rather than a universal threshold. Sitting time uses a monotonic clock and only accumulates when the pose is clearly seated; a stand-up must persist for the configured duration. Sitting and posture reminders are separate channels, spoken in Chinese with the reason and a suggested action, and notifications never vibrate. Three Compose screens, three theme modes and a bilingual UI live in settings.",
+    outcome:
+      "Verified on real Android hardware for camera placement, calibration, reminders and sitting stats, with the APK available to download. Settings → About → Open source licenses lists all 188 third-party components and four full license texts. Not a medical device: no diagnosis and no health score.",
+    tags: ["Android", "Kotlin / Compose", "MediaPipe", "On-device", "Sedentary"],
+  },
   "audiobook-cabin": {
     role: "Independently designed, built and shipped for family use",
     background:

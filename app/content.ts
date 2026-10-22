@@ -132,6 +132,35 @@ export const topics = [
 // 后续新增项目时，按 Project 类型填写完整资料，并将 status 设为 "published"。
 export const projects: Project[] = [
   {
+    slug: "posture-guard",
+    title: "姿势守护 PostureGuard",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    category: "mobile",
+    summary:
+      "把手机放在身体侧面，用前置摄像头在本地盯着头前伸、躯干前倾和持续低头，并在你坐太久时提醒起身；画面不保存、不上传，App 不联网。",
+    cover: "/projects/posture-guard.png",
+    tags: ["Android", "Kotlin / Compose", "MediaPipe", "本地推理", "久坐管理"],
+    role: "独立设计与开发",
+    background:
+      "长时间坐在电脑前，头会慢慢前伸、上身慢慢塌下去，自己往往察觉不到；久坐更是从上午一路坐到下班。市面上的方案要么需要额外硬件，要么把画面交给云端，而这两点都让人不愿意长期开着。",
+    challenge:
+      "要在手机端实时跑视觉推理，同时守住「画面不出手机」；还要把「坐着 / 起身 / 看不到人」分清楚，关键点缺失时如实标「无法判断」，不能拿 0 冒充正常；窄屏、大字体、深浅色与中英双语都要能用，且切换主题和语言不丢监测状态。",
+    solution:
+      "CameraX 取景加 MediaPipe Pose / Face Landmarker 本地推理，以 6–10 秒校准采集的个人基线判断头前伸、躯干前倾、持续低头三类偏移；久坐计时用单调时钟，只有明确识别为坐着才累计，起身要连续达到设定时长才确认；提醒分久坐与姿态两条独立通道，中文语音说明原因与建议动作，通知不震动；界面为 Compose 三页，主题三态与中英双语可在设置里切换。",
+    outcome:
+      "已在 Android 真机上完成机位、校准、提醒与久坐统计的验收，安装包可直接下载体验；App 内「设置 → 关于 → 开源许可」列出 188 个第三方组件与四份许可证全文。不是医疗器械，不做诊断，也不打健康分。",
+    gallery: [],
+    siteUrl: "https://wanghoufan.github.io/posture-guard-site/",
+    links: [
+      {
+        label: "打开项目官网",
+        href: "https://wanghoufan.github.io/posture-guard-site/",
+      },
+    ],
+  },
+  {
     slug: "cny-us-rate-board",
     title: "人民币兑美元汇率看板",
     status: "published",
