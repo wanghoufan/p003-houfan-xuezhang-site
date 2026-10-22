@@ -70,7 +70,7 @@ export const projectDetailEn: Record<string, ProjectDetailEn> = {
     solution:
       "Data lives in local SQLite; the search box debounces at 300ms, supports @code direct retrieval with hit counts, and colours the highlight through CSS variables per theme; manual copies and MCP retrievals share one counter; saving a body archives up to 10 versions for rollback; three theme modes follow the system with an inline first-paint script to stop flashing; and through MCP an agent such as WorkBuddy can take a card's body as its system prompt from a single 'retrieve <code>' line.",
     outcome:
-      "Local web front end and MCP integration complete, with real-time multi-device sync over the LAN and Docker self-hosting; source public on GitHub. There is no public demo site; the site cover comes from the app's built-in read-only 'example library' view and contains no real usage data.",
+      "Local web front end and MCP integration complete, with real-time multi-device sync over the LAN and Docker self-hosting. A GitHub Pages trial is live with data kept in the browser only; AI, cloud sync and MCP are disabled there. Source is public on GitHub, and the site cover comes from the app's built-in read-only 'example library' view with no real usage data.",
     tags: ["Local web app", "SQLite", "MCP integration", "Prompt library"],
   },
   "nomad-seasons": {

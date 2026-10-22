@@ -237,7 +237,7 @@ export const projects: Project[] = [
     slug: "prompt-manager",
     title: "提示词管理器",
     status: "published",
-    statusLabel: "源码公开",
+    statusLabel: "已发布",
     year: "2026",
     category: "web",
     summary:
@@ -252,8 +252,9 @@ export const projects: Project[] = [
     solution:
       "数据存本机 SQLite；搜索框 300ms 防抖，支持 `@code` 按调取码直达与命中计数，高亮用 CSS 变量分别适配两套主题；手动复制与 MCP 调取共用次数统计；正文保存自动存档最多 10 版可回滚；主题三档跟随系统并用首屏内联脚本防闪烁；再通过 MCP 让 WorkBuddy 等 Agent 用一句「调取 <码>」把卡片正文注入为系统提示词直接执行。",
     outcome:
-      "完成本地网页端与 MCP 接入，支持局域网多端实时同步与 Docker 自托管，源码公开在 GitHub。暂无公网演示站；站内封面取自应用内置的「示例知识库」只读视图，不含任何真实使用数据。",
+      "完成本地网页端与 MCP 接入，支持局域网多端实时同步与 Docker 自托管；已上线 GitHub Pages 试用版，数据只保存在浏览器里，AI、云同步与 MCP 在试用版中关闭，源码公开在 GitHub。站内封面取自应用内置的「示例知识库」只读视图，不含任何真实使用数据。",
     gallery: [],
+    siteUrl: "https://wanghoufan.github.io/p006-prompt-manager/",
     repoUrl: "https://github.com/wanghoufan/p006-prompt-manager",
     links: [
       {
