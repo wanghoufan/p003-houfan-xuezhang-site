@@ -469,12 +469,12 @@ export const projects: Project[] = [
     outcome:
       "完成一个 3–5 分钟即可完成的中文人格测试 Bot，发布在扣子 Coze 平台并提供在线体验与可分享结果页；交付包含 Coze 提示词、Supabase 后端规范与 24 张物种素材，代码已开源在 GitHub。",
     gallery: [],
-    siteUrl: "https://5dnqscfrmp.coze.site/",
+    siteUrl: "https://wanghoufan.github.io/p002-life-species-test/",
     repoUrl: "https://github.com/wanghoufan/p002-life-species-test",
     links: [
       {
         label: "打开在线体验",
-        href: "https://5dnqscfrmp.coze.site/",
+        href: "https://wanghoufan.github.io/p002-life-species-test/",
       },
       {
         label: "查看 GitHub 项目",
