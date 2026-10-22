@@ -60,7 +60,7 @@ export const ui = {
   filterAll: { zh: "全部", en: "All" },
   showingCount: { zh: "当前显示", en: "Showing" },
   projectsWord: { zh: "个作品", en: "projects" },
-  viewSite: { zh: "查看成品", en: "View the site" },
+  viewSite: { zh: "打开网站", en: "Open the site" },
   downloadApp: { zh: "下载应用", en: "Download the app" },
   coverAlt: { zh: "项目封面", en: "project cover" },
 } as const;
