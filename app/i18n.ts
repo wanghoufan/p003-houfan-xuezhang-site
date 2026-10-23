@@ -290,4 +290,9 @@ export const projectEn: Record<string, { title: string; summary: string }> = {
     summary:
       "A daily guide to what's worth doing in Haikou: events, exhibitions, shows and meetups gathered from official channels, ticketing, WeChat and social posts, sorted into tonight, this weekend and the coming month, with a clear next step on every card.",
   },
+  "dance-master": {
+    title: "Dance Master",
+    summary:
+      "Keeps the Douyin dances you want to learn in one list, then practises them eight counts at a time with a video you already have: loop just the chorus, slow it to 0.5×, mirror it and follow along, and save the clip as an offline copy so practice continues with the network off.",
+  },
 };

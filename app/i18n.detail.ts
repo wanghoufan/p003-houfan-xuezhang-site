@@ -445,6 +445,18 @@ export const projectDetailEn: Record<string, ProjectDetailEn> = {
       "Live on a public site, with a daily 07:30 job that collects, builds, opens the guide and verifies each step (date is today, no rate-limit challenge, source counts normal, page actually updated); if any check fails it reports it instead of claiming success.",
     tags: ["Haikou", "City guide", "Event calendar", "PWA"],
   },
+  "dance-master": {
+    role: "Sole design and development",
+    background:
+      "The repository README states the positioning: keep the dances you want to learn in one list, then practise them eight counts at a time with a video you legitimately own. When a dance catches your eye, you usually have two options — scrub the progress bar hunting for the chorus, or save it to your camera roll and lose it; this project exists to separate collecting from practising.",
+    challenge:
+      "The hardest part only showed up on a real device: Android WebView applies its own Range skip on top of the 206 response returned by the interceptor, shifting bytes that were already sliced. The symptom was confusing — a full-file fetch matched the source checksum exactly, yet playback failed after three seconds with MEDIA_ERR_DECODE (code=3). Codec and sample-rate guesses were ruled out; it was pinned down only by comparing the 16 bytes at source offset 1000 byte for byte. The other line was data safety: records must be written atomically (temp file, read-back verify, backup, rename), a migration must first obtain a verifiable copy of the original raw data, and a failed batch must never leave half the records updated.",
+    solution:
+      "The Android side is a Capacitor shell plus a hand-written native plugin: multi-select through the system picker, a 200/206/416 Range server over the app-private media directory, and atomic record storage with corrupt-file self-healing. For the 206 path it follows the upstream approach of a virtual prefix that absorbs WebView's second skip, and it drops the duplicated Content-Type and Content-Length headers. The React 19 front end owns the record layer: combined status and tri-state tag filtering, batch selecting whole cards and changing only what was selected, a trash with restore, offline copy save and delete, and JSON backup import behind a preview. The practice player supports whole-song and segment modes, loop or play-once, BPM and first-beat offset to cut eight-counts, mirror, 0.5/0.75/1× speed, and manual segment-point adjustment.",
+    outcome:
+      "All 30 product acceptance items carry checkable evidence: on a Redmi Note 12 Pro (Android 14) the runs covered importing ten files in one multi-select, tri-state batch tags, soft delete and restore plus permanent delete (source file hash unchanged), playing an offline copy after airplane mode and a force-stop cold start, saving a 100 MB video (PSS peaked at 317 MB then settled), controlled fault injection (insufficient space, copy failure, record write failure) and the full playback path; the web build passed 16 regression checks with no console errors. 152 front-end unit tests plus Java unit tests (Range parsing, virtual prefix, fault state, asset IDs) are green. Known limitations are stated in the README: Simplified Chinese only, offline copies are not portable across devices, automatic BPM has size and duration limits, and only one device model was verified.",
+    tags: ["Eight-count segments", "Offline practice", "Android", "Local storage"],
+  },
 };
 
 /** 详情页与卡片上的链接按钮名。 */

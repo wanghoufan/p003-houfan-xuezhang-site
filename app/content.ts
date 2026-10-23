@@ -1276,4 +1276,33 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "dance-master",
+    title: "舞蹈大师",
+    status: "published",
+    statusLabel: "源码公开",
+    year: "2026",
+    category: "mobile",
+    summary:
+      "把想学的抖音舞蹈攒成一份清单，再用自己合法拿到的视频按八拍一段一段练：只循环副歌、慢放看清脚下、镜像跟着跳，导入过的视频还能存成离线副本，断网也能接着练。",
+    cover: "/projects/dance-master.png",
+    tags: ["八拍分段", "离线练习", "Android", "本地存储"],
+    role: "独立设计与开发",
+    background:
+      "仓库 README 里那句就是它的定位：把想学的舞存成一份清单，再用自己合法拿到的视频按八拍一段一段练熟。刷到想学的舞，一般只有两条路——反复拖进度条找副歌，或者存进相册后再也找不到；这个项目就是为了把「攒清单」和「练动作」分开。",
+    challenge:
+      "最难的一段只有真机能暴露：Android WebView 会对拦截器返回的 206 响应再执行一次 Range 跳过，正文已经切好的字节被二次偏移，表现是整文件下载校验完全一致、但播放三秒就报 MEDIA_ERR_DECODE（code=3）。定位过程排除了编码与采样率猜测，最后用「源文件 offset 1000 的 16 字节」逐字节对照才锁定。另一条线是数据安全：记录要原子写（临时文件、回读校验、备份、rename），迁移前必须拿到可核查的原始备份，批量写失败不能出现半批状态。",
+    solution:
+      "Android 侧是 Capacitor 壳加自写原生插件：系统选择器多选、应用私有媒体目录的 200/206/416 Range 服务、记录原子写与损坏自愈；206 按上游同类做法加「虚拟前缀」吸收二次跳过，并去掉重复的 Content-Type 与 Content-Length。前端 React 19 做记录层：状态与三态标签的组合筛选、批量整卡勾选与只改所选、回收站、离线副本保存与删除、JSON 备份预览后再导入；练舞页支持整曲合练与分段学习、循环或单次、BPM 与首拍决定八拍、镜像与 0.5/0.75/1 倍速、手动微调分段点。",
+    outcome:
+      "30 条产品验收全部有可核查证据：真机（Redmi Note 12 Pro / Android 14）实测覆盖 10 条多选导入、批量三态标签、软删恢复与永久删（源文件哈希前后一致）、断网加杀进程冷启动播离线副本、100 MB 大文件保存（PSS 峰值 317 MB 后回落稳定）、受控故障注入（空间不足、复制失败、记录写失败）与完整播放链路；Web 端 16 项回归无控制台报错。前端 152 项单测与 Java 单测（Range 解析、虚拟前缀、故障状态、资产 ID）全绿。已知限制照实写在 README：仅简体中文、离线副本不可跨设备、自动 BPM 有大小与时长上限、只在一台真机上验证。",
+    gallery: [],
+    repoUrl: "https://github.com/wanghoufan/p057-douyin-dance-master",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p057-douyin-dance-master",
+      },
+    ],
+  },
 ];
