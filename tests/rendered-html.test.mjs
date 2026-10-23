@@ -306,7 +306,7 @@ test("方法与体系 是筛选标签，三条作品就在同一面作品墙里"
     )
     .replace(/<!--.*?-->/g, "");
   assert.match(wall, /方法与体系（3）/, "筛选条应出现「方法与体系（3）」标签");
-  assert.match(wall, /全部（35）/, "全部计数应含新增作品");
+  assert.match(wall, /全部（36）/, "全部计数应含新增作品");
   for (const title of ["Skill 能力地图", "ORCA 多智能体开发系统", "精选 Skill 开源仓库"]) {
     assert.ok(wall.includes(`<h3>${title}</h3>`), `${title} 应作为卡片出现在作品墙内`);
   }

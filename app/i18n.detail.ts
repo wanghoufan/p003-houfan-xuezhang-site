@@ -433,6 +433,18 @@ export const projectDetailEn: Record<string, ProjectDetailEn> = {
       "Measured on a Redmi Note 11T Pro+ (Android 14): 30 human-counted blinks with glasses 30/30; without glasses 26/30 (one short, recorded as a known limitation); 2 h 03 m in one process, 0 crashes, 37.6 °C, battery 90% → 75%. 29 test classes and 303 unit tests green, lint reports 0 errors; the shipped APK asks for CAMERA and POST_NOTIFICATIONS only, with no INTERNET. Of the 71 acceptance items, 42 pass, 26 await evidence, 2 are blocked by external conditions and 1 was closed by the user's decision; the first release was signed off by the user on 2026-10-21 with its known limitations accepted. The repository ships no APK binary; build it from source per the README.",
     tags: ["Android", "On-device detection", "Offline, no network", "Eye-care reminder"],
   },
+  "p049-haikou-travel-daily": {
+    role: "Independently designed and built",
+    background:
+      "Activity information in Haikou is scattered across official channels, ticketing platforms, WeChat public accounts, Xiaohongshu and Douyin. Finding something to do tonight or this weekend means flicking back and forth between a dozen sources, and it is easy to land on an event that already ended.",
+    challenge:
+      "Cover many sources while checking time and venue so nothing stale or mismatched slips through; collect within platform rate limits (throttling, reusing signed-in tabs only); and still turn the result into a page you can decide from on a phone at a glance.",
+    solution:
+      "Multi-source collection, then de-duplication, time bucketing and ranking into a daily guide. Xiaohongshu and Douyin are discovery sources only — a second non-UGC source (official, ticketing or WeChat) must corroborate on time or venue. Output is a mobile-first PWA bucketed into tonight, this weekend, the next 7 days and the next 30 days, with an explicit next step on every card.",
+    outcome:
+      "Live on a public site, with a daily 07:30 job that collects, builds, opens the guide and verifies each step (date is today, no rate-limit challenge, source counts normal, page actually updated); if any check fails it reports it instead of claiming success.",
+    tags: ["Haikou", "City guide", "Event calendar", "PWA"],
+  },
 };
 
 /** 详情页与卡片上的链接按钮名。 */

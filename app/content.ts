@@ -1247,4 +1247,33 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "p049-haikou-travel-daily",
+    title: "海口去哪玩",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    category: "web",
+    summary:
+      "每天汇总海口值得去的活动、展览、演出和社群聚会，按今晚、本周末、未来一个月分好，并告诉你去之前要先做什么。",
+    cover: "/projects/haikou-go.png",
+    tags: ["海口", "城市指南", "活动日历", "PWA"],
+    role: "独立设计与开发",
+    background:
+      "海口的活动信息分散在官方发布、票务平台、公众号和小红书 / 抖音里，想找今天或周末去哪玩，往往要在十几个来源之间来回翻。",
+    challenge:
+      "既要覆盖多个来源，又要核对时间与场馆、避免过期和错配；采集端还要遵守平台风控（限速、只复用已登录标签）；最终要整理成手机上能一眼决策的页面。",
+    solution:
+      "多源采集 + 去重 + 时效分档 + 排序生成每日指南；小红书 / 抖音只作发现源，需官方或票务等非 UGC 第二来源交叉印证；输出为移动优先的 PWA，按今晚 / 本周末 / 未来 7 天 / 未来 30 天分档，每条给出明确的下一步动作。",
+    outcome:
+      "已上线公网站点，并配置每天 07:30 自动更新：采集 → 生成 → 打开 → 逐项核对（日期是否为当天、是否命中平台风控、来源数量是否异常、页面是否真的更新），核对不过如实报错。",
+    gallery: [],
+    siteUrl: "https://wanghoufan.github.io/haikou-go/",
+    links: [
+      {
+        label: "打开在线体验",
+        href: "https://wanghoufan.github.io/haikou-go/",
+      },
+    ],
+  },
 ];

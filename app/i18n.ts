@@ -285,4 +285,9 @@ export const projectEn: Record<string, { title: string; summary: string }> = {
     summary:
       "An idle Android phone beside your monitor that watches your blinks for you: it counts complete blink cycles on-device, sounds an alert and says 「眨眨眼」 when you forget for too long, and keeps your daily eye-use trend and eye-care tips on that same phone — no network, nothing leaves the device.",
   },
+  "p049-haikou-travel-daily": {
+    title: "Haikou Go",
+    summary:
+      "A daily guide to what's worth doing in Haikou: events, exhibitions, shows and meetups gathered from official channels, ticketing, WeChat and social posts, sorted into tonight, this weekend and the coming month, with a clear next step on every card.",
+  },
 };
