@@ -1222,7 +1222,7 @@ export const projects: Project[] = [
     slug: "blinkguard",
     title: "眨眼守护",
     status: "published",
-    statusLabel: "源码公开",
+    statusLabel: "已发布",
     year: "2026",
     category: "mobile",
     summary:
@@ -1239,11 +1239,11 @@ export const projects: Project[] = [
     outcome:
       "真机（Redmi Note 11T Pro+ / Android 14）实测：戴眼镜 30 次人工对照 30/30，不戴眼镜 26/30（低一次，已作为已知限制记录）；同一进程连续运行 2 小时 03 分、0 崩溃、37.6°C、电量 90%→75%。29 个测试类 303 条单元测试全绿，lint 0 error；交付 APK 只申请 CAMERA 与 POST_NOTIFICATIONS，没有 INTERNET。验收矩阵 71 条：42 条通过、26 条待补证、2 条被外部条件阻塞、1 条按用户决定关闭，首次发布已于 2026-10-21 由用户签收通过（带已知限制）。仓库不分发安装包，需按 README 自行构建。",
     gallery: [],
-    repoUrl: "https://github.com/wanghoufan/p053-eye-health-monitor",
+    siteUrl: "https://wanghoufan.github.io/blinkguard-site/",
     links: [
       {
-        label: "查看 GitHub 项目",
-        href: "https://github.com/wanghoufan/p053-eye-health-monitor",
+        label: "打开官网",
+        href: "https://wanghoufan.github.io/blinkguard-site/",
       },
     ],
   },
@@ -1280,7 +1280,7 @@ export const projects: Project[] = [
     slug: "dance-master",
     title: "舞蹈大师",
     status: "published",
-    statusLabel: "源码公开",
+    statusLabel: "内测中",
     year: "2026",
     category: "mobile",
     summary:
@@ -1297,12 +1297,6 @@ export const projects: Project[] = [
     outcome:
       "30 条产品验收全部有可核查证据：真机（Redmi Note 12 Pro / Android 14）实测覆盖 10 条多选导入、批量三态标签、软删恢复与永久删（源文件哈希前后一致）、断网加杀进程冷启动播离线副本、100 MB 大文件保存（PSS 峰值 317 MB 后回落稳定）、受控故障注入（空间不足、复制失败、记录写失败）与完整播放链路；Web 端 16 项回归无控制台报错。前端 152 项单测与 Java 单测（Range 解析、虚拟前缀、故障状态、资产 ID）全绿。已知限制照实写在 README：仅简体中文、离线副本不可跨设备、自动 BPM 有大小与时长上限、只在一台真机上验证。",
     gallery: [],
-    repoUrl: "https://github.com/wanghoufan/p057-douyin-dance-master",
-    links: [
-      {
-        label: "查看 GitHub 项目",
-        href: "https://github.com/wanghoufan/p057-douyin-dance-master",
-      },
-    ],
+    links: [],
   },
 ];

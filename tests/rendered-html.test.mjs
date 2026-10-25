@@ -150,7 +150,6 @@ test("every project repoUrl points at a real renamed repository", async () => {
     "bitetempo": "p047-mindful-eating",
     "curated-skills": "alw-003-curated-skill-open-source",
     "audiobook-cabin": "p051-sister-audiobook-cabin",
-    "blinkguard": "p053-eye-health-monitor",
   };
   for (const [slug, repo] of Object.entries(expected)) {
     const { res, text } = await get(`/projects/${slug}/`);
@@ -161,6 +160,22 @@ test("every project repoUrl points at a real renamed repository", async () => {
       `${slug} 应链接到 github.com/wanghoufan/${repo}`,
     );
   }
+});
+
+// 私有仓 URL 不得出现在任何对外页面：眨眼守护挂官网，舞蹈大师（暂无落地页）不带仓库链接。
+test("private repos never surface as links on public pages", async () => {
+  const blink = await get("/projects/blinkguard/");
+  assert.equal(blink.res.status, 200);
+  assert.match(blink.text, /wanghoufan\.github\.io\/blinkguard-site\//, "眨眼守护应链接到官网落地页");
+  const dance = await get("/projects/dance-master/");
+  assert.equal(dance.res.status, 200);
+  assert.doesNotMatch(dance.text, /p057-douyin-dance-master/, "舞蹈大师不得出现私有仓名");
+  const home = await get("/");
+  assert.doesNotMatch(
+    home.text,
+    /p053-eye-health-monitor|p057-douyin-dance-master/,
+    "首页不得出现私有仓名",
+  );
 });
 
 test("storyboard project links to its public repo and live Vercel site", async () => {
