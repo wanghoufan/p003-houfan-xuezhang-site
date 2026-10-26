@@ -506,8 +506,7 @@ export const projects: Project[] = [
       "/projects/protein-calculator-ranking.png",
       "/projects/protein-calculator-dark-home.png",
     ],
-    releaseUrl:
-      "https://github.com/wanghoufan/p027-protein-calculator/releases/tag/styleB-20260920",
+    siteUrl: "https://wanghoufan.github.io/protein-calculator-site/",
     repoUrl: "https://github.com/wanghoufan/p027-protein-calculator",
     links: [
       {
@@ -515,8 +514,8 @@ export const projects: Project[] = [
         href: "https://github.com/wanghoufan/p027-protein-calculator",
       },
       {
-        label: "下载安卓安装包",
-        href: "https://github.com/wanghoufan/p027-protein-calculator/releases/tag/styleB-20260920",
+        label: "打开官网",
+        href: "https://wanghoufan.github.io/protein-calculator-site/",
       },
     ],
   },
@@ -759,18 +758,12 @@ export const projects: Project[] = [
       "已发 GitHub Release v0.1.0 并挂可直接下载的通用 APK（Android 7.0+，自建发布密钥签名）。网页版已上线并通过验收；云同步、地图与 AI 都需自备 Key，不填也能当纯本机手账用。",
     gallery: [],
     siteUrl: "https://place-journal-xi.vercel.app",
-    releaseUrl:
-      "https://github.com/wanghoufan/p011-place-journal/releases/tag/v0.1.0",
     repoUrl: "https://github.com/wanghoufan/p011-place-journal",
     links: [
       { label: "打开在线体验", href: "https://place-journal-xi.vercel.app" },
       {
         label: "查看 GitHub 项目",
         href: "https://github.com/wanghoufan/p011-place-journal",
-      },
-      {
-        label: "下载安卓安装包",
-        href: "https://github.com/wanghoufan/p011-place-journal/releases/tag/v0.1.0",
       },
     ],
   },
@@ -853,8 +846,7 @@ export const projects: Project[] = [
     outcome:
       "已发 GitHub Release v1.2.0 并挂 APK，可直接下载安装。音频全部由项目自行程序化合成，正式播报走系统 TTS 引擎；仅 Android，后台加固与部分统计口径仍按挂账处理。",
     gallery: [],
-    releaseUrl:
-      "https://github.com/wanghoufan/p025-stretch-routine-app/releases/tag/v1.2.0",
+    siteUrl: "https://wanghoufan.github.io/stretch-routine-site/",
     repoUrl: "https://github.com/wanghoufan/p025-stretch-routine-app",
     links: [
       {
@@ -862,8 +854,8 @@ export const projects: Project[] = [
         href: "https://github.com/wanghoufan/p025-stretch-routine-app",
       },
       {
-        label: "下载安卓安装包",
-        href: "https://github.com/wanghoufan/p025-stretch-routine-app/releases/tag/v1.2.0",
+        label: "打开官网",
+        href: "https://wanghoufan.github.io/stretch-routine-site/",
       },
     ],
   },
@@ -946,8 +938,7 @@ export const projects: Project[] = [
     outcome:
       "已发 GitHub Release v2.1.0 并挂 app-release.apk，真机 release 截图入库。仅 Android，iOS 未实装。",
     gallery: [],
-    releaseUrl:
-      "https://github.com/wanghoufan/p026-yejian-buguangdeng/releases/tag/v2.1.0",
+    siteUrl: "https://wanghoufan.github.io/fill-light-site/",
     repoUrl: "https://github.com/wanghoufan/p026-yejian-buguangdeng",
     links: [
       {
@@ -955,8 +946,8 @@ export const projects: Project[] = [
         href: "https://github.com/wanghoufan/p026-yejian-buguangdeng",
       },
       {
-        label: "下载安卓安装包",
-        href: "https://github.com/wanghoufan/p026-yejian-buguangdeng/releases/tag/v2.1.0",
+        label: "打开官网",
+        href: "https://wanghoufan.github.io/fill-light-site/",
       },
     ],
   },
@@ -1080,8 +1071,7 @@ export const projects: Project[] = [
     outcome:
       "已发 GitHub Release v1.1 并挂可直接下载的正式签名 APK（Android 12+）；产品验收全部通过，历史页提供训练统计与图表。",
     gallery: [],
-    releaseUrl:
-      "https://github.com/wanghoufan/p045-kegel-training/releases/tag/v1.1",
+    siteUrl: "https://wanghoufan.github.io/kegel-trainer-site/",
     repoUrl: "https://github.com/wanghoufan/p045-kegel-training",
     links: [
       {
@@ -1089,8 +1079,8 @@ export const projects: Project[] = [
         href: "https://github.com/wanghoufan/p045-kegel-training",
       },
       {
-        label: "下载安卓安装包",
-        href: "https://github.com/wanghoufan/p045-kegel-training/releases/tag/v1.1",
+        label: "打开官网",
+        href: "https://wanghoufan.github.io/kegel-trainer-site/",
       },
     ],
   },
@@ -1145,8 +1135,7 @@ export const projects: Project[] = [
     outcome:
       "已发 GitHub Release v1.0.0 并挂可直接下载的通用 APK（Android 7.0+，debug 签名，对应首发版本）；随后的用餐历史与统计可从源码构建；中英双语、主题三态，两台真机跑通并留有逐项截图证据。",
     gallery: [],
-    releaseUrl:
-      "https://github.com/wanghoufan/p047-mindful-eating/releases/tag/v1.0.0",
+    siteUrl: "https://wanghoufan.github.io/bitetempo-site/",
     repoUrl: "https://github.com/wanghoufan/p047-mindful-eating",
     links: [
       {
@@ -1154,8 +1143,8 @@ export const projects: Project[] = [
         href: "https://github.com/wanghoufan/p047-mindful-eating",
       },
       {
-        label: "下载安卓安装包",
-        href: "https://github.com/wanghoufan/p047-mindful-eating/releases/tag/v1.0.0",
+        label: "打开官网",
+        href: "https://wanghoufan.github.io/bitetempo-site/",
       },
     ],
   },

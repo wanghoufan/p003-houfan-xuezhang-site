@@ -464,6 +464,7 @@ export const linkLabelEn: Record<string, string> = {
   "查看 GitHub 项目": "View on GitHub",
   "打开在线体验": "Open the live site",
   "打开在线地图": "Open the live map",
+  "打开官网": "Open the site",
   "下载最新版本": "Download the latest release",
   "下载安卓安装包": "Download the Android APK",
 };

@@ -237,8 +237,9 @@ test("protein calculator ships its own screenshots from the site", async () => {
   assert.match(text, /protein-calculator\.png/);
   assert.match(text, /protein-calculator-ranking\.png/);
   assert.match(text, /protein-calculator-dark-home\.png/);
-  // 下载入口指向真实存在的 tag 页：只有预发布版时 /releases/latest 会 404
-  assert.match(text, /releases\/tag\/styleB-20260920/);
+  // 下载入口走落地页；Release 直链由落地页承载，站内不再挂 releases/tag
+  assert.match(text, /wanghoufan\.github\.io\/protein-calculator-site/);
+  assert.doesNotMatch(text, /releases\/tag\/styleB-20260920/);
   for (const file of [
     "protein-calculator.png",
     "protein-calculator-ranking.png",
