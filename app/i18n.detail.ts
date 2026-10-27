@@ -214,7 +214,7 @@ export const projectDetailEn: Record<string, ProjectDetailEn> = {
     solution:
       "A staged pipeline, stage1–12: local transcription with mlx-whisper (pinned large-v3-turbo) plus ffmpeg audio extraction, with watchdog queueing files from the folder automatically; a vocabulary area of 'wrong → right' can be re-run; output is split into Markdown sections, mirrored into Obsidian when a vault path is configured and left in the data directory when it is not; the task list reports progress as discovered → transcribed → organised → drafted → filed.",
     outcome:
-      "The pinned release is tagged v1.0-mac. It needs only an Apple Silicon Mac, Python 3.12 and ffmpeg, and no API key of any kind; the Windows version is developed separately in the same repository and is not released.",
+      "The pinned release is tagged v1.0-mac. It needs only an Apple Silicon Mac, Python 3.12 and ffmpeg, and no API key of any kind. A Windows version is in separate development and not yet publicly released; this page covers the macOS build only.",
     tags: ["macOS desktop tool", "Local transcription", "Obsidian", "Offline, no API cost"],
   },
   "family-insurance-dashboard": {

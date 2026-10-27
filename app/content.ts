@@ -635,7 +635,7 @@ export const projects: Project[] = [
     solution:
       "拆成 stage1–12 的分阶段流水线，本机用 mlx-whisper（large-v3-turbo 冻结版）加 ffmpeg 提音频转写，watchdog 监听文件夹自动排队；词汇区填「错词 → 正词」可重跑；整理成分段 Markdown，填了笔记库目录就镜像写入 Obsidian，不填只留在数据目录；任务列表按发现 → 听写 → 整理 → 成稿 → 入库展示状态。",
     outcome:
-      "冻结版已打 tag `v1.0-mac`。只需 Apple Silicon Mac、Python 3.12 与 ffmpeg，不需要任何 API Key；Windows 版在同一仓库独立开发，尚未发布。",
+      "冻结版已打 tag `v1.0-mac`。只需 Apple Silicon Mac、Python 3.12 与 ffmpeg，不需要任何 API Key。另有 Windows 版在独立开发中，尚未公开发布，本页只提供 macOS 版的源码与下载。",
     gallery: [],
     repoUrl: "https://github.com/wanghoufan/p018-video2obsidian-mac",
     links: [
