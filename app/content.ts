@@ -1298,7 +1298,7 @@ export const projects: Project[] = [
     slug: "muscle-guardian",
     title: "肌肉守护者",
     status: "published",
-    statusLabel: "源码公开",
+    statusLabel: "已发布",
     year: "2026",
     category: "mobile",
     summary:
@@ -1315,8 +1315,13 @@ export const projects: Project[] = [
     outcome:
       "已发布公开仓库与网页版（Cloudflare Pages PWA，可添加到桌面）；三个 Tab、语音、统计与数据清空均有产品验收证据；当前 v0.1.0，正式签名 Release 待补。",
     gallery: [],
+    siteUrl: "https://p064-muscle-guardian.pages.dev",
     repoUrl: "https://github.com/wanghoufan/p064-muscle-guardian",
     links: [
+      {
+        label: "打开在线体验",
+        href: "https://p064-muscle-guardian.pages.dev",
+      },
       {
         label: "查看 GitHub 项目",
         href: "https://github.com/wanghoufan/p064-muscle-guardian",
