@@ -295,4 +295,9 @@ export const projectEn: Record<string, { title: string; summary: string }> = {
     summary:
       "Keeps the Douyin dances you want to learn in one list, then practises them eight counts at a time with a video you already have: loop just the chorus, slow it to 0.5×, mirror it and follow along, and save the clip as an offline copy so practice continues with the network off.",
   },
+  "muscle-guardian": {
+    title: "Muscle Guardian",
+    summary:
+      "A squat-training companion for elders: tap a duration to start a countdown session, with voice cues and safety reminders; all data stays on device, runs on Android and the web.",
+  },
 };

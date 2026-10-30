@@ -150,6 +150,7 @@ test("every project repoUrl points at a real renamed repository", async () => {
     "bitetempo": "p047-mindful-eating",
     "curated-skills": "alw-003-curated-skill-open-source",
     "audiobook-cabin": "p051-sister-audiobook-cabin",
+    "muscle-guardian": "p064-muscle-guardian",
   };
   for (const [slug, repo] of Object.entries(expected)) {
     const { res, text } = await get(`/projects/${slug}/`);
@@ -222,6 +223,7 @@ test("new published project routes render their details", async () => {
     ["bitetempo", /慢食刻/],
     ["curated-skills", /精选 Skill 开源仓库/],
     ["blinkguard", /眨眼守护/],
+    ["muscle-guardian", /肌肉守护者/],
   ];
   for (const [slug, title] of routes) {
     const { res, text } = await get(`/projects/${slug}/`);
@@ -293,6 +295,7 @@ test("static export ships every published project as its own folder", async () =
     "curated-skills",
     "audiobook-cabin",
     "blinkguard",
+    "muscle-guardian",
   ];
   const dirs = (await readdir(path.join(OUT, "projects"), { withFileTypes: true }))
     .filter((entry) => entry.isDirectory())
@@ -322,7 +325,7 @@ test("方法与体系 是筛选标签，三条作品就在同一面作品墙里"
     )
     .replace(/<!--.*?-->/g, "");
   assert.match(wall, /方法与体系（3）/, "筛选条应出现「方法与体系（3）」标签");
-  assert.match(wall, /全部（37）/, "全部计数应含新增作品");
+  assert.match(wall, /全部（38）/, "全部计数应含新增作品");
   for (const title of ["Skill 能力地图", "ORCA 多智能体开发系统", "精选 Skill 开源仓库"]) {
     assert.ok(wall.includes(`<h3>${title}</h3>`), `${title} 应作为卡片出现在作品墙内`);
   }

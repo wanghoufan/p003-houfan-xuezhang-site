@@ -457,6 +457,18 @@ export const projectDetailEn: Record<string, ProjectDetailEn> = {
       "All 30 product acceptance items carry checkable evidence: on a Redmi Note 12 Pro (Android 14) the runs covered importing ten files in one multi-select, tri-state batch tags, soft delete and restore plus permanent delete (source file hash unchanged), playing an offline copy after airplane mode and a force-stop cold start, saving a 100 MB video (PSS peaked at 317 MB then settled), controlled fault injection (insufficient space, copy failure, record write failure) and the full playback path; the web build passed 16 regression checks with no console errors. 152 front-end unit tests plus Java unit tests (Range parsing, virtual prefix, fault state, asset IDs) are green. Known limitations are stated in the README: Simplified Chinese only, offline copies are not portable across devices, automatic BPM has size and duration limits, and only one device model was verified.",
     tags: ["Eight-count segments", "Offline practice", "Android", "Local storage"],
   },
+  "muscle-guardian": {
+    role: "Sole design and development",
+    background:
+      "Elders at home need to build leg strength and avoid falls, but mainstream fitness apps are too busy, ad-laden and demand a login; what was wanted was a simple tool you open and use, follow by voice, without staring at a screen to count.",
+    challenge:
+      "Elders have weaker eyesight and less dexterity, so the UI must be large and simple; the countdown and the voice must stay strictly in step and survive lock screens; records live only on-device, no network, no account, and clearing records must not touch the theme or voice settings.",
+    solution:
+      "Built with Expo and React Native, with AsyncStorage for local persistence. The training screen supports one-tap start of a 1–10 minute countdown and free timing, with pause, resume and end; voice cues use the system TTS and fall back to a chime when TTS is unavailable; an assessment test records the best score and the trend; the stats screen shows today, last 7 days and last 30 days with line and bar charts; theme has three modes and voice is toggleable; the Android build embeds a WebView APK without Gradle, fully offline.",
+    outcome:
+      "The public repository and the web build (Cloudflare Pages PWA, addable to the home screen) are published; the three tabs, voice, stats and data clearing all have product-acceptance evidence; currently v0.1.0, with a release-signed Release still to come.",
+    tags: ["Squat training", "Voice cues", "Android", "Local storage"],
+  },
 };
 
 /** 详情页与卡片上的链接按钮名。 */

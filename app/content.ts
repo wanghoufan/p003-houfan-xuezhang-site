@@ -1294,4 +1294,33 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "muscle-guardian",
+    title: "肌肉守护者",
+    status: "published",
+    statusLabel: "源码公开",
+    year: "2026",
+    category: "mobile",
+    summary:
+      "给长辈用的深蹲训练小工具：点一下时长就开始倒计时训练，带语音提示和安全提醒，数据只存在本机，安卓和网页都能用。",
+    cover: null,
+    tags: ["深蹲训练", "语音提示", "Android", "本地存储"],
+    role: "独立设计与开发",
+    background:
+      "家里长辈需要练腿力、防跌倒，但市面上的健身 App 太复杂、广告多、还要登录；想要一个打开就能用、跟着语音做、不用盯屏幕数数的简单工具。",
+    challenge:
+      "长辈视力与操作不便，界面要够大够简；倒计时和语音必须严格对齐、锁屏不中断；记录只存本机、不联网、不登录，且清空记录不影响主题与语音等设置。",
+    solution:
+      "Expo + React Native 实现，AsyncStorage 本地持久化；训练页支持 1–10 分钟档位一键开始与自由计时，暂停 / 继续 / 结束齐全；语音提示走系统 TTS，本机不可用时自动改用提示音；摸底测试记录最好成绩与趋势；统计页用折线 + 柱状图展示今日 / 近 7 天 / 近 30 天；主题三态、语音可开关；安卓走免 Gradle 的 WebView 内嵌 APK 打包，完全离线。",
+    outcome:
+      "已发布公开仓库与网页版（Cloudflare Pages PWA，可添加到桌面）；三个 Tab、语音、统计与数据清空均有产品验收证据；当前 v0.1.0，正式签名 Release 待补。",
+    gallery: [],
+    repoUrl: "https://github.com/wanghoufan/p064-muscle-guardian",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p064-muscle-guardian",
+      },
+    ],
+  },
 ];
