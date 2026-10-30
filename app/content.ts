@@ -1303,7 +1303,7 @@ export const projects: Project[] = [
     category: "mobile",
     summary:
       "给长辈用的深蹲训练小工具：点一下时长就开始倒计时训练，带语音提示和安全提醒，数据只存在本机，安卓和网页都能用。",
-    cover: null,
+    cover: "/projects/muscle-guardian.png",
     tags: ["深蹲训练", "语音提示", "Android", "本地存储"],
     role: "独立设计与开发",
     background:
