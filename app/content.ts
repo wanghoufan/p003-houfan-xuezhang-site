@@ -1328,4 +1328,67 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "last-time-when",
+    title: "上次啥时候",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    category: "web",
+    summary:
+      "换滤芯、理发、给车做保养这类没有固定周期、却又总想知道「上次是什么时候」的事，一页看到每件事距今天数，一键记一次，历史可回看；数据只留在自己的浏览器里，装到桌面后断网也能用。",
+    cover: "/projects/last-time-when.png",
+    tags: ["本地优先", "PWA 离线", "日历日间隔", "JSON 备份"],
+    role: "独立设计与开发",
+    background:
+      "生活里有一批事没有固定周期，却总想不起来上次是什么时候做的：换滤芯、理发、给车做保养、浇花、整理备份。记事本太重，提醒事项又要求你先预设一个周期，缺的是「打开就看到距今天数」的轻工具。",
+    challenge:
+      "要完全本地优先，就不能依赖任何第三方存储层；间隔必须按自然日计算，不能因为记录的具体时刻不同而少算或多算一天；补记一个历史日期之后，它后面所有间隔要自动重算；断网时页面仍要能打开并读写数据；导入备份之前，还得先看清会不会覆盖已有记录。",
+    solution:
+      "Vite + TypeScript 构建，数据落在原生 IndexedDB，不引第三方存储层；Service Worker 负责离线缓存。首页按事项列出距今天数，「记一次」一键更新；支持事项增删改、历史日期补记、按名称搜索、事项历史时间线与最近两次间隔；全量导出 JSON 备份，导入前做预检。作为 PWA 可安装到桌面与主屏，断网仍可用。",
+    outcome:
+      "已上线 GitHub Pages（实测 HTTP 200）；端到端验收证据覆盖 AC-01 至 AC-32 编号段，留下 41 张浏览器截图，含离线首页、补记后间隔重算、未来日期拒绝、深色模式、搜索与底栏固定等场景；单元测试走 vitest。源码公开在 wanghoufan/p067-last-time-when。",
+    gallery: [],
+    siteUrl: "https://wanghoufan.github.io/p067-last-time-when/",
+    repoUrl: "https://github.com/wanghoufan/p067-last-time-when",
+    links: [
+      {
+        label: "打开在线体验",
+        href: "https://wanghoufan.github.io/p067-last-time-when/",
+      },
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p067-last-time-when",
+      },
+    ],
+  },
+  {
+    slug: "zai-jiu-yi-dian",
+    title: "再久一点",
+    status: "published",
+    statusLabel: "已发布",
+    year: "2026",
+    category: "mobile",
+    summary:
+      "平板支撑、静蹲这类「再撑一会儿」的练习：设好目标就开始倒计时，每满三分钟语音报一次，到点还能继续往上添；训练历史、周频率统计与备份恢复全在手机本地，应用没有网络权限。",
+    cover: "/projects/zai-jiu-yi-dian.png",
+    tags: ["Android", "完全离线", "语音播报", "时长统计"],
+    role: "独立设计与开发",
+    background:
+      "练静蹲和平板支撑时，盯着屏幕数秒既分神又容易自欺；想要一个把目标、倒计时、历史与统计串起来的本地工具，好回答「这次比上次久没有」和「我到底练得勤不勤」。",
+    challenge:
+      "全程离线意味着训练记录只能存在手机上，还得能完整导出与恢复；目标要按项目分别记忆，历史记录要保留当次的目标快照，否则事后看不出那回定的是哪一档；统计里「每周次数与表现的关系」必须带上分组分母，不然小样本会给出误导性的结论；语音只能在应用前台播报，并且要能单独关掉。",
+    solution:
+      "Kotlin 原生工程，训练 / 历史 / 设置三个页面。训练页按项目选目标档位（15 / 20 / 25 分钟）或自定义时间，开始时震动并播报「开始训练」，每满 3 分钟播报一次，达到目标时播报并可继续。历史页给出有效记录、平均实际、最佳时长与目标达成率四项指标，以及时长趋势、周频率、频率关系三档图表。设置页支持四档字体（默认标准 115%）、深色模式、提示音 / 震动 / 语音三个开关，改动立即生效并记住。备份导出完整 JSON（项目、目标、预设、历史、备注、设置）与可直接用表格软件打开的 CSV。",
+    outcome:
+      "当前 v1.0.0（versionCode 1，debug 签名）；源码公开在 wanghoufan/p068-zai-jiu-yi-dian，安装包属于本地构建产物、未随公开仓库分发。真机（Redmi Note 12 Pro）实测训练、历史、设置三页与各项设置生效，本站封面即取自这三页的真实截图。Manifest 只申请 VIBRATE，没有 INTERNET 权限，「完全离线」是可核验的事实。正式签名与分发渠道待补。",
+    gallery: [],
+    repoUrl: "https://github.com/wanghoufan/p068-zai-jiu-yi-dian",
+    links: [
+      {
+        label: "查看 GitHub 项目",
+        href: "https://github.com/wanghoufan/p068-zai-jiu-yi-dian",
+      },
+    ],
+  },
 ];

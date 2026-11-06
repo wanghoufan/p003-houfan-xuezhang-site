@@ -300,4 +300,14 @@ export const projectEn: Record<string, { title: string; summary: string }> = {
     summary:
       "A squat-training companion for elders: tap a duration to start a countdown session, with voice cues and safety reminders; all data stays on device, runs on Android and the web.",
   },
+  "last-time-when": {
+    title: "WhenLast",
+    summary:
+      "For the things that have no fixed cycle but you always want to date — filter changes, a haircut, car service: one page shows how many days since each, one tap records it, and the data stays in your own browser; install it to the desktop and it still works offline.",
+  },
+  "zai-jiu-yi-dian": {
+    title: "A Little Longer",
+    summary:
+      "For planks and wall sits: set a target and the countdown starts, a voice checks in every three minutes, and you can keep going past the target; history, weekly-frequency stats and backup all live on the phone, and the app holds no network permission.",
+  },
 };

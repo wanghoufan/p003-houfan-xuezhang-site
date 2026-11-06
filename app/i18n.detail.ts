@@ -469,6 +469,30 @@ export const projectDetailEn: Record<string, ProjectDetailEn> = {
       "The public repository and the web build (Cloudflare Pages PWA, addable to the home screen) are published; the three tabs, voice, stats and data clearing all have product-acceptance evidence; currently v0.1.0, with a release-signed Release still to come.",
     tags: ["Squat training", "Voice cues", "Android", "Local storage"],
   },
+  "last-time-when": {
+    role: "Sole design and development",
+    background:
+      "A whole class of life chores has no fixed cycle, yet you keep wanting to know when you last did them: water-filter cartridges, a haircut, car servicing, watering plants, tidying backups. Note apps are too heavy and reminder apps make you pre-set a cycle first; what was missing was a light tool that shows days-since each time you open it.",
+    challenge:
+      "Local-first means no third-party storage layer at all; intervals must be counted in calendar days so the recorded clock time cannot shift a day; back-filling a past date must recompute every later interval automatically; the page still has to open and read and write data while offline; and importing a backup must show what it would overwrite before doing it.",
+    solution:
+      "Built with Vite and TypeScript, persisting to native IndexedDB with no storage abstraction on top, with a Service Worker for offline caching. The home list shows days-since per item and a one-tap “record today”; items can be added, renamed and deleted, past dates back-filled, names searched, and each item has a history timeline plus the gap between its last two entries. A full JSON export/import with a pre-import check covers backup. Installable as a PWA on desktop and home screen, usable offline.",
+    outcome:
+      "Live on GitHub Pages (verified HTTP 200). End-to-end acceptance evidence spans the AC-01 to AC-32 range with 41 browser screenshots, covering the offline home screen, interval recomputation after a back-fill, rejection of future dates, dark mode, search and the fixed bottom bar; unit tests run on vitest. Source is public at wanghoufan/p067-last-time-when.",
+    tags: ["Local-first", "Offline PWA", "Calendar-day intervals", "JSON backup"],
+  },
+  "zai-jiu-yi-dian": {
+    role: "Sole design and development",
+    background:
+      "When training planks or wall sits, staring at the screen to count seconds is distracting and easy to cheat; what was wanted was a local tool that ties together target, countdown, history and stats, so you can answer “did I last longer than before” and “am I actually practising often enough”.",
+    challenge:
+      "Fully offline means records can only live on the phone yet still have to be exported and restored in full; targets must be remembered per exercise, and each history entry must keep the target snapshot of that session, otherwise you cannot tell later which tier you had chosen; the weekly frequency-versus-performance chart needs its group denominators shown or small samples mislead; and voice may only play in the foreground and must be switchable off on its own.",
+    solution:
+      "A native Kotlin app with three screens: Train, History and Settings. The train screen picks a target tier (15 / 20 / 25 minutes) or a custom duration per exercise, buzzes and speaks “start training” on begin, speaks every three completed minutes, and at target both announces and lets you continue. The history screen reports valid sessions, average actual duration, best duration and target attainment, with three chart views: duration trend, weekly frequency, and frequency versus performance. Settings offer four font sizes (default standard at 115%), dark mode, and separate toggles for chime, vibration and voice, each applied immediately and remembered. Backup exports a complete JSON (exercises, targets, presets, history, notes, settings) plus a CSV that opens directly in a spreadsheet.",
+    outcome:
+      "Currently v1.0.0 (versionCode 1, debug-signed). Source is public at wanghoufan/p068-zai-jiu-yi-dian; the APK is a local build artefact and is not distributed with the public repository. Verified on a Redmi Note 12 Pro across all three screens and the settings switches — the cover image on this site is composed from those real screenshots. The manifest requests only VIBRATE and no INTERNET, so “fully offline” is a checkable fact. Release signing and a distribution channel are still to come.",
+    tags: ["Android", "Fully offline", "Voice cues", "Duration stats"],
+  },
 };
 
 /** 详情页与卡片上的链接按钮名。 */
