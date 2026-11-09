@@ -1133,7 +1133,7 @@ export const projects: Project[] = [
     solution:
       "Expo / React Native 实现，计时用单调时钟加挂钟校正的状态机，锁屏回来按真实时间恢复；提醒只显示文字、不出声音；心得支持语音或手输，AI 整理走统一接口接 DeepSeek，原文与整理稿对照确认后才保存，Key 只存在手机安全存储里；数据全部存本机 SQLite，无账号、无云同步；用餐记录与统计同样在本机聚合，按本地时区分组、避开跨日界线的错算。",
     outcome:
-      "已发 GitHub Release v1.0.0 并挂可直接下载的通用 APK（Android 7.0+，debug 签名，对应首发版本）；随后的用餐历史与统计可从源码构建；中英双语、主题三态，两台真机跑通并留有逐项截图证据。",
+      "已发 GitHub Release v1.1.0 并挂可直接下载的通用 APK（Android 7.0+，debug 签名）；这一版新增用餐历史与统计：开始用餐即落库，计时中途退出也会留痕，统计页给累计餐数、达标率与近 7 天柱状图；中英双语、主题三态，两台真机跑通并留有逐项截图证据。",
     gallery: [],
     siteUrl: "https://wanghoufan.github.io/bitetempo-site/",
     repoUrl: "https://github.com/wanghoufan/p047-mindful-eating",
