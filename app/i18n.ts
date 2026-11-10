@@ -308,6 +308,11 @@ export const projectEn: Record<string, { title: string; summary: string }> = {
   "zai-jiu-yi-dian": {
     title: "A Little Longer",
     summary:
-      "For planks and wall sits: set a target and the countdown starts, a voice checks in every three minutes, and you can keep going past the target; history, weekly-frequency stats and backup all live on the phone, and the app holds no network permission.",
+      "For planks and wall sits: a timed mode counts down to your target and a rep mode logs actual reps by set, both feeding one training history; a voice checks in every three minutes, you can keep going past the target, and stats and backup stay on the phone — the app holds no network permission.",
+  },
+  prompter: {
+    title: "Dual-Screen Prompter",
+    summary:
+      "When shooting short videos, two phones read the same page and either one can turn it while the other follows; a third phone just films, and the script is saved beforehand. The script is kept character for character, AI only computes page boundaries, and an Android build of the same app is available.",
   },
 };
