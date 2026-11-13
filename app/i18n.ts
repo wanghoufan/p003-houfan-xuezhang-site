@@ -308,7 +308,7 @@ export const projectEn: Record<string, { title: string; summary: string }> = {
   "zai-jiu-yi-dian": {
     title: "A Little Longer",
     summary:
-      "For planks and wall sits: a timed mode counts down to your target and a rep mode logs actual reps by set, both feeding one training history; a voice checks in every three minutes, you can keep going past the target, and stats and backup stay on the phone — the app holds no network permission.",
+      "For planks and wall sits: a timed mode counts down to your target and a rep mode logs actual reps by set, both feeding one training history; a voice checks in every three minutes, and you can keep going past the target. Data stays on the device by default — cloud sync is optional and off until you sign in and confirm the first upload.",
   },
   prompter: {
     title: "Dual-Screen Prompter",
