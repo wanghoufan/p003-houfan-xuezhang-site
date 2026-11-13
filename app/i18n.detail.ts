@@ -466,7 +466,7 @@ export const projectDetailEn: Record<string, ProjectDetailEn> = {
     solution:
       "Built with Expo and React Native, with AsyncStorage for local persistence. The training screen supports one-tap start of a 1–10 minute countdown and free timing, with pause, resume and end; voice cues use the system TTS and fall back to a chime when TTS is unavailable; an assessment test records the best score and the trend; the stats screen shows today, last 7 days and last 30 days with line and bar charts; theme has three modes and voice is toggleable; the Android build embeds a WebView APK without Gradle, fully offline.",
     outcome:
-      "The public repository and the web build (Cloudflare Pages PWA, addable to the home screen) are published; the three tabs, voice, stats and data clearing all have product-acceptance evidence; currently v0.1.0, with a release-signed Release still to come.",
+      "The public repository and the web build (Cloudflare Pages PWA, addable to the home screen) are published; the three tabs, voice, stats and data clearing all have product-acceptance evidence; currently v0.1.0, with a release-signed Release already published and a directly installable APK attached.",
     tags: ["Squat training", "Voice cues", "Android", "Local storage"],
   },
   "last-time-when": {

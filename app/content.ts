@@ -161,7 +161,7 @@ export const projects: Project[] = [
       "完成可用的人民币兑美元汇率看板，并将项目代码公开在 GitHub，作为 AI 应用与编程实践的第一项作品记录。",
     gallery: [],
     releaseUrl:
-      "https://github.com/wanghoufan/p036-cny-us-rate-board/releases/latest",
+      "https://github.com/wanghoufan/p036-cny-us-rate-board/releases/tag/v1.0.0",
     repoUrl: "https://github.com/wanghoufan/p036-cny-us-rate-board",
     links: [
       {
@@ -591,7 +591,7 @@ export const projects: Project[] = [
     slug: "hongli-dixin-calc",
     title: "红利打新底仓计算器",
     status: "published",
-    statusLabel: "本机自托管版",
+    statusLabel: "源码公开",
     year: "2026",
     category: "web",
     summary:
@@ -620,7 +620,7 @@ export const projects: Project[] = [
     slug: "video2obsidian",
     title: "懒得笔记 · 本地视频转文字",
     status: "published",
-    statusLabel: "macOS 本机版",
+    statusLabel: "源码公开",
     year: "2026",
     category: "desktop",
     summary:
@@ -649,7 +649,7 @@ export const projects: Project[] = [
     slug: "family-insurance-dashboard",
     title: "家庭保单数据看板",
     status: "published",
-    statusLabel: "本地演示版",
+    statusLabel: "源码公开",
     year: "2026",
     category: "web",
     summary:
@@ -1313,7 +1313,7 @@ export const projects: Project[] = [
     solution:
       "Expo + React Native 实现，AsyncStorage 本地持久化；训练页支持 1–10 分钟档位一键开始与自由计时，暂停 / 继续 / 结束齐全；语音提示走系统 TTS，本机不可用时自动改用提示音；摸底测试记录最好成绩与趋势；统计页用折线 + 柱状图展示今日 / 近 7 天 / 近 30 天；主题三态、语音可开关；安卓走免 Gradle 的 WebView 内嵌 APK 打包，完全离线。",
     outcome:
-      "已发布公开仓库与网页版（Cloudflare Pages PWA，可添加到桌面）；三个 Tab、语音、统计与数据清空均有产品验收证据；当前 v0.1.0，正式签名 Release 待补。",
+      "已发布公开仓库与网页版（Cloudflare Pages PWA，可添加到桌面）；三个 Tab、语音、统计与数据清空均有产品验收证据；当前 v0.1.0，已发布 release 签名的正式 Release（附可直接安装的 APK）。",
     gallery: [],
     siteUrl: "https://p064-muscle-guardian.pages.dev",
     repoUrl: "https://github.com/wanghoufan/p064-muscle-guardian",
