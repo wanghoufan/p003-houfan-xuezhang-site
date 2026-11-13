@@ -193,7 +193,7 @@ export const projects: Project[] = [
       "完成一个可独立运行的 Windows x64 自包含单文件工具，并通过 GitHub Actions 持续检查构建与测试；发布包无需目标电脑预装 .NET Runtime。",
     gallery: [],
     releaseUrl:
-      "https://github.com/wanghoufan/p010-deepseek-balance-windows/releases/latest",
+      "https://github.com/wanghoufan/p010-deepseek-balance-windows/releases/tag/v0.6.1",
     repoUrl: "https://github.com/wanghoufan/p010-deepseek-balance-windows",
     links: [
       {
@@ -202,7 +202,7 @@ export const projects: Project[] = [
       },
       {
         label: "下载最新版本",
-        href: "https://github.com/wanghoufan/p010-deepseek-balance-windows/releases/latest",
+        href: "https://github.com/wanghoufan/p010-deepseek-balance-windows/releases/tag/v0.6.1",
       },
     ],
   },
@@ -228,7 +228,7 @@ export const projects: Project[] = [
       "已发 Release v0.6.0，提供两种架构的安装包。Windows（WPF）端已拆到独立仓库单独维护，本仓库只负责 macOS。",
     gallery: [],
     releaseUrl:
-      "https://github.com/wanghoufan/p010-deepseek-balance-mac/releases/latest",
+      "https://github.com/wanghoufan/p010-deepseek-balance-mac/releases/tag/v0.6.0",
     repoUrl: "https://github.com/wanghoufan/p010-deepseek-balance-mac",
     links: [
       {
@@ -237,7 +237,7 @@ export const projects: Project[] = [
       },
       {
         label: "下载最新版本",
-        href: "https://github.com/wanghoufan/p010-deepseek-balance-mac/releases/latest",
+        href: "https://github.com/wanghoufan/p010-deepseek-balance-mac/releases/tag/v0.6.0",
       },
     ],
   },
@@ -800,7 +800,7 @@ export const projects: Project[] = [
     slug: "talent-showroom",
     title: "才艺展示厅",
     status: "published",
-    statusLabel: "源码公开",
+    statusLabel: "已发布",
     year: "2026",
     category: "mobile",
     summary:
@@ -815,13 +815,19 @@ export const projects: Project[] = [
     solution:
       "吉他与唱歌分库并记录调性和 Capo；练习播放器支持循环与变速；一键下载全部到本地；批量分类配断网操作队列；从视频里裁出跳舞音乐，支持抖音链接收录；再配「今晚节目单」与演出模式。React 19 + Vite 前端、node:sqlite 后端、Capacitor 8 打包，PDF.js 随 APK 内置。",
     outcome:
-      "完成 Web 与安卓双形态，尚未部署公网服务；吉他模块已于 2026-10-03 冻结。",
+      "完成 Web 与安卓双形态；已发布 v1.0.0 正式 Release 并附通用 APK，未部署公网服务；吉他模块已于 2026-10-03 冻结。",
     gallery: [],
+    releaseUrl:
+      "https://github.com/wanghoufan/p040-talent-showroom/releases/tag/v1.0.0",
     repoUrl: "https://github.com/wanghoufan/p040-talent-showroom",
     links: [
       {
         label: "查看 GitHub 项目",
         href: "https://github.com/wanghoufan/p040-talent-showroom",
+      },
+      {
+        label: "下载最新版本",
+        href: "https://github.com/wanghoufan/p040-talent-showroom/releases/tag/v1.0.0",
       },
     ],
   },
@@ -1071,6 +1077,8 @@ export const projects: Project[] = [
     outcome:
       "已发 GitHub Release v1.1 并挂可直接下载的正式签名 APK（Android 12+）；产品验收全部通过，历史页提供训练统计与图表。",
     gallery: [],
+    releaseUrl:
+      "https://github.com/wanghoufan/p045-kegel-training/releases/tag/v1.1",
     siteUrl: "https://wanghoufan.github.io/kegel-trainer-site/",
     repoUrl: "https://github.com/wanghoufan/p045-kegel-training",
     links: [
@@ -1081,6 +1089,10 @@ export const projects: Project[] = [
       {
         label: "打开官网",
         href: "https://wanghoufan.github.io/kegel-trainer-site/",
+      },
+      {
+        label: "下载最新版本",
+        href: "https://github.com/wanghoufan/p045-kegel-training/releases/tag/v1.1",
       },
     ],
   },

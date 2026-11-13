@@ -286,7 +286,7 @@ export const projectDetailEn: Record<string, ProjectDetailEn> = {
     solution:
       "Guitar and vocal libraries kept separate with key and capo recorded; a practice player with looping and tempo change; one tap to download everything locally; batch categorisation backed by an offline action queue; dance music cut out of videos, with Douyin links accepted; plus a 'tonight's setlist' and a performance mode. React 19 + Vite front end, node:sqlite back end, packaged with Capacitor 8, PDF.js bundled inside the APK.",
     outcome:
-      "Both web and Android forms complete; the public service is not deployed. The guitar module was frozen on 2026-10-03.",
+      "Both web and Android forms complete; release v1.0.0 is published with a universal APK, while no public service is deployed. The guitar module was frozen on 2026-10-03.",
     tags: ["Capacitor", "Offline first", "Repertoire management", "Practice tool"],
   },
   "stretch-routine": {
